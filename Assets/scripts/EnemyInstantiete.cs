@@ -6,6 +6,7 @@ public class EnemyInstantiete : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPlaces = new Transform[3];
     [SerializeField] private Skeleton[] Templates = new Skeleton[1];
+
     private int _number = 0 ;
     private int _spawnTime = 2;
 

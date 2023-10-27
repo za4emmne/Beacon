@@ -6,18 +6,18 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 0.1f;
-    [SerializeField] public Transform target;
+    [SerializeField] private Transform _target;
 
     private Animator _animator;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        target = GameObject.FindObjectOfType<Player>().transform; 
+        _target = GameObject.FindObjectOfType<Player>().transform; 
     }
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, _speed * Time.deltaTime); 
+        transform.position = Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime); 
         AnimationRun();
     }
 
