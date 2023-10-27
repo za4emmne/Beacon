@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyInstantiete : MonoBehaviour
 {
     [SerializeField] private Transform[] spawnPlaces = new Transform[3];
-
-    public GameObject[] Templates = new GameObject[1];
+    [SerializeField] private Skeleton[] Templates = new Skeleton[1];
     private int _number = 0 ;
     private int _spawnTime = 2;
 
@@ -19,10 +18,10 @@ public class EnemyInstantiete : MonoBehaviour
     {
         while (true)
         {
-            GameObject enemy = Instantiate(Templates[Random.Range(0, Templates.Length)], spawnPlaces[_number].position, Quaternion.identity);
+            Skeleton enemy = Instantiate(Templates[Random.Range(0, Templates.Length)], spawnPlaces[_number].position, Quaternion.identity);
             _number++;
   
-            if (_number == spawnPlaces.Length) //счетчик массива с врагами
+            if (_number == spawnPlaces.Length) 
                 _number = 0;
 
             yield return new WaitForSeconds(_spawnTime);

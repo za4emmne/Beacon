@@ -13,11 +13,11 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        target = GameObject.FindObjectOfType<Player>().transform; //цель
+        target = GameObject.FindObjectOfType<Player>().transform; 
     }
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, _speed * Time.deltaTime); //преследование цели
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, _speed * Time.deltaTime); 
         AnimationRun();
     }
 
