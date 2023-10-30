@@ -6,23 +6,25 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 0.1f;
-    [SerializeField] private Transform _target;
 
+    private Transform _target;
+    private const string _animationNameRun = "Run";
     private Animator _animator;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _target = GameObject.FindObjectOfType<Player>().transform; 
     }
+
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime); 
+        _target = GameObject.FindObjectOfType <EnemyInstantiete>().Target;
+        transform.position = Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
         AnimationRun();
     }
 
     private void AnimationRun()
     {
-        _animator.SetTrigger("Run");
+        _animator.SetTrigger(_animationNameRun);
     }
 }

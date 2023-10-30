@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
     private Animator _animator = new Animator();
+    private const string _animationNameRun = "Run";
+    private const string _animationNameIdle = "Idle";
 
     private void Start()
     {
@@ -62,10 +64,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void AnimationRun()
     {
-        _animator.SetTrigger("Run");
+        _animator.SetTrigger(_animationNameRun);
     }
     private void AnimationIdle()
     {
-        _animator.SetTrigger("Idle");
+        _animator.SetTrigger(_animationNameIdle);
     }
 }
