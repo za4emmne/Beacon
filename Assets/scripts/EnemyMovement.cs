@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        _target = GameObject.FindObjectOfType <EnemyInstantiete>().Target;
+        _target = GameObject.FindObjectOfType <EnemySpawn>().Target;
         transform.position = Vector3.MoveTowards(transform.position, _target.transform.position, _speed * Time.deltaTime);
         AnimationRun();
     }
