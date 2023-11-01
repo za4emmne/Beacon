@@ -15,10 +15,6 @@ public class EnemySpawn : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnCoroutine());
-    }
-
-    public void Update()
-    {
         Target = GameObject.FindObjectOfType<firstSpawner>().GetTarget();
     }
 
