@@ -11,11 +11,10 @@ public class EnemySpawn : MonoBehaviour
     public Transform Target;
     private int _number = 0;
 
-
     private void Start()
     {
         StartCoroutine(SpawnCoroutine());
-        Target = GameObject.FindObjectOfType<firstSpawner>().GetTarget();
+        Target = GetComponentInChildren<firstSpawner>().GetTarget();
     }
 
     private IEnumerator SpawnCoroutine()

@@ -5924,6 +5924,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6063575133032799725, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
+      propertyPath: enemySpawn
+      value: 
+      objectReference: {fileID: 1966640708}
     - target: {fileID: 6063575133032799727, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
       propertyPath: m_RootOrder
       value: 1

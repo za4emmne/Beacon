@@ -5,8 +5,6 @@ using UnityEngine;
 public class firstSpawner : MonoBehaviour
 {
     private Transform _firstTarget;
-    private Transform _secondTarget;
-    private Transform _thirdTarget;
 
     private void Start()
     {
