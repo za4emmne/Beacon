@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7983ca3f5685832408867af573f1e56f
+guid: 066861191d043964ea17499edebfc975
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Free Cow Sprites_0
+      name: Walk_3
       rect:
         serializedVersion: 2
-        x: 3
-        y: 34
-        width: 27
-        height: 18
+        x: 468
+        y: 32
+        width: 46
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a82bd9ec9826438418233d49e8e3b7c3
-      internalID: 365478456
+      spriteID: 272c45046de66544f92c406097893a76
+      internalID: 840485294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Free Cow Sprites_1
+      name: Walk_4
       rect:
         serializedVersion: 2
-        x: 35
-        y: 34
-        width: 27
-        height: 18
+        x: 558
+        y: 32
+        width: 44
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13aa25ce4103366489361295239c72b1
-      internalID: -1224031269
+      spriteID: aa6f88f0353986f458f7c54abcfa87ef
+      internalID: -1697121005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Free Cow Sprites_2
+      name: Walk_5
       rect:
         serializedVersion: 2
-        x: 67
-        y: 34
-        width: 27
-        height: 18
+        x: 648
+        y: 32
+        width: 46
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,20 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57c91550e5b8ed249860dd4b6b44d824
-      internalID: 1036149972
+      spriteID: 521b42ab66e70b44ca5545a27f6af657
+      internalID: 487576956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Free Cow Sprites_3
+      name: Walk_6
       rect:
         serializedVersion: 2
-        x: 3
-        y: 2
-        width: 27
-        height: 17
+        x: 737
+        y: 32
+        width: 49
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 126dabd9bcba8f84591c1ddd2b72f628
-      internalID: -2015026739
+      spriteID: a9c33777939b65248b51fc77c1cb0b49
+      internalID: -1508284553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Free Cow Sprites_4
+      name: Walk_7
       rect:
         serializedVersion: 2
-        x: 35
-        y: 2
-        width: 27
-        height: 18
+        x: 17
+        y: 32
+        width: 49
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,8 +227,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34b11194f43a48c439bf18e1674b5480
-      internalID: 1713363881
+      spriteID: 18a47b3c0f22314429b5de382de1627e
+      internalID: -938895587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_11
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 32
+        width: 51
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f458db5ee7e1f249b540a65b1a9b9db
+      internalID: -661966941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_12
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 32
+        width: 51
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be44bd8fecab1645b727ee9c1e887fe
+      internalID: -2134986895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_13
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 32
+        width: 52
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a506e8e1b137d44b8765b5567494cd
+      internalID: 2147332120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_14
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 32
+        width: 52
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30fb38f84aa75d44ca76bb92e378858d
+      internalID: 2046891057
       vertices: []
       indices: 
       edges: []
@@ -244,11 +328,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Free Cow Sprites_3: -2015026739
-      Free Cow Sprites_0: 365478456
-      Free Cow Sprites_1: -1224031269
-      Free Cow Sprites_2: 1036149972
-      Free Cow Sprites_4: 1713363881
+      Walk_5: 487576956
+      Walk_12: -2134986895
+      Walk_10: -1846219500
+      Walk_0: -2051824045
+      Walk_9: 1653269124
+      Walk_4: -1697121005
+      Walk_11: -661966941
+      Walk_8: -1101379537
+      Walk_6: -1508284553
+      Walk_2: -963218098
+      Walk_7: -938895587
+      Walk_3: 840485294
+      Walk_13: 2147332120
+      Walk_1: 983921224
+      Walk_14: 2046891057
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
