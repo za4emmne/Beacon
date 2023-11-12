@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 0.1f;
     //[SerializeField] private Target _target;
-    [SerializeField] private SpawnSkeleton _spawnSkeletonLink;
+    [SerializeField] private SpawnEnemy _spawnEnemyLink;
 
     private const string _animationNameRun = "Run";
     private Animator _animator;
@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _spawnSkeletonLink.GetTarget().position, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, _spawnEnemyLink.GetTarget().position, _speed * Time.deltaTime);
         AnimationRun();
     }
 

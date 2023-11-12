@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.4
-  _spawnSkeletonLink: {fileID: 2072687911}
+  _spawnEnemyLink: {fileID: 2072687911}
 --- !u!114 &1375412879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1010,7 +1010,6 @@ GameObject:
   - component: {fileID: 1685258938}
   - component: {fileID: 1685258942}
   - component: {fileID: 1685258941}
-  - component: {fileID: 1685258940}
   m_Layer: 0
   m_Name: water
   m_TagString: Untagged
@@ -4926,20 +4925,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1685258940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685258936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61533d77a69dc2f4eaae109f15c5c3ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 0.4
-  _spawnSkeletonLink: {fileID: 2072687911}
 --- !u!95 &1685258941
 Animator:
   serializedVersion: 5
@@ -6505,6 +6490,10 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3904014471248644527, guid: a19283815eb89c14f8cf38a209bbcbd6, type: 3}
+      propertyPath: _spawnEnemyLink
+      value: 
+      objectReference: {fileID: 98579923}
+    - target: {fileID: 3904014471248644527, guid: a19283815eb89c14f8cf38a209bbcbd6, type: 3}
       propertyPath: _spawnSkeletonLink
       value: 
       objectReference: {fileID: 98579923}
@@ -6643,6 +6632,10 @@ PrefabInstance:
       propertyPath: enemySpawn
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6063575133032799725, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
+      propertyPath: _spawnEnemyLink
+      value: 
+      objectReference: {fileID: 449554948}
     - target: {fileID: 6063575133032799725, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
       propertyPath: _spawnSkeletonLink
       value: 

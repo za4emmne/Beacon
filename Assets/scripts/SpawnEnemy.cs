@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnSkeleton : MonoBehaviour
+public class SpawnEnemy : MonoBehaviour
 {
     //[SerializeField] private Transform _spawnPlace;
     [SerializeField] private Enemy _template;
