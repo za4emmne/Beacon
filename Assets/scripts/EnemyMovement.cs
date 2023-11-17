@@ -6,10 +6,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 0.1f;
-    //[SerializeField] private Target _target;
     [SerializeField] private SpawnEnemy _spawnEnemyLink;
 
-    private const string _animationNameRun = "Run";
+    private const string AnimationNameRun = "Run";
+
     private Animator _animator;
 
     private void Start()
@@ -19,12 +19,13 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _spawnEnemyLink.GetTarget().position, _speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position,
+            _spawnEnemyLink.GetTarget().position, _speed * Time.deltaTime);
         AnimationRun();
     }
 
     private void AnimationRun()
     {
-        _animator.SetTrigger(_animationNameRun);
+        _animator.SetTrigger(AnimationNameRun);
     }
 }

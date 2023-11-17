@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    private Animator _animator = new Animator();
+
+    private Animator _animator;
     private const string _animationNameRun = "Run";
     private const string _animationNameIdle = "Idle";
 

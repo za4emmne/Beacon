@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    //[SerializeField] private Transform _spawnPlace;
     [SerializeField] private Enemy _template;
     [SerializeField] private int _delay = 2;
-    private Target _target;
 
+    private Target _target;
 
     private void Start()
     {
         StartCoroutine(SpawnCoroutine());
         _target = GetComponentInChildren<Target>();
+    }
+
+    public Transform GetTarget()
+    {
+        return _target.transform;
     }
 
     private IEnumerator SpawnCoroutine()
@@ -26,10 +30,5 @@ public class SpawnEnemy : MonoBehaviour
 
             yield return waitForAnySecond;
         }
-    }
-
-    public Transform GetTarget()
-    {
-        return _target.transform;
     }
 }
