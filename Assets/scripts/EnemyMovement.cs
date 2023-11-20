@@ -5,11 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float _speed = 0.1f;
-    [SerializeField] private SpawnEnemy _spawnEnemyLink;
-
     private const string AnimationNameRun = "Run";
 
+    [SerializeField] private float _speed = 0.1f;
+    [SerializeField] private SpawnEnemy _spawnEnemyLink;
+    
     private Animator _animator;
 
     private void Start()

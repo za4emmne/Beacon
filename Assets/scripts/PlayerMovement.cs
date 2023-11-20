@@ -5,12 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
+    private const string AnimationNameRun = "Run";
+    private const string AnimationNameIdle = "Idle";
+
     [SerializeField] private float _speed;
 
     private Animator _animator;
-    private const string _animationNameRun = "Run";
-    private const string _animationNameIdle = "Idle";
-
+   
     private void Start()
     {
         _animator = GetComponent<Animator>();
@@ -65,10 +66,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void AnimationRun()
     {
-        _animator.SetTrigger(_animationNameRun);
+        _animator.SetTrigger(AnimationNameRun);
     }
     private void AnimationIdle()
     {
-        _animator.SetTrigger(_animationNameIdle);
+        _animator.SetTrigger(AnimationNameIdle);
     }
 }
