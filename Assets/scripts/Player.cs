@@ -8,14 +8,19 @@ public class Player : MonoBehaviour
     private const string AnimationNameIdle = "Idle";
 
     [SerializeField] private float _speed;
+    [SerializeField] private int _health;
+    [SerializeField] private HealthBar _healthBar;
 
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
     private bool _isFaceRight = true;
     private float _horizontalMove;
+    private int _maxHealth = 100;
 
     private void Start()
     {
+        _health = _maxHealth;
+        _healthBar.SetMaxHealth(_maxHealth);
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -41,6 +46,33 @@ public class Player : MonoBehaviour
 
 
         AnimationIdle();
+        _healthBar.SetHealth(_health);
+    }
+
+    public void TakeHealth(int pills)
+    {
+        _health += pills;
+
+        if (_health >= _maxHealth)
+            _health = _maxHealth;
+    }
+
+    public void GetDamage(int damage)
+    {
+        _health -= damage;
+
+        if (_health <= 0)
+            _health = 0;
+    }
+
+    public int GetMaxHealth()
+    {
+        return _maxHealth;
+    }
+
+    public int GetHealth()
+    {
+        return _health;
     }
 
     private void Flip()
