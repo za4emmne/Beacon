@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private int _health;
     [SerializeField] private HealthBar _healthBar;
+    [SerializeField] private HealthBarMathf _healthBarMathf;
 
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     {
         _health = _maxHealth;
         _healthBar.SetMaxHealth(_maxHealth);
+        _healthBarMathf.SetMaxHealth(_maxHealth);
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
 
         AnimationIdle();
         _healthBar.SetHealth(_health);
+        _healthBarMathf.SetHealth(_health);
     }
 
     public void TakeHealth(int pills)
