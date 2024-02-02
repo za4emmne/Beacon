@@ -9,16 +9,6 @@ public class HealthBarMathf : MonoBehaviour
 
     private float _currentHealth;
 
-    private void Start()
-    {
-
-    }
-
-    private void Update()
-    {
-       
-    }
-
     public void SetHealth(int health)
     {
         _currentHealth = health;

@@ -8,13 +8,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _pill;
     [SerializeField] private int _damage;
 
-
-    private void Start()
-    {
-        //Debug.Log(_player.GetHealth().ToString());
-        
-    }
-
     private void Update()
     {
         _healthText.text = _player.GetHealth().ToString() + "/" + _player.GetMaxHealth().ToString();

@@ -83,8 +83,8 @@ public class Player : MonoBehaviour
         _isFaceRight = !_isFaceRight;
 
         Vector3 Scale = transform.localScale;
-        Scale.x *= -1; //поворачиваем по горизонтали
-        transform.localScale = Scale; //присваиваем текущему положению уже повернутое
+        Scale.x *= -1; 
+        transform.localScale = Scale;
     }
 
     private void AnimationRun()
