@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class HealthBarMathf : MonoBehaviour
 {
-    [SerializeField] private Image _health;
     [SerializeField] private Slider _slider;
     [SerializeField] private float _stepHealth = 8f;
 

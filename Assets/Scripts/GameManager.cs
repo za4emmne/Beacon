@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Text _healthText;
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerChangeHealth _player;
     [SerializeField] private int _pill;
     [SerializeField] private int _damage;
 
@@ -20,6 +20,6 @@ public class GameManager : MonoBehaviour
 
     public void TakeDamage()
     {
-        _player.GetDamage(_damage);
+        _player.TakeDamage(_damage);
     }
 }
