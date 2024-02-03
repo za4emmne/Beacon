@@ -1,5 +1,8 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
+
 public class PlayerMovenment : MonoBehaviour
 {
     private const string AnimationNameRun = "Run";

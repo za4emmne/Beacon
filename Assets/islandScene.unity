@@ -7475,7 +7475,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1733188168}
-  - component: {fileID: 1733188167}
   m_Layer: 5
   m_Name: HBMathf
   m_TagString: Untagged
@@ -7483,20 +7482,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1733188167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733188166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 774e3f970eda51549b54cde0448c6810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 1946291671}
-  _stepHealth: 8
 --- !u!224 &1733188168
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7530,7 +7515,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1743933711}
-  - component: {fileID: 1743933712}
   m_Layer: 5
   m_Name: HB
   m_TagString: Untagged
@@ -7562,19 +7546,6 @@ RectTransform:
   m_AnchoredPosition: {x: -663, y: 313}
   m_SizeDelta: {x: 8514.93, y: 1485.45}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1743933712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743933710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccb27344ce4ad06409a156aa330684ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 394320023}
 --- !u!1 &1785669126
 GameObject:
   m_ObjectHideFlags: 0
@@ -7994,6 +7965,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830519301}
   m_CullTransparentMesh: 1
+--- !u!1 &1932475446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6562775285493735920, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+  m_PrefabInstance: {fileID: 6562775285994826509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1932475453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6562775285493735437, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
@@ -8004,12 +7980,41 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4655164167626717523, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
   m_PrefabInstance: {fileID: 6562775285994826509}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1932475446}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9034b0e5f40253244809531cfef797fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1932475463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932475446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb27344ce4ad06409a156aa330684ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 394320023}
+  _player: {fileID: 0}
+--- !u!114 &1932475464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932475446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 774e3f970eda51549b54cde0448c6810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slider: {fileID: 1946291671}
+  _stepHealth: 8
+  _player: {fileID: 0}
 --- !u!1 &1946291670
 GameObject:
   m_ObjectHideFlags: 0
@@ -8188,11 +8193,11 @@ PrefabInstance:
     - target: {fileID: 4655164167626717523, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: _healthBar
       value: 
-      objectReference: {fileID: 1743933712}
+      objectReference: {fileID: 0}
     - target: {fileID: 4655164167626717523, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: _healthBarMathf
       value: 
-      objectReference: {fileID: 1733188167}
+      objectReference: {fileID: 0}
     - target: {fileID: 6562775285493735437, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -8248,11 +8253,11 @@ PrefabInstance:
     - target: {fileID: 6562775285493735438, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: _healthBar
       value: 
-      objectReference: {fileID: 1743933712}
+      objectReference: {fileID: 0}
     - target: {fileID: 6562775285493735438, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: _healthBarMathf
       value: 
-      objectReference: {fileID: 1733188167}
+      objectReference: {fileID: 0}
     - target: {fileID: 6562775285493735920, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: m_Name
       value: Hobbit

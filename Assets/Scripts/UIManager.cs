@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _healthText;
-    [SerializeField] private PlayerChangeHealth _player;
+    [SerializeField] private PlayerHealth _player;
     [SerializeField] private int _pill;
     [SerializeField] private int _damage;
 
     private void Update()
     {
-        _healthText.text = _player.GetHealth().ToString() + "/" + _player.GetMaxHealth().ToString();
+        _healthText.text = _player.GetHealth.ToString() + "/" + _player.GetMaxHealth.ToString();
     }
 
     public void AddHP()
