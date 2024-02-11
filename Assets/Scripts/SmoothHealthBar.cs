@@ -1,34 +1,26 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+
+[RequireComponent(typeof(PlayerHealth))]
 
 public class SmoothHealthBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private float _stepHealth = 8f;
-    [SerializeField] private PlayerHealth _player;
+    private float _stepHealth = 10f;
 
-    private float _currentHealth;
-
-    private void Start()
+    public void SetMaxValue(int maxHealth)
     {
-        _player = GetComponent<PlayerHealth>();
-        _slider.maxValue = _player.GetMaxHealth;
-        _slider.maxValue = _player.GetMaxHealth;
-        _slider.value = _slider.maxValue;
+        _slider.maxValue = maxHealth;
+        _slider.value = maxHealth;
     }
 
-    private void Update()
+    public IEnumerator ChangeValue(int health)
     {
-        SetHealth();
-    }
-
-    public void SetHealth()
-    {
-        _currentHealth = _player.GetHealth;
-
-        if (_currentHealth != _slider.value)
+        while (_slider.value != health)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _currentHealth, _stepHealth * Time.deltaTime);
-        }
+            _slider.value = Mathf.MoveTowards(_slider.value, health, _stepHealth * Time.deltaTime); 
+            yield return null;
+        }       
     }
 }

@@ -7965,11 +7965,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830519301}
   m_CullTransparentMesh: 1
---- !u!1 &1932475446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6562775285493735920, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
-  m_PrefabInstance: {fileID: 6562775285994826509}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1932475453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6562775285493735437, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
@@ -7980,41 +7975,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4655164167626717523, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
   m_PrefabInstance: {fileID: 6562775285994826509}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932475446}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9034b0e5f40253244809531cfef797fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1932475463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932475446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccb27344ce4ad06409a156aa330684ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 394320023}
-  _player: {fileID: 0}
---- !u!114 &1932475464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932475446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 774e3f970eda51549b54cde0448c6810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slider: {fileID: 1946291671}
-  _stepHealth: 8
-  _player: {fileID: 0}
 --- !u!1 &1946291670
 GameObject:
   m_ObjectHideFlags: 0
@@ -8190,6 +8156,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2739286648522967902, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+      propertyPath: _slider
+      value: 
+      objectReference: {fileID: 1946291671}
+    - target: {fileID: 2922120744780703552, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+      propertyPath: _slider
+      value: 
+      objectReference: {fileID: 394320023}
     - target: {fileID: 4655164167626717523, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: _healthBar
       value: 
@@ -8282,6 +8256,5 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 2.5798154
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6562775285493735436, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
