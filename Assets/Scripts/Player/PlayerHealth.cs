@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int _health;
+    [SerializeField] private float _health;
 
     private HealthBar _healthBar;
     private SmoothHealthBar _smoothHealthBar;
-    private int _maxHealth = 100;
+    private float _maxHealth = 100f;
+    private float _currentHealth;
 
     private void Start()
     {
@@ -17,8 +18,6 @@ public class PlayerHealth : MonoBehaviour
         _smoothHealthBar = GetComponent<SmoothHealthBar>();
 
         _health = _maxHealth;
-        _healthBar.SetMaxValue(_maxHealth);
-        _smoothHealthBar.SetMaxValue(_maxHealth);
     }
 
     public void TakeHealth(int pills)
@@ -28,9 +27,9 @@ public class PlayerHealth : MonoBehaviour
         if (_health >= _maxHealth)
             _health = _maxHealth;
 
-        _healthBar.ChangeValue(_health);
-        StartCoroutine(_smoothHealthBar.ChangeValue(_health));
-        //StopCoroutine(_smoothHealthBar.ChangeValue(_health));
+        _currentHealth = _health / _maxHealth;
+        _healthBar.ChangeValue(_currentHealth);
+        StartCoroutine(_smoothHealthBar.ChangeValue(_currentHealth));
     }
 
     public void TakeDamage(int damage)
@@ -40,17 +39,19 @@ public class PlayerHealth : MonoBehaviour
         if (_health <= 0)
             _health = 0;
 
-        _healthBar.ChangeValue(_health);
-        StartCoroutine(_smoothHealthBar.ChangeValue(_health));
-        //StopCoroutine(_smoothHealthBar.ChangeValue(_health));
+        _currentHealth = _health / _maxHealth;
+        Debug.Log(_health);
+        Debug.Log(_maxHealth);
+        _healthBar.ChangeValue(_currentHealth);
+        StartCoroutine(_smoothHealthBar.ChangeValue(_currentHealth));
     }
 
-    public int GetMaxHealth
+    public float GetMaxHealth
     {
         get { return _maxHealth; }
     }
 
-    public int GetHealth
+    public float GetHealth
     {
         get {return _health; }        
     }

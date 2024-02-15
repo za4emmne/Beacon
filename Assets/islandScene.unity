@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &55455036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6562775285493735920, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+  m_PrefabInstance: {fileID: 6562775285994826509}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &317919677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1260,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1684669138}
-  - component: {fileID: 1684669137}
   m_Layer: 0
   m_Name: GameGod
   m_TagString: Untagged
@@ -1263,22 +1267,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1684669137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684669136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a0f44dc1c924b4380078cc75cd7fc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthText: {fileID: 637960593}
-  _player: {fileID: 1932475461}
-  _pill: 10
-  _damage: 7
 --- !u!4 &1684669138
 Transform:
   m_ObjectHideFlags: 0
@@ -7781,14 +7769,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1684669137}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1932475461}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
         m_MethodName: TakeDamage
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7915,14 +7903,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1684669137}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: AddHP
-        m_Mode: 1
+      - m_Target: {fileID: 1932475461}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: TakeHealth
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 10
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7975,12 +7963,25 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4655164167626717523, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
   m_PrefabInstance: {fileID: 6562775285994826509}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 55455036}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9034b0e5f40253244809531cfef797fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1932475470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55455036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a0f44dc1c924b4380078cc75cd7fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthText: {fileID: 637960593}
 --- !u!1 &1946291670
 GameObject:
   m_ObjectHideFlags: 0
