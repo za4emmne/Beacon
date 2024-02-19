@@ -4,9 +4,10 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
+    [SerializeField] private PlayerHealth _player;
 
-    public void ChangeValue(float health)
+    public void ChangeValue()
     {
-        _slider.value = health;
+        _slider.value = _player.Health/_player.MaxHealth;
     }
 }

@@ -38,12 +38,7 @@ public class PlayerMovenment : MonoBehaviour
             Flip();
         }
 
-        if (_horizontalMove != 0 || _verticalMove != 0)
-        {
-            AnimationRun();
-        }
-
-        AnimationIdle();
+        _animator.SetFloat(AnimationNameRun, Mathf.Abs(_verticalMove + _horizontalMove));
     }
 
     private void Flip()
@@ -53,14 +48,5 @@ public class PlayerMovenment : MonoBehaviour
         Vector3 Scale = transform.localScale;
         Scale.x *= -1;
         transform.localScale = Scale;
-    }
-
-    private void AnimationRun()
-    {
-        _animator.SetTrigger(AnimationNameRun);
-    }
-    private void AnimationIdle()
-    {
-        _animator.SetTrigger(AnimationNameIdle);
     }
 }

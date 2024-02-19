@@ -1,21 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(PlayerHealth))]
-
+[RequireComponent(typeof(Text))]
 public class HealthText : MonoBehaviour
 {
-    [SerializeField] private Text _healthText;
+    [SerializeField] private PlayerHealth _player;
 
-    private PlayerHealth _player;
+    private Text _healthText;
 
     private void Start()
     {
-        _player = GetComponent<PlayerHealth>();
+        _healthText = GetComponent<Text>();
+        _healthText.text = _player.Health.ToString() + "/" + _player.MaxHealth.ToString();
     }
 
-    private void Update()
+    public void ChangeHealth()
     {
-        _healthText.text = _player.GetHealth.ToString() + "/" + _player.GetMaxHealth.ToString();
+        _healthText.text = _player.Health.ToString() + "/" + _player.MaxHealth.ToString();
     }
 }
