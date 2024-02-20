@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
+
 public class HealthText : MonoBehaviour
 {
     [SerializeField] private PlayerHealth _player;

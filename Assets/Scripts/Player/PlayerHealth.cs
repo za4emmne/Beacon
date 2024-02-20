@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public float MaxHealth => _maxHealth;
     public float Health => _health;
 
-    private void Start()
+    private void Awake()
     {
         _health = _maxHealth;
     }
