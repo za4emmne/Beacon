@@ -6,6 +6,7 @@ public class SmoothHealthBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private PlayerHealth _player;
+
     private float _stepHealth = 0.1f;
 
     public void Change()
