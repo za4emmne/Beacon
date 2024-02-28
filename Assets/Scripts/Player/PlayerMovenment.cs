@@ -1,25 +1,28 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 
 public class PlayerMovenment : MonoBehaviour
 {
-    private const string AnimationNameRun = "Run";
-    private const string AnimationNameIdle = "Idle";
-
     [SerializeField] private float _speed = 3;
 
-    private Animator _animator;
+    public UnityEvent AnimationRun;
+
     private Rigidbody2D _rigidbody2D;
-    private bool _isFaceRight = true;
+    private SpriteRenderer _spriteRenderer;
     private float _horizontalMove;
     private float _verticalMove;
 
+    public float HorizontalMove => _horizontalMove;
+    public float VerticalMove => _verticalMove;
+
+
     private void Start()
     {
-        _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -29,24 +32,16 @@ public class PlayerMovenment : MonoBehaviour
 
         _rigidbody2D.velocity = new Vector2(_horizontalMove, _verticalMove);
 
-        if (_horizontalMove < 0 && _isFaceRight)
+        if (_horizontalMove < 0)
         {
-            Flip();
+            _spriteRenderer.flipX = true;
         }
-        else if (_horizontalMove > 0 && !_isFaceRight)
+        if (_horizontalMove > 0)
         {
-            Flip();
+            _spriteRenderer.flipX = false;
         }
 
-        _animator.SetFloat(AnimationNameRun, Mathf.Abs(_verticalMove + _horizontalMove));
-    }
-
-    private void Flip()
-    {
-        _isFaceRight = !_isFaceRight;
-
-        Vector3 Scale = transform.localScale;
-        Scale.x *= -1;
-        transform.localScale = Scale;
+        AnimationRun?.Invoke();
+        //_animator.SetFloat(AnimationNameRun, Mathf.Abs(_verticalMove + _horizontalMove));
     }
 }

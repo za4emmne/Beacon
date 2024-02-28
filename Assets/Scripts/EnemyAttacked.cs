@@ -1,24 +1,48 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyAttacked : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public UnityEvent AnimationAttack;
 
-    // Update is called once per frame
-    void Update()
+    private int _damage = 5;
+    private bool _isAttack;
+
+    private void Start()
     {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Player player))
+        if (collision.TryGetComponent(out CharactersHealth player))
         {
-            //_animator.SetTrigger("Boom");
+            AnimationAttack?.Invoke();
+            player.TakeDamage(_damage);
         }
+    }
+
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
+    //    if (collision.TryGetComponent(out PlayerHealth player))
+    //    {
+    //        _isAttack = true;
+    //        StartCoroutine(TakeDamage());
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.TryGetComponent(out PlayerHealth player))
+    //    {
+    //        _isAttack = false;
+            
+    //    }
+    //}
+
+    private IEnumerator TakeDamage()
+    {
+        var waitForAnySecond = new WaitForSeconds(2);
+            yield return waitForAnySecond;
     }
 }

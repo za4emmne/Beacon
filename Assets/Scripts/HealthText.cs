@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthText : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth _player;
+    [SerializeField] private CharactersHealth _player;
 
     private Text _healthText;
 
