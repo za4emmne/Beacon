@@ -1,48 +1,50 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(CharactersHealth))]
+
 public class EnemyAttacked : MonoBehaviour
 {
+    [SerializeField] private CharactersHealth _charactersHealth;
+    [SerializeField] private Transform _attackPoint;
+    [SerializeField] private float _attackRange = 0.5f;
+    [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] private float _damage = 1.5f;
+    [SerializeField] private float _startTimeAttack = 0.8f;
+
     public UnityEvent AnimationAttack;
 
-    private int _damage = 5;
-    private bool _isAttack;
+    private float _attackTime = 0;
 
     private void Start()
     {
+        _charactersHealth = GetComponent<CharactersHealth>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.TryGetComponent(out CharactersHealth player))
+        if (_charactersHealth.IsDead == false)
         {
-            AnimationAttack?.Invoke();
-            player.TakeDamage(_damage);
+            Attacked();
         }
     }
 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.TryGetComponent(out PlayerHealth player))
-    //    {
-    //        _isAttack = true;
-    //        StartCoroutine(TakeDamage());
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.TryGetComponent(out PlayerHealth player))
-    //    {
-    //        _isAttack = false;
-            
-    //    }
-    //}
-
-    private IEnumerator TakeDamage()
+    private void Attacked()
     {
-        var waitForAnySecond = new WaitForSeconds(2);
-            yield return waitForAnySecond;
+        if (_attackTime <= 0)
+        {
+            Collider2D[] hitHeroes = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _playerLayer);
+
+            foreach (var player in hitHeroes)
+            {
+                AnimationAttack?.Invoke();
+                player?.GetComponent<CharactersHealth>().TakeDamage(_damage);
+            }
+            _attackTime = _startTimeAttack;
+        }
+        else
+        {
+            _attackTime -= Time.deltaTime;
+        }
     }
 }

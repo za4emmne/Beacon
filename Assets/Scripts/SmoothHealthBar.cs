@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SmoothHealthBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private CharactersHealth _player;
+    [SerializeField] private CharactersHealth _characters;
 
     private float _stepHealth = 0.1f;
 
@@ -16,9 +16,9 @@ public class SmoothHealthBar : MonoBehaviour
 
     private IEnumerator ChangeValue()
     {
-        while (_slider.value != _player.Health/ _player.MaxHealth)
+        while (_slider.value != _characters.Health/ _characters.MaxHealth)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _player.Health/_player.MaxHealth, _stepHealth * Time.deltaTime); 
+            _slider.value = Mathf.MoveTowards(_slider.value, _characters.Health/_characters.MaxHealth, _stepHealth * Time.deltaTime); 
             yield return null;
         }       
     }

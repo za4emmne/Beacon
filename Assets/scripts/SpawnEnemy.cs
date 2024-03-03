@@ -24,7 +24,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         var waitForAnySecond = new WaitForSeconds(_delay);
 
-        while (true)
+        for(int i = 0; i<10; i++)
         {
             Enemy _enemy = Instantiate(_template, transform.position, Quaternion.identity);
 

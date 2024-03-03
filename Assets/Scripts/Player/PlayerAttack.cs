@@ -3,7 +3,10 @@ using UnityEngine.Events;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private int _damage = 10;
+    [SerializeField] private Transform _attackPoint;
+    [SerializeField] private float _attackRange = 0.5f;
+    [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private int _damage = 10;
     public float Damage => _damage;
     public UnityEvent AnimationAttack;
 
@@ -13,26 +16,20 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        Attack();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Enemy enemy) && Attack())
-        {
-            Debug.Log("Attack");
-            enemy.TakeDamage(_damage);
-        }
-    }
-
-    private bool Attack()
-    {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            AnimationAttack ?.Invoke();
-            return true;
+            AnimationAttack?.Invoke();
+            Attacked();
         }
-        else
-            return false;
+    }
+
+    private void Attacked()
+    {
+        Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _enemyLayer);
+
+        foreach (var enemy in hitEnemy)
+        {
+            enemy.GetComponent<CharactersHealth>().TakeDamage(_damage);
+        }
     }
 }
