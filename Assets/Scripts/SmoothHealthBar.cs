@@ -27,8 +27,8 @@ public class SmoothHealthBar : MonoBehaviour
     {
         while (_slider.value != _characters.Health/ _characters.MaxHealth)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _characters.Health / _characters.MaxHealth, _stepHealth * Time.deltaTime);
-            //_slider.value = Mathf.Clamp(_slider.value, 0, _characters.MaxHealth);
+            //_slider.value = Mathf.MoveTowards(_slider.value, _characters.Health / _characters.MaxHealth, _stepHealth * Time.deltaTime);
+            _slider.value = Mathf.Clamp(_characters.Health / _characters.MaxHealth, 0, _characters.MaxHealth);
             yield return null;
         }       
     }

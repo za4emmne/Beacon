@@ -23,41 +23,12 @@ public class EnemyAttacked : MonoBehaviour
         _charactersHealth = GetComponent<CharactersHealth>();
     }
 
-    private void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_charactersHealth.IsDead == false)
+        if (collision.collider.TryGetComponent<Player>(out Player player))
         {
-            Attacked();
+            player.GetComponent<CharactersHealth>().TakeDamage(_damage);
+            AnimationAttackPlayed?.Invoke();
         }
     }
-
-    private void Attacked()
-    {
-        if (_attackTime <= 0)
-        {
-            Collider2D[] heroes = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _playerLayer);
-
-            if (heroes.Length != 0)
-            {
-                AnimationAttackPlayed?.Invoke();
-
-                heroes[0].GetComponent<CharactersHealth>().TakeDamage(_damage);
-            }
-
-            _attackTime = _startTimeAttack;
-        }
-        else
-        {
-            _attackTime -= Time.deltaTime;
-        }
-    }
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.collider.TryGetComponent<Player>(out Player player))
-    //    {
-    //        InvokeRepeating(nameof(Attacked), 0, 1f);
-    //        //_player.GetComponent<PlayerCollisions>().AnimateHit();
-    //    }
-    //}
 }
