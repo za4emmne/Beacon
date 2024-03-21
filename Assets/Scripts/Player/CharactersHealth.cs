@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class CharactersHealth : MonoBehaviour
 {
@@ -11,21 +11,13 @@ public class CharactersHealth : MonoBehaviour
     public float Health => _health;
     public bool IsDead => _isDead;
 
-    public UnityEvent DamageMe;
-    public UnityEvent AnimationDead;
+    public event Action HealthChanged;
+    public event Action AnimationDeadPlayed;
 
     private void Awake()
     {
         _health = _maxHealth;
         _isDead = false;
-    }
-
-    public void TakeHealth(int pills)
-    {
-        _health += pills;
-
-        if (_health >= _maxHealth)
-            _health = _maxHealth;
     }
 
     public void TakeDamage(float damage)
@@ -36,10 +28,10 @@ public class CharactersHealth : MonoBehaviour
         {
             _health = 0;
             _isDead = true;
-            AnimationDead?.Invoke();
+            AnimationDeadPlayed?.Invoke();
             Destroy(this.gameObject, 1f);
         }
 
-        DamageMe?.Invoke();
+        HealthChanged?.Invoke();
     }
 }

@@ -8,18 +8,27 @@ public class PlayerAnimation : MonoBehaviour
     private const string AnimationNameAttack = "Attack";
     private const string AnimationNameRun = "Run";
 
+    [SerializeField] private CharactersHealth _characters;
     [SerializeField] private PlayerMovenment _playerMovenment;
+    [SerializeField] private PlayerAttack _playerAttack;
 
-    private Animator _animator;
+   private Animator _animator;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        
+        _characters.AnimationDeadPlayed += DeadAnimation;
+        _playerAttack.AnimationAttackPlayed += AttackAnimation;
+    }
+
+    private void OnDisable()
+    {
+        _characters.AnimationDeadPlayed -= DeadAnimation;
+        _playerAttack.AnimationAttackPlayed -= AttackAnimation;
     }
 
     public void DeadAnimation()

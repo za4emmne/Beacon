@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 1740992216}
   _characters: {fileID: 1057804882}
+  _stepHealth: 0.5
 --- !u!1 &1266905370
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +252,7 @@ GameObject:
   - component: {fileID: 1266905373}
   - component: {fileID: 1266905372}
   m_Layer: 5
-  m_Name: Canvas HealthBar (1)
+  m_Name: Canvas HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetCharacter: {fileID: 6063575133032799727}
-  _offset: {x: 0, y: 0.4, z: 0}
+  _offset: {x: 0, y: 0.6, z: 0}
 --- !u!1 &1740992214
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,6 +618,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3bacbb8cea4a940bca8477cb344a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyAttacked: {fileID: 1057804875}
+  _characters: {fileID: 1057804882}
+  _enemyMovement: {fileID: 6291936434525810227}
 --- !u!114 &1057804875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,29 +633,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f053241e91269dd449f8e38bea6773bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charactersHealth: {fileID: 0}
+  _charactersHealth: {fileID: 1057804882}
   _attackPoint: {fileID: 657415769}
   _attackRange: 0.5
   _playerLayer:
     serializedVersion: 2
     m_Bits: 128
   _damage: 1.5
-  _startTimeAttack: 0.8
-  AnimationAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2401384699550104253}
-        m_TargetAssemblyTypeName: EnemyAnimation, Assembly-CSharp
-        m_MethodName: AttackAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  _delay: 2
 --- !u!114 &1057804882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,33 +654,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 20
-  DamageMe:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1067897533}
-        m_TargetAssemblyTypeName: SmoothHealthBar, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  AnimationDead:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2401384699550104253}
-        m_TargetAssemblyTypeName: EnemyAnimation, Assembly-CSharp
-        m_MethodName: DeadAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

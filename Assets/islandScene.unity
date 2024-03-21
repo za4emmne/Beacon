@@ -843,14 +843,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1266905370, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
-      propertyPath: m_Name
-      value: Canvas HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 1266905372, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
-      propertyPath: _offset.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 6063575133032799722, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
       propertyPath: m_Name
       value: Skeleton
@@ -7454,7 +7446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 1946291671}
-  _characters: {fileID: 0}
+  _characters: {fileID: 1932475461}
+  _stepHealth: 0.1
 --- !u!1 &1743933710
 GameObject:
   m_ObjectHideFlags: 0
@@ -7660,7 +7653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetCharacter: {fileID: 1932475453}
-  _offset: {x: 0, y: 0, z: -10}
+  _offset: {x: 0, y: 0, z: -11}
 --- !u!224 &1811287848
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7681,6 +7674,32 @@ RectTransform:
   m_AnchoredPosition: {x: -12.62, y: 2.98}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1904837791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6063575133032799722, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
+  m_PrefabInstance: {fileID: 1098966111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1904837801
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904837791}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &1932475453 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6562775285493735437, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
@@ -7785,6 +7804,17 @@ RectTransform:
   m_AnchoredPosition: {x: -1, y: -1}
   m_SizeDelta: {x: -220.38, y: 162.21997}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2100675075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1932475469, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+  m_PrefabInstance: {fileID: 6562775285994826509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e855e37129e5af14a818b8c0155169c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6562775285994826509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7800,6 +7830,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1932475468, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+      propertyPath: _characters
+      value: 
+      objectReference: {fileID: 1932475461}
+    - target: {fileID: 1932475468, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+      propertyPath: _playerAttack
+      value: 
+      objectReference: {fileID: 2100675075}
     - target: {fileID: 6562775285493735437, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: m_RootOrder
       value: 2

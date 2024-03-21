@@ -1,36 +1,34 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 
 public class EnemyMovement : MonoBehaviour
 {
-    private const string AnimationNameRun = "Run";
+    [SerializeField] private float _speed;
 
-    [SerializeField] private float _speed = 0.1f;
+    public event Action AnimationRunPlayed;
 
     private SpriteRenderer _spriteRenderer;
-    private Animator _animator;
     private Player _player;
 
     private void Start()
     {
-        _animator = GetComponent<Animator>();
         _player = FindObjectOfType<Player>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _speed = UnityEngine.Random.Range(0.1f, 0.2f);
     }
 
     private void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position,
-            _player.transform.position, _speed * Time.deltaTime);
-        AnimationRun();
-        Flip();
-    }
-
-    private void AnimationRun()
-    {
-        _animator.SetTrigger(AnimationNameRun);
+        if (_player != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position,
+                        _player.transform.position, _speed * Time.deltaTime);
+            AnimationRunPlayed?.Invoke();
+            Flip();
+        }
     }
 
     private void Flip()

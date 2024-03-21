@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -8,17 +8,13 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private int _damage = 10;
     public float Damage => _damage;
-    public UnityEvent AnimationAttack;
-
-    private void Start()
-    {
-    }
+    public event Action AnimationAttackPlayed;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            AnimationAttack?.Invoke();
+            AnimationAttackPlayed?.Invoke();
             Attacked();
         }
     }
@@ -27,9 +23,9 @@ public class PlayerAttack : MonoBehaviour
     {
         Collider2D[] hitEnemy = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _enemyLayer);
 
-        foreach (var enemy in hitEnemy)
+        if (hitEnemy.Length != 0)
         {
-            enemy.GetComponent<CharactersHealth>().TakeDamage(_damage);
+            hitEnemy[0].GetComponent<CharactersHealth>().TakeDamage(_damage);
         }
     }
 }

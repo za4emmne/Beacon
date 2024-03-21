@@ -1,5 +1,6 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
+using System.Collections;
 
 [RequireComponent(typeof(CharactersHealth))]
 
@@ -11,8 +12,9 @@ public class EnemyAttacked : MonoBehaviour
     [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private float _damage = 1.5f;
     [SerializeField] private float _startTimeAttack = 0.8f;
+    [SerializeField] private int _delay = 2;
 
-    public UnityEvent AnimationAttack;
+    public event Action AnimationAttackPlayed;
 
     private float _attackTime = 0;
 
@@ -33,13 +35,15 @@ public class EnemyAttacked : MonoBehaviour
     {
         if (_attackTime <= 0)
         {
-            Collider2D[] hitHeroes = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _playerLayer);
+            Collider2D[] heroes = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _playerLayer);
 
-            foreach (var player in hitHeroes)
+            if (heroes.Length != 0)
             {
-                AnimationAttack?.Invoke();
-                player?.GetComponent<CharactersHealth>().TakeDamage(_damage);
+                AnimationAttackPlayed?.Invoke();
+
+                heroes[0].GetComponent<CharactersHealth>().TakeDamage(_damage);
             }
+
             _attackTime = _startTimeAttack;
         }
         else
@@ -47,4 +51,13 @@ public class EnemyAttacked : MonoBehaviour
             _attackTime -= Time.deltaTime;
         }
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.collider.TryGetComponent<Player>(out Player player))
+    //    {
+    //        InvokeRepeating(nameof(Attacked), 0, 1f);
+    //        //_player.GetComponent<PlayerCollisions>().AnimateHit();
+    //    }
+    //}
 }
