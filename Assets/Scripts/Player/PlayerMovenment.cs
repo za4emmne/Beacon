@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Events;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -8,12 +8,12 @@ public class PlayerMovenment : MonoBehaviour
 {
     [SerializeField] private float _speed = 3;
 
-    public UnityEvent AnimationRun;
-
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
     private float _horizontalMove;
     private float _verticalMove;
+
+    public event Action AnimationRun;
 
     public float HorizontalMove => _horizontalMove;
     public float VerticalMove => _verticalMove;
@@ -42,6 +42,5 @@ public class PlayerMovenment : MonoBehaviour
         }
 
         AnimationRun?.Invoke();
-        //_animator.SetFloat(AnimationNameRun, Mathf.Abs(_verticalMove + _horizontalMove));
     }
 }

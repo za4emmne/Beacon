@@ -277,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slider: {fileID: 1910604627}
   _characters: {fileID: 4655164167626717523}
+  _stepHealth: 0.1
 --- !u!1 &1627983879
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +460,7 @@ GameObject:
   - component: {fileID: 4078050515229748156}
   - component: {fileID: 1932475468}
   - component: {fileID: 1932475469}
+  - component: {fileID: 3126267294741936268}
   m_Layer: 7
   m_Name: Hobbit
   m_TagString: Player
@@ -568,36 +570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  DamageMe:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1617768534}
-        m_TargetAssemblyTypeName: SmoothHealthBar, Assembly-CSharp
-        m_MethodName: Change
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  AnimationDead:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932475468}
-        m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
-        m_MethodName: DeadAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &6562775285493735438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,19 +590,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6562775285493735920}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 10
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &6562775285493735433
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -660,21 +632,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  AnimationRun:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932475468}
-        m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
-        m_MethodName: RunAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1932475468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,7 +644,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9821a03487e469b4dbedc2f608132e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characters: {fileID: 4655164167626717523}
   _playerMovenment: {fileID: 4078050515229748156}
+  _playerAttack: {fileID: 1932475469}
 --- !u!114 &1932475469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,18 +665,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _damage: 10
-  AnimationAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1932475468}
-        m_TargetAssemblyTypeName: PlayerAnimation, Assembly-CSharp
-        m_MethodName: AttackAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!114 &3126267294741936268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562775285493735920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b5d708fc6c962468ec99d421ff19f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters: {fileID: 4655164167626717523}

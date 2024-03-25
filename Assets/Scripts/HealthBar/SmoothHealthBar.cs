@@ -10,15 +10,15 @@ public class SmoothHealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        _characters.HealthChanged += Change;
+        _characters.HealthChanged += OnChange;
     }
 
     private void OnDisable()
     {
-        _characters.HealthChanged -= Change;
+        _characters.HealthChanged -= OnChange;
     }
 
-    public void Change()
+    public void OnChange()
     {
         StartCoroutine(ChangeValue());
     }
@@ -27,8 +27,7 @@ public class SmoothHealthBar : MonoBehaviour
     {
         while (_slider.value != _characters.Health/ _characters.MaxHealth)
         {
-            //_slider.value = Mathf.MoveTowards(_slider.value, _characters.Health / _characters.MaxHealth, _stepHealth * Time.deltaTime);
-            _slider.value = Mathf.Clamp(_characters.Health / _characters.MaxHealth, 0, _characters.MaxHealth);
+            _slider.value = Mathf.MoveTowards(_slider.value, _characters.Health / _characters.MaxHealth, _stepHealth * Time.deltaTime);
             yield return null;
         }       
     }

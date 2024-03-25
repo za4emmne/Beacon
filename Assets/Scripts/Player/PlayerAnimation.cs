@@ -21,27 +21,29 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        _characters.AnimationDeadPlayed += DeadAnimation;
-        _playerAttack.AnimationAttackPlayed += AttackAnimation;
+        _characters.Died += OnDeadAnimation;
+        _playerAttack.Attacked += OnAttackAnimation;
+        _playerMovenment.AnimationRun += OnRunAnimation;
     }
 
     private void OnDisable()
     {
-        _characters.AnimationDeadPlayed -= DeadAnimation;
-        _playerAttack.AnimationAttackPlayed -= AttackAnimation;
+        _characters.Died -= OnDeadAnimation;
+        _playerAttack.Attacked -= OnAttackAnimation;
+        _playerMovenment.AnimationRun -= OnRunAnimation;
     }
 
-    public void DeadAnimation()
+    public void OnDeadAnimation()
     {
         _animator.SetTrigger(AnimationNameDead);
     }
 
-    public void AttackAnimation()
+    public void OnAttackAnimation()
     {
         _animator.SetTrigger(AnimationNameAttack);
     }
 
-    public void RunAnimation()
+    public void OnRunAnimation()
     {
         _animator.SetFloat(AnimationNameRun, Mathf.Abs(_playerMovenment.VerticalMove + _playerMovenment.HorizontalMove));
     }

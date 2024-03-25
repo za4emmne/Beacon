@@ -21,29 +21,29 @@ public class EnemyAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemyAttacked.AnimationAttackPlayed += AttackAnimation;
-        _characters.AnimationDeadPlayed += DeadAnimation;
-        _enemyMovement.AnimationRunPlayed += RunAnimation;
+        _enemyAttacked.Attacked += OnAttackAnimation;
+        _characters.Died += OnDeadAnimation;
+        _enemyMovement.AnimationRunPlayed += OnRunAnimation;
     }
 
     private void OnDisable()
     {
-        _enemyAttacked.AnimationAttackPlayed -= AttackAnimation;
-        _characters.AnimationDeadPlayed -= DeadAnimation;
-        _enemyMovement.AnimationRunPlayed -= RunAnimation;
+        _enemyAttacked.Attacked -= OnAttackAnimation;
+        _characters.Died -= OnDeadAnimation;
+        _enemyMovement.AnimationRunPlayed -= OnRunAnimation;
     }
 
-    public void DeadAnimation()
+    public void OnDeadAnimation()
     {
         _animator.SetTrigger(AnimationNameDead);
     }
 
-    public void AttackAnimation()
+    public void OnAttackAnimation()
     {
         _animator.SetTrigger(AnimationNameAttack);
     }
 
-    public void RunAnimation()
+    public void OnRunAnimation()
     {
         _animator.SetTrigger(AnimationNameRun);
     }
