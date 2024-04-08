@@ -8,6 +8,6 @@ public class HealthBar : MonoBehaviour
 
     public void ChangeValue()
     {
-        _slider.value = _player.Health/_player.MaxHealth;
+        _slider.value = _player.Current/_player.MaxCurrent;
     }
 }

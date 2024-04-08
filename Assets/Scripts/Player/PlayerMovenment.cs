@@ -6,6 +6,9 @@ using System;
 
 public class PlayerMovenment : MonoBehaviour
 {
+    private const string NameDirectionHorizontal = "Horizontal";
+    private const string NameDirectionVertical = "Vertical";
+
     [SerializeField] private float _speed = 3;
 
     private Rigidbody2D _rigidbody2D;
@@ -13,7 +16,7 @@ public class PlayerMovenment : MonoBehaviour
     private float _horizontalMove;
     private float _verticalMove;
 
-    public event Action AnimationRun;
+    public event Action Run;
 
     public float HorizontalMove => _horizontalMove;
     public float VerticalMove => _verticalMove;
@@ -27,8 +30,8 @@ public class PlayerMovenment : MonoBehaviour
 
     private void Update()
     {
-        _horizontalMove = Input.GetAxisRaw("Horizontal") * _speed;
-        _verticalMove = Input.GetAxisRaw("Vertical") * _speed;
+        _horizontalMove = Input.GetAxisRaw(NameDirectionHorizontal) * _speed;
+        _verticalMove = Input.GetAxisRaw(NameDirectionVertical) * _speed;
 
         _rigidbody2D.velocity = new Vector2(_horizontalMove, _verticalMove);
 
@@ -41,6 +44,6 @@ public class PlayerMovenment : MonoBehaviour
             _spriteRenderer.flipX = false;
         }
 
-        AnimationRun?.Invoke();
+        Run?.Invoke();
     }
 }

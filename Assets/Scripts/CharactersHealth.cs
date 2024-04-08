@@ -8,11 +8,11 @@ public class CharactersHealth : MonoBehaviour
     private float _health;
     private bool _isDead;
 
-    public event Action HealthChanged;
+    public event Action Changed;
     public event Action Died;
 
-    public float MaxHealth => _maxHealth;
-    public float Health => _health;
+    public float MaxCurrent => _maxHealth;
+    public float Current => _health;
 
     private void Awake()
     {
@@ -33,11 +33,11 @@ public class CharactersHealth : MonoBehaviour
                 Died?.Invoke();
             }
 
-            HealthChanged?.Invoke();
+            Changed?.Invoke();
         }
     }
 
-    public void TakeHealth(int pills)
+    public void TakePills(int pills)
     {
         if(pills >= 0)
         {
@@ -48,7 +48,7 @@ public class CharactersHealth : MonoBehaviour
                 _health = _maxHealth;
             }
 
-            HealthChanged?.Invoke();
+            Changed?.Invoke();
         }
     }
 }

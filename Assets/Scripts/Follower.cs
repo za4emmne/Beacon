@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ObjectsFollow : MonoBehaviour
+public class Follower : MonoBehaviour
 {
     [SerializeField] private Transform _targetCharacter;
     [SerializeField] private Vector3 _offset;

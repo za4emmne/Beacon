@@ -1,29 +1,23 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour
+public class SpawnerEnemy : MonoBehaviour
 {
     [SerializeField] private Enemy _template;
     [SerializeField] private int _delay = 2;
 
-    private Target _target;
+    private int _countEnemies = 10;
 
     private void Start()
     {
         StartCoroutine(SpawnCoroutine());
-        _target = GetComponentInChildren<Target>();
-    }
-
-    public Transform GetTarget()
-    {
-        return _target.transform;
     }
 
     private IEnumerator SpawnCoroutine()
     {
         var waitForAnySecond = new WaitForSeconds(_delay);
 
-        for(int i = 0; i<10; i++)
+        for(int i = 0; i<_countEnemies; i++)
         {
             Enemy _enemy = Instantiate(_template, transform.position, Quaternion.identity);
 

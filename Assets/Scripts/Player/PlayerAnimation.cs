@@ -23,14 +23,14 @@ public class PlayerAnimation : MonoBehaviour
     {
         _characters.Died += OnDeadAnimation;
         _playerAttack.Attacked += OnAttackAnimation;
-        _playerMovenment.AnimationRun += OnRunAnimation;
+        _playerMovenment.Run += OnRunAnimation;
     }
 
     private void OnDisable()
     {
         _characters.Died -= OnDeadAnimation;
         _playerAttack.Attacked -= OnAttackAnimation;
-        _playerMovenment.AnimationRun -= OnRunAnimation;
+        _playerMovenment.Run -= OnRunAnimation;
     }
 
     public void OnDeadAnimation()

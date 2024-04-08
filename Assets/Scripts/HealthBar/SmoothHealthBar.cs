@@ -8,26 +8,34 @@ public class SmoothHealthBar : MonoBehaviour
     [SerializeField] private CharactersHealth _characters;
     [SerializeField] private float _stepHealth = 0.1f;
 
+    private Coroutine _coroutine;
+
     private void OnEnable()
     {
-        _characters.HealthChanged += OnChange;
+        _characters.Changed += OnChange;
     }
 
     private void OnDisable()
     {
-        _characters.HealthChanged -= OnChange;
+        _characters.Changed += Stop;
+    }
+
+    public void Stop()
+    {
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
     }
 
     public void OnChange()
     {
-        StartCoroutine(ChangeValue());
+        _coroutine = StartCoroutine(ChangeValue());
     }
 
     private IEnumerator ChangeValue()
     {
-        while (_slider.value != _characters.Health/ _characters.MaxHealth)
+        while (_slider.value != _characters.Current/ _characters.MaxCurrent)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _characters.Health / _characters.MaxHealth, _stepHealth * Time.deltaTime);
+            _slider.value = Mathf.MoveTowards(_slider.value, _characters.Current / _characters.MaxCurrent, _stepHealth * Time.deltaTime);
             yield return null;
         }       
     }

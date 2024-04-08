@@ -12,11 +12,11 @@ public class HealthText : MonoBehaviour
     private void Start()
     {
         _healthText = GetComponent<Text>();
-        _healthText.text = _player.Health.ToString() + "/" + _player.MaxHealth.ToString();
+        _healthText.text = _player.Current.ToString() + "/" + _player.MaxCurrent.ToString();
     }
 
     public void ChangeHealth()
     {
-        _healthText.text = _player.Health.ToString() + "/" + _player.MaxHealth.ToString();
+        _healthText.text = _player.Current.ToString() + "/" + _player.MaxCurrent.ToString();
     }
 }
