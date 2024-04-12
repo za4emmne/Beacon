@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Pills : MonoBehaviour
 {
-    [SerializeField] private int _countPills;
-
+    private int _countPills;
     private int _minCountPills = 5;
     private int _maxCountPills = 30;
 

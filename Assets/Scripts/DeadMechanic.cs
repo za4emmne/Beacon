@@ -6,16 +6,16 @@ public class DeadMechanic : MonoBehaviour
 
     private void OnEnable()
     {
-        _characters.Died += OnDead;
+        _characters.Died += OnDied;
     }
 
     private void OnDisable()
     {
-        _characters.Died -= OnDead;
+        _characters.Died -= OnDied;
     }
 
-    private void OnDead()
+    private void OnDied()
     {
-        Destroy(this.gameObject, 0.7f);
+        Destroy(gameObject, 0.7f);
     }
 }
