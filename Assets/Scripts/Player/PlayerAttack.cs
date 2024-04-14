@@ -4,14 +4,15 @@ using System;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Transform _attackPoint;
-    [SerializeField] private float _attackRange = 0.5f;
+    [SerializeField] private float _attackRange = 1f;
     [SerializeField] private LayerMask _enemyLayer;
-    [SerializeField] private int _damage = 10; 
-    
+    [SerializeField] private int _damage = 10;
+    [SerializeField] private CharactersHealth _charactersHealth;
+
     public event Action Attacked;
 
     public float Damage => _damage;
-   
+
 
     private void Update()
     {
