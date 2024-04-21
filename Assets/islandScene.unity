@@ -714,7 +714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bb207474ff3ee48a3ff232295749c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vampireIndex: 5
+  _vampireIndex: 1
+  _health: {fileID: 1932475462}
 --- !u!58 &1659352820
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7034,6 +7035,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6562775285493735437, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
   m_PrefabInstance: {fileID: 6562775285994826509}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1932475462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4655164167626717523, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+  m_PrefabInstance: {fileID: 6562775285994826509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9034b0e5f40253244809531cfef797fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6562775285994826509
 PrefabInstance:
   m_ObjectHideFlags: 0
