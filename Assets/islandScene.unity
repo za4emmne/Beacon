@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bb207474ff3ee48a3ff232295749c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vampireIndex: 1
+  _vampireIndex: 0.29
   _health: {fileID: 1932475462}
 --- !u!58 &1659352820
 CircleCollider2D:

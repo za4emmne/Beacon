@@ -3,18 +3,29 @@ using System.Collections;
 
 public class VampireSkill : MonoBehaviour
 {
-    [SerializeField] private int _vampireIndex;
+    [SerializeField] private float _vampireIndex;
     [SerializeField] private CharactersHealth _health;
 
-    private int _delay = 100;
+    private int _delay = 1;
     private Coroutine _coroutine;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Enemy>(out Enemy enemy) && enemy != null)
+        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
         {
-            if(Input.GetKey(KeyCode.Z))
-            _coroutine = StartCoroutine(Vampired(enemy));
+            if (Input.GetKey(KeyCode.Z))
+            {
+                _coroutine = StartCoroutine(Vampired(enemy));
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
+        {
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
         }
     }
 
@@ -22,11 +33,11 @@ public class VampireSkill : MonoBehaviour
     {
         var waitForAnySecond = new WaitForSeconds(_delay);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 6; i++)
         {
             enemy.GetComponent<CharactersHealth>().TakeDamage(_vampireIndex);
             _health.TakePills(_vampireIndex);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(_delay);
         }
     }
 }

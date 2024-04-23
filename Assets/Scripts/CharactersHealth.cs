@@ -37,7 +37,7 @@ public class CharactersHealth : MonoBehaviour
         }
     }
 
-    public void TakePills(int pills)
+    public void TakePills(float pills)
     {
         if(pills >= 0)
         {
