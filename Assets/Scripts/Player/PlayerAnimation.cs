@@ -49,7 +49,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void OnRunAnimation()
     {
-        _animator.SetFloat(AnimationNameRun, Mathf.Abs(_playerMovenment.VerticalMove + _playerMovenment.HorizontalMove));
+        _animator.SetFloat(AnimationNameRun, Mathf.Abs(_playerMovenment.VerticalMove) + Mathf.Abs(_playerMovenment.HorizontalMove));
     }
 
     public void OnGetDamageAnimation()
