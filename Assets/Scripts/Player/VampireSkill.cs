@@ -1,41 +1,48 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using static UnityEngine.EventSystems.EventTrigger;
+using UnityEngine.UI;
 
 public class VampireSkill : MonoBehaviour
 {
     [SerializeField] private float _vampireDamageIndex = 1;
     [SerializeField] private CharactersHealth _health;
-    //[SerializeField] private InputManager _inputManager;
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private float _attackRange = 3f;
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private GameObject _vampireArea;
+    [SerializeField] private Text _vampireHelp;
 
     public event Action IsReady;
+    public event Action EndVampired;
 
+    private CharactersHealth _enemy;
     private Collider2D[] hitEnemy;
-    //private CharactersHealth _enemyHealth;
-    private int _vampireSkillDelay = 2;
-    private Coroutine _coroutine;
-    private bool _isCoroutineStart;
+    private Coroutine _coroutineVampired;
+    private int _delay = 1;
     private int _vampireSkillCount = 6;
-    //private int _currentEnemy = 0;
+    private WaitForSeconds _vampireSkillBusy;
 
-    private void OnEnable()
+    private void Awake()
     {
-        IsReady += OnVampiredInput;
-    }
-
-    private void OnDisable()
-    {
-        IsReady -= OnVampiredInput;
+        _vampireSkillBusy = new WaitForSeconds(_delay);
     }
     private void Start()
     {
         _vampireArea.SetActive(false);
-        _isCoroutineStart = false;
-        //_enemyHealth = hitEnemy[_currentEnemy].GetComponent<CharactersHealth>();
+        _vampireHelp.gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        IsReady += OnVampiredButtomInput;
+        EndVampired += OnVampireEnd;
+    }
+
+    private void OnDisable()
+    {
+        IsReady -= OnVampiredButtomInput;
+        EndVampired -= OnVampireEnd;
     }
 
     private void Update()
@@ -55,38 +62,46 @@ public class VampireSkill : MonoBehaviour
 
         if (hitEnemy.Length != 0)
         {
-            _vampireArea.SetActive(true);
+            _vampireHelp.gameObject.SetActive(true);
 
-            if (Input.GetKey(KeyCode.Z) && _isCoroutineStart == false)
-                IsReady?.Invoke();
-            else
-            {
-                if (_coroutine != null)
-                    StopCoroutine(_coroutine);
-
-                _isCoroutineStart = false;
-            }
+            if (Input.GetKey(KeyCode.Z) && (_coroutineVampired == null))
+                OnVampiredButtomInput();
         }
         else
-            _vampireArea.SetActive(false);
+            OnVampireEnd();
     }
 
-    private void OnVampiredInput()
+    private void OnVampireEnd()
     {
-        _coroutine = StartCoroutine(Vampired(hitEnemy[0]));
+        if (_coroutineVampired != null)
+            StopCoroutine(_coroutineVampired);
 
+        _vampireHelp.text = "Нажмите   Z, чтобы активировать вампиризм";
+        _coroutineVampired = null;
+        _vampireHelp.gameObject.SetActive(false);
+        _vampireArea.SetActive(false);
     }
 
-    private IEnumerator Vampired(Collider2D enemy)
+    private void OnVampiredButtomInput()
     {
-        var waitForAnySecond = new WaitForSeconds(_vampireSkillDelay);
-        _isCoroutineStart = true;
+        _vampireArea.SetActive(true);
+        _enemy = hitEnemy[0].GetComponent<CharactersHealth>();
+        _coroutineVampired = StartCoroutine(Vampired(_enemy));
+    }
+
+    private IEnumerator Vampired(CharactersHealth enemy)
+    {
+        int timer = _vampireSkillCount + 1;
 
         for (int i = 0; i < _vampireSkillCount; i++)
         {
-            enemy.GetComponent<CharactersHealth>().TakeDamage(_vampireDamageIndex);
+            enemy.TakeDamage(_vampireDamageIndex);
+            timer -= _delay;
+            _vampireHelp.text = timer.ToString();
             _health.TakePills(_vampireDamageIndex);
-            yield return waitForAnySecond;
+            yield return _vampireSkillBusy;
         }
+
+        EndVampired?.Invoke();
     }
 }
