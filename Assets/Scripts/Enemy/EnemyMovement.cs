@@ -11,11 +11,10 @@ public class EnemyMovement : MonoBehaviour
     public event Action AnimationRunPlayed;
 
     private SpriteRenderer _spriteRenderer;
-    private Player _player;
+    [SerializeField] private Player _player;
 
     private void Start()
     {
-        _player = FindObjectOfType<Player>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _speed = UnityEngine.Random.Range(0.1f, 0.2f);
     }
