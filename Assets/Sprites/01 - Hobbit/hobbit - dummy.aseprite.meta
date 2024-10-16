@@ -77,6 +77,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -89,6 +90,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -1688,624 +1690,702 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: hobbit - dummy_Frame_0
+    - name: Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: d89f4fb9da7c6dd41affdd45f27ff13b
-    - name: hobbit - dummy_Frame_1
+    - name: Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 1e45b453922b0794c94902bf2a45b2ed
-    - name: hobbit - dummy_Frame_2
+    - name: Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: edd5889b4ab45c740a4bf2a43d4c4fdc
-    - name: hobbit - dummy_Frame_3
+    - name: Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: fbfbc71fda02e4e49806d8cd12f5758b
-    - name: hobbit - dummy_Frame_4
+    - name: Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 6a85bd51780c1b742bd3dfc909acc9a8
-    - name: hobbit - dummy_Frame_5
+    - name: Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 01d78676d0a8f5b44a2f617775581ec9
-    - name: hobbit - dummy_Frame_6
+    - name: Frame_6
       frameIndex: 6
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: a1c79283196702f4bbe5f4fd6a53df51
-    - name: hobbit - dummy_Frame_7
+    - name: Frame_7
       frameIndex: 7
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: f5b6945189e135b45b2b4fd041fd07cd
-    - name: hobbit - dummy_Frame_8
+    - name: Frame_8
       frameIndex: 8
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 64b4cb54189e01248b277b3d14ebcb6c
-    - name: hobbit - dummy_Frame_9
+    - name: Frame_9
       frameIndex: 9
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 6f8c84d40532b8547af1a96dced18ce3
-    - name: hobbit - dummy_Frame_10
+    - name: Frame_10
       frameIndex: 10
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 566491eedb6744945907ced06177fd9f
-    - name: hobbit - dummy_Frame_11
+    - name: Frame_11
       frameIndex: 11
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 9c45cf6f8f8e50d488824e136841c4ee
-    - name: hobbit - dummy_Frame_12
+    - name: Frame_12
       frameIndex: 12
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 2a28e36484e328a4ebc73a3dd3cb55dc
-    - name: hobbit - dummy_Frame_13
+    - name: Frame_13
       frameIndex: 13
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 6d6965c4902b9a94682e78e26bdf01ad
-    - name: hobbit - dummy_Frame_14
+    - name: Frame_14
       frameIndex: 14
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: f08670b853ccf034489ba9852efd3813
-    - name: hobbit - dummy_Frame_15
+    - name: Frame_15
       frameIndex: 15
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: ff39bfd8b1d09e14e9b90f7a05283b7a
-    - name: hobbit - dummy_Frame_16
+    - name: Frame_16
       frameIndex: 16
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: c18bd50ca13ae3341a7b9fb52a7c3509
-    - name: hobbit - dummy_Frame_17
+    - name: Frame_17
       frameIndex: 17
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 5dbfd0dd4993ab24db2ba02b5d20594f
-    - name: hobbit - dummy_Frame_18
+    - name: Frame_18
       frameIndex: 18
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 7677059759f7aeb43968f006bd480716
-    - name: hobbit - dummy_Frame_19
+    - name: Frame_19
       frameIndex: 19
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 652770e7c07fbf54cb9f5f8e9c8af8a5
-    - name: hobbit - dummy_Frame_20
+    - name: Frame_20
       frameIndex: 20
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 3c82ef14aa17b3048a9353b3406b1199
-    - name: hobbit - dummy_Frame_21
+    - name: Frame_21
       frameIndex: 21
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: bf98d82f6eebefd409568d7fee2ff63e
-    - name: hobbit - dummy_Frame_22
+    - name: Frame_22
       frameIndex: 22
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 37a894378e1b9f445bf108d073f51084
-    - name: hobbit - dummy_Frame_23
+    - name: Frame_23
       frameIndex: 23
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 444a0e9c3b15fc749beba3bb6c7b029b
-    - name: hobbit - dummy_Frame_24
+    - name: Frame_24
       frameIndex: 24
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: c95aa7e18702a0441969a76d3e7a1741
-    - name: hobbit - dummy_Frame_25
+    - name: Frame_25
       frameIndex: 25
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 7b29817b167dc2641a9a90cdad442cee
-    - name: hobbit - dummy_Frame_26
+    - name: Frame_26
       frameIndex: 26
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: aa09867db57541746a082173c6bf4897
-    - name: hobbit - dummy_Frame_27
+    - name: Frame_27
       frameIndex: 27
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 05092f8523763e74c98744263989cb3a
-    - name: hobbit - dummy_Frame_28
+    - name: Frame_28
       frameIndex: 28
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 0a2cad8a35cbf834795d74264ba83684
-    - name: hobbit - dummy_Frame_29
+    - name: Frame_29
       frameIndex: 29
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 6b5bc52a8225d6d4eaa6c01acabed232
-    - name: hobbit - dummy_Frame_30
+    - name: Frame_30
       frameIndex: 30
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 7669001516a6ffa45b72d45e64890c90
-    - name: hobbit - dummy_Frame_31
+    - name: Frame_31
       frameIndex: 31
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: dfa4545eea353f0468336a02d8782137
-    - name: hobbit - dummy_Frame_32
+    - name: Frame_32
       frameIndex: 32
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: c448df4c7040a99449c1ca93a016c229
-    - name: hobbit - dummy_Frame_33
+    - name: Frame_33
       frameIndex: 33
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 801fd2dbd9dbb9743809b0d2cc9b5a48
-    - name: hobbit - dummy_Frame_34
+    - name: Frame_34
       frameIndex: 34
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: d0c095605578f2d49876455b606abbbe
-    - name: hobbit - dummy_Frame_35
+    - name: Frame_35
       frameIndex: 35
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: dd00680b36c5799469e13614d13032b6
-    - name: hobbit - dummy_Frame_36
+    - name: Frame_36
       frameIndex: 36
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 896728a9bd1cabb46a753ef78739ff81
-    - name: hobbit - dummy_Frame_37
+    - name: Frame_37
       frameIndex: 37
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: d02156415d9f22648b7de17f2aaf63b4
-    - name: hobbit - dummy_Frame_38
+    - name: Frame_38
       frameIndex: 38
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 889b9aa206fd3054c86b0c58fd54de40
-    - name: hobbit - dummy_Frame_39
+    - name: Frame_39
       frameIndex: 39
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: e08f70b51066f5c4dbe7a6a2e2a63cdd
-    - name: hobbit - dummy_Frame_40
+    - name: Frame_40
       frameIndex: 40
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 9449f154314871d498db53865037286a
-    - name: hobbit - dummy_Frame_41
+    - name: Frame_41
       frameIndex: 41
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 6d7647a6209f88a45985a1514ee71150
-    - name: hobbit - dummy_Frame_42
+    - name: Frame_42
       frameIndex: 42
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 556f9cf1d2e0f9f489f5d04687dd09ed
-    - name: hobbit - dummy_Frame_43
+    - name: Frame_43
       frameIndex: 43
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 2891ed41225299c4082be5e5cb4de68c
-    - name: hobbit - dummy_Frame_44
+    - name: Frame_44
       frameIndex: 44
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 7d5ae5b2f8f407d48a046eee521eddfa
-    - name: hobbit - dummy_Frame_45
+    - name: Frame_45
       frameIndex: 45
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 70697b26413812b4e844c573c718629f
-    - name: hobbit - dummy_Frame_46
+    - name: Frame_46
       frameIndex: 46
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 439f8c6de334d914094051165280dcdc
-    - name: hobbit - dummy_Frame_47
+    - name: Frame_47
       frameIndex: 47
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 4e1c4bd75bf61b54ab13668c01129efd
-    - name: hobbit - dummy_Frame_48
+    - name: Frame_48
       frameIndex: 48
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 942840502b35cc440a66af8373e340f1
-    - name: hobbit - dummy_Frame_49
+    - name: Frame_49
       frameIndex: 49
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: a5052afcbe321a9499f4ae4849803e5c
-    - name: hobbit - dummy_Frame_50
+    - name: Frame_50
       frameIndex: 50
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 93384dc24ba3e45408db035f36787b3f
-    - name: hobbit - dummy_Frame_51
+    - name: Frame_51
       frameIndex: 51
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 6c1eeef8995b1fe4db02df4684365520
-    - name: hobbit - dummy_Frame_52
+    - name: Frame_52
       frameIndex: 52
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 305a7f7d5e0ffb54b953f48755a99221
-    - name: hobbit - dummy_Frame_53
+    - name: Frame_53
       frameIndex: 53
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 74d3d7a9d1261404787585817f1ce75a
-    - name: hobbit - dummy_Frame_54
+    - name: Frame_54
       frameIndex: 54
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 364a3c65da939784f810584ac6197ff4
-    - name: hobbit - dummy_Frame_55
+    - name: Frame_55
       frameIndex: 55
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 4cb25704e2bb4c848b873b581f23f6ef
-    - name: hobbit - dummy_Frame_56
+    - name: Frame_56
       frameIndex: 56
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: a3a5bfb305cf18c418a7acbd11412f45
-    - name: hobbit - dummy_Frame_57
+    - name: Frame_57
       frameIndex: 57
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: ed4394e4f1d5236419c1edd3e18c2db8
-    - name: hobbit - dummy_Frame_58
+    - name: Frame_58
       frameIndex: 58
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 00559c50c2c1a1641ae0b4b635078668
-    - name: hobbit - dummy_Frame_59
+    - name: Frame_59
       frameIndex: 59
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: b44a0c44e210d8340a1705b0949f6235
-    - name: hobbit - dummy_Frame_60
+    - name: Frame_60
       frameIndex: 60
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 250fc9cb9bf7638438c3d5cac6b6c244
-    - name: hobbit - dummy_Frame_61
+    - name: Frame_61
       frameIndex: 61
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: d06733cbbc7ebee4296ccf80d0a8b4f3
-    - name: hobbit - dummy_Frame_62
+    - name: Frame_62
       frameIndex: 62
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 54cf96304338f954dbd55b94f1d64408
-    - name: hobbit - dummy_Frame_63
+    - name: Frame_63
       frameIndex: 63
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 60cf136fd7897994fb8c8a9850f5cc20
-    - name: hobbit - dummy_Frame_64
+    - name: Frame_64
       frameIndex: 64
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: c98ab3c54bfbaa546bed3c924a7b9782
-    - name: hobbit - dummy_Frame_65
+    - name: Frame_65
       frameIndex: 65
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 28553c10c31fb044783aaa493efb091d
-    - name: hobbit - dummy_Frame_66
+    - name: Frame_66
       frameIndex: 66
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: a6d89c2b6b90e24478457cdcba144265
-    - name: hobbit - dummy_Frame_67
+    - name: Frame_67
       frameIndex: 67
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 913295351495ad54abadafc9614f5815
-    - name: hobbit - dummy_Frame_68
+    - name: Frame_68
       frameIndex: 68
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: a2ce753bdcca2e04b9a60381fa7f64fd
-    - name: hobbit - dummy_Frame_69
+    - name: Frame_69
       frameIndex: 69
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: e47f8dff01a648541ab697a57108d7e4
-    - name: hobbit - dummy_Frame_70
+    - name: Frame_70
       frameIndex: 70
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 52d3b79b1ec280c4db70ce6846225a01
-    - name: hobbit - dummy_Frame_71
+    - name: Frame_71
       frameIndex: 71
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: c8d9b1cebf7a3cf4983fed66d14dbccd
-    - name: hobbit - dummy_Frame_72
+    - name: Frame_72
       frameIndex: 72
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 35025c3edeaee8e4c87c7e56fe4953db
-    - name: hobbit - dummy_Frame_73
+    - name: Frame_73
       frameIndex: 73
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 545b0dbe821aae141804d626468badf6
-    - name: hobbit - dummy_Frame_74
+    - name: Frame_74
       frameIndex: 74
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: efcd4733dd78b57449f4beb7be77c7d9
-    - name: hobbit - dummy_Frame_75
+    - name: Frame_75
       frameIndex: 75
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: f42c272382b75ea4ea0c6cd07bd5f416
-    - name: hobbit - dummy_Frame_76
+    - name: Frame_76
       frameIndex: 76
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
         width: 144
         height: 112
       spriteId: 088913226c47adc4597ce2322ed04f6c
-    - name: hobbit - dummy_Frame_77
+    - name: Frame_77
       frameIndex: 77
+      additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
@@ -2315,6 +2395,7 @@ ScriptedImporter:
     linkedCells: []
     parentIndex: -1
   platformSettings: []
+  generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 144, y: 112}

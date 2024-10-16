@@ -1,6 +1,9 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent (typeof(EnemyAttacked))]
+[RequireComponent(typeof(EnemyMovement))]
+[RequireComponent(typeof (CharactersHealth))]
 
 public class EnemyAnimation : MonoBehaviour
 {
@@ -14,8 +17,11 @@ public class EnemyAnimation : MonoBehaviour
 
     private Animator _animator;
 
-    private void Start()
+    private void Awake()
     {
+        _enemyAttacked = GetComponent<EnemyAttacked>();
+        _characters = GetComponent<CharactersHealth>();
+        _enemyMovement = GetComponent<EnemyMovement>();
         _animator = GetComponent<Animator>();
     }
 

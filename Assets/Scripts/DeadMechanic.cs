@@ -1,8 +1,15 @@
 using UnityEngine;
 
+[RequireComponent (typeof(CharactersHealth))]
+
 public class DeadMechanic : MonoBehaviour
 {
-    [SerializeField] private CharactersHealth _characters;
+    private CharactersHealth _characters;
+
+    private void Awake()
+    {
+        _characters = GetComponent<CharactersHealth>();
+    }
 
     private void OnEnable()
     {
@@ -17,5 +24,6 @@ public class DeadMechanic : MonoBehaviour
     private void OnDied()
     {
         Destroy(gameObject, 0.7f);
+        //сделать возвращение в пул
     }
 }
