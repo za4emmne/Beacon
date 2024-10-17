@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private int _damage = 10;
     [SerializeField] private CharactersHealth _charactersHealth;
+    [SerializeField] private BulletSpawner _weapon;
 
     public event Action Attacked;
 
@@ -20,6 +21,17 @@ public class PlayerAttack : MonoBehaviour
         {
             Attacked?.Invoke();
             Attack();
+        }
+    }
+
+    private IEnumerator Shoot()
+    {
+        var wait = new WaitForSeconds(_delay);
+
+        while (enabled)
+        {
+            _weapon.Shoot(_shootPoint);
+            yield return wait;
         }
     }
 

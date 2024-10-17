@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     public event Action AnimationRunPlayed;
 
     private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Player _player;
+    private Transform _target;
 
     private void Start()
     {
@@ -21,18 +21,28 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_player != null)
+        MoveToTarget();
+    }
+
+    public void TakeTargetPosition(Transform target)
+    {
+        _target = target;        
+    }
+
+    private void MoveToTarget()
+    {
+        if (_target != null)
         {
             transform.position = Vector3.MoveTowards(transform.position,
-                        _player.transform.position, _speed * Time.deltaTime);
+                        _target.position, _speed * Time.deltaTime);
             AnimationRunPlayed?.Invoke();
-            Flip();
+            Flip(_target);
         }
     }
 
-    private void Flip()
+    private void Flip(Transform target)
     {
-        if ((_player.transform.position.x - transform.position.x) < 0)
+        if ((target.position.x - transform.position.x) < 0)
         {
             _spriteRenderer.flipX = true;
         }
