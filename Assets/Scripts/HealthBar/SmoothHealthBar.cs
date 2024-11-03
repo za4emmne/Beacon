@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SmoothHealthBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private CharactersHealth _characters;
+    [SerializeField] private PlayerHealth _characters;
     [SerializeField] private float _stepHealth = 0.1f;
 
     private Coroutine _coroutine;

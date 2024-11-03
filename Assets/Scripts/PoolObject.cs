@@ -70,7 +70,7 @@ public class PoolObject<T> : MonoBehaviour where T : MonoBehaviour
         Destroy(spawnObject.gameObject);
     }
 
-    protected Vector3 GetRandomPosition()
+    protected virtual Vector3 GetRandomPosition()
     {
         int randomPoint = Random.Range(0, _spawnPoints.Length);
 

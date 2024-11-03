@@ -6,7 +6,7 @@ public class PlayerTakePills : MonoBehaviour
     {
         if (collision.TryGetComponent<Pills>(out Pills pills))
         {
-            GetComponent<CharactersHealth>().TakePills(pills.Count);
+            GetComponent<PlayerHealth>().TakePills(pills.Count);
             Destroy(pills);
         }
     }

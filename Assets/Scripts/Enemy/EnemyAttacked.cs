@@ -14,9 +14,10 @@ public class EnemyAttacked : MonoBehaviour
     {
         if (collision.collider.TryGetComponent<Player>(out Player player))
         {
-            CharactersHealth playerHealth = player.GetComponent<CharactersHealth>();
+            PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
             //Instantiate(_effect, player.transform.position, Quaternion.identity);
             playerHealth.TakeDamage(_damage);
+            player.GetComponent<PlayerAnimation>().OnGetDamageAnimation();
             Attacked?.Invoke();
         }
     }

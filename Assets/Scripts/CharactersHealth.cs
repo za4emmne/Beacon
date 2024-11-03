@@ -3,10 +3,9 @@ using System;
 
 public class CharactersHealth : MonoBehaviour
 {
-    [SerializeField] private float _maxHealth;
+    [SerializeField] protected float _maxHealth;
 
-    private float _health;
-    private bool _isDead;
+    [SerializeField] protected float _health;
 
     public event Action Changed;
     public event Action Died;
@@ -17,7 +16,6 @@ public class CharactersHealth : MonoBehaviour
     private void Awake()
     {
         _health = _maxHealth;
-        _isDead = false;
     }
 
     public void TakeDamage(float damage)
@@ -29,7 +27,6 @@ public class CharactersHealth : MonoBehaviour
             if (_health <= 0)
             {
                 _health = 0;
-                _isDead = true;
                 Died?.Invoke();
             }
 
@@ -37,18 +34,8 @@ public class CharactersHealth : MonoBehaviour
         }
     }
 
-    public void TakePills(float pills)
+    protected void ChangeAwake()
     {
-        if(pills >= 0)
-        {
-            _health += pills;
-
-            if(_health >= _maxHealth)
-            {
-                _health = _maxHealth;
-            }
-
-            Changed?.Invoke();
-        }
+        Changed?.Invoke();
     }
 }

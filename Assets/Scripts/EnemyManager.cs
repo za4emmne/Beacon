@@ -6,6 +6,7 @@ public class EnemyManager : PoolObject<EnemyViewer>
 {
     [SerializeField] private Transform _target;
     [SerializeField] private float _delay;
+    [SerializeField] private float _delayBeforeRelease;
 
     private void Start()
     {
@@ -17,10 +18,9 @@ public class EnemyManager : PoolObject<EnemyViewer>
     {
         WaitForSeconds waitUpdate = new WaitForSeconds(_delay);
 
-        while(enabled)
+        while (enabled)
         {
             Transform target = _target;
-            Debug.Log(target.position);
 
             if (ActiveObject != null)
             {
@@ -32,5 +32,22 @@ public class EnemyManager : PoolObject<EnemyViewer>
 
             yield return waitUpdate;
         }
+    }
+
+    public void CheckHealth(CharactersHealth health)
+    {
+        if (health.Current <= 0)
+        
+        { 
+            StartCoroutine(OnReleaseWait(health));         
+        }
+    }
+
+    private IEnumerator OnReleaseWait(CharactersHealth health)
+    {
+        WaitForSeconds waitRelease = new WaitForSeconds(_delayBeforeRelease);
+        health.GetComponent<EnemyAnimation>().OnDeadAnimation();
+        yield return waitRelease;
+        OnRelease(health.GetComponent<EnemyViewer>()); 
     }
 }

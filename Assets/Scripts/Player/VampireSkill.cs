@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class VampireSkill : MonoBehaviour
 {
     [SerializeField] private float _vampireDamageIndex = 1;
-    [SerializeField] private CharactersHealth _health;
+    [SerializeField] private PlayerHealth _health;
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private float _attackRange = 3f;
     [SerializeField] private LayerMask _enemyLayer;

@@ -9,7 +9,7 @@ public class PlayerAnimation : MonoBehaviour
     private const string AnimationNameAttack = "Attack";
     private const string AnimationNameRun = "Run";
 
-    [SerializeField] private CharactersHealth _characters;
+    [SerializeField] private PlayerHealth _characters;
     [SerializeField] private PlayerMovenment _playerMovenment;
     [SerializeField] private PlayerAttack _playerAttack;
 
@@ -21,6 +21,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+
     }
 
     private void OnEnable()
