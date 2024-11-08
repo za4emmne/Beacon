@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        _target = Player.singleton.transform;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _speed = UnityEngine.Random.Range(0.1f, 0.2f);
     }
@@ -22,11 +23,6 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         MoveToTarget();
-    }
-
-    public void TakeTargetPosition(Transform target)
-    {
-        _target = target;        
     }
 
     private void MoveToTarget()
@@ -40,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void Flip(Transform target)
+    private void Flip(Transform target) //изменить на флип игрока через трансформ
     {
         if ((target.position.x - transform.position.x) < 0)
         {

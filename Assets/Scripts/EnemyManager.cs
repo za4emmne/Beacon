@@ -11,28 +11,28 @@ public class EnemyManager : PoolObject<EnemyViewer>
     private void Start()
     {
         base.StartGeneration();
-        StartCoroutine(GetPlayerTransform());
+        //StartCoroutine(GetPlayerTransform());
     }
 
-    private IEnumerator GetPlayerTransform()
-    {
-        WaitForSeconds waitUpdate = new WaitForSeconds(_delay);
+    //private IEnumerator GetPlayerTransform()
+    //{
+    //    WaitForSeconds waitUpdate = new WaitForSeconds(_delay);
 
-        while (enabled)
-        {
-            Transform target = _target;
+    //    while (enabled)
+    //    {
+    //        Transform target = _target;
 
-            if (ActiveObject != null)
-            {
-                foreach (var enemy in ActiveObject)
-                {
-                    enemy.GetComponent<EnemyMovement>().TakeTargetPosition(target);
-                }
-            }
+    //        if (ActiveObject != null)
+    //        {
+    //            foreach (var enemy in ActiveObject)
+    //            {
+    //                enemy.GetComponent<EnemyMovement>().TakeTargetPosition(target);
+    //            }
+    //        }
 
-            yield return waitUpdate;
-        }
-    }
+    //        yield return waitUpdate;
+    //    }
+    //}
 
     public void CheckHealth(CharactersHealth health)
     {
