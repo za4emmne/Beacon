@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnifeController : Weapon
+public class KnifeController : WeaponController
 {
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     protected override void Attack()
     {
         base.Attack();
-
+        GameObject spawnedKnife = Instantiate(_prefab);
+        spawnedKnife.transform.position = transform.position;
+        
 
     }
 }

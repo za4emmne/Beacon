@@ -12,16 +12,18 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private PlayerHealth _characters;
     [SerializeField] private PlayerMovenment _playerMovenment;
     [SerializeField] private PlayerAttack _playerAttack;
+    [SerializeField] private Sprite _deadSprite;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private Coroutine _coroutine;
+    private Color _color;
 
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-
+        _color = _spriteRenderer.color;
     }
 
     private void OnEnable()
@@ -41,6 +43,7 @@ public class PlayerAnimation : MonoBehaviour
     public void OnDeadAnimation()
     {
         _animator.SetTrigger(AnimationNameDead);
+        
     }
 
     public void OnAttackAnimation()
@@ -50,12 +53,18 @@ public class PlayerAnimation : MonoBehaviour
 
     public void OnRunAnimation()
     {
-        _animator.SetFloat(AnimationNameRun, Mathf.Abs(_playerMovenment.VerticalMove) + Mathf.Abs(_playerMovenment.HorizontalMove));
+        _animator.SetFloat(AnimationNameRun, Mathf.Abs(_playerMovenment.VerticalMove) + Mathf.Abs(_playerMovenment.HorizontalMove) + Mathf.Abs(_playerMovenment.JoystickCurrentVertical) + Mathf.Abs(_playerMovenment.JoystickCurrentHorizontal));
     }
 
     public void OnGetDamageAnimation()
     {
         _coroutine = StartCoroutine(IAnimateHit());
+    }
+
+    public void OnSetDeadSprite()
+    {
+        _animator.speed = 0f;
+        _spriteRenderer.sprite = _deadSprite;
     }
 
     public void Stop()
@@ -68,9 +77,11 @@ public class PlayerAnimation : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 0f);
+            //_spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 0f);
+            _spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(.1f);
-            _spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
+            _spriteRenderer.color = _color;
+            //_spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
             yield return new WaitForSeconds(.1f);
         }
     }

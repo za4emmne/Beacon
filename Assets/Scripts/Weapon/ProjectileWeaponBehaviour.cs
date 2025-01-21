@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//проверяет направление движения и полета
+
 public class ProjectileWeaponBehaviour : MonoBehaviour
 {
-    [SerializeField] protected Vector3 _direction;
+    [SerializeField] private float _destroyAfterSeconds;
 
-    void Start()
+    protected Vector3 direction;
+
+    protected virtual void Start()
     {
-        
+        Destroy(gameObject, _destroyAfterSeconds);
     }
 
-public void SetDirectrion(Vector3 direction)
+    public void SetDirection(Vector3 directionPlayer)
     {
-        direction = _direction;
+        direction = directionPlayer;
     }
+
 }

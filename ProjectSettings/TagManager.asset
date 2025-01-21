@@ -44,8 +44,20 @@ TagManager:
   - name: World
     uniqueID: 3933978299
     locked: 0
+  - name: WalkInFront
+    uniqueID: 251380573
+    locked: 0
   - name: Characters
     uniqueID: 3707760231
+    locked: 0
+  - name: Collision
+    uniqueID: 3713861303
+    locked: 0
+  - name: WalkBehind
+    uniqueID: 1320264615
+    locked: 0
+  - name: Decor
+    uniqueID: 696068133
     locked: 0
   - name: UI
     uniqueID: 1753882225

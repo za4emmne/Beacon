@@ -3,7 +3,7 @@ guid: aee0c5db698fd404ca3a6c64b3db662e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -47,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -123,6 +129,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -874,44 +881,43 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Basic Grass Biom things 1_21: -1214973955
-      Basic Grass Biom things 1_11: 1255231122
-      Basic Grass Biom things 1_33: 112258511
-      Basic Grass Biom things 1_28: 1782142602
-      Basic Grass Biom things 1_30: -1250375644
-      Basic Grass Biom things 1_34: -2076911896
-      Basic Grass Biom things 1_3: 1527902705
-      Basic Grass Biom things 1_5: -1946983567
-      Basic Grass Biom things 1_17: 585341365
-      Basic Grass Biom things 1_8: -1047244937
-      Basic Grass Biom things 1_23: -280898552
-      Basic Grass Biom things 1_9: 1260724433
-      Basic Grass Biom things 1_19: 640513697
-      Basic Grass Biom things 1_22: -1129325186
-      Basic Grass Biom things 1_24: -36982785
-      Basic Grass Biom things 1_1: -353249814
-      Basic Grass Biom things 1_12: -1218100499
-      Basic Grass Biom things 1_7: 341955743
-      Basic Grass Biom things 1_27: -890148352
-      Basic Grass Biom things 1_26: -140537031
-      Basic Grass Biom things 1_29: -733877802
-      Basic Grass Biom things 1_18: 1104545247
-      Basic Grass Biom things 1_25: -630154156
-      Basic Grass Biom things 1_14: 438397824
       Basic Grass Biom things 1_0: -304927038
-      Basic Grass Biom things 1_15: 838664135
-      Basic Grass Biom things 1_13: 180921010
-      Basic Grass Biom things 1_31: -2143193626
-      Basic Grass Biom things 1_6: -1843164609
-      Basic Grass Biom things 1_20: 1117487222
-      Basic Grass Biom things 1_32: -129750255
-      Basic Grass Biom things 1_2: 245214802
-      Basic Grass Biom things 1_4: 241220079
+      Basic Grass Biom things 1_1: -353249814
       Basic Grass Biom things 1_10: -468849343
+      Basic Grass Biom things 1_11: 1255231122
+      Basic Grass Biom things 1_12: -1218100499
+      Basic Grass Biom things 1_13: 180921010
+      Basic Grass Biom things 1_14: 438397824
+      Basic Grass Biom things 1_15: 838664135
       Basic Grass Biom things 1_16: 764368400
-  spritePackingTag: 
+      Basic Grass Biom things 1_17: 585341365
+      Basic Grass Biom things 1_18: 1104545247
+      Basic Grass Biom things 1_19: 640513697
+      Basic Grass Biom things 1_2: 245214802
+      Basic Grass Biom things 1_20: 1117487222
+      Basic Grass Biom things 1_21: -1214973955
+      Basic Grass Biom things 1_22: -1129325186
+      Basic Grass Biom things 1_23: -280898552
+      Basic Grass Biom things 1_24: -36982785
+      Basic Grass Biom things 1_25: -630154156
+      Basic Grass Biom things 1_26: -140537031
+      Basic Grass Biom things 1_27: -890148352
+      Basic Grass Biom things 1_28: 1782142602
+      Basic Grass Biom things 1_29: -733877802
+      Basic Grass Biom things 1_3: 1527902705
+      Basic Grass Biom things 1_30: -1250375644
+      Basic Grass Biom things 1_31: -2143193626
+      Basic Grass Biom things 1_32: -129750255
+      Basic Grass Biom things 1_33: 112258511
+      Basic Grass Biom things 1_34: -2076911896
+      Basic Grass Biom things 1_4: 241220079
+      Basic Grass Biom things 1_5: -1946983567
+      Basic Grass Biom things 1_6: -1843164609
+      Basic Grass Biom things 1_7: 341955743
+      Basic Grass Biom things 1_8: -1047244937
+      Basic Grass Biom things 1_9: 1260724433
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

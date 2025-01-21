@@ -511,7 +511,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -587207065
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f740e7e9f78f2664db76f93b11c211a0, type: 3}
   m_Color: {r: 1, g: 1, b: 0.050980393, a: 0.6156863}
@@ -617,7 +617,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -587207065
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 39783645, guid: 6520771e254c28746a950b9bd0578deb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -661,6 +661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6562775285493735437}
   - component: {fileID: 6562775285493735922}
+  - component: {fileID: 5033968440051717003}
   - component: {fileID: 6562775285493735923}
   - component: {fileID: 6562775285493735438}
   - component: {fileID: 6562775285493735439}
@@ -671,7 +672,6 @@ GameObject:
   - component: {fileID: 5067891178879040669}
   - component: {fileID: 165859223450217626}
   - component: {fileID: 3777760251609025372}
-  - component: {fileID: 5033968440051717003}
   - component: {fileID: 5175813640209145867}
   m_Layer: 7
   m_Name: Hobbit
@@ -738,7 +738,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -587207065
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0709663a2973d764983d981e9217017d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -751,6 +751,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5033968440051717003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562775285493735920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9821a03487e469b4dbedc2f608132e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characters: {fileID: 5175813640209145867}
+  _playerMovenment: {fileID: 4078050515229748156}
+  _playerAttack: {fileID: 1932475469}
+  _deadSprite: {fileID: 0}
 --- !u!95 &6562775285493735923
 Animator:
   serializedVersion: 5
@@ -784,6 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19695f2c99db9514ea1d15d17d949490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
 --- !u!50 &6562775285493735439
 Rigidbody2D:
   serializedVersion: 4
@@ -858,7 +875,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539e5fc396d2793499b555824b199ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JoystickCurrentVertical: 0
+  JoystickCurrentHorizontal: 0
   _speed: 3
+  _joystick: {fileID: 0}
 --- !u!114 &1932475469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,11 +891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e855e37129e5af14a818b8c0155169c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackPoint: {fileID: 201625528}
-  _attackRange: 0.5
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
   _damage: 10
   _charactersHealth: {fileID: 5175813640209145867}
   _weapon: {fileID: 0}
@@ -939,21 +954,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 0
   _health: 0
---- !u!114 &5033968440051717003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6562775285493735920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9821a03487e469b4dbedc2f608132e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _characters: {fileID: 5175813640209145867}
-  _playerMovenment: {fileID: 4078050515229748156}
-  _playerAttack: {fileID: 1932475469}
 --- !u!114 &5175813640209145867
 MonoBehaviour:
   m_ObjectHideFlags: 0

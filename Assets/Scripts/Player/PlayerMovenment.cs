@@ -6,15 +6,20 @@ using System;
 
 public class PlayerMovenment : MonoBehaviour
 {
+    public float JoystickCurrentVertical;
+    public float JoystickCurrentHorizontal;
+
     private const string NameDirectionHorizontal = "Horizontal";
     private const string NameDirectionVertical = "Vertical";
 
     [SerializeField] private float _speed = 3;
+    [SerializeField] private FixedJoystick _joystick;
 
     private Rigidbody2D _rigidbody2D;
-    private SpriteRenderer _spriteRenderer;
+    private Transform _transform;
     private float _horizontalMove;
     private float _verticalMove;
+    private Vector3 _rotate;
 
     public event Action Run;
 
@@ -22,28 +27,53 @@ public class PlayerMovenment : MonoBehaviour
     public float VerticalMove => _verticalMove;
 
 
-    private void Start()
+    private void Awake()
     {
+        _transform = GetComponent<Transform>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        _horizontalMove = Input.GetAxisRaw(NameDirectionHorizontal) * _speed;
-        _verticalMove = Input.GetAxisRaw(NameDirectionVertical) * _speed;
-
-        _rigidbody2D.velocity = new Vector2(_horizontalMove, _verticalMove);
-
-        if (_horizontalMove < 0)
+        if (Application.isMobilePlatform)
         {
-            _spriteRenderer.flipX = true;
+            Joy();
         }
-        if (_horizontalMove > 0)
+        else
         {
-            _spriteRenderer.flipX = false;
+            _joystick.gameObject.SetActive(false);
+            Keyboard();
         }
+       
+        if (_horizontalMove < 0 || _joystick.Horizontal < 0)
+        {
+            _rotate.y = 180;
+            transform.rotation = Quaternion.Euler(_rotate);
+            //_spriteRenderer.flipX = true;
+        }
+
+        if (_horizontalMove > 0 || _joystick.Horizontal > 0)
+        {
+            _rotate.y = 0;
+            transform.rotation = Quaternion.Euler(_rotate);
+            //_spriteRenderer.flipX = false;
+        }
+
 
         Run?.Invoke();
+    }
+
+    private void Joy()
+    {
+        _rigidbody2D.velocity = new Vector3(_joystick.Horizontal * _speed, _joystick.Vertical * _speed);
+        JoystickCurrentHorizontal = _joystick.Horizontal;
+        JoystickCurrentVertical = _joystick.Vertical;
+    }
+
+    private void Keyboard()
+    {
+        _horizontalMove = Input.GetAxisRaw(NameDirectionHorizontal) * _speed;
+        _verticalMove = Input.GetAxisRaw(NameDirectionVertical) * _speed;
+        _rigidbody2D.velocity = new Vector2(_horizontalMove, _verticalMove);
     }
 }

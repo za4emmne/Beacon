@@ -18,7 +18,7 @@ public class CharactersHealth : MonoBehaviour
         _health = _maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         if (damage >= 0)
         {
