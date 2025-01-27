@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 6063575133032799727}
   - component: {fileID: 6063575133032799720}
   - component: {fileID: 6063575133032799726}
+  - component: {fileID: 1309707173059884502}
   - component: {fileID: 6063575133032799721}
   - component: {fileID: 1904837811}
-  - component: {fileID: 1309707173059884502}
   - component: {fileID: -1024973885821823727}
   - component: {fileID: 8151075718102510395}
   - component: {fileID: 9137852341149167105}
@@ -111,7 +111,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -587207065
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 642730534, guid: 6ee914d222ee01c4cb28466c183f310d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -169,6 +169,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.111989304, y: 0.11515613}
   m_EdgeRadius: 0
+--- !u!114 &1309707173059884502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6063575133032799722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2786522f3dfbbcb44995858cc6ca9064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 11400000, guid: 69c6d68b461d7c34185743cd1f3bf2ba, type: 2}
+  _image: {fileID: 1202467003, guid: deac125888f93a94c969051e6ea473c2, type: 3}
 --- !u!95 &6063575133032799721
 Animator:
   serializedVersion: 5
@@ -217,20 +231,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1309707173059884502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6063575133032799722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2786522f3dfbbcb44995858cc6ca9064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemy: {fileID: 11400000, guid: 69c6d68b461d7c34185743cd1f3bf2ba, type: 2}
-  _image: {fileID: 1202467003, guid: deac125888f93a94c969051e6ea473c2, type: 3}
 --- !u!114 &-1024973885821823727
 MonoBehaviour:
   m_ObjectHideFlags: 0

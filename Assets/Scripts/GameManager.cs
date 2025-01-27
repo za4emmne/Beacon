@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private EnemyManager _enemyManager;
+
+    private UIManager _uiManager;
+    private int _score;
+
+    public int Score => _score;
+
+    private void Awake()
     {
-        
+        _uiManager = GetComponent<UIManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        _score = 0;
+    }
+
+    private void OnEnable()
+    {
+        _enemyManager.oneKill += ChangeScore;
+    }
+
+    private void OnDisable()
+    {
+        _enemyManager.oneKill -= ChangeScore;
+    }
+
+    private void ChangeScore()
+    {
+        _score++;
+        _uiManager.ChangeScore(_score);
     }
 }

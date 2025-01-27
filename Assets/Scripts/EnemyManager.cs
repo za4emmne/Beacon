@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using System;
 
 public class EnemyManager : PoolObject<EnemyViewer>
 {
@@ -7,46 +8,22 @@ public class EnemyManager : PoolObject<EnemyViewer>
     [SerializeField] private float _delay;
     [SerializeField] private float _delayBeforeRelease;
 
+    public event Action oneKill;
+
     private void Start()
     {
         base.StartGeneration();
-        //StartCoroutine(GetPlayerTransform());
     }
 
-    //private IEnumerator GetPlayerTransform()
-    //{
-    //    WaitForSeconds waitUpdate = new WaitForSeconds(_delay);
-
-    //    while (enabled)
-    //    {
-    //        Transform target = _target;
-
-    //        if (ActiveObject != null)
-    //        {
-    //            foreach (var enemy in ActiveObject)
-    //            {
-    //                enemy.GetComponent<EnemyMovement>().TakeTargetPosition(target);
-    //            }
-    //        }
-
-    //        yield return waitUpdate;
-    //    }
-    //}
-
-    public void CheckHealth(CharactersHealth health)
+    public override void OnGet(EnemyViewer spawnObject)
     {
-        if (health.Current <= 0)
-        
-        { 
-            StartCoroutine(OnReleaseWait(health));         
-        }
+        base.OnGet(spawnObject);
+        spawnObject.Initialize(this);
     }
 
-    private IEnumerator OnReleaseWait(CharactersHealth health)
+    public override void OnRelease(EnemyViewer spawnObject)
     {
-        WaitForSeconds waitRelease = new WaitForSeconds(_delayBeforeRelease);
-        health.GetComponent<EnemyAnimation>().OnDeadAnimation();
-        yield return waitRelease;
-        OnRelease(health.GetComponent<EnemyViewer>()); 
+        base.OnRelease(spawnObject);
+        oneKill?.Invoke();
     }
 }

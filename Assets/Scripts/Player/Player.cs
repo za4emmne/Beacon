@@ -15,16 +15,11 @@ public class Player : MonoBehaviour, IDamageable
         _animator = GetComponent<PlayerAnimation>();
         singleton = this;
     }
-    
+
     public void TakeDamage(float damage)
     {
         _camera.Shake();
         _animator.OnGetDamageAnimation();
         _health.TakeDamage(damage);
-    }
-
-    public void Dead()
-    {
-
     }
 }

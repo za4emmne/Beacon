@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(Animator))]
 
@@ -12,7 +13,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private PlayerHealth _characters;
     [SerializeField] private PlayerMovenment _playerMovenment;
     [SerializeField] private PlayerAttack _playerAttack;
-    [SerializeField] private Sprite _deadSprite;
+    [SerializeField] private UIManager _uiManager;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -40,10 +41,15 @@ public class PlayerAnimation : MonoBehaviour
         _playerMovenment.Run -= OnRunAnimation;
     }
 
+    public void GameOver()
+    {
+        _uiManager.OnDeadScreen();
+        Time.timeScale = 0f;
+    }
+
     public void OnDeadAnimation()
     {
         _animator.SetTrigger(AnimationNameDead);
-        
     }
 
     public void OnAttackAnimation()
@@ -59,12 +65,6 @@ public class PlayerAnimation : MonoBehaviour
     public void OnGetDamageAnimation()
     {
         _coroutine = StartCoroutine(IAnimateHit());
-    }
-
-    public void OnSetDeadSprite()
-    {
-        _animator.speed = 0f;
-        _spriteRenderer.sprite = _deadSprite;
     }
 
     public void Stop()
