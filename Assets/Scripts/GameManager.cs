@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private EnemyManager _enemyManager;
+    [SerializeField] private StarGenerator _starGenerator;
 
     private UIManager _uiManager;
     private int _score;
@@ -29,6 +31,12 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         _enemyManager.oneKill -= ChangeScore;
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene("islandScene");
+        Time.timeScale = 1f;
     }
 
     private void ChangeScore()

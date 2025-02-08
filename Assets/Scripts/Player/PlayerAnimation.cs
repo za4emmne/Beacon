@@ -12,7 +12,7 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField] private PlayerHealth _characters;
     [SerializeField] private PlayerMovenment _playerMovenment;
-    [SerializeField] private PlayerAttack _playerAttack;
+    //[SerializeField] private PlayerAttack _playerAttack;
     [SerializeField] private UIManager _uiManager;
 
     private Animator _animator;
@@ -30,14 +30,14 @@ public class PlayerAnimation : MonoBehaviour
     private void OnEnable()
     {
         _characters.Died += OnDeadAnimation;
-        _playerAttack.Attacked += OnAttackAnimation;
+        //_playerAttack.Attacked += OnAttackAnimation;
         _playerMovenment.Run += OnRunAnimation;
     }
 
     private void OnDisable()
     {
         _characters.Died -= OnDeadAnimation;
-        _playerAttack.Attacked -= OnAttackAnimation;
+        //_playerAttack.Attacked -= OnAttackAnimation;
         _playerMovenment.Run -= OnRunAnimation;
     }
 
@@ -67,11 +67,11 @@ public class PlayerAnimation : MonoBehaviour
         _coroutine = StartCoroutine(IAnimateHit());
     }
 
-    public void Stop()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-    }
+    //public void Stop()
+    //{
+    //    if (_coroutine != null)
+    //        StopCoroutine(_coroutine);
+    //}
 
     private IEnumerator IAnimateHit()
     {

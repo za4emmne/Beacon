@@ -7,6 +7,7 @@ public class SableController : MonoBehaviour
     private const string AnimationNameAttack = "Attack";
 
     [SerializeField] private float _delay;
+    [SerializeField] private SableBeahavior _sable;
 
     private Animator _animator;
     private Coroutine _coroutine;
@@ -28,6 +29,7 @@ public class SableController : MonoBehaviour
         while (enabled)
         {
             _animator.SetTrigger(AnimationNameAttack);
+            _sable.Attack();
             yield return wait;
         }
     }

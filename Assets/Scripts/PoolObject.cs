@@ -6,17 +6,17 @@ using UnityEngine.Pool;
 public class PoolObject<T> : MonoBehaviour where T : MonoBehaviour
 {
     [SerializeField] private T _prefab;
-    [SerializeField] private float _minPostionX;
-    [SerializeField] private float _maxPostionX;
-    [SerializeField] private float _minPositionZ;
-    [SerializeField] private float _maxPositionZ;
+    [SerializeField] protected float _minPostionX;
+    [SerializeField] protected float _maxPostionX;
+    [SerializeField] protected float _minPositionZ;
+    [SerializeField] protected float _maxPositionZ;
     [SerializeField] private int _poolCapacity;
     [SerializeField] private int _poolMaxSize;
     [SerializeField] private float _minDelaySpawn;
     [SerializeField] private float _maxDelaySpawn;
     [SerializeField] private int _maxObjectsInScene;
     [SerializeField] private int _minObjectsInScene;
-    [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] protected Transform[] _spawnPoints;
 
     public int MinObjectInScene => _minObjectsInScene;
     public List<T> ActiveObject => _activeObject;
@@ -49,7 +49,7 @@ public class PoolObject<T> : MonoBehaviour where T : MonoBehaviour
     public virtual T Create(Vector3 vector3)
     {
         T spawnObject = Instantiate(_prefab, vector3, Quaternion.identity);
-
+        spawnObject.transform.parent = transform;
         return spawnObject;
     }
 
@@ -70,16 +70,20 @@ public class PoolObject<T> : MonoBehaviour where T : MonoBehaviour
         Destroy(spawnObject.gameObject);
     }
 
+    public T GetObjectAtPosition(Vector3 position)
+    {
+        T obj = _objectPool.Get();
+        obj.transform.position = position;
+        return obj;
+    }
+
     protected virtual Vector3 GetRandomPosition()
     {
         int randomPoint = Random.Range(0, _spawnPoints.Length);
+        float randomPositionX = Random.Range(_minPostionX, _maxPostionX);
+        float randomPositionZ = Random.Range(_minPositionZ, _maxPositionZ);
 
         return new Vector3(_spawnPoints[randomPoint].position.x, _spawnPoints[randomPoint].position.y, _spawnPoints[randomPoint].position.z);
-
-        //float randomPositionX = Random.Range(_minPostionX, _maxPostionX);
-        //float randomPositionZ = Random.Range(_minPositionZ, _maxPositionZ);
-
-        //return new Vector3(randomPositionX, 0, randomPositionZ);
     }
 
     private IEnumerator SpawnWithDelay()
@@ -87,7 +91,7 @@ public class PoolObject<T> : MonoBehaviour where T : MonoBehaviour
         float randomDelaySpawn = Random.Range(_minDelaySpawn, _maxDelaySpawn);
         WaitForSeconds waitSpawn = new WaitForSeconds(randomDelaySpawn);
 
-        while (_activeObject.Count < _maxObjectsInScene)
+        while (enabled)
         {
             _objectPool.Get();
             yield return waitSpawn;

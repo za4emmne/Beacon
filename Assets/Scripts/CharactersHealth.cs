@@ -20,7 +20,7 @@ public class CharactersHealth : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        if (damage >= 0)
+        if (damage >= 0 & _health > 0)
         {
             _health -= damage;
 

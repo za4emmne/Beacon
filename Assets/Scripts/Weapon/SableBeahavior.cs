@@ -25,8 +25,13 @@ public class SableBeahavior : MonoBehaviour
         {
             foreach (var enemy in hitEnemies)
             {
-                enemyHealth = enemy.GetComponent<CharactersHealth>();
-                enemyHealth.TakeDamage(_damage);
+                int random = Random.Range(0, 2);
+
+                if (random == 0)
+                {
+                    enemyHealth = enemy.GetComponent<CharactersHealth>();
+                    enemyHealth.TakeDamage(_damage);
+                }
             }
         }
     }

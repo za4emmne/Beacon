@@ -8,7 +8,6 @@ public class EnemyViewer : MonoBehaviour
 
     private EnemyManager _manager;
 
-
     private void Start()
     {
         _image = _enemy.Sprite;

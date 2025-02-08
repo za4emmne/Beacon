@@ -4,11 +4,11 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
-    [SerializeField] private GameObject _deadScreen;
+    [SerializeField] private GameObject[] _gameOverScreen;
 
     private void Start()
     {
-        _deadScreen.SetActive(false);
+        DeadScreenManage(false);
     }
 
     public void ChangeScore(int Score)
@@ -18,6 +18,14 @@ public class UIManager : MonoBehaviour
 
     public void OnDeadScreen()
     {
-        _deadScreen.SetActive(true);
+        DeadScreenManage(true);
+    }
+
+    private void DeadScreenManage(bool status)
+    {
+        foreach (var ui in _gameOverScreen)
+        {
+            ui.SetActive(status);
+        }
     }
 }
