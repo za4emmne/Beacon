@@ -4,21 +4,27 @@ using System.Collections;
 
 public class EnemyAttacked : MonoBehaviour
 {
+    //[SerializeField] private float _attackTime;
+
     private float _damage;
-    [SerializeField] private float _attackTime;
-    private Coroutine _coroutine;
+    private EnemyHealth _health;
+    //private Coroutine _coroutine;
 
     public event Action Attacked;
 
-    private void Start()
+    private void Awake()
     {
-        _coroutine = null;
-        _damage = 2f;
+        _health = GetComponent<EnemyHealth>();
+    }
+
+    public void Init(float damage)
+    {
+        _damage = damage;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.TryGetComponent<Player>(out Player player))
+        if (collision.collider.TryGetComponent<Player>(out Player player) && _health.Current > 0)
         {
             player.TakeDamage(_damage);
             Attacked?.Invoke();

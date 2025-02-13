@@ -21,7 +21,7 @@ public class Star : MonoBehaviour
 
     public void Add()
     {
-        if (_coroutine == null)
+        if (_coroutine == null && this.isActiveAndEnabled)
             _coroutine = StartCoroutine(MoveStar());
     }
 
@@ -32,15 +32,19 @@ public class Star : MonoBehaviour
             transform.DOMove(Player.singleton.transform.position, 0.5f);
             yield return null;
         }
-        
-        _coroutine = null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PlayerProgress>(out PlayerProgress player))
         {
-            _generator.OnRelease(this);
+            if (_coroutine != null)
+            {
+                StopCoroutine(_coroutine);
+                _coroutine = null;
+            }
+
+            _generator.PutObject(this);
             player.AddProgress(_price);
         }
     }

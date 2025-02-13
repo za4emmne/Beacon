@@ -1,14 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
     [SerializeField] private GameObject[] _gameOverScreen;
+    [SerializeField] private GameObject[] _levelUpScreen;
+    [SerializeField] private GameObject _levelUp;
 
+    private PlayerProgress _player;
+
+    private void Awake()
+    {
+        _player = Player.singleton.GetComponent<PlayerProgress>();
+    }
     private void Start()
     {
-        DeadScreenManage(false);
+        ScreenManage(_gameOverScreen, false);
+        ScreenManage(_levelUpScreen, false);
+        ScreenManage(_levelUpScreen, false);
+    }
+
+    private void OnEnable()
+    {
+        _player.LevelUp += OnLevelUpScreen;
+    }
+
+    private void OnDisable()
+    {
+        _player.LevelUp -= OnLevelUpScreen;
     }
 
     public void ChangeScore(int Score)
@@ -16,14 +37,19 @@ public class UIManager : MonoBehaviour
         _scoreText.text = "—чет: " + Score;
     }
 
-    public void OnDeadScreen()
+    public void OnLevelUpScreen()
     {
-        DeadScreenManage(true);
+        ScreenManage(_levelUpScreen, true);
     }
 
-    private void DeadScreenManage(bool status)
+    public void OnDeadScreen()
     {
-        foreach (var ui in _gameOverScreen)
+        ScreenManage(_gameOverScreen, true);
+    }
+
+    private void ScreenManage(GameObject[] gameObjects, bool status)
+    {
+        foreach (var ui in gameObjects)
         {
             ui.SetActive(status);
         }

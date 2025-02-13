@@ -67,12 +67,6 @@ public class PlayerAnimation : MonoBehaviour
         _coroutine = StartCoroutine(IAnimateHit());
     }
 
-    //public void Stop()
-    //{
-    //    if (_coroutine != null)
-    //        StopCoroutine(_coroutine);
-    //}
-
     private IEnumerator IAnimateHit()
     {
         for (int i = 0; i < 6; i++)

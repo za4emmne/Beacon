@@ -18,6 +18,12 @@ public class CharactersHealth : MonoBehaviour
         _health = _maxHealth;
     }
 
+    public void Init(float health)
+    {
+        _maxHealth = health;
+        _health = _maxHealth;
+    }
+
     public virtual void TakeDamage(float damage)
     {
         if (damage >= 0 & _health > 0)

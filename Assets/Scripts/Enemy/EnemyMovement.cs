@@ -1,28 +1,45 @@
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(SpriteRenderer))]
-
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _speed;
 
     public event Action AnimationRunPlayed;
 
-    private SpriteRenderer _spriteRenderer;
     private Transform _target;
+    private EnemyHealth _health;
+    private Vector3 _rotate;
+
+    private void Awake()
+    {
+        _health = GetComponent<EnemyHealth>();
+    }
 
     private void Start()
     {
         _target = Player.singleton.transform;
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _speed = UnityEngine.Random.Range(0.1f, 0.2f);
+        //_speed = UnityEngine.Random.Range(0.1f, 0.2f);
     }
 
     private void Update()
     {
         MoveToTarget();
+    }
+
+    private void OnEnable()
+    {
+        _health.Died += Stop;
+    }
+
+    private void OnDisable()
+    {
+        _health.Died -= Stop;
+    }
+
+    public void Init(float speed)
+    {
+        _speed = speed;
     }
 
     private void MoveToTarget()
@@ -40,11 +57,20 @@ public class EnemyMovement : MonoBehaviour
     {
         if ((target.position.x - transform.position.x) < 0)
         {
-            _spriteRenderer.flipX = true;
+            _rotate.y = 180;
+            transform.rotation = Quaternion.Euler(_rotate);
+            //_spriteRenderer.flipX = true;
         }
         else
         {
-            _spriteRenderer.flipX = false;
+            _rotate.y = 0;
+            transform.rotation = Quaternion.Euler(_rotate);
+            //_spriteRenderer.flipX = false;
         }
+    }
+
+    private void Stop()
+    {
+        _speed = 0;
     }
 }

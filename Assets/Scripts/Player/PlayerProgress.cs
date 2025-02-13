@@ -1,40 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerProgress : MonoBehaviour
 {
-    [SerializeField] private ProgressBar _progressBar;
-
     private int _level;
     private float _nextLevel;
-    private int _currentProgress;
+    private float _currentProgress;
+
+    public event Action<float> ChangedProgress;
+    public event Action<float> LevelUpFloat;
+    public event Action LevelUp;
 
     private void Start()
     {
         _nextLevel = 10;
         _level = 0;
         _currentProgress = 0;
-        _progressBar.SetMaxValue(_nextLevel);
+        LevelUpFloat?.Invoke(_nextLevel);
     }
 
-    public void AddProgress(int score)
+    public void AddProgress(float score)
     {
         _currentProgress += score;
-        _progressBar.SetValue(_currentProgress);
-        Debug.Log("Set");
+        ChangedProgress?.Invoke(_currentProgress);
 
         if (_currentProgress >= _nextLevel)
         {
             UpLevel();
-            _progressBar.SetMaxValue(_nextLevel);
         }
     }
 
     private void UpLevel()
     {
-        float randomCoefficient = Random.Range(1, 1.3f);
+        float randomCoefficient = UnityEngine.Random.Range(1, 1.3f);
         _level++;
+        _currentProgress = 0;
+        ChangedProgress?.Invoke(_currentProgress);
         _nextLevel = _nextLevel * _level * randomCoefficient;
+        LevelUpFloat?.Invoke(_nextLevel);
+        LevelUp?.Invoke();
     }
 }

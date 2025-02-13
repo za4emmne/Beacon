@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f6d756b5e7e114aa2ce6f1480b02ce, type: 3}
-  m_Name: Skeleton
+  m_Script: {fileID: 11500000, guid: 9ec64cf98c344034fa77504a9e1f38d6, type: 3}
+  m_Name: Mallet
   m_EditorClassIdentifier: 
-  _name: "\u0421\u043A\u0435\u043B\u0435\u0442"
-  _health: 2
-  _damage: 1
-  _speed: 1
-  _prefab: {fileID: 6063575133032799722, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
+  weaponType: 1
+  damage: 2
+  delay: 0
+  attackRange: 0
+  Prefab: {fileID: 5741604329162156924, guid: 964081ced5bd2534baa1a24931045cec, type: 3}
+  speed: 5

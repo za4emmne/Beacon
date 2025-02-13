@@ -2,24 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SableController : MonoBehaviour
+public class SableController : Weapon
 {
     private const string AnimationNameAttack = "Attack";
 
-    [SerializeField] private float _delay;
-    [SerializeField] private SableBeahavior _sable;
-
     private Animator _animator;
+    private PolygonCollider2D _polygonCollider;
     private Coroutine _coroutine;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _coroutine = StartCoroutine(AnimatorController());
+        _polygonCollider.enabled = false;
     }
 
     private IEnumerator AnimatorController()
@@ -29,8 +30,10 @@ public class SableController : MonoBehaviour
         while (enabled)
         {
             _animator.SetTrigger(AnimationNameAttack);
-            _sable.Attack();
+            
+            _polygonCollider.enabled = true;
             yield return wait;
+            _polygonCollider.enabled = false;
         }
     }
 }

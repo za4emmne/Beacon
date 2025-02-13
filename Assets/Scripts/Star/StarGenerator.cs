@@ -2,26 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarGenerator : PoolObject<Star>
+public class StarGenerator : Spawner<Star>
 {
-    [SerializeField] private EnemyManager _enemyManager;
+    [SerializeField] private EnemiesGenerator _enemyManager;
 
     private void Start()
     {
-        base.StartGeneration();
+        base.OnStartGenerator();
     }
 
-    public override void OnGet(Star spawnObject)
+    public override Star GetObject()
     {
-        base.OnGet(spawnObject);
-        spawnObject.Initialize(this);
-    }
+        var star = base.GetObject();
+        star.Initialize(this);
 
-    protected override Vector3 GetRandomPosition()
-    {
-        float randomPositionX = Random.Range(_minPostionX, _maxPostionX);
-        float randomPositionZ = Random.Range(_minPositionZ, _maxPositionZ);
 
-        return new Vector3(_spawnPoints[0].position.x + randomPositionX, _spawnPoints[0].position.y, _spawnPoints[0].position.z + randomPositionZ);
+        star.gameObject.SetActive(true);
+
+        return star;
     }
 }
