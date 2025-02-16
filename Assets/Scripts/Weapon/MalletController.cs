@@ -12,9 +12,9 @@ public class MalletController : Weapon
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    protected override void Start()
+    public override void Initialize()
     {
-        base.Start();
+        base.Initialize();
         _position = new Vector2(RandomPositionX(), 1f);
         AddForce();
     }

@@ -28,13 +28,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         _enemyManager.oneKill += ChangeScore;
-        _progress.LevelUp += FreezeTime;
+        //_progress.LevelUp += FreezeTime;
     }
 
     private void OnDisable()
     {
         _enemyManager.oneKill -= ChangeScore;
-        _progress.LevelUp -= FreezeTime;
+        //_progress.LevelUp -= FreezeTime;
     }
 
     public void RestartScene()

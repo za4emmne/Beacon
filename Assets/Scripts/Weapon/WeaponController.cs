@@ -1,7 +1,6 @@
+using System;
 using UnityEngine;
-//1.Урон
-//2.Частота атака(время перезарядки)
-//3.
+//ДОДЕЛАТЬ
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] protected GameObject _prefab;
@@ -34,4 +33,6 @@ public class WeaponController : MonoBehaviour
     {
         _currentCooldown = _cooldownDuration;
     }
+
+
 }

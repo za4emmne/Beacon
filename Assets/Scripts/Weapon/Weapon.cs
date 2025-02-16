@@ -10,7 +10,12 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected float speed;
  
 
-    protected virtual void Start()
+    //protected virtual void Start()
+    //{
+
+    //}
+
+    public virtual void Initialize()
     {
         damage = _data.damage;
         _delay = _data.delay;

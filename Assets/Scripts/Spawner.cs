@@ -48,6 +48,20 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
         obj.gameObject.SetActive(false);
     }
 
+    protected virtual Vector3 PositionGeneraton()
+    {
+        float minPositionY = transform.position.y - _devationPositionY;
+        float maxPositionY = transform.position.y + _devationPositionY;
+        float minPositionX = transform.position.x - _devationPositionX;
+        float maxPositionX = transform.position.x + _devationPositionX;
+        float positionY = Random.Range(minPositionY, maxPositionY);
+        float positionX = Random.Range(minPositionX, maxPositionX);
+
+        Vector3 spawnPoint = new Vector3(positionX, positionY, transform.position.z);
+
+        return spawnPoint;
+    }
+
     public void Reset()
     {
         _pool.Clear();
@@ -73,26 +87,15 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        float minPositionY = transform.position.y - _devationPositionY;
-        float maxPositionY = transform.position.y + _devationPositionY;
-        float minPositionX = transform.position.x - _devationPositionX;
-        float maxPositionX = transform.position.x + _devationPositionX;
-
         while (true)
-        {
-
-            float positionY = Random.Range(minPositionY, maxPositionY);
-            float positionX = Random.Range(minPositionX, maxPositionX);
+        {           
             _spawnTime = Random.Range(_minDelay, _maxDelay);
-
-            var waitForSeconds = new WaitForSeconds(_spawnTime);
-
-            Vector3 spawnPoint = new Vector3(positionX, positionY, transform.position.z);
+            var waitForSeconds = new WaitForSeconds(_spawnTime);   
+            
             var obj = GetObject();
-
             obj.gameObject.SetActive(true);
             obj.transform.parent = transform;
-            obj.transform.position = spawnPoint;
+            obj.transform.position = PositionGeneraton();
 
             yield return waitForSeconds;
         }

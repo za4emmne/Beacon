@@ -22,15 +22,15 @@ public class UIManager : MonoBehaviour
         ScreenManage(_levelUpScreen, false);
     }
 
-    private void OnEnable()
-    {
-        _player.LevelUp += OnLevelUpScreen;
-    }
+    //private void OnEnable()
+    //{
+    //    _player.LevelUp += OnLevelUpScreen;
+    //}
 
-    private void OnDisable()
-    {
-        _player.LevelUp -= OnLevelUpScreen;
-    }
+    //private void OnDisable()
+    //{
+    //    _player.LevelUp -= OnLevelUpScreen;
+    //}
 
     public void ChangeScore(int Score)
     {

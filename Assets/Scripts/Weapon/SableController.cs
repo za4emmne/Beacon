@@ -16,9 +16,9 @@ public class SableController : Weapon
         _polygonCollider = GetComponent<PolygonCollider2D>();
     }
 
-    protected override void Start()
+    private void Start()
     {
-        base.Start();
+        base.Initialize();
         _coroutine = StartCoroutine(AnimatorController());
         _polygonCollider.enabled = false;
     }
@@ -26,6 +26,7 @@ public class SableController : Weapon
     private IEnumerator AnimatorController()
     {
         var wait = new WaitForSeconds(_delay);
+        var delayWeapon = new WaitForSeconds(1f);
 
         while (enabled)
         {
