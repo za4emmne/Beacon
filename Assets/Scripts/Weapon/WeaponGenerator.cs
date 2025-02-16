@@ -15,7 +15,6 @@ public class WeaponGenerator : Spawner<Weapon>
         weapon.Initialize();
 
         return weapon;
-
     }
 
     protected override Vector3 PositionGeneraton()

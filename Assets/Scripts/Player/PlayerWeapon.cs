@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     [SerializeField] PlayerAnimation _animation;
-    [SerializeField] WeaponScriptableObject _currentWeapon;
+    [SerializeField] WeaponData _currentWeapon;
     [SerializeField] private LayerMask _enemyLayer;
     [SerializeField] private Transform _attackPoint;
 

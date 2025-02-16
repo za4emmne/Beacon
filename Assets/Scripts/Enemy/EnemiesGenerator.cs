@@ -17,6 +17,7 @@ public class EnemiesGenerator : Spawner<Enemy>
     public override Enemy GetObject()
     {
         var enemy = base.GetObject();
+        enemy.transform.parent = transform;
         enemy.Initialize(this);
 
         return enemy;

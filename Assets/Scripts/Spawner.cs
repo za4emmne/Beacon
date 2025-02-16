@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 {
-    [SerializeField] private T _object;
+    [SerializeField] private T[] _objects;
     [SerializeField] private float _minDelay;
     [SerializeField] private float _maxDelay;
     [SerializeField] private float _devationPositionY;
@@ -34,7 +34,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (_pool.Count == 0)
         {
-            var obj = Instantiate(_object);
+            var obj = Instantiate(_objects[0]);
 
             return obj;
         }
@@ -94,7 +94,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
             
             var obj = GetObject();
             obj.gameObject.SetActive(true);
-            obj.transform.parent = transform;
+            //obj.transform.parent = transform;
             obj.transform.position = PositionGeneraton();
 
             yield return waitForSeconds;

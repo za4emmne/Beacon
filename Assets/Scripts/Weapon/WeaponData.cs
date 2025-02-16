@@ -10,7 +10,7 @@ public enum TypeWeapon
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapons/Weapon")]
 
-public class WeaponScriptableObject : ScriptableObject
+public class WeaponData : ScriptableObject
 {
     [SerializeField] public TypeWeapon weaponType;
     [SerializeField] public float damage;

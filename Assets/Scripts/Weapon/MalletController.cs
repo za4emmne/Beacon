@@ -15,7 +15,6 @@ public class MalletController : Weapon
     public override void Initialize()
     {
         base.Initialize();
-        _position = new Vector2(RandomPositionX(), 1f);
         AddForce();
     }
 
@@ -26,6 +25,7 @@ public class MalletController : Weapon
 
     private void AddForce()
     {
+        _position = new Vector2(RandomPositionX(), 1f);
         _rigidbody2D.AddForce(_position * speed, ForceMode2D.Impulse);
     }
 

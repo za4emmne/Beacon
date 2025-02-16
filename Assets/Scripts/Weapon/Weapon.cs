@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private WeaponScriptableObject _data;
+    [SerializeField] private WeaponData _data;
     [SerializeField] private float damage;
     [SerializeField] protected float _delay;
     [SerializeField] protected float speed;
