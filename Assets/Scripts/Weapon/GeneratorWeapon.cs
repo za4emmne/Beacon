@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponGenerator : Spawner<Weapon>
+public class GeneratorWeapon : Spawner<Weapon>
 {
     private void Start()
     {
-        base.OnStartGenerator();
+        //base.OnStartGenerator();
     }
 
     public override Weapon GetObject()

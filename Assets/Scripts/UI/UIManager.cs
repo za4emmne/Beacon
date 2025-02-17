@@ -6,8 +6,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text _scoreText;
     [SerializeField] private GameObject[] _gameOverScreen;
-    [SerializeField] private GameObject[] _levelUpScreen;
-    [SerializeField] private GameObject _levelUp;
+    //[SerializeField] private GameObject[] _levelUpScreen;
+    //[SerializeField] private GameObject _levelUp;
 
     private PlayerProgress _player;
 
@@ -18,8 +18,8 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         ScreenManage(_gameOverScreen, false);
-        ScreenManage(_levelUpScreen, false);
-        ScreenManage(_levelUpScreen, false);
+        //ScreenManage(_levelUpScreen, false);
+        //ScreenManage(_levelUpScreen, false);
     }
 
     //private void OnEnable()
@@ -37,10 +37,10 @@ public class UIManager : MonoBehaviour
         _scoreText.text = "—чет: " + Score;
     }
 
-    public void OnLevelUpScreen()
-    {
-        ScreenManage(_levelUpScreen, true);
-    }
+    //public void OnLevelUpScreen()
+    //{
+    //    ScreenManage(_levelUpScreen, true);
+    //}
 
     public void OnDeadScreen()
     {

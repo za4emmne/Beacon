@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectKiller : MonoBehaviour
 {
-    [SerializeField] private WeaponGenerator _generator;
+    [SerializeField] private GeneratorWeapon _generator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

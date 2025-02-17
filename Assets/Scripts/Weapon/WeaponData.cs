@@ -18,4 +18,5 @@ public class WeaponData : ScriptableObject
     [SerializeField] public float attackRange;
     [SerializeField] public GameObject Prefab;
     [SerializeField] public float speed;
+    [SerializeField] public Sprite icon;
 }

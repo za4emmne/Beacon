@@ -34,7 +34,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     {
         if (_pool.Count == 0)
         {
-            var obj = Instantiate(_objects[0]);
+            var obj = Instantiate(_objects[0/*index*/]);
 
             return obj;
         }
@@ -94,7 +94,6 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
             
             var obj = GetObject();
             obj.gameObject.SetActive(true);
-            //obj.transform.parent = transform;
             obj.transform.position = PositionGeneraton();
 
             yield return waitForSeconds;

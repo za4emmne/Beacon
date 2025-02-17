@@ -18,3 +18,4 @@ MonoBehaviour:
   attackRange: 0
   Prefab: {fileID: 5741604329162156924, guid: 964081ced5bd2534baa1a24931045cec, type: 3}
   speed: 5
+  icon: {fileID: 944862034, guid: aae69adbfd05d3f4ab6aa23b0efcfa9e, type: 3}

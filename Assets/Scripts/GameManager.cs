@@ -49,8 +49,5 @@ public class GameManager : MonoBehaviour
         _uiManager.ChangeScore(_score);
     }
 
-    private void FreezeTime()
-    {
-        Time.timeScale = 0f;
-    }
+
 }
