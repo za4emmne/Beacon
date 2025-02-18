@@ -11,7 +11,7 @@ public class EnemiesGenerator : Spawner<Enemy>
 
     private void Start()
     {
-        //  base.OnStartGenerator();
+        base.OnStartGenerator();
     }
 
     public override Enemy GetObject()

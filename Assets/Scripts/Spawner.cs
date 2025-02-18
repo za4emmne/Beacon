@@ -15,13 +15,13 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField] private float _spawnTime;
     private Coroutine _coroutine;
 
-    private Queue<T> _pool;
+    protected Queue<T> pool;
 
-    public IEnumerable<T> PooledObjects => _pool;
+    public IEnumerable<T> PooledObjects => pool;
 
     private void Awake()
     {
-        _pool = new Queue<T>();
+        pool = new Queue<T>();
         _transform = GetComponent<Transform>();
     }
 
@@ -32,19 +32,19 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     public virtual T GetObject()
     {
-        if (_pool.Count == 0)
+        if (pool.Count == 0)
         {
             var obj = Instantiate(_objects[0/*index*/]);
 
             return obj;
         }
 
-        return _pool.Dequeue();
+        return pool.Dequeue();
     }
 
     public virtual void PutObject(T obj)
     {
-        _pool.Enqueue(obj);
+        pool.Enqueue(obj);
         obj.gameObject.SetActive(false);
     }
 
@@ -64,7 +64,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     public void Reset()
     {
-        _pool.Clear();
+        pool.Clear();
     }
 
     public void OnStartGenerator()
@@ -76,7 +76,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     }
 
-    private void OnStop()
+    public void OnStop()
     {
         if (_coroutine != null)
         {

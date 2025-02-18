@@ -19,4 +19,10 @@ public class WeaponData : ScriptableObject
     [SerializeField] public GameObject Prefab;
     [SerializeField] public float speed;
     [SerializeField] public Sprite icon;
+    [SerializeField] public int level;
+
+    private void Start()
+    {
+        level = 1;
+    }
 }

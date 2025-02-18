@@ -16,13 +16,9 @@ public class ManagerWeapon : MonoBehaviour
         _generator = GetComponent<GeneratorWeapon>();
     }
 
-    private void Start()
-    {
-        _availableWeapons = new List<WeaponData>(_weapons);
-    }
-
     public List<WeaponData> GetRandomChoices()//добавить разное оружие в зависимости от уровня
     {
+        _availableWeapons = new List<WeaponData>(_weapons);
         List<WeaponData> choices = new List<WeaponData>();
 
         for (int i = 0; i < _numberOfChoices; i++)
@@ -37,13 +33,18 @@ public class ManagerWeapon : MonoBehaviour
 
     public void OnWeaponAbilitySelected(WeaponData selectedWeaponAbility)
     {
-        // Удаляем выбранное оружие или способность из списка доступных
-        //availableWeaponsAbilities.Remove(selectedWeaponAbility);
-
-        // Создаем префаб выбранного оружия или способности
         if (selectedWeaponAbility.Prefab != null)
         {
-            _generator.GetObject();//какой объект создается
+            selectedWeaponAbility.level++;
+
+            if (selectedWeaponAbility.weaponType == TypeWeapon.Melee)
+            {
+                _generator.GetObject();
+            }
+            else if (selectedWeaponAbility.weaponType == TypeWeapon.Ranged)
+            {
+                _generator.OnStartGenerator();
+            }
         }
         else
         {
