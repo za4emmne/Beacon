@@ -17,11 +17,13 @@ public class PlayerMovenment : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private Transform _transform;
+    private SpriteRenderer _spriteRenderer;
     private float _horizontalMove;
     private float _verticalMove;
     private Vector3 _rotate;
 
     public event Action Run;
+    public event Action<bool> Flip;
 
     public float HorizontalMove => _horizontalMove;
     public float VerticalMove => _verticalMove;
@@ -31,6 +33,7 @@ public class PlayerMovenment : MonoBehaviour
     {
         _transform = GetComponent<Transform>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -47,18 +50,19 @@ public class PlayerMovenment : MonoBehaviour
        
         if (_horizontalMove < 0 || _joystick.Horizontal < 0)
         {
-            _rotate.y = 180;
-            transform.rotation = Quaternion.Euler(_rotate);
+            //_rotate.y = 180;
+            ////transform.rotation = Quaternion.Euler(_rotate);
             //_spriteRenderer.flipX = true;
+            transform.localEulerAngles = new Vector3(0, 180, 0);
         }
 
         if (_horizontalMove > 0 || _joystick.Horizontal > 0)
         {
-            _rotate.y = 0;
-            transform.rotation = Quaternion.Euler(_rotate);
+            //_rotate.y = 0;
+            //transform.rotation = Quaternion.Euler(_rotate);
             //_spriteRenderer.flipX = false;
+            transform.localEulerAngles = new Vector3(0, 0, 0);
         }
-
 
         Run?.Invoke();
     }

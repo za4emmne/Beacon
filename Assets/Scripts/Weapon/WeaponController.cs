@@ -33,6 +33,4 @@ public class WeaponController : MonoBehaviour
     {
         _currentCooldown = _cooldownDuration;
     }
-
-
 }

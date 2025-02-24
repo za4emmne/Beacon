@@ -10,6 +10,13 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected float speed;
     [SerializeField] protected int level;
 
+    private PlayerMovenment _player;
+
+    private void Start()
+    {
+        _player = Player.singleton.GetComponent<PlayerMovenment>();
+    }
+
     public virtual void Initialize()
     {
         damage = _data.damage;
@@ -25,4 +32,17 @@ public class Weapon : MonoBehaviour
             enemyHealth.TakeDamage(damage);
         }
     }
+
+    //protected void Flip(bool isChanged)
+    //{
+    //    if (isChanged && transform.position.x > 0)
+    //    {
+    //        _renderer.flipX = isChanged;
+    //    }
+    //    else
+    //    {
+    //        transform.position *= -1;
+    //    }
+
+    //}
 }

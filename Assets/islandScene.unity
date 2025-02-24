@@ -33945,7 +33945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8119264161405689050, guid: 3244a5288ed8cf94a954094afcafeda8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.23
+      value: 0.4209998
       objectReference: {fileID: 0}
     - target: {fileID: 8119264161405689050, guid: 3244a5288ed8cf94a954094afcafeda8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33957,11 +33957,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8119264161405689050, guid: 3244a5288ed8cf94a954094afcafeda8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.53646
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8119264161405689050, guid: 3244a5288ed8cf94a954094afcafeda8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8119264161405689050, guid: 3244a5288ed8cf94a954094afcafeda8, type: 3}
       propertyPath: m_LocalRotation.y
@@ -33969,7 +33969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8119264161405689050, guid: 3244a5288ed8cf94a954094afcafeda8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.84392583
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8119264161405689050, guid: 3244a5288ed8cf94a954094afcafeda8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -33981,7 +33981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8119264161405689050, guid: 3244a5288ed8cf94a954094afcafeda8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -244.886
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34061,6 +34061,10 @@ PrefabInstance:
       propertyPath: _vampireHelp
       value: 
       objectReference: {fileID: 1753735310}
+    - target: {fileID: 1245269571634321738, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.4227
+      objectReference: {fileID: 0}
     - target: {fileID: 1621803363524963578, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: _objects.Array.size
       value: 1
@@ -34081,6 +34085,10 @@ PrefabInstance:
       propertyPath: _uiManager
       value: 
       objectReference: {fileID: 1684669140}
+    - target: {fileID: 5535481466845412378, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5977609340996506902, guid: 161c736a8e419c246a672fa5f77137b4, type: 3}
       propertyPath: _generator
       value: 
