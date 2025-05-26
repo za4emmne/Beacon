@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8836971432232731627}
   - component: {fileID: -8921167167161208639}
   - component: {fileID: 2826808874462881467}
-  - component: {fileID: 4920394256817199226}
   - component: {fileID: 4892187388043748793}
+  - component: {fileID: 5423857865098975292}
   m_Layer: 0
   m_Name: Sable
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.004370884}
-  m_LocalScale: {x: 0.5, y: 0.35192287, z: -0.57142854}
+  m_LocalScale: {x: 0.9, y: 0.35192287, z: -0.57142854}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,22 +108,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4920394256817199226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957957912727663851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b10f07d5350994c9f571426bd4089a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 631ca2f7baaaa964c99e8c3ba533a14c, type: 2}
-  _damage: 1
-  _delay: 1
-  _speed: 0
 --- !u!60 &4892187388043748793
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -182,3 +166,19 @@ PolygonCollider2D:
       - {x: 0.2616564, y: 0.054416776}
       - {x: 0.06328099, y: -0.025335416}
   m_UseDelaunayMesh: 0
+--- !u!114 &5423857865098975292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957957912727663851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaa333944f05cc74f844e98fd96f6a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 631ca2f7baaaa964c99e8c3ba533a14c, type: 2}
+  damage: 4
+  delay: 0
+  speed: 0

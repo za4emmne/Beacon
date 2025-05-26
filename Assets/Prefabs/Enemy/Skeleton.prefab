@@ -42,14 +42,13 @@ GameObject:
   - component: {fileID: 6063575133032799727}
   - component: {fileID: 6063575133032799720}
   - component: {fileID: 6063575133032799726}
-  - component: {fileID: 1309707173059884502}
   - component: {fileID: 6063575133032799721}
   - component: {fileID: 1904837811}
   - component: {fileID: -1024973885821823727}
   - component: {fileID: 8151075718102510395}
   - component: {fileID: 9137852341149167105}
   - component: {fileID: -5574768753087114174}
-  - component: {fileID: 8791081678865503275}
+  - component: {fileID: 4293857142382231131}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
@@ -170,20 +169,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.111989304, y: 0.11515613}
   m_EdgeRadius: 0
---- !u!114 &1309707173059884502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6063575133032799722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2786522f3dfbbcb44995858cc6ca9064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemy: {fileID: 11400000, guid: 69c6d68b461d7c34185743cd1f3bf2ba, type: 2}
-  _image: {fileID: 1202467003, guid: deac125888f93a94c969051e6ea473c2, type: 3}
 --- !u!95 &6063575133032799721
 Animator:
   serializedVersion: 5
@@ -244,7 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f053241e91269dd449f8e38bea6773bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackTime: 2
 --- !u!114 &8151075718102510395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 20
   _health: 0
---- !u!114 &8791081678865503275
+--- !u!114 &4293857142382231131
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,6 +277,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6063575133032799722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc83e134bbac414c8db7facc4263659, type: 3}
+  m_Script: {fileID: 11500000, guid: c254f485117fa4d49877f815be3ef904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
+  _health: 0
+  _speed: 0
+  _damage: 0

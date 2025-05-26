@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private EnemiesGenerator _enemyManager;
+    [SerializeField] private ProgressBar _progressBar;
+    [SerializeField] private AudioClip _levelUpAudio;
 
     private UIManager _uiManager;
+    private AudioSource _audioSource;
     private PlayerProgress _progress;
     private int _score;
 
@@ -15,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _uiManager = GetComponent<UIManager>();
         _progress = Player.singleton.GetComponent<PlayerProgress>();
     }
@@ -28,19 +33,21 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         _enemyManager.oneKill += ChangeScore;
-        //_progress.LevelUp += FreezeTime;
+        _progress.LevelUp += _uiManager.ChangeLevel;
+        _progress.LevelUp += LevelUpAudioPlay;
     }
 
     private void OnDisable()
     {
         _enemyManager.oneKill -= ChangeScore;
-        //_progress.LevelUp -= FreezeTime;
+        _progress.LevelUp -= _uiManager.ChangeLevel;
+        _progress.LevelUp -= LevelUpAudioPlay;
     }
 
     public void RestartScene()
     {
-        SceneManager.LoadScene("islandScene");
         Time.timeScale = 1f;
+        SceneManager.LoadScene("islandScene");
     }
 
     private void ChangeScore()
@@ -49,5 +56,8 @@ public class GameManager : MonoBehaviour
         _uiManager.ChangeScore(_score);
     }
 
-
+    private void LevelUpAudioPlay()
+    {
+        _audioSource.PlayOneShot(_levelUpAudio);
+    }
 }

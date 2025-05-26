@@ -10,6 +10,11 @@ public class SmoothHealthBar : MonoBehaviour
 
     private Coroutine _coroutine;
 
+    public void Initialize(PlayerHealth player)
+    {
+        _characters = player;
+    }
+
     private void OnEnable()
     {
         _characters.Changed += OnChange;

@@ -4,45 +4,56 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private WeaponData _data;
-    [SerializeField] private float damage;
-    [SerializeField] protected float _delay;
+    [SerializeField] protected WeaponData data;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float delay;
     [SerializeField] protected float speed;
-    [SerializeField] protected int level;
 
-    private PlayerMovenment _player;
+    protected PlayerMovement player;
+    protected GeneratorWeapon generator;
+    protected Vector2 direction;
 
     private void Start()
     {
-        _player = Player.singleton.GetComponent<PlayerMovenment>();
+        
     }
 
     public virtual void Initialize()
     {
-        damage = _data.damage;
-        _delay = _data.delay;
-        speed = _data.speed;
-        level = _data.level;
+        player = Player.singleton.GetComponent<PlayerMovement>();
+
+        damage = data.Damage;
+        delay = data.delay;
+        speed = data.speed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void InitGenerator(GeneratorWeapon generator)
+    {
+        this.generator = generator;
+    }
+
+    public void SetZeroDirection()
+    {
+        direction = Vector2.zero;
+    }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
         {
             enemyHealth.TakeDamage(damage);
+
+            if (data.weaponType == TypeWeapon.Ranged)
+            {
+                generator.PutObject(this);
+            }
+        }
+        if (collision.TryGetComponent<ObjectKiller>(out ObjectKiller killer))
+        {
+            if (data.weaponType == TypeWeapon.Ranged)
+            {
+                generator.PutObject(this);
+            }
         }
     }
-
-    //protected void Flip(bool isChanged)
-    //{
-    //    if (isChanged && transform.position.x > 0)
-    //    {
-    //        _renderer.flipX = isChanged;
-    //    }
-    //    else
-    //    {
-    //        transform.position *= -1;
-    //    }
-
-    //}
 }

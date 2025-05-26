@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e22d4f5108c25a40965cf156fbbd29f, type: 3}
+  m_Name: Circle
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  Name: "\u0426\u0435\u043F\u043D\u043E\u0439 \u043A\u0438\u0441\u0442\u0435\u043D\u044C"
+  Description: "\u041E\u0440\u0443\u0436\u0438\u0435 \u043A\u0440\u0443\u0433\u043E\u0432\u043E\u0433\u043E
+    \u043F\u043E\u0440\u0430\u0436\u0435\u043D\u0438\u044F"
+  Icon: {fileID: 1575280912, guid: aae69adbfd05d3f4ab6aa23b0efcfa9e, type: 3}
+  Prefab: {fileID: 3652304865460360361, guid: 06d69c67e50aa4f4fa7e9bd39b472abb, type: 3}
+  Damage: 3
+  delay: 0
+  attackRange: 0
+  speed: 15
+  level: 1

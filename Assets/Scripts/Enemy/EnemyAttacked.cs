@@ -4,11 +4,8 @@ using System.Collections;
 
 public class EnemyAttacked : MonoBehaviour
 {
-    //[SerializeField] private float _attackTime;
-
     private float _damage;
     private EnemyHealth _health;
-    //private Coroutine _coroutine;
 
     public event Action Attacked;
 

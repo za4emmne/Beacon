@@ -13,11 +13,6 @@ public class CharactersHealth : MonoBehaviour
     public float MaxCurrent => _maxHealth;
     public float Current => _health;
 
-    private void Awake()
-    {
-        _health = _maxHealth;
-    }
-
     public void Init(float health)
     {
         _maxHealth = health;

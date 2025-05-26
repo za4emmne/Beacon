@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6047665863914009797}
   - component: {fileID: 8826236718844913656}
   - component: {fileID: 8399665646900704940}
-  - component: {fileID: 1856293394177910950}
+  - component: {fileID: -7865425299105240043}
   m_Layer: 0
   m_Name: Mallet
   m_TagString: Untagged
@@ -149,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1856293394177910950
+--- !u!114 &-7865425299105240043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,10 +158,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5741604329162156924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cd999cd7b2eeb04e88df2d40995133f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6228556fbc046be43b35f4b8b355985a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: df59c25d1f3f7ca4cb5cb0b3182132e7, type: 2}
-  _damage: 0
-  _delay: 0
-  _speed: 0
+  data: {fileID: 11400000, guid: df59c25d1f3f7ca4cb5cb0b3182132e7, type: 2}
+  damage: 10
+  delay: 0
+  speed: 0

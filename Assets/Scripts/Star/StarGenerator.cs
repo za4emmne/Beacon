@@ -5,6 +5,15 @@ using UnityEngine;
 public class StarGenerator : Spawner<Star>
 {
     [SerializeField] private EnemiesGenerator _enemyManager;
+    [SerializeField] private AudioClip _addStar;
+
+    private AudioSource _audioSourse;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _audioSourse = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -20,5 +29,11 @@ public class StarGenerator : Spawner<Star>
         star.gameObject.SetActive(true);
 
         return star;
+    }
+
+    public override void PutObject(Star obj)
+    {
+        _audioSourse.PlayOneShot(_addStar);
+        base.PutObject(obj);
     }
 }

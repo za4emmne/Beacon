@@ -6,16 +6,11 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-
-    private PlayerProgress _player;
-
-    private void Awake()
-    {
-        _player = Player.singleton.GetComponent<PlayerProgress>();
-    }
+    [SerializeField] private PlayerProgress _player;
 
     private void Start()
     {
+        SetMaxValue(_player.GetNextLevel());
         _slider.value = 0;
     }
 
@@ -40,5 +35,4 @@ public class ProgressBar : MonoBehaviour
     {
         _slider.value = value;
     }
-
 }

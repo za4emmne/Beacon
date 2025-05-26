@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 {
-    [SerializeField] private T[] _objects;
-    [SerializeField] private float _minDelay;
-    [SerializeField] private float _maxDelay;
+    [SerializeField] protected T[] _objects;
+    [SerializeField] protected float minDelay;
+    [SerializeField] protected float maxDelay;
     [SerializeField] private float _devationPositionY;
     [SerializeField] private float _devationPositionX;
     private Transform _transform;
@@ -15,19 +15,14 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField] private float _spawnTime;
     private Coroutine _coroutine;
 
-    protected Queue<T> pool;
+    private Queue<T> pool;
 
     public IEnumerable<T> PooledObjects => pool;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         pool = new Queue<T>();
         _transform = GetComponent<Transform>();
-    }
-
-    private void Start()
-    {
-
     }
 
     public virtual T GetObject()
@@ -67,13 +62,12 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
         pool.Clear();
     }
 
-    public void OnStartGenerator()
+    public virtual void OnStartGenerator()
     {
         if (_coroutine == null)
         {
             _coroutine = StartCoroutine(Spawn());
         }
-
     }
 
     public void OnStop()
@@ -85,13 +79,24 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private IEnumerator Spawn()
+    public void OneSpawn()
+    {
+        int count = Random.Range(0, 3);
+
+        for(int i = 0; i < count; i++)
+        {
+            var obj = GetObject();
+            obj.gameObject.SetActive(true);
+            obj.transform.position = PositionGeneraton();
+        }
+    }
+
+    protected IEnumerator Spawn()
     {
         while (true)
         {           
-            _spawnTime = Random.Range(_minDelay, _maxDelay);
-            var waitForSeconds = new WaitForSeconds(_spawnTime);   
-            
+            _spawnTime = Random.Range(minDelay, maxDelay);
+            var waitForSeconds = new WaitForSeconds(_spawnTime);
             var obj = GetObject();
             obj.gameObject.SetActive(true);
             obj.transform.position = PositionGeneraton();

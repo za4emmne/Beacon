@@ -3,21 +3,25 @@ using UnityEngine;
 
 public class PlayerProgress : MonoBehaviour
 {
+    [SerializeField] private float _nextLevel;
+
     private int _level;
-    private float _nextLevel;
     private float _currentProgress;
 
     public event Action<float> ChangedProgress;
     public event Action<float> LevelUpFloat;
     public event Action LevelUp;
 
+    public int Level => _level;
+
     private void Start()
     {
-        _nextLevel = 10;
         _level = 0;
         _currentProgress = 0;
-        LevelUpFloat?.Invoke(_nextLevel);
     }
+
+    public float GetNextLevel()
+    { return _nextLevel; }
 
     public void AddProgress(float score)
     {
@@ -25,9 +29,7 @@ public class PlayerProgress : MonoBehaviour
         ChangedProgress?.Invoke(_currentProgress);
 
         if (_currentProgress >= _nextLevel)
-        {
             UpLevel();
-        }
     }
 
     private void UpLevel()
@@ -35,9 +37,9 @@ public class PlayerProgress : MonoBehaviour
         float randomCoefficient = UnityEngine.Random.Range(1, 1.3f);
         _level++;
         _currentProgress = 0;
-        ChangedProgress?.Invoke(_currentProgress);
+        ChangedProgress?.Invoke(_currentProgress); //
         _nextLevel = _nextLevel * _level * randomCoefficient;
-        LevelUpFloat?.Invoke(_nextLevel);
+        LevelUpFloat?.Invoke(_nextLevel); //устанавливает следующий порог уровня
         LevelUp?.Invoke();
     }
 }

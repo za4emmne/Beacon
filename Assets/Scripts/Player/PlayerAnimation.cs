@@ -10,17 +10,16 @@ public class PlayerAnimation : MonoBehaviour
     private const string AnimationNameAttack = "Attack";
     private const string AnimationNameRun = "Run";
 
-    [SerializeField] private PlayerHealth _characters;
-    [SerializeField] private PlayerMovenment _playerMovenment;
-    //[SerializeField] private PlayerAttack _playerAttack;
     [SerializeField] private UIManager _uiManager;
+    [SerializeField] private PlayerHealth _characters;
+    [SerializeField] private PlayerMovement _playerMovenment;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private Coroutine _coroutine;
     private Color _color;
 
-    private void Start()
+    private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
@@ -39,6 +38,11 @@ public class PlayerAnimation : MonoBehaviour
         _characters.Died -= OnDeadAnimation;
         //_playerAttack.Attacked -= OnAttackAnimation;
         _playerMovenment.Run -= OnRunAnimation;
+    }
+
+    public void Initialize(UIManager manager)
+    {
+        _uiManager = manager;
     }
 
     public void GameOver()

@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     public Enemy()
     {
-        _attackController = new();
+        _attackController = new(); 
         _healthController = new();
         _movementController = new();
     }

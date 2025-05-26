@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum TypeWeapon
@@ -13,16 +11,19 @@ public enum TypeWeapon
 public class WeaponData : ScriptableObject
 {
     [SerializeField] public TypeWeapon weaponType;
-    [SerializeField] public float damage;
+    [SerializeField] public string Name;
+    [SerializeField] public string Description;
+    [SerializeField] public Sprite Icon;
+    [SerializeField] public GameObject Prefab;
+    [SerializeField] public float Damage;
     [SerializeField] public float delay;
     [SerializeField] public float attackRange;
-    [SerializeField] public GameObject Prefab;
     [SerializeField] public float speed;
-    [SerializeField] public Sprite icon;
     [SerializeField] public int level;
+ 
 
     private void Start()
     {
-        level = 1;
+        level = 0;
     }
 }

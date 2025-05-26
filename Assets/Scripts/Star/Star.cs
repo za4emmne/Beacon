@@ -44,8 +44,8 @@ public class Star : MonoBehaviour
                 _coroutine = null;
             }
 
-            _generator.PutObject(this);
             player.AddProgress(_price);
+            _generator.PutObject(this);
         }
     }
 }

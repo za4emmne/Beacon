@@ -1,36 +1,50 @@
 using System;
 using UnityEngine;
-//ÄÎÄÅËÀÒÜ
+
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField] protected GameObject _prefab;
-    [SerializeField] protected float _damage;
-    [SerializeField] protected float _speed;
-    [SerializeField] protected float _cooldownDuration;
-    [SerializeField] protected float _currentCooldown;
+    [SerializeField] protected int level;
+    [SerializeField] public WeaponData data;
 
-    protected PlayerMovenment playerMovenment;
-
-    public float Speed => _speed;
-
-    protected virtual void Start()
+    protected virtual void Awake()
     {
-        _currentCooldown = _cooldownDuration;
-        playerMovenment = Player.singleton.GetComponent<PlayerMovenment>();
+        level = 0;
     }
 
-    private void Update()
+    public virtual void Initialize(WeaponData weaponData)
     {
-        _currentCooldown -= Time.deltaTime;
+        data = weaponData;
+        level = data.level;
+        Upgraid(level);
+    }
 
-        if (_currentCooldown <= 0f)
+    private void Upgraid(int level)
+    {
+        switch (level)
         {
-            Attack();
+            case 2:
+                Level2(level); break;
+            case 3:
+                Level3(level); break;
+            case 4:
+                Level4(level); break;
         }
+
+
     }
 
-    protected virtual void Attack()
+    protected virtual void Level2(int level)
     {
-        _currentCooldown = _cooldownDuration;
+        Debug.Log(data.name + " - " + level);
+    }
+
+    protected virtual void Level3(int level)
+    {
+        Debug.Log(data.name + " - " + level);
+    }
+
+    protected virtual void Level4(int level)
+    {
+        Debug.Log(data.name + " - " + level);
     }
 }
