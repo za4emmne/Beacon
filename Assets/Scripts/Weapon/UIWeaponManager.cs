@@ -12,6 +12,7 @@ public class UIWeaponManager : MonoBehaviour
     [SerializeField] private GameObject _weaponPanel;
     [SerializeField] private Button[] _buttons;
     [SerializeField] private Text[] _texts;
+    [SerializeField] private Text[] _levelText;
     [SerializeField] private Image[] _icons;
     [SerializeField] private ParticleSystem _confeti;
     [SerializeField] private Text _levelUp;
@@ -41,7 +42,7 @@ public class UIWeaponManager : MonoBehaviour
 
     private void OnEnable()
     {
-         //_progress.LevelUp += ShowPanel;
+        //_progress.LevelUp += ShowPanel;
         _progress.LevelUp += ConfetiBoom;
     }
 
@@ -75,7 +76,7 @@ public class UIWeaponManager : MonoBehaviour
             _levelUp.transform.position = levelUpTransform;
             _levelUp.gameObject.SetActive(false);
             _levelUp.DOFade(1, 0).OnComplete(() =>
-            {  
+            {
                 ShowPanel();
             });
 
@@ -94,7 +95,12 @@ public class UIWeaponManager : MonoBehaviour
                 _texts[i].text = choices[i].Name;
                 _icons[i].sprite = choices[i].Icon;
 
-                WeaponData currentCoice = choices[i];    
+                if (choices[i].level > 0)
+                    _levelText[i].text = "lvl: " + choices[i].level.ToString();
+                else
+                    _levelText[i].text = "New!";
+
+                WeaponData currentCoice = choices[i];
                 _buttons[i].onClick.RemoveAllListeners(); //удаляет событие клика по кнопке, которое было установлено в предыдущей части кода.
                 _buttons[i].onClick.AddListener(() => OnChoiceSelected(currentCoice));
             }
