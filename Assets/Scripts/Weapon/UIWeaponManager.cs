@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
-
+//дописать событие подсказок!
 public class UIWeaponManager : MonoBehaviour
 {
     [Header("Скрипты:")]
@@ -21,16 +22,25 @@ public class UIWeaponManager : MonoBehaviour
     [Header("Настройки анимации")]
     [SerializeField] private Vector2 _hiddenPosition;
     [SerializeField] private Vector2 _shownPosition;
+    [SerializeField] private Vector2 _hiddenTooltipPosition;
+    [SerializeField] private Vector2 _shownTooltipPosition;
     [SerializeField] private float _animationDuration;
 
-    private int _playerLevel;
+    [Header("Подсказка")]
+    [SerializeField] private GameObject _tooltipPanel;
+    [SerializeField] private Text _tooltipText; 
+
     private RectTransform _weaponPanalRect;
+    private RectTransform _tooltipPanelRect;
+    private ButtonManager[] _buttonManagers;
+    private WeaponData[] _currentChoices;
 
     private void Awake()
     {
         _weaponPanalRect = _weaponPanel.GetComponent<RectTransform>();
-        //_manager = GetComponent<ManagerWeapon>();   
-        //_progress = Player.singleton.GetComponent<PlayerProgress>();
+        _tooltipPanelRect = _tooltipPanel.GetComponent<RectTransform>();
+        _buttonManagers = new ButtonManager[_buttons.Length];
+        //_tooltipPanel.SetActive(false);
     }
 
     private void Start()
@@ -42,13 +52,11 @@ public class UIWeaponManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //_progress.LevelUp += ShowPanel;
         _progress.LevelUp += ConfetiBoom;
     }
 
     private void OnDisable()
     {
-        // _progress.LevelUp -= ShowPanel;
         _progress.LevelUp -= ConfetiBoom;
     }
 
@@ -79,29 +87,38 @@ public class UIWeaponManager : MonoBehaviour
             {
                 ShowPanel();
             });
-
         });
     }
 
     private void ShowPanel()
     {
-        List<WeaponData> choices = _manager.GetRandomChoices();//позже добавить уровень
+        _currentChoices = _manager.GetRandomChoices().ToArray(); // Сохраняем текущие варианты
 
         for (int i = 0; i < _buttons.Length; i++)
         {
-            if (i < choices.Count)
+            if (i < _currentChoices.Length)
             {
                 _buttons[i].gameObject.SetActive(true);
-                _texts[i].text = choices[i].Name;
-                _icons[i].sprite = choices[i].Icon;
+                _texts[i].text = _currentChoices[i].Name;
+                _icons[i].sprite = _currentChoices[i].Icon;
 
-                if (choices[i].level > 0)
-                    _levelText[i].text = "lvl: " + choices[i].level.ToString();
+                if (_currentChoices[i].level > 0)
+                    _levelText[i].text = "lvl: " + _currentChoices[i].level.ToString();
                 else
                     _levelText[i].text = "New!";
 
-                WeaponData currentCoice = choices[i];
-                _buttons[i].onClick.RemoveAllListeners(); //удаляет событие клика по кнопке, которое было установлено в предыдущей части кода.
+                // Инициализация менеджера кнопки
+                if (_buttonManagers[i] == null)
+                {
+                    _buttonManagers[i] = _buttons[i].gameObject.GetComponent<ButtonManager>();
+                    int index = i; // Важно сохранить копию индекса для замыкания
+
+                    _buttonManagers[i].OnShowTooltip += () => ShowTooltip(index);
+                    _buttonManagers[i].OnHideTooltip += HideTooltip;
+                }
+
+                WeaponData currentCoice = _currentChoices[i];
+                _buttons[i].onClick.RemoveAllListeners();
                 _buttons[i].onClick.AddListener(() => OnChoiceSelected(currentCoice));
             }
             else
@@ -115,6 +132,28 @@ public class UIWeaponManager : MonoBehaviour
         {
             FreezeTime(0f);
         });
+    }
+
+
+    private void ShowTooltip(int buttonIndex)
+    {
+        if (buttonIndex >= 0 && buttonIndex < _currentChoices.Length)
+        {
+            _tooltipText.text = _currentChoices[buttonIndex].Description;
+            _tooltipPanel.SetActive(true);
+            _tooltipPanelRect.DOKill(); // Останавливаем предыдущие анимации
+            _tooltipPanelRect.DOAnchorPos(_shownTooltipPosition, _animationDuration).SetEase(Ease.OutQuad)
+                .SetEase(Ease.OutBack)
+                .SetUpdate(true);
+        }
+    }
+
+    private void HideTooltip()
+    {
+        _tooltipPanelRect.DOKill(); // Останавливаем предыдущие анимации
+        _tooltipPanelRect.DOAnchorPos(_hiddenTooltipPosition, _animationDuration).SetEase(Ease.OutQuad)
+            .OnComplete(() => _tooltipPanel.SetActive(false))
+            .SetUpdate(true); // Анимация будет работать даже при Time.timeScale = 0
     }
 
     private void OnChoiceSelected(WeaponData selectedWeaponAbility)
