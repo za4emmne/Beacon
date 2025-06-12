@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
@@ -15,7 +16,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField] private float _spawnTime;
     private Coroutine _coroutine;
 
-    private Queue<T> pool;
+    protected Queue<T> pool;
 
     public IEnumerable<T> PooledObjects => pool;
 

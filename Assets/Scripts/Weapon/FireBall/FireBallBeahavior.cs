@@ -24,25 +24,16 @@ public class FireBallBeahavior : Weapon
     {
         base.Initialize();
 
-        if (player.GetDirection().x < 0)
+        if (player.LastDirection < 0)
         {
             _spriteRenderer.flipX = true;
+            _direction = Vector2.left;
         }
-        else if (player.GetDirection().x < 0)
+        else
         {
             _spriteRenderer.flipX = false;
+            _direction = Vector2.right;
         }
-        else if (player.GetDirection().x == 0)
-        {
-            int random = Random.Range(0, 2);
-
-            if (random == 0)
-                _spriteRenderer.flipX = false;
-            else
-                _spriteRenderer.flipX = true;
-        }
-
-        _direction = new Vector2(player.GetDirection().x, 0);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

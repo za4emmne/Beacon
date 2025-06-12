@@ -1,11 +1,9 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class KnifeBehavior : Weapon
 {
     private Vector2 _direction;
     private SpriteRenderer _spriteRenderer;
-    private Tween flightTween;
 
     private void Awake()
     {
@@ -19,41 +17,27 @@ public class KnifeBehavior : Weapon
 
     private void Update()
     {
-        //transform.Translate(_direction * speed * Time.deltaTime, Space.World);
+        transform.Translate(_direction * speed * Time.deltaTime, Space.World);
     }
 
     public override void Initialize()
     {
         base.Initialize();
 
-        if (player.GetDirection().x < 0)
+        if (player.LastDirection < 0)
         {
             _spriteRenderer.flipX = true;
+            _direction = Vector2.left;
         }
         else
         {
             _spriteRenderer.flipX = false;
-        }
-
-        if(player.GetDirection().x > 0)
-        {
             _direction = Vector2.right;
         }
-        else
-        {
-            _direction = Vector2.left;
-        }
-
-
-        flightTween = transform
-           .DOMove((Vector2)transform.position + _direction * speed * 5f, 5f)
-           .SetEase(Ease.Linear)
-           .OnComplete(Deactivate);
     }
 
     public void Deactivate()
     {
-        flightTween?.Kill();  // Останавливаем твин
         gameObject.SetActive(false);
     }
 

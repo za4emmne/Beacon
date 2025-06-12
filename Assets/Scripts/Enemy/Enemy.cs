@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyMovement))]
@@ -8,7 +7,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private EnemyData _enemy;
+    [SerializeField] public EnemyData Data;
     //[SerializeField] private Sprite _image;
     [SerializeField] private float _health;
     [SerializeField] private float _speed;
@@ -19,37 +18,36 @@ public class Enemy : MonoBehaviour
     private EnemyHealth _healthController;
     private EnemyMovement _movementController;
 
-    public Enemy()
-    {
-        _attackController = new(); 
-        _healthController = new();
-        _movementController = new();
-    }
-
     private void Awake()
     {
         _attackController = GetComponent<EnemyAttacked>();
         _healthController = GetComponent<EnemyHealth>();
         _movementController = GetComponent<EnemyMovement>();
+
+        if (!_attackController) Debug.LogError("EnemyAttacked component missing!");
+        if (!_healthController) Debug.LogError("EnemyHealth component missing!");
+        if (!_movementController) Debug.LogError("EnemyMovement component missing!");
     }
 
-    private void Start()
+    public void Initialize(EnemyData data, EnemiesGenerator enemyManager)
     {
-        _health = _enemy.Health;
-        _damage = _enemy.Damage;
-        _speed = _enemy.Speed;
+        if (data == null)
+        {
+            Debug.LogError("EnemyData is null!");
+            return;
+        }
 
-        _attackController.Init(_damage);
-        _movementController.Init(_speed);
-        _healthController.Init(_health);
-    }
+        if (_attackController == null || _healthController == null || _movementController == null)
+        {
+            Debug.LogError("One of the required components is missing!");
+            return;
+        }
 
-    public void Initialize(EnemiesGenerator enemyManager)
-    {
+        Data = data;  
         _manager = enemyManager;
-        _health = _enemy.Health;
-        _damage = _enemy.Damage;
-        _speed = _enemy.Speed;
+        _health = data.Health;
+        _damage = data.Damage;
+        _speed = data.Speed;
 
         _attackController.Init(_damage);
         _movementController.Init(_speed);

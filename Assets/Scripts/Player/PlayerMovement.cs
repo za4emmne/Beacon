@@ -21,12 +21,14 @@ public class PlayerMovement : MonoBehaviour
     private float _horizontalMove;
     private float _verticalMove;
     private Vector2 _direction;
+    private float _lastDirection;
 
     public event Action Run;
     public event Action<bool> Flip;
 
     public float HorizontalMove => _horizontalMove;
     public float VerticalMove => _verticalMove;
+    public float LastDirection => _lastDirection;
 
 
     private void Awake()
@@ -50,20 +52,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (_horizontalMove < 0 || _joystick.Horizontal < 0)
         {
-            //_rotate.y = 180;
-            ////transform.rotation = Quaternion.Euler(_rotate);
-            //_spriteRenderer.flipX = true;
             transform.localEulerAngles = new Vector3(0, 180, 0);
         }
 
         if (_horizontalMove > 0 || _joystick.Horizontal > 0)
         {
-            //_rotate.y = 0;
-            //transform.rotation = Quaternion.Euler(_rotate);
-            //_spriteRenderer.flipX = false;
             transform.localEulerAngles = new Vector3(0, 0, 0);
         }
 
+        _lastDirection = _horizontalMove;
         Run?.Invoke();
     }
 

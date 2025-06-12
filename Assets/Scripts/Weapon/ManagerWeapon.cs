@@ -63,8 +63,7 @@ public class ManagerWeapon : MonoBehaviour
         }
         else
         {
-            WeaponController weaponController = new();
-            weaponController = FindWeaponInHand(selectedWeaponAbility);
+            WeaponController weaponController = FindWeaponInHand(selectedWeaponAbility);
 
             if (weaponController == null)
             {

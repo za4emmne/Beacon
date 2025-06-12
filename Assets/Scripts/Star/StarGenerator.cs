@@ -24,16 +24,14 @@ public class StarGenerator : Spawner<Star>
     {
         var star = base.GetObject();
         star.Initialize(this);
-
-
         star.gameObject.SetActive(true);
 
         return star;
     }
 
-    public override void PutObject(Star obj)
+    public override void PutObject(Star star)
     {
         _audioSourse.PlayOneShot(_addStar);
-        base.PutObject(obj);
+        base.PutObject(star);
     }
 }

@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 8151075718102510395}
   - component: {fileID: 9137852341149167105}
   - component: {fileID: -5574768753087114174}
-  - component: {fileID: 4293857142382231131}
+  - component: {fileID: 7715815726055618332}
   m_Layer: 8
   m_Name: Skeleton
   m_TagString: Untagged
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 20
   _health: 0
---- !u!114 &4293857142382231131
+--- !u!114 &7715815726055618332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,10 +277,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6063575133032799722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c254f485117fa4d49877f815be3ef904, type: 3}
+  m_Script: {fileID: 11500000, guid: 763f2284638d9b04e9eb7b162660974f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
+  Data: {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
   _health: 0
   _speed: 0
   _damage: 0

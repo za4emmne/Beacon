@@ -30,6 +30,7 @@ public class Star : MonoBehaviour
         while (transform.position != Player.singleton.transform.position)
         {
             transform.DOMove(Player.singleton.transform.position, 0.5f);
+
             yield return null;
         }
     }

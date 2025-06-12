@@ -48,7 +48,7 @@ MonoBehaviour:
   _objects:
   - {fileID: 2404086131410671150, guid: 68d4bed1120a8c045b88a7fef90b38dd, type: 3}
   minDelay: 1
-  maxDelay: 6
+  maxDelay: 3
   _devationPositionY: 0
   _devationPositionX: 0
   _spawnTime: 0

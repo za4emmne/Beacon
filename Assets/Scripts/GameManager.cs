@@ -7,6 +7,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private EnemiesGenerator _enemyManager;
+    [SerializeField] private StarGenerator _starGenerator;
     [SerializeField] private ProgressBar _progressBar;
     [SerializeField] private AudioClip _levelUpAudio;
 
@@ -27,19 +28,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _score = 0;
-        _enemyManager.OnStartGenerator();
+        //_enemyManager.OnStartGenerator();
     }
 
     private void OnEnable()
     {
-        _enemyManager.oneKill += ChangeScore;
+        _enemyManager.OneKill += ChangeScore;
         _progress.LevelUp += _uiManager.ChangeLevel;
         _progress.LevelUp += LevelUpAudioPlay;
     }
 
     private void OnDisable()
     {
-        _enemyManager.oneKill -= ChangeScore;
+        _enemyManager.OneKill -= ChangeScore;
         _progress.LevelUp -= _uiManager.ChangeLevel;
         _progress.LevelUp -= LevelUpAudioPlay;
     }
