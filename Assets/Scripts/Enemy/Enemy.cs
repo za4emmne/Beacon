@@ -57,6 +57,6 @@ public class Enemy : MonoBehaviour
 
     public void OnRelease()
     {
-        _manager.PutObject(this);
+        _manager.ReturnEnemyToPool(this);
     }
 }

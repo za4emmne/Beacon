@@ -247,15 +247,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fadbffbff872544a9cdea9f761b0de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _initialPoolSize: 50
+  _maxPoolSize: 500
+  _minSpawnDistance: 10
+  _maxSpawnDistance: 15
   _starGenerator: {fileID: 1920096099}
-  _objects:
-  - {fileID: 7715815726055618332, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
-  - {fileID: 5247198145696889659, guid: c197cca5bd2d7e04d840acb35797fd79, type: 3}
-  minDelay: 1
-  maxDelay: 2
-  _devationPositionY: 4
-  _devationPositionX: 4
-  _spawnTime: 0
 --- !u!114 &61008045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,23 +264,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ed3910148f1a141aeaeb49caf3f05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - waveName: 'Wave 1: Skull'
-    totalEnemies: 25
-    spawnRate: 0.1
-    possibleEnemies:
-    - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
-  - waveName: 'Wave 2: Mushroom'
-    totalEnemies: 25
-    spawnRate: 0.1
-    possibleEnemies:
-    - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
-    - {fileID: 11400000, guid: cfc566e0eb9138940a4f67305a079766, type: 2}
-  timeBetweenWaves: 5
+  waveConfigs:
+  - {fileID: 11400000, guid: 186b11def13d1fa4fa7fd0533f31ad0b, type: 2}
+  - {fileID: 11400000, guid: 4414ee94579d7ea46bcefb75a62370ee, type: 2}
+  waveDuration: 10
   healthMultiplierPerWave: 1.1
   damageMultiplierPerWave: 1.05
-  bossEnemy: {fileID: 11400000, guid: cfc566e0eb9138940a4f67305a079766, type: 2}
-  bossWaveInterval: 5
+  bossEnemies: []
+  bossSpawnChance: 0.15
+  _enemySpawner: {fileID: 61008044}
+  _playerTransform: {fileID: 1103850432}
+  OnWaveStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWaveComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &85562415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3604,6 +3599,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960240211}
   m_CullTransparentMesh: 1
+--- !u!1 &1060901228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1060901229}
+  - component: {fileID: 1060901231}
+  - component: {fileID: 1060901230}
+  m_Layer: 5
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1060901229
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060901228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1284718081}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -124}
+  m_SizeDelta: {x: 640.76, y: 93.415}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1060901230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060901228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 26e5eb60ed650224d9dfd6d977091991, type: 3}
+    m_FontSize: 70
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 7
+    m_MaxSize: 70
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u0422\u0430\u0439\u043C\u0435\u0440"
+--- !u!222 &1060901231
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060901228}
+  m_CullTransparentMesh: 1
 --- !u!1 &1066605499
 GameObject:
   m_ObjectHideFlags: 0
@@ -3885,6 +3959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 257054590}
+  _maxHealth: 100
 --- !u!114 &1103850441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6168,6 +6243,7 @@ RectTransform:
   - {fileID: 1709685812}
   - {fileID: 1667264682}
   - {fileID: 857271492}
+  - {fileID: 1060901229}
   - {fileID: 484211018}
   - {fileID: 1251184956}
   - {fileID: 311055312}
@@ -6848,6 +6924,7 @@ GameObject:
   - component: {fileID: 1684669141}
   - component: {fileID: 1684669142}
   - component: {fileID: 1684669143}
+  - component: {fileID: 1684669144}
   m_Layer: 0
   m_Name: GameGod
   m_TagString: Untagged
@@ -6883,7 +6960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyManager: {fileID: 61008044}
-  _starGenerator: {fileID: 0}
+  _starGenerator: {fileID: 1920096099}
   _progressBar: {fileID: 228589905}
   _levelUpAudio: {fileID: 8300000, guid: 3b279ece27f3bfd49b79459735d527c4, type: 3}
 --- !u!114 &1684669140
@@ -7061,6 +7138,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1684669144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684669136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1447897b5452e047af192acf28b4b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 1060901230}
 --- !u!1 &1709685811
 GameObject:
   m_ObjectHideFlags: 0

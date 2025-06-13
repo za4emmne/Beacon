@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3a0792e330ccb64e8538987d95e6c0a, type: 3}
-  m_Name: Skull
+  m_Name: Goblin
   m_EditorClassIdentifier: 
-  _name: Skull
-  _health: 10
-  _damage: 1
-  _speed: 0.6
-  _prefab: {fileID: 6063575133032799722, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
-  SpawnWeight: 1
+  _name: "\u0413\u043E\u0431\u043B\u0438\u043D"
+  _health: 20
+  _damage: 5
+  _speed: 1
+  _prefab: {fileID: 1752966421502433363, guid: f63aacc6f6c4f80499a18d30cd65c4ec, type: 3}
+  SpawnWeight: 0

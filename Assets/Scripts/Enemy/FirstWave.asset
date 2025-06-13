@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3a0792e330ccb64e8538987d95e6c0a, type: 3}
-  m_Name: Skull
+  m_Script: {fileID: 11500000, guid: 3b2e9594cc63182499d7b38cdd81f6b0, type: 3}
+  m_Name: FirstWave
   m_EditorClassIdentifier: 
-  _name: Skull
-  _health: 10
-  _damage: 1
-  _speed: 0.6
-  _prefab: {fileID: 6063575133032799722, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
-  SpawnWeight: 1
+  waveName: "\u0421\u043A\u0435\u043B\u0435\u0442\u044B"
+  totalEnemies: 50
+  possibleEnemies:
+  - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
+  description: 

@@ -10,7 +10,7 @@ public class WaveSystem : MonoBehaviour
     public float damageMultiplierPerWave = 1.05f;
 
     [Header("Боссы")]
-    public EnemyDataSO[] bossEnemies;
+    public EnemyData[] bossEnemies;
     [Range(0f, 1f)] public float bossSpawnChance = 0.15f;
 
     [Header("Зависимости")]
@@ -155,20 +155,20 @@ public class WaveSystem : MonoBehaviour
     private void SpawnRandomEnemy(WaveDataSO wave)
     {
         int randomIndex = Random.Range(0, wave.possibleEnemies.Length);
-        EnemyDataSO randomEnemy = wave.possibleEnemies[randomIndex];
+        EnemyData randomEnemy = wave.possibleEnemies[randomIndex];
 
         float healthMultiplier = GetHealthMultiplier(_currentWaveIndex - 1);
         float damageMultiplier = GetDamageMultiplier(_currentWaveIndex - 1);
 
-        _enemySpawner.SpawnEnemyWithModifiers(randomEnemy, healthMultiplier, damageMultiplier, _playerTransform);
+        _enemySpawner.SpawnEnemyWithModifiers(randomEnemy, _playerTransform);
     }
 
-    private void SpawnBoss(EnemyDataSO bossData)
+    private void SpawnBoss(EnemyData bossData)
     {
         float healthMultiplier = GetHealthMultiplier(_currentWaveIndex - 1) * 3f;
         float damageMultiplier = GetDamageMultiplier(_currentWaveIndex - 1) * 2f;
 
-        _enemySpawner.SpawnEnemyWithModifiers(bossData, healthMultiplier, damageMultiplier, _playerTransform);
+        _enemySpawner.SpawnEnemyWithModifiers(bossData, _playerTransform);
         Debug.Log("?? БОСС появился!");
     }
 

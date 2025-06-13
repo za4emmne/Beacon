@@ -8,7 +8,7 @@ public class WaveDataSO : ScriptableObject
     public int totalEnemies = 50;
 
     [Header("Враги в волне")]
-    public EnemyDataSO[] possibleEnemies;
+    public EnemyData[] possibleEnemies;
 
     [Header("Описание")]
     [TextArea(3, 5)]

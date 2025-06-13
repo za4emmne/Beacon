@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mushroom Dead
+  m_Name: Goblin Dead
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 250460803, guid: 1d58965a2e7dc7a43b3f885638a65470, type: 3}
-    - time: 0.2
-      value: {fileID: 458671862, guid: 1d58965a2e7dc7a43b3f885638a65470, type: 3}
-    - time: 0.41666666
-      value: {fileID: 1895171301, guid: 1d58965a2e7dc7a43b3f885638a65470, type: 3}
-    - time: 0.6166667
-      value: {fileID: 1750584200, guid: 1d58965a2e7dc7a43b3f885638a65470, type: 3}
+      value: {fileID: 1664292976, guid: 02e45afe552d6d54095fb699ade10a25, type: 3}
+    - time: 0.16666667
+      value: {fileID: 229622715, guid: 02e45afe552d6d54095fb699ade10a25, type: 3}
+    - time: 0.33333334
+      value: {fileID: -1107055578, guid: 02e45afe552d6d54095fb699ade10a25, type: 3}
+    - time: 0.5
+      value: {fileID: -1426612116, guid: 02e45afe552d6d54095fb699ade10a25, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 250460803, guid: 1d58965a2e7dc7a43b3f885638a65470, type: 3}
-    - {fileID: 458671862, guid: 1d58965a2e7dc7a43b3f885638a65470, type: 3}
-    - {fileID: 1895171301, guid: 1d58965a2e7dc7a43b3f885638a65470, type: 3}
-    - {fileID: 1750584200, guid: 1d58965a2e7dc7a43b3f885638a65470, type: 3}
+    - {fileID: 1664292976, guid: 02e45afe552d6d54095fb699ade10a25, type: 3}
+    - {fileID: 229622715, guid: 02e45afe552d6d54095fb699ade10a25, type: 3}
+    - {fileID: -1107055578, guid: 02e45afe552d6d54095fb699ade10a25, type: 3}
+    - {fileID: -1426612116, guid: 02e45afe552d6d54095fb699ade10a25, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6333333
+    m_StopTime: 0.51666665
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -79,7 +79,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.6166667
+  - time: 0.5
     functionName: OnRelease
     data: 
     objectReferenceParameter: {fileID: 0}

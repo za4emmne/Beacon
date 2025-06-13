@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private CameraShake _camera;
+    [SerializeField] private float _maxHealth;
 
     private PlayerAnimation _animator;
     private PlayerHealth _health;
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _health.Init(10);
+        _health.Init(_maxHealth);
     }
 
     public void Initialize(UIManager uiManager, CameraShake camera, FixedJoystick joystick)
