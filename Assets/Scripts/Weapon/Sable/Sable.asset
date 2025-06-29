@@ -18,8 +18,14 @@ MonoBehaviour:
     \u0431\u043B\u0438\u0436\u043D\u0435\u0433\u043E \u0431\u043E\u044F"
   Icon: {fileID: 21300000, guid: 42c9ea12129033c4281ad5938d791d98, type: 3}
   Prefab: {fileID: 4708683922513603325, guid: 8749d5986fedc8e40ba0cd798234d610, type: 3}
-  Damage: 5
-  delay: 1
-  attackRange: 1
-  speed: 0
-  level: 0
+  _damage: 20
+  _delay: 1
+  _attackRange: 1
+  _speed: 0
+  _level: 0
+  LevelOpen: 0
+  CurrentDamage: 20
+  CurrentDelay: 1
+  CurrentAttackRange: 1
+  CurrentSpeed: 0
+  CurrentLevel: 1

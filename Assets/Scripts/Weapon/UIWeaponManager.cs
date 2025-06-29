@@ -92,6 +92,7 @@ public class UIWeaponManager : MonoBehaviour
 
     private void ShowPanel()
     {
+        PlayerProgress player = Player.singleton.GetComponent<PlayerProgress>();
         _currentChoices = _manager.GetRandomChoices().ToArray(); // Сохраняем текущие варианты
 
         for (int i = 0; i < _buttons.Length; i++)
@@ -102,8 +103,8 @@ public class UIWeaponManager : MonoBehaviour
                 _texts[i].text = _currentChoices[i].Name;
                 _icons[i].sprite = _currentChoices[i].Icon;
 
-                if (_currentChoices[i].level > 0)
-                    _levelText[i].text = "lvl: " + _currentChoices[i].level.ToString();
+                if (_currentChoices[i].CurrentLevel > 0)
+                    _levelText[i].text = "lvl: " + _currentChoices[i].CurrentLevel.ToString();
                 else
                     _levelText[i].text = "New!";
 

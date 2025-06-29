@@ -4,21 +4,48 @@ using UnityEngine;
 
 public class CircleBehavior : Weapon
 {
+    [SerializeField] private float radius = 2f;
+
     private Transform _player;
-    private float _radius = 2f;
-    private float _currentAngle = 0f;
-    private float _targetAngle = 0f;
+    private Transform _independentPivot;
+    private float currentAngle = 0f;
+
+    private void Start()
+    {
+        _player = Player.singleton.transform;
+        CreateIndependentPivot();
+        PositionWeapon();
+        base.Initialize();
+    }
+
+    private void CreateIndependentPivot()
+    {
+        // Создаем независимую точку поворота БЕЗ родительской связи с игроком
+        GameObject pivot = new GameObject("IndependentWeaponPivot");
+        _independentPivot = pivot.transform;
+
+        // НЕ делаем pivot дочерним объектом игрока!
+        _independentPivot.position = _player.position;
+
+        // Делаем оружие дочерним объектом независимой точки поворота
+        transform.SetParent(_independentPivot);
+    }
+
+    private void PositionWeapon()
+    {
+        transform.localPosition = new Vector3(radius, 0, 0);
+    }
 
     private void Update()
     {
-        _player = Player.singleton.transform;
-        _targetAngle += speed * Time.deltaTime;
-        _currentAngle = Mathf.LerpAngle(_currentAngle, _targetAngle, 0.1f);
+        // Обновляем позицию точки поворота, следуя за игроком
+        _independentPivot.position = _player.position;
 
-        float x = _player.position.x + Mathf.Cos(_currentAngle) * _radius;
-        float y = _player.position.y + Mathf.Sin(_currentAngle) * _radius;
+        // Вращаем точку поворота с постоянной скоростью
+        _independentPivot.Rotate(0, 0, speed * Time.deltaTime);
 
-        transform.position = new Vector2(x, y);
-        transform.right = (transform.position - _player.position).normalized;
+        // Направляем оружие от центра
+        Vector3 directionFromCenter = (transform.position - _player.position).normalized;
+        transform.right = directionFromCenter;
     }
 }

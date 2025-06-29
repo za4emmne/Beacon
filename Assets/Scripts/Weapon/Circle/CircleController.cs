@@ -7,6 +7,7 @@ using UnityEngine;
 public class CircleController : WeaponController
 {
     [SerializeField] private GameObject[] _prefabs;
+    [SerializeField] private int _addSpeed;
 
     protected override void Awake()
     {
@@ -17,7 +18,9 @@ public class CircleController : WeaponController
     protected override void Level2(int level)
     {
         base.Level2(level);
-        data.speed += 5;
+        data.CurrentSpeed += _addSpeed;
+        CircleBehavior circle = _prefabs[0].GetComponent<CircleBehavior>();
+        circle.Initialize();
     }
 
     protected override void Level3(int level)

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   _name: "\u0413\u043E\u0431\u043B\u0438\u043D"
-  _health: 20
+  _health: 15
   _damage: 5
-  _speed: 1
+  _speed: 0.5
   _prefab: {fileID: 1752966421502433363, guid: f63aacc6f6c4f80499a18d30cd65c4ec, type: 3}
   SpawnWeight: 0

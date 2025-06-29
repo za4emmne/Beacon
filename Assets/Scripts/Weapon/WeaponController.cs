@@ -14,7 +14,7 @@ public class WeaponController : MonoBehaviour
     public virtual void Initialize(WeaponData weaponData)
     {
         data = weaponData;
-        level = data.level;
+        level = data.CurrentLevel;
         Upgraid(level);
     }
 

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skull
   m_EditorClassIdentifier: 
   _name: Skull
-  _health: 10
-  _damage: 1
-  _speed: 0.6
+  _health: 20
+  _damage: 10
+  _speed: 0.3
   _prefab: {fileID: 6063575133032799722, guid: 9351a80363a086444a880b807eb3d87d, type: 3}
   SpawnWeight: 1

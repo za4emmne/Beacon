@@ -28,7 +28,7 @@ public class SableController : WeaponController
     protected override void Level3(int level)
     {
         base.Level3(level);
-        data.Damage += level;
+        data.CurrentDamage += level;
         _firstSable.Initialize();
         _secondSable.Initialize();
     }

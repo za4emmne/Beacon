@@ -15,15 +15,27 @@ public class WeaponData : ScriptableObject
     [SerializeField] public string Description;
     [SerializeField] public Sprite Icon;
     [SerializeField] public GameObject Prefab;
-    [SerializeField] public float Damage;
-    [SerializeField] public float delay;
-    [SerializeField] public float attackRange;
-    [SerializeField] public float speed;
-    [SerializeField] public int level;
+    [SerializeField] private float _damage;
+    [SerializeField] private float _delay;
+    [SerializeField] private float _attackRange;
+    [SerializeField] private float _speed;
+    [SerializeField] private int _level;
+    [SerializeField] public int LevelOpen;
+
+    [Header("Текущие значения")]
+    public float CurrentDamage;
+    public float CurrentDelay;
+    public float CurrentAttackRange;
+    public float CurrentSpeed;
+    public int CurrentLevel;
  
 
-    private void Start()
+    public void Init()
     {
-        level = 0;
+        CurrentDamage = _damage;
+        CurrentDelay = _delay;
+        CurrentAttackRange = _attackRange;
+        CurrentSpeed = _speed;
+        CurrentLevel = _level;
     }
 }

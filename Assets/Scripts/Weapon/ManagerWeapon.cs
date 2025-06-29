@@ -10,6 +10,7 @@ public class ManagerWeapon : MonoBehaviour
     [SerializeField] private ObjectKiller _killer;
 
     private PlayerWeapons _player;
+    private PlayerProgress _playerProgress;
     private List<WeaponController> _weaponsInHand;
     private List<WeaponData> _availableWeapons;
     private int _numberOfChoices = 3;
@@ -17,14 +18,17 @@ public class ManagerWeapon : MonoBehaviour
     private void Awake()
     {
         _player = Player.singleton.GetComponent<PlayerWeapons>();
+        _playerProgress = Player.singleton.GetComponent<PlayerProgress>();
     }
 
     private void Start()
     {
         foreach (var weapon in _allWeapons)
         {
-            weapon.level = 0;
+            weapon.CurrentLevel = 0;
         }
+
+        CreateNewWeapon(_player.GetStartWeapon());
     }
 
     public List<WeaponData> GetRandomChoices()//добавить разное оружие в зависимости от уровня
@@ -35,6 +39,12 @@ public class ManagerWeapon : MonoBehaviour
         foreach (var weapon in _allWeapons)
         {
             _availableWeapons.Add(weapon);
+        }
+
+        foreach (var weapon in _availableWeapons)
+        {
+            if(weapon.LevelOpen > _playerProgress.Level)
+                _availableWeapons.Remove(weapon);
         }
 
         for (int i = 0; i < _numberOfChoices; i++)
@@ -72,7 +82,7 @@ public class ManagerWeapon : MonoBehaviour
             else
             {
                 Debug.Log("Улучшаем оружие - " + selectedWeaponAbility.name);
-                selectedWeaponAbility.level++;
+                selectedWeaponAbility.CurrentLevel++;
                 weaponController.Initialize(selectedWeaponAbility);
             }
         }
@@ -92,7 +102,8 @@ public class ManagerWeapon : MonoBehaviour
             return;
         }
 
-        weaponData.level = 1;
+        weaponData.CurrentLevel = 1;
+        weaponData.Init();
         weaponController.Initialize(weaponData); //дописать в корне 
         _player.AddNewWeapon(weaponController);
     }

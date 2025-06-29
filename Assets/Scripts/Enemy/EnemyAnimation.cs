@@ -10,6 +10,7 @@ public class EnemyAnimation : MonoBehaviour
     private const string AnimationNameDead = "Dead";
     private const string AnimationNameAttack = "Attack";
     private const string AnimationNameRun = "Run";
+    private const string AnimationNameHit = "Hit";
 
     private EnemyAttacked _enemyAttacked;
     private EnemyHealth _health;
@@ -29,6 +30,7 @@ public class EnemyAnimation : MonoBehaviour
     {
         _enemyAttacked.Attacked += OnAttackAnimation;
         _health.Died += OnDeadAnimation;
+        _health.Changed += OnHitAnimation;
         _enemyMovement.AnimationRunPlayed += OnRunAnimation;
     }
 
@@ -36,6 +38,7 @@ public class EnemyAnimation : MonoBehaviour
     {
         _enemyAttacked.Attacked -= OnAttackAnimation;
         _health.Died -= OnDeadAnimation;
+        _health.Changed -= OnHitAnimation;
         _enemyMovement.AnimationRunPlayed -= OnRunAnimation;
     }
 
@@ -52,5 +55,10 @@ public class EnemyAnimation : MonoBehaviour
     public void OnRunAnimation()
     {
         _animator.SetTrigger(AnimationNameRun);
+    }
+
+    public void OnHitAnimation()
+    {
+        _animator.SetTrigger(AnimationNameHit);
     }
 }

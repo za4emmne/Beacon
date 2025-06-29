@@ -15,16 +15,17 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        
+
     }
 
     public virtual void Initialize()
     {
-        player = Player.singleton.GetComponent<PlayerMovement>();
+        if (player == null)
+            player = Player.singleton.GetComponent<PlayerMovement>();
 
-        damage = data.Damage;
-        delay = data.delay;
-        speed = data.speed;
+        damage = data.CurrentDamage;
+        delay = data.CurrentDelay;
+        speed = data.CurrentSpeed;
     }
 
     public void InitGenerator(GeneratorWeapon generator)

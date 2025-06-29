@@ -4,6 +4,7 @@ public class KnifeBehavior : Weapon
 {
     private Vector2 _direction;
     private SpriteRenderer _spriteRenderer;
+    private Vector2 _lastMovementDirection = Vector2.right;
 
     private void Awake()
     {
@@ -17,23 +18,33 @@ public class KnifeBehavior : Weapon
 
     private void Update()
     {
-        transform.Translate(_direction * speed * Time.deltaTime, Space.World);
+        transform.Translate(_lastMovementDirection * speed * Time.deltaTime, Space.World);
     }
 
     public override void Initialize()
     {
         base.Initialize();
 
-        if (player.LastDirection < 0)
+        Vector2 movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (movementInput.magnitude > 0.1f)
         {
-            _spriteRenderer.flipX = true;
-            _direction = Vector2.left;
+            _lastMovementDirection = movementInput.normalized;
         }
-        else
-        {
-            _spriteRenderer.flipX = false;
-            _direction = Vector2.right;
-        }
+
+        float angle = Mathf.Atan2(_lastMovementDirection.y, _lastMovementDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        //if (player.LastDirection < 0)
+        //{
+        //    _spriteRenderer.flipX = true;
+        //    _direction = Vector2.left;
+        //}
+        //else
+        //{
+        //    _spriteRenderer.flipX = false;
+        //    _direction = Vector2.right;
+        //}
     }
 
     public void Deactivate()
@@ -47,6 +58,7 @@ public class KnifeBehavior : Weapon
         {
             enemyHealth.TakeDamage(damage);
             Deactivate();
+            generator.PutObject(this);
         }
 
         if (collision.TryGetComponent<ObjectKiller>(out ObjectKiller killer))
