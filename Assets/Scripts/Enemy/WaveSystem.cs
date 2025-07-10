@@ -108,7 +108,7 @@ public class WaveSystem : MonoBehaviour
 
             _isWaveActive = false;
             OnWaveComplete?.Invoke(_currentWaveIndex);
-            Debug.Log($"? Волна {_currentWaveIndex} завершена! (Время истекло)");
+            Debug.Log($"Волна {_currentWaveIndex} завершена! (Время истекло)");
 
             // Сразу переходим к следующей волне без паузы
         }

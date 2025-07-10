@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Joy()
     {
-        _rigidbody2D.velocity = new Vector3(_joystick.Horizontal * _speed, _joystick.Vertical * _speed);
+        _rigidbody2D.linearVelocity = new Vector3(_joystick.Horizontal * _speed, _joystick.Vertical * _speed);
         JoystickCurrentHorizontal = _joystick.Horizontal;
         JoystickCurrentVertical = _joystick.Vertical;
     }
@@ -90,6 +90,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _horizontalMove = Input.GetAxisRaw(NameDirectionHorizontal) * _speed;
         _verticalMove = Input.GetAxisRaw(NameDirectionVertical) * _speed;
-        _rigidbody2D.velocity = new Vector2(_horizontalMove, _verticalMove);
+        _rigidbody2D.linearVelocity = new Vector2(_horizontalMove, _verticalMove);
     }
 }

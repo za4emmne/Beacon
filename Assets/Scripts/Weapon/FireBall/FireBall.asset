@@ -22,11 +22,11 @@ MonoBehaviour:
   _damage: 30
   _delay: 2
   _attackRange: 0
-  _speed: 0
+  _speed: 7
   _level: 0
-  LevelOpen: 0
+  LevelOpen: 2
   CurrentDamage: 30
   CurrentDelay: 2
   CurrentAttackRange: 0
-  CurrentSpeed: 0
+  CurrentSpeed: 7
   CurrentLevel: 0

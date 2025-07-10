@@ -4,48 +4,38 @@ using UnityEngine;
 
 public class CircleBehavior : Weapon
 {
-    [SerializeField] private float radius = 2f;
+    [Header("Orbit Settings")]
+    [SerializeField] private float orbitRadius = 0.1f;
+    [SerializeField] private float orbitSpeed = 90f; // градусы в секунду
+    [SerializeField] private bool clockwise = true;
 
-    private Transform _player;
-    private Transform _independentPivot;
-    private float currentAngle = 0f;
+    [Header("Starting Position")]
+    [SerializeField] private float startAngle = 0f;
+
+    private float currentAngle;
 
     private void Start()
     {
-        _player = Player.singleton.transform;
-        CreateIndependentPivot();
-        PositionWeapon();
         base.Initialize();
-    }
-
-    private void CreateIndependentPivot()
-    {
-        // Создаем независимую точку поворота БЕЗ родительской связи с игроком
-        GameObject pivot = new GameObject("IndependentWeaponPivot");
-        _independentPivot = pivot.transform;
-
-        // НЕ делаем pivot дочерним объектом игрока!
-        _independentPivot.position = _player.position;
-
-        // Делаем оружие дочерним объектом независимой точки поворота
-        transform.SetParent(_independentPivot);
-    }
-
-    private void PositionWeapon()
-    {
-        transform.localPosition = new Vector3(radius, 0, 0);
     }
 
     private void Update()
     {
-        // Обновляем позицию точки поворота, следуя за игроком
-        _independentPivot.position = _player.position;
+        Vector3 offset = new Vector3(
+            Mathf.Cos(currentAngle * Mathf.Deg2Rad) * orbitRadius,
+            Mathf.Sin(currentAngle * Mathf.Deg2Rad) * orbitRadius,
+            0f
+        );
 
-        // Вращаем точку поворота с постоянной скоростью
-        _independentPivot.Rotate(0, 0, speed * Time.deltaTime);
+        // Устанавливаем позицию относительно игрока
+        transform.position = player.transform.position + offset;
 
-        // Направляем оружие от центра
-        Vector3 directionFromCenter = (transform.position - _player.position).normalized;
-        transform.right = directionFromCenter;
+        // Обновляем угол для следующего кадра
+        float direction = clockwise ? -1f : 1f;
+        currentAngle += orbitSpeed * direction * Time.deltaTime;
+
+        // Нормализуем угол в пределах 0-360
+        if (currentAngle >= 360f) currentAngle -= 360f;
+        if (currentAngle < 0f) currentAngle += 360f;
     }
 }

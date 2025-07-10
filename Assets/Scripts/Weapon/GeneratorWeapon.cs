@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GeneratorWeapon : Spawner<Weapon>
 {
     private Coroutine _secondCoroutine;
+    private Transform _target;
 
     private void Start()
     {
         base.OnStartGenerator();
+    }
+
+    public void GetTarget(Transform target)
+    {
+        _target = target;
     }
 
     public void ChangedSpawnDelay(int level)
@@ -32,6 +36,11 @@ public class GeneratorWeapon : Spawner<Weapon>
         weapon.Initialize();
         weapon.InitGenerator(this);
 
+        if (_target != null)
+        {
+            weapon.GetTarget(_target);
+        }
+
         return weapon;
     }
 
@@ -43,6 +52,6 @@ public class GeneratorWeapon : Spawner<Weapon>
 
     protected override Vector3 PositionGeneraton()
     {
-        return transform.position;
+        return _transform.position;
     }
 }

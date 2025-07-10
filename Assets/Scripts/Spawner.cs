@@ -10,7 +10,8 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField] protected float maxDelay;
     [SerializeField] private float _devationPositionY;
     [SerializeField] private float _devationPositionX;
-    private Transform _transform;
+
+    protected Transform _transform;
 
     [Header("Мониторинг данных")]
     [SerializeField] private float _spawnTime;

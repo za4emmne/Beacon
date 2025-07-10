@@ -5,6 +5,7 @@ using System.Collections;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private Text timerText; // Ссылка на UI Text объект
+
     private float _startTime; // Время начала таймера
     private bool _isRunning = false; // Флаг работы таймера
 

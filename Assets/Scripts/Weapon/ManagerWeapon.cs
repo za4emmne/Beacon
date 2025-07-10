@@ -41,11 +41,11 @@ public class ManagerWeapon : MonoBehaviour
             _availableWeapons.Add(weapon);
         }
 
-        foreach (var weapon in _availableWeapons)
-        {
-            if(weapon.LevelOpen > _playerProgress.Level)
-                _availableWeapons.Remove(weapon);
-        }
+        //foreach (var weapon in _availableWeapons)
+        //{
+        //    if(weapon.LevelOpen > _playerProgress.Level)
+        //        _availableWeapons.Remove(weapon);
+        //}
 
         for (int i = 0; i < _numberOfChoices; i++)
         {

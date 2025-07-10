@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected float delay;
     [SerializeField] protected float speed;
 
+    protected Transform _target;
     protected PlayerMovement player;
     protected GeneratorWeapon generator;
     protected Vector2 direction;
@@ -31,6 +32,11 @@ public class Weapon : MonoBehaviour
     public void InitGenerator(GeneratorWeapon generator)
     {
         this.generator = generator;
+    }
+
+    public void GetTarget(Transform target)
+    {
+        _target = target;
     }
 
     public void SetZeroDirection()
