@@ -8,7 +8,7 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Awake()
     {
-        level = 0;
+       // level = 0;
     }
 
     public virtual void Initialize(WeaponData weaponData)
@@ -29,8 +29,6 @@ public class WeaponController : MonoBehaviour
             case 4:
                 Level4(level); break;
         }
-
-
     }
 
     protected virtual void Level2(int level)

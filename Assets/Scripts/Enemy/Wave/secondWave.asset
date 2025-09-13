@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b2e9594cc63182499d7b38cdd81f6b0, type: 3}
-  m_Name: FirstWave
+  m_Name: secondWave
   m_EditorClassIdentifier: 
-  waveName: "\u0421\u043A\u0435\u043B\u0435\u0442\u044B"
-  totalEnemies: 50
+  waveName: "\u0413\u0440\u0438\u0431\u044B"
+  totalEnemies: 37
   possibleEnemies:
-  - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
+  - {fileID: 11400000, guid: cfc566e0eb9138940a4f67305a079766, type: 2}
   description: 

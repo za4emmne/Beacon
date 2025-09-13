@@ -10,6 +10,7 @@ public class ProgressBar : MonoBehaviour
 
     private void Start()
     {
+        _player.EnsureInitialized();
         SetMaxValue(_player.GetNextLevel());
         _slider.value = 0;
     }

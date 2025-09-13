@@ -38,14 +38,9 @@ public class ManagerWeapon : MonoBehaviour
 
         foreach (var weapon in _allWeapons)
         {
-            _availableWeapons.Add(weapon);
+            if (weapon.LevelOpen <= _playerProgress.Level)
+                _availableWeapons.Add(weapon);
         }
-
-        //foreach (var weapon in _availableWeapons)
-        //{
-        //    if(weapon.LevelOpen > _playerProgress.Level)
-        //        _availableWeapons.Remove(weapon);
-        //}
 
         for (int i = 0; i < _numberOfChoices; i++)
         {
@@ -102,9 +97,9 @@ public class ManagerWeapon : MonoBehaviour
             return;
         }
 
-        weaponData.CurrentLevel = 1;
+        weaponData.GetStartLevel();
         weaponData.Init();
-        weaponController.Initialize(weaponData); //дописать в корне 
+        weaponController.Initialize(weaponData);
         _player.AddNewWeapon(weaponController);
     }
 

@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         ScreenManage(_gameOverScreen, false);
+        ChangeLevel();
     }
 
     private void OnEnable()

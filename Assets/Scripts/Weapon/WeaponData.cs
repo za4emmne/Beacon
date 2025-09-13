@@ -38,4 +38,9 @@ public class WeaponData : ScriptableObject
         CurrentSpeed = _speed;
         CurrentLevel = _level;
     }
+
+    public void GetStartLevel()
+    {
+        _level = 1;
+    }
 }

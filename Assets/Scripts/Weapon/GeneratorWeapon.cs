@@ -10,11 +10,6 @@ public class GeneratorWeapon : Spawner<Weapon>
         base.OnStartGenerator();
     }
 
-    public void GetTarget(Transform target)
-    {
-        _target = target;
-    }
-
     public void ChangedSpawnDelay(int level)
     {
         minDelay /= level;
@@ -33,13 +28,9 @@ public class GeneratorWeapon : Spawner<Weapon>
     public override Weapon GetObject()
     {
         var weapon = base.GetObject();
+
         weapon.Initialize();
         weapon.InitGenerator(this);
-
-        if (_target != null)
-        {
-            weapon.GetTarget(_target);
-        }
 
         return weapon;
     }

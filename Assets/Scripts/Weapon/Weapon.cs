@@ -14,16 +14,12 @@ public class Weapon : MonoBehaviour
     protected GeneratorWeapon generator;
     protected Vector2 direction;
 
-    private void Start()
-    {
-
-    }
-
     public virtual void Initialize()
     {
         if (player == null)
             player = Player.singleton.GetComponent<PlayerMovement>();
 
+        _target = null;
         damage = data.CurrentDamage;
         delay = data.CurrentDelay;
         speed = data.CurrentSpeed;
@@ -34,10 +30,10 @@ public class Weapon : MonoBehaviour
         this.generator = generator;
     }
 
-    public void GetTarget(Transform target)
-    {
-        _target = target;
-    }
+    //public void GetTarget(Transform target)
+    //{
+    //    _target = target;
+    //}
 
     public void SetZeroDirection()
     {

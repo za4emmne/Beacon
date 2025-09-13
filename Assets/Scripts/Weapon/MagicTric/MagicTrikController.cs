@@ -5,9 +5,6 @@ using UnityEngine.UIElements;
 public class MagicTrikController : WeaponController
 {
     private GeneratorWeapon _generator;
-    private float _detectedRadius;
-    private LayerMask _targetLayer = 1 << 8;
-    private float _waitToDetected = 1;
 
     protected override void Awake()
     {
@@ -15,34 +12,21 @@ public class MagicTrikController : WeaponController
         _generator = GetComponent<GeneratorWeapon>();
     }
 
-    private void Start()
+    protected override void Level2(int level)
     {
-        _detectedRadius = data.CurrentAttackRange;
-        StartCoroutine(Detecting());
+        base.Level2(level);
+        _generator.ChangedSpawnDelay(level);
     }
 
-    private IEnumerator Detecting()
+    protected override void Level3(int level)
     {
-        var waitForSeconds = new WaitForSeconds(_waitToDetected);
-
-        while (enabled)
-        {
-            FindTarget();
-            yield return waitForSeconds;
-        }
+        base.Level3(level);
+        _generator.OnStartSecondGeneration();
     }
 
-    private Transform FindTarget()
+    protected override void Level4(int level)
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _detectedRadius, _targetLayer);
-
-        if (colliders != null && colliders.Length > 0)
-        {
-            return colliders[0].transform;
-        }
-        else
-        {
-            return null;
-        }
+        base.Level4(level);
+        _generator.ChangedSpawnDelay(level);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7158816804319914815}
   - component: {fileID: 461353620685108885}
   - component: {fileID: 6843984207371334547}
+  - component: {fileID: 8660700005345903396}
   m_Layer: 0
   m_Name: MagicTrik
   m_TagString: Untagged
@@ -141,6 +142,35 @@ MonoBehaviour:
   damage: 0
   delay: 0
   speed: 0
-  angle: 0
-  radius: 0.5
-  isCircle: 0
+  _orbitRadius: 1
+  _orbitSpeed: 90
+  _clockwise: 1
+  _lifetime: 5
+  _startAngle: 0
+--- !u!50 &8660700005345903396
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3791784611373279368}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
