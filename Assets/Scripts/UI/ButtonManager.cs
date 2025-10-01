@@ -17,4 +17,6 @@ public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         OnHideTooltip?.Invoke();
     }
+
+   
 }

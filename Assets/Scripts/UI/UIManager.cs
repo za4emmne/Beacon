@@ -26,11 +26,13 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         _settingButtonManager.OnShowTooltip += ShowSettingButtonAnimation;
+        _settingButtonManager.OnHideTooltip += ShowSettingButtonAnimationExit;
     }
 
     private void OnDisable()
     {
-        _settingButtonManager.OnShowTooltip -= ShowSettingButtonAnimation;
+        _settingButtonManager.OnShowTooltip += ShowSettingButtonAnimation;
+        _settingButtonManager.OnHideTooltip -= ShowSettingButtonAnimationExit;
     }
 
     public void ChangeScore(int Score)
@@ -56,9 +58,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void ShowSettingButtonAnimation() //доделать
+    private void ShowSettingButtonAnimation()
     {
         _settingButton.transform.DORotate(new Vector3(0, 0, 180), 0.5f)
+            .SetEase(Ease.InCirc);
+
+    }
+
+    private void ShowSettingButtonAnimationExit()
+    {
+        _settingButton.transform.DORotate(new Vector3(0, 0, 360), 0.5f)
             .SetEase(Ease.InCirc);
     }
 }
