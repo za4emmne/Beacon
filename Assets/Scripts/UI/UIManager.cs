@@ -1,26 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Audio;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Скрипты")]
+    [SerializeField] private PlayerProgress _player;
+    [Header("UI элементы")]
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _levelText;
-    [SerializeField] private GameObject[] _gameOverScreen;
-    [SerializeField] private PlayerProgress _player;
+    [SerializeField] private GameObject _gameOverScreen;
     [SerializeField] private GameObject _settingButton;
 
+    private Button _pause;
+
     private ButtonManager _settingButtonManager;
+    private PauseMenuManager _pauseMenuManager;
 
     private void Awake()
     {
         _settingButtonManager = _settingButton.GetComponent<ButtonManager>();
+        _pauseMenuManager = GetComponent<PauseMenuManager>();
+        _pause = _settingButton.GetComponent<Button>();
     }
 
     private void Start()
     {
-        ScreenManage(_gameOverScreen, false);
+        _gameOverScreen.SetActive(false);
         ChangeLevel();
+        _pause.onClick.AddListener(_pauseMenuManager.Pause);
     }
 
     private void OnEnable()
@@ -47,15 +56,12 @@ public class UIManager : MonoBehaviour
 
     public void OnDeadScreen()
     {
-        ScreenManage(_gameOverScreen, true);
+        _gameOverScreen.SetActive(true);
     }
 
-    private void ScreenManage(GameObject[] gameObjects, bool status)
+    private void OnPauseScreen()
     {
-        foreach (var ui in gameObjects)
-        {
-            ui.SetActive(status);
-        }
+        _pauseMenuManager.Pause();
     }
 
     private void ShowSettingButtonAnimation()
