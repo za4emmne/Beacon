@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: 3wawe
   m_EditorClassIdentifier: 
   waveName: "\u0421\u043E\u0432\u044B"
-  totalEnemies: 25
+  totalEnemies: 120
   possibleEnemies:
   - {fileID: 11400000, guid: cfc566e0eb9138940a4f67305a079766, type: 2}
+  - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
+  - {fileID: 11400000, guid: 1a73e0471737ee242a984285cc3115a1, type: 2}
   - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
   description: 

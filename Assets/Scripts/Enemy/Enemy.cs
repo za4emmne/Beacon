@@ -29,6 +29,14 @@ public class Enemy : MonoBehaviour
         if (!_movementController) Debug.LogError("EnemyMovement component missing!");
     }
 
+    private void OnDisable()
+    {
+        if (EnemiesGenerator.AllEnemies.Contains(this))
+        {
+            RemoveFromList();
+        }
+    }
+
     public void Initialize(EnemyData data, EnemiesGenerator enemyManager)
     {
         if (data == null)
@@ -43,7 +51,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        Data = data;  
+        Data = data;
         _manager = enemyManager;
         _health = data.Health;
         _damage = data.Damage;
@@ -52,7 +60,13 @@ public class Enemy : MonoBehaviour
         _attackController.Init(_damage);
         _movementController.Init(_speed);
         _healthController.Init(_health);
+        _manager.AddEnemyOnList(this);
 
+    }
+
+    public void RemoveFromList()
+    {
+        _manager.RemoveEnemyFromList(this);
     }
 
     public void OnRelease()

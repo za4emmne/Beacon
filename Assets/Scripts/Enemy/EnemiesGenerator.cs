@@ -15,6 +15,8 @@ public class EnemiesGenerator : MonoBehaviour
     [Header("Зависимости")]
     [SerializeField] private StarGenerator _starGenerator;
 
+    public static List<Enemy> AllEnemies = new List<Enemy>();
+
     // Оптимизированные пулы
     private Dictionary<int, Queue<Enemy>> _enemyPools = new Dictionary<int, Queue<Enemy>>();
     private Dictionary<int, EnemyData> _enemyDataMap = new Dictionary<int, EnemyData>();
@@ -36,6 +38,11 @@ public class EnemiesGenerator : MonoBehaviour
         _transform = transform;
     }
 
+    //private void Update()
+    //{
+    //    Debug.Log(_allEnemies.Count);
+    //}
+
     public void SpawnEnemyWithModifiers(EnemyData enemyData, Transform playerTransform)
     {
         Enemy enemy = GetEnemyFromPool(enemyData);
@@ -50,6 +57,16 @@ public class EnemiesGenerator : MonoBehaviour
         enemy.transform.position = _spawnPosition;
 
         _activeEnemiesCount++;
+    }
+
+    public void AddEnemyOnList(Enemy enemy)
+    {
+        AllEnemies.Add(enemy);
+    }
+
+    public void RemoveEnemyFromList(Enemy enemy)
+    {
+        AllEnemies.Remove(enemy);
     }
 
     private Enemy GetEnemyFromPool(EnemyData enemyData)

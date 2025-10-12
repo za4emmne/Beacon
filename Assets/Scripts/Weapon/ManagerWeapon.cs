@@ -8,6 +8,7 @@ public class ManagerWeapon : MonoBehaviour
     [SerializeField] private Transform _playerWeaponoint;
     [SerializeField] private List<WeaponData> _allWeapons;
     [SerializeField] private ObjectKiller _killer;
+    //[SerializeField] private EnemiesGenerator _enemyGenerators;
 
     private PlayerWeapons _player;
     private PlayerProgress _playerProgress;
@@ -90,6 +91,7 @@ public class ManagerWeapon : MonoBehaviour
             _playerWeaponoint.rotation, _playerWeaponoint);
 
         WeaponController weaponController = weaponPrefab.GetComponent<WeaponController>();
+        GeneratorWeapon weaponGenerator = weaponPrefab.GetComponent<GeneratorWeapon>();
 
         if (weaponController == null)
         {

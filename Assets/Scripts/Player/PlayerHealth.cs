@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerHealth : CharactersHealth
 {
     public event Action CriticalHealth;
+    public event Action SuperCriticalHealth;
     public event Action NormalHealth;
 
     public void TakePills(float indexPill)
@@ -33,10 +34,15 @@ public class PlayerHealth : CharactersHealth
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+        
+        if (_health < _maxHealth / 2)
+        {
+            CriticalHealth?.Invoke();
+        }
 
         if (_health < _maxHealth / 3)
         {
-            CriticalHealth?.Invoke();
+            SuperCriticalHealth?.Invoke();
         }
     }
 }

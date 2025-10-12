@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public void RestartScene()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("islandScene");
+        SceneManager.LoadScene("Game");
     }
 
     private void ChangeScore()

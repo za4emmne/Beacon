@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GeneratorWeapon : Spawner<Weapon>
 {
     private Coroutine _secondCoroutine;
-    private Transform _target;
+    private static List<Weapon> _allProjectile = new List<Weapon>();
 
     private void Start()
     {
@@ -25,12 +26,22 @@ public class GeneratorWeapon : Spawner<Weapon>
         }
     }
 
+    public void AddProjectileOnList(Weapon weapon)
+    {
+        _allProjectile.Add(weapon);
+    }
+
+    public void RemoveProjectileFromList(Weapon weapon)
+    {
+        _allProjectile.Remove(weapon);
+    }
+
     public override Weapon GetObject()
     {
         var weapon = base.GetObject();
 
-        weapon.Initialize();
         weapon.InitGenerator(this);
+        weapon.Initialize();
 
         return weapon;
     }
@@ -39,6 +50,32 @@ public class GeneratorWeapon : Spawner<Weapon>
     {
         base.PutObject(obj);
         obj.SetZeroDirection();
+    }
+
+    public Enemy FindNearestEnemy()
+    {
+        Enemy closest = null;
+        float minDist = Mathf.Infinity;
+        float maxDist = 8f;
+        Vector3 pos = transform.position;
+
+        if (EnemiesGenerator.AllEnemies.Count > 0)
+        {
+            for (int i = 0; i < EnemiesGenerator.AllEnemies.Count; i++)
+            {
+                Enemy enemy = EnemiesGenerator.AllEnemies[i];
+                float dist = (enemy.transform.position - pos).sqrMagnitude;
+
+                if (dist < minDist && dist < maxDist)
+                {
+                    minDist = dist;
+                    closest = enemy;
+                    enemy.RemoveFromList();
+                }
+            }
+        }
+
+        return closest;
     }
 
     protected override Vector3 PositionGeneraton()

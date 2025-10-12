@@ -15,10 +15,10 @@ public class StarGenerator : Spawner<Star>
         _audioSourse = GetComponent<AudioSource>();
     }
 
-    private void Start()
-    {
-        base.OnStartGenerator();
-    }
+    //private void Start()
+    //{
+    //    base.OnStartGenerator();
+    //}
 
     public override Star GetObject()
     {

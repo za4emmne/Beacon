@@ -12,6 +12,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     [SerializeField] private float _devationPositionX;
 
     protected Transform _transform;
+    protected EnemiesGenerator _enemyGenerator;
 
     [Header("Мониторинг данных")]
     [SerializeField] private float _spawnTime;

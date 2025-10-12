@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: secondWave
   m_EditorClassIdentifier: 
   waveName: "\u0413\u0440\u0438\u0431\u044B"
-  totalEnemies: 37
+  totalEnemies: 80
   possibleEnemies:
   - {fileID: 11400000, guid: cfc566e0eb9138940a4f67305a079766, type: 2}
+  - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
   description: 

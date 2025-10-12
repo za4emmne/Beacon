@@ -15,6 +15,7 @@ public class MagicBall : Weapon
     private float _timeAlive = 0f;
     private float _currentAngle;
     private Coroutine _coroutine;
+    private Coroutine _searchTargetCoroutine;
     private float _detectedRadius;
     private LayerMask _targetLayer = 1 << 8;
 
@@ -32,6 +33,7 @@ public class MagicBall : Weapon
             _coroutine = StartCoroutine(MainMoving());
         }
 
+        //StartSearchTarget();
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -56,12 +58,24 @@ public class MagicBall : Weapon
         }
     }
 
+    //private void StartSearchTarget()
+    //{
+    //    if (_searchTargetCoroutine == null)
+    //        _searchTargetCoroutine = StartCoroutine(SearchTargetRoutine());
+    //}
+
     private void StopCoroutine()
     {
         if (_coroutine != null)
         {
             StopCoroutine(_coroutine);
             _coroutine = null;
+        }
+
+        if (_searchTargetCoroutine != null)
+        {
+            StopCoroutine(_searchTargetCoroutine);
+            _searchTargetCoroutine = null;
         }
     }
 
@@ -82,9 +96,14 @@ public class MagicBall : Weapon
 
     private IEnumerator FirstMoving()
     {
+        if (generator == null)
+        {
+            Debug.LogError("Generator не назначен для MagicBall!");
+            yield break;
+        }
+
         while (_target == null)
         {
-            _target = FindTarget();
             Vector3 offset = new Vector3(
                 Mathf.Cos(_currentAngle * Mathf.Deg2Rad) * _orbitRadius,
                 Mathf.Sin(_currentAngle * Mathf.Deg2Rad) * _orbitRadius,
@@ -97,39 +116,28 @@ public class MagicBall : Weapon
             _currentAngle += _orbitSpeed * direction * Time.deltaTime;
 
             if (_currentAngle >= 360f) _currentAngle -= 360f;
+
             if (_currentAngle < 0f) _currentAngle += 360f;
+
+            Enemy nearest = generator.FindNearestEnemy();
+            if (nearest != null)
+            {
+                _target = nearest.transform;
+                yield break; // моментально завершаем вращение
+            }
+
             yield return null;
         }
     }
 
-    private Transform FindTarget()
+    private IEnumerator SearchTargetRoutine()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _detectedRadius, _targetLayer);
-
-        if (colliders.Length == 0)
+        while (true)
         {
-            return null;
-        }
-        else
-        {
-            Transform closestEnemy = null;
-            float shortestDistance = Mathf.Infinity;
-
-            foreach (Collider2D collider in colliders)
-            {
-                if (collider.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
-                {
-                    float distance = Vector2.Distance(transform.position, collider.transform.position);
-
-                    if (distance < shortestDistance)
-                    {
-                        shortestDistance = distance;
-                        closestEnemy = collider.transform;
-                    }
-                }
-            }
-
-            return closestEnemy;
+            Enemy nearest = generator.FindNearestEnemy();
+            if (nearest != null)
+                _target = nearest.transform;
+            yield return new WaitForSeconds(0.2f); // повторять каждые 0.2 секунды
         }
     }
 }

@@ -26,23 +26,19 @@ public class PillsGenerator : Spawner<Pills>
         _player = Player.singleton?.GetComponent<PlayerHealth>();
 
         if (_player != null)
-        {
             _player.CriticalHealth += OneSpawn;
-        }
     }
 
     private void OnDisable()
     {
         if (_player != null)
-        {
             _player.CriticalHealth -= OneSpawn;
-        }
     }
 
     public override Pills GetObject()
     {
         var pill = base.GetObject();
-        pill.Initialize(this);
+        pill.Initialize(this, _player.MaxCurrent);
         pill.gameObject.SetActive(true);
 
         return pill;

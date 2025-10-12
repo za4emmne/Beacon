@@ -4259,7 +4259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapons: []
   _point: {fileID: 1103850432}
-  _startWeapon: {fileID: 11400000, guid: fbd9724d221194d4e921e6ab35898485, type: 2}
+  _startWeapon: {fileID: 11400000, guid: df59c25d1f3f7ca4cb5cb0b3182132e7, type: 2}
 --- !u!114 &1103850434
 MonoBehaviour:
   m_ObjectHideFlags: 0

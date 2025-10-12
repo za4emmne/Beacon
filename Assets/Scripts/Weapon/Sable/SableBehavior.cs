@@ -8,11 +8,13 @@ public class SableBehavior : Weapon
     private Animator _animator;
     private PolygonCollider2D _polygonCollider;
     private Coroutine _coroutine;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _polygonCollider = GetComponent<PolygonCollider2D>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -32,6 +34,8 @@ public class SableBehavior : Weapon
             _animator.SetTrigger(AnimationNameAttack);
             
             _polygonCollider.enabled = true;
+            _audioSource.Play();
+
             yield return wait;
             _polygonCollider.enabled = false;
         }

@@ -14,6 +14,12 @@ public class Weapon : MonoBehaviour
     protected GeneratorWeapon generator;
     protected Vector2 direction;
 
+    private void OnDisable()
+    {
+        if (data.weaponType == TypeWeapon.Ranged)
+            generator.RemoveProjectileFromList(this);
+    }
+
     public virtual void Initialize()
     {
         if (player == null)
@@ -25,9 +31,10 @@ public class Weapon : MonoBehaviour
         speed = data.CurrentSpeed;
     }
 
-    public void InitGenerator(GeneratorWeapon generator)
+    public void InitGenerator(GeneratorWeapon gen)
     {
-        this.generator = generator;
+        generator = gen;
+        generator.AddProjectileOnList(this);
     }
 
     //public void GetTarget(Transform target)
