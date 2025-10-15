@@ -37,7 +37,7 @@ public class Star : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerProgress>(out PlayerProgress player))
+        if (collision.TryGetComponent<PlayerLevelManager>(out PlayerLevelManager player))
         {
             if (_coroutine != null)
             {

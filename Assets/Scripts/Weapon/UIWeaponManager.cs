@@ -8,6 +8,7 @@ public class UIWeaponManager : MonoBehaviour
 {
     [Header("Скрипты:")]
     [SerializeField] private ManagerWeapon _manager;
+    [SerializeField] private PlayerLevelManager _progress;
 
     [Header("Объекты:")]
     [SerializeField] private GameObject _weaponPanel;
@@ -17,7 +18,7 @@ public class UIWeaponManager : MonoBehaviour
     [SerializeField] private Image[] _icons;
     [SerializeField] private ParticleSystem _confeti;
     [SerializeField] private Text _levelUp;
-    [SerializeField] private PlayerProgress _progress;
+    
 
     [Header("Настройки анимации")]
     [SerializeField] private Vector2 _hiddenPosition;
@@ -92,7 +93,7 @@ public class UIWeaponManager : MonoBehaviour
 
     private void ShowPanel()
     {
-        PlayerProgress player = Player.singleton.GetComponent<PlayerProgress>();
+        PlayerLevelManager player = Player.singleton.GetComponent<PlayerLevelManager>();
         _currentChoices = _manager.GetRandomChoices().ToArray(); // Сохраняем текущие варианты
 
         for (int i = 0; i < _buttons.Length; i++)

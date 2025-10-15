@@ -10,7 +10,14 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button _continueButton;
     [SerializeField] private UnityEngine.UI.Slider _sliderMusic;
     [SerializeField] private UnityEngine.UI.Toggle _toggleMusic;
+    [SerializeField] private UnityEngine.UI.Button _menu;
 
+    private UIManager _manager;
+
+    private void Awake()
+    {
+        _manager = GetComponent<UIManager>();
+    }
 
     private void Start()
     {
@@ -20,6 +27,7 @@ public class PauseMenuManager : MonoBehaviour
     public void Pause()
     {
         _continueButton.onClick.AddListener(ContinueGame);
+        _menu.onClick.AddListener(_manager.LoadMenuScene);
         _pauseScreen.SetActive(true);
         Time.timeScale = 0f;
     }

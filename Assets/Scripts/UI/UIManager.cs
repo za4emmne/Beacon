@@ -1,17 +1,23 @@
-using UnityEngine;
-using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     [Header("Скрипты")]
-    [SerializeField] private PlayerProgress _player;
+    [SerializeField] private PlayerLevelManager _player;
+    private GameManager _gameManager;
     [Header("UI элементы")]
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _levelText;
     [SerializeField] private GameObject _gameOverScreen;
     [SerializeField] private GameObject _settingButton;
+    [SerializeField] private GameObject _scoreIcon;
+    [SerializeField] private Button _restart;
+    [SerializeField] private Button _raisePlayer;
+    [SerializeField] private Button _menu;
 
     private Button _pause;
 
@@ -20,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        _gameManager = GetComponent<GameManager>();
         _settingButtonManager = _settingButton.GetComponent<ButtonManager>();
         _pauseMenuManager = GetComponent<PauseMenuManager>();
         _pause = _settingButton.GetComponent<Button>();
@@ -27,9 +34,13 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _gameOverScreen.SetActive(false);
+
+        OnDeadScreenDisactivate();
         ChangeLevel();
         _pause.onClick.AddListener(_pauseMenuManager.Pause);
+        _restart.onClick.AddListener(RestartScene);
+        _raisePlayer.onClick.AddListener(_gameManager.OnRaisePlayer);
+        _menu.onClick.AddListener(LoadMenuScene);
     }
 
     private void OnEnable()
@@ -44,6 +55,12 @@ public class UIManager : MonoBehaviour
         _settingButtonManager.OnHideTooltip -= ShowSettingButtonAnimationExit;
     }
 
+    public void LoadMenuScene()
+    {
+        Debug.Log("Loasd");
+        SceneManager.LoadScene("Menu");
+    }
+
     public void ChangeScore(int Score)
     {
         _scoreText.text = "Счет: " + Score;
@@ -54,21 +71,31 @@ public class UIManager : MonoBehaviour
         _levelText.text = "Уровень: " + _player.Level;
     }
 
-    public void OnDeadScreen()
+    public void OnDeadScreenActivate()
     {
         _gameOverScreen.SetActive(true);
+        _scoreIcon.SetActive(false);
+
+        if(_gameManager.RaiseCount <= 0)
+            _raisePlayer.gameObject.SetActive(false);
     }
 
-    private void OnPauseScreen()
+    public void OnDeadScreenDisactivate()
     {
-        _pauseMenuManager.Pause();
+        _gameOverScreen.SetActive(false);
+        _scoreIcon.SetActive(true);
+    }
+
+    private void RestartScene()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Game");
     }
 
     private void ShowSettingButtonAnimation()
     {
         _settingButton.transform.DORotate(new Vector3(0, 0, 180), 0.5f)
             .SetEase(Ease.InCirc);
-
     }
 
     private void ShowSettingButtonAnimationExit()

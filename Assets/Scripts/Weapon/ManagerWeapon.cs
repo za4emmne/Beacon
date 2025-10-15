@@ -11,7 +11,7 @@ public class ManagerWeapon : MonoBehaviour
     //[SerializeField] private EnemiesGenerator _enemyGenerators;
 
     private PlayerWeapons _player;
-    private PlayerProgress _playerProgress;
+    private PlayerLevelManager _playerProgress;
     private List<WeaponController> _weaponsInHand;
     private List<WeaponData> _availableWeapons;
     private int _numberOfChoices = 3;
@@ -19,7 +19,7 @@ public class ManagerWeapon : MonoBehaviour
     private void Awake()
     {
         _player = Player.singleton.GetComponent<PlayerWeapons>();
-        _playerProgress = Player.singleton.GetComponent<PlayerProgress>();
+        _playerProgress = Player.singleton.GetComponent<PlayerLevelManager>();
     }
 
     private void Start()

@@ -6,7 +6,7 @@ public class SmoothHealthBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private PlayerHealth _characters;
-    [SerializeField] private float _stepHealth = 0.1f;
+    [SerializeField] private float _stepHealth = 1f;
 
     private Coroutine _coroutine;
 
@@ -18,11 +18,13 @@ public class SmoothHealthBar : MonoBehaviour
     private void OnEnable()
     {
         _characters.Changed += OnChange;
+        _characters.RaiseMe += OnRaise;
     }
 
     private void OnDisable()
     {
         _characters.Changed += Stop;
+        _characters.RaiseMe -= OnRaise;
     }
 
     public void Stop()
@@ -34,6 +36,11 @@ public class SmoothHealthBar : MonoBehaviour
     public void OnChange()
     {
         _coroutine = StartCoroutine(ChangeValue());
+    }
+
+    public void OnRaise()
+    {
+        _slider.value = _characters.Current / _characters.MaxCurrent;
     }
 
     private IEnumerator ChangeValue()

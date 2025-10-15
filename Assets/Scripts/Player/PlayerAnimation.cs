@@ -47,7 +47,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void GameOver()
     {
-        _uiManager.OnDeadScreen();
+        _uiManager.OnDeadScreenActivate();
         Time.timeScale = 0f;
     }
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -17,13 +18,18 @@ public class EnemyAnimation : MonoBehaviour
     private EnemyMovement _enemyMovement;
 
     private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
+    private Color _color;
+    private Coroutine _coroutine;
 
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _enemyAttacked = GetComponent<EnemyAttacked>();
         _health = GetComponent<EnemyHealth>();
         _enemyMovement = GetComponent<EnemyMovement>();
         _animator = GetComponent<Animator>();
+        _color = _spriteRenderer.color;
     }
 
     private void OnEnable()
@@ -59,6 +65,20 @@ public class EnemyAnimation : MonoBehaviour
 
     public void OnHitAnimation()
     {
+        _coroutine = StartCoroutine(IAnimateHit());
         _animator.SetTrigger(AnimationNameHit);
+    }
+
+    private IEnumerator IAnimateHit()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            //_spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 0f);
+            _spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(.1f);
+            _spriteRenderer.color = Color.white;
+            //_spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
+            yield return new WaitForSeconds(.1f);
+        }
     }
 }

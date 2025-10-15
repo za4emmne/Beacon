@@ -1132,6 +1132,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1888781869601377794, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
+      propertyPath: _playerMovenment
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2491858885892349238, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1139,6 +1143,10 @@ PrefabInstance:
     - target: {fileID: 4655613830016042430, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
       propertyPath: m_Name
       value: Hobbit 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643775278713278145, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
+      propertyPath: _vampireArea
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9113620187235000000, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
       propertyPath: m_LocalScale.x
@@ -1190,6 +1198,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6058550387823856328, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
+    - {fileID: 2106524329376554455, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
+    - {fileID: 4261185230857529496, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
+    - {fileID: 243264372698294493, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
+    - {fileID: 7643775278713278145, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
     m_RemovedGameObjects:
     - {fileID: 473316865688188581, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}
     - {fileID: 8212436395293619603, guid: a7c95f79ed21b244ba6b22583b66a49d, type: 3}

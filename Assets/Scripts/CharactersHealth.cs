@@ -8,6 +8,7 @@ public class CharactersHealth : MonoBehaviour
     [SerializeField] protected float _health;
 
     public event Action Changed;
+    public event Action RaiseMe;
     public event Action Died;
 
     public float MaxCurrent => _maxHealth;
@@ -38,5 +39,10 @@ public class CharactersHealth : MonoBehaviour
     protected void ChangeAwake()
     {
         Changed?.Invoke();
+    }
+
+    protected void OnRaise()
+    {
+        RaiseMe?.Invoke();
     }
 }

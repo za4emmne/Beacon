@@ -31,10 +31,18 @@ public class PlayerHealth : CharactersHealth
         }
     }
 
+    public void Raise()
+    {
+        _health = _maxHealth / 2;
+        OnRaise();
+    }
+
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        
+
+        GetComponent<Rigidbody2D>().AddForce(Vector2.down * 100f, ForceMode2D.Impulse);
+
         if (_health < _maxHealth / 2)
         {
             CriticalHealth?.Invoke();
