@@ -29,6 +29,8 @@ public class Star : MonoBehaviour
     {
         while (transform.position != Player.singleton.transform.position)
         {
+            //transform.DOMoveY(transform.position.y + 0.3f, 0.3f)
+            //.SetEase(Ease.Linear).From(0).SetLoops(1, LoopType.Yoyo).OnComplete(() =>
             transform.DOMove(Player.singleton.transform.position, 0.5f);
 
             yield return null;

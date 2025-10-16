@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 //дописать событие подсказок!
 public class UIWeaponManager : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class UIWeaponManager : MonoBehaviour
     private RectTransform _tooltipPanelRect;
     private ButtonManager[] _buttonManagers;
     private WeaponData[] _currentChoices;
+
+    public event Action<WeaponData> WeaponIsChoise;
 
     private void Awake()
     {
@@ -122,7 +125,8 @@ public class UIWeaponManager : MonoBehaviour
                 WeaponData currentCoice = _currentChoices[i];
                 _buttons[i].onClick.RemoveAllListeners();
                 _buttons[i].onClick.AddListener(() => OnChoiceSelected(currentCoice));
-            }
+                WeaponIsChoise?.Invoke(currentCoice);
+                }
             else
             {
                 _buttons[i].gameObject.SetActive(false);

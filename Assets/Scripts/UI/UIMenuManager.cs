@@ -6,7 +6,14 @@ public class UIMenuManager : MonoBehaviour
 {
     [SerializeField] private ButtonManager _buttonManager;
     [SerializeField] private Text _playerTalk;
+    [SerializeField] private Button _achive;
+    [SerializeField] private Button _start;
 
+    private void Start()
+    {
+        _achive.onClick.AddListener(ShowAchiveScreen);
+        _start.onClick.AddListener(StartGame);
+    }
 
     private void OnEnable()
     {
@@ -37,6 +44,11 @@ public class UIMenuManager : MonoBehaviour
     {
         if (_playerTalk.gameObject.activeSelf)
             _playerTalk.gameObject.SetActive(false);
+    }
+
+    private void ShowAchiveScreen()
+    {
+        Debug.Log("Show");
     }
 
     public void StartGame()//добавить подписку на события
