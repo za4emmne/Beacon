@@ -10,6 +10,8 @@ public class PlayerWeapons : MonoBehaviour
 
     private PlayerLevelManager _progress;
 
+    public Transform Point => _point;
+
     private void Awake()
     {
         _progress = GetComponent<PlayerLevelManager>();

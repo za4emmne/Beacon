@@ -6,25 +6,27 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    [SerializeField] private PlayerLevelManager _player;
 
-    private void Start()
-    {
-        _player.EnsureInitialized();
-        SetMaxValue(_player.GetNextLevel());
-        _slider.value = 0;
-    }
-
-    private void OnEnable()
-    {
-        _player.ChangedProgress += SetValue;
-        _player.LevelUpFloat += SetMaxValue;
-    }
+    private PlayerLevelManager _player;
 
     private void OnDisable()
     {
-        _player.ChangedProgress -= SetValue;
-        _player.LevelUpFloat -= SetMaxValue;
+        if (_player != null)
+        {
+            _player.ChangedProgress -= SetValue;
+            _player.LevelUpFloat -= SetMaxValue;
+        }
+    }
+
+    public void Init(PlayerLevelManager player)
+    {
+        _player = Player.singleton.GetComponent<PlayerLevelManager>();
+        _player.ChangedProgress += SetValue;
+        _player.LevelUpFloat += SetMaxValue;
+
+        _player.EnsureInitialized();
+        SetMaxValue(_player.GetNextLevel());
+        _slider.value = 0;
     }
 
     public void SetMaxValue(float maxValue)

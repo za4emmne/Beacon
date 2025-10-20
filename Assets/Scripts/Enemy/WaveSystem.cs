@@ -32,7 +32,17 @@ public class WaveSystem : MonoBehaviour
     private void Awake()
     {
         PrecomputeMultipliers();
+    }
+
+    public void Initialized(Transform transform)
+    {
+        _playerTransform = transform;
+    }
+
+    public void StartWave()
+    {
         ValidateDependencies();
+        StartCoroutine(WaveTimer());
     }
 
     private void PrecomputeMultipliers()
@@ -65,11 +75,6 @@ public class WaveSystem : MonoBehaviour
             Debug.LogError("Конфигурации волн не назначены!");
             enabled = false;
         }
-    }
-
-    private void Start()
-    {
-        StartCoroutine(WaveTimer());
     }
 
     private IEnumerator WaveTimer()

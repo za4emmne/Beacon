@@ -45,4 +45,14 @@ public class Timer : MonoBehaviour
     {
         return Time.time - _startTime;
     }
+
+    public string GetCurrentTimeText()
+    {
+        float currentTime = Time.time - _startTime;
+
+        int minutes = (int)(currentTime / 60);
+        int seconds = (int)(currentTime % 60);
+
+        return string.Format("{0:00 мин} {1:00 сек}", minutes, seconds);
+    }
 }

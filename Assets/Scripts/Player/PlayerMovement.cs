@@ -69,6 +69,11 @@ public class PlayerMovement : MonoBehaviour
         _joystick = joystick;
     }
 
+    public void UpgraidSpeed(float count)
+    {
+        _speed += (_speed / count);
+    }
+
     public Vector2 GetDirection()
     {
         _direction = new Vector2(

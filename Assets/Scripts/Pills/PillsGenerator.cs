@@ -5,7 +5,7 @@ using UnityEngine;
 public class PillsGenerator : Spawner<Pills>
 {
     [SerializeField] private AudioClip _pillsAudio;
-    [SerializeField] private ParticleSystem _effect;
+    [SerializeField] private ParticleSystem _hillEffect;
 
     private PlayerHealth _player;
     private AudioSource _audioSource;
@@ -16,9 +16,9 @@ public class PillsGenerator : Spawner<Pills>
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void Start()
+    public void Init(ParticleSystem effect)
     {
-
+        _hillEffect = effect;
     }
 
     private void OnEnable()
@@ -46,7 +46,7 @@ public class PillsGenerator : Spawner<Pills>
 
     public override void PutObject(Pills obj)
     {
-        _effect.Play();
+        _hillEffect.Play();
         _audioSource.PlayOneShot(_pillsAudio);
         base.PutObject(obj);
     }

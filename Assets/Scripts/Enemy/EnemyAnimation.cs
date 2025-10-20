@@ -13,9 +13,12 @@ public class EnemyAnimation : MonoBehaviour
     private const string AnimationNameRun = "Run";
     private const string AnimationNameHit = "Hit";
 
+    [SerializeField] private GameObject _dust;
+
     private EnemyAttacked _enemyAttacked;
     private EnemyHealth _health;
     private EnemyMovement _enemyMovement;
+    private Enemy _enemy;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -24,12 +27,14 @@ public class EnemyAnimation : MonoBehaviour
 
     private void Awake()
     {
+        _enemy = GetComponent<Enemy>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _enemyAttacked = GetComponent<EnemyAttacked>();
         _health = GetComponent<EnemyHealth>();
         _enemyMovement = GetComponent<EnemyMovement>();
         _animator = GetComponent<Animator>();
         _color = _spriteRenderer.color;
+        _dust.SetActive(false);
     }
 
     private void OnEnable()
@@ -51,6 +56,7 @@ public class EnemyAnimation : MonoBehaviour
     public void OnDeadAnimation()
     {
         _animator.SetTrigger(AnimationNameDead);
+        _dust.SetActive(true);
     }
 
     public void OnAttackAnimation()

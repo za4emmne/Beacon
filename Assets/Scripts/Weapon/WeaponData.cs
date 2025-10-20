@@ -3,7 +3,8 @@ using UnityEngine;
 public enum TypeWeapon
 {
     Melee,
-    Ranged
+    Ranged,
+    Upgraid
 }
 
 [CreateAssetMenu(fileName = "New Weapon", menuName = "Weapons/Weapon")]

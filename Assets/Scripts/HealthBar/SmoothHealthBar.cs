@@ -10,21 +10,20 @@ public class SmoothHealthBar : MonoBehaviour
 
     private Coroutine _coroutine;
 
-    public void Initialize(PlayerHealth player)
-    {
-        _characters = player;
-    }
-
-    private void OnEnable()
-    {
-        _characters.Changed += OnChange;
-        _characters.RaiseMe += OnRaise;
-    }
-
     private void OnDisable()
     {
-        _characters.Changed += Stop;
-        _characters.RaiseMe -= OnRaise;
+        if (_characters != null)
+        {
+            _characters.Changed += Stop;
+            _characters.RaiseMe -= OnRaise;
+        }
+    }
+
+    public void Init(PlayerHealth player)
+    {
+        _characters = player;
+        _characters.Changed += OnChange;
+        _characters.RaiseMe += OnRaise;
     }
 
     public void Stop()
@@ -45,10 +44,10 @@ public class SmoothHealthBar : MonoBehaviour
 
     private IEnumerator ChangeValue()
     {
-        while (_slider.value != _characters.Current/ _characters.MaxCurrent)
+        while (_slider.value != _characters.Current / _characters.MaxCurrent)
         {
             _slider.value = Mathf.MoveTowards(_slider.value, _characters.Current / _characters.MaxCurrent, _stepHealth * Time.deltaTime);
             yield return null;
-        }       
+        }
     }
 }

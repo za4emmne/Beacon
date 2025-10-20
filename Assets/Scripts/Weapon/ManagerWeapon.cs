@@ -5,25 +5,22 @@ using UnityEngine;
 
 public class ManagerWeapon : MonoBehaviour
 {
-    [SerializeField] private Transform _playerWeaponoint;
     [SerializeField] private List<WeaponData> _allWeapons;
-    [SerializeField] private ObjectKiller _killer;
-    //[SerializeField] private EnemiesGenerator _enemyGenerators;
 
+    //[SerializeField] private EnemiesGenerator _enemyGenerators;
+    private Transform _playerWeaponPoint;
     private PlayerWeapons _player;
     private PlayerLevelManager _playerProgress;
     private List<WeaponController> _weaponsInHand;
     private List<WeaponData> _availableWeapons;
     private int _numberOfChoices = 3;
 
-    private void Awake()
+    public void Init()
     {
         _player = Player.singleton.GetComponent<PlayerWeapons>();
         _playerProgress = Player.singleton.GetComponent<PlayerLevelManager>();
-    }
+        _playerWeaponPoint = _player.Point;
 
-    private void Start()
-    {
         foreach (var weapon in _allWeapons)
         {
             weapon.CurrentLevel = 0;
@@ -32,7 +29,7 @@ public class ManagerWeapon : MonoBehaviour
         CreateNewWeapon(_player.GetStartWeapon());
     }
 
-    public List<WeaponData> GetRandomChoices()//добавить разное оружие в зависимости от уровня
+    public List<WeaponData> GetRandomChoices()
     {
         List<WeaponData> choices = new List<WeaponData>();
         _availableWeapons = new();
@@ -87,8 +84,8 @@ public class ManagerWeapon : MonoBehaviour
     private void CreateNewWeapon(WeaponData weaponData)
     {
         Debug.Log("Создаем оружие - " + weaponData.name);
-        var weaponPrefab = Instantiate(weaponData.Prefab, _playerWeaponoint.position,
-            _playerWeaponoint.rotation, _playerWeaponoint);
+        var weaponPrefab = Instantiate(weaponData.Prefab, _playerWeaponPoint.position,
+            _playerWeaponPoint.rotation, _playerWeaponPoint);
 
         WeaponController weaponController = weaponPrefab.GetComponent<WeaponController>();
         GeneratorWeapon weaponGenerator = weaponPrefab.GetComponent<GeneratorWeapon>();

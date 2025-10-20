@@ -9,6 +9,12 @@ public class PlayerHealth : CharactersHealth
     public event Action SuperCriticalHealth;
     public event Action NormalHealth;
 
+    public void UpgraidMaxHealth(int count)
+    {
+        _maxHealth += (_maxHealth / count);
+        ChangeAwake();
+    }
+
     public void TakePills(float indexPill)
     {
         _health += indexPill;

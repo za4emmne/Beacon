@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a0792e330ccb64e8538987d95e6c0a, type: 3}
+  m_Name: Gorgone
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  _name: Gorgone
+  _health: 40
+  _damage: 10
+  _speed: 1
+  _prefab: {fileID: 6063575133032799722, guid: 13d1564cf3244284799dfed2e5c56b70, type: 3}
+  SpawnWeight: 0

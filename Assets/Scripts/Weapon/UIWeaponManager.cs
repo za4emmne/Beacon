@@ -1,15 +1,17 @@
+using DG.Tweening;
+using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using DG.Tweening;
-using System;
 //дописать событие подсказок!
 public class UIWeaponManager : MonoBehaviour
 {
     [Header("Скрипты:")]
     [SerializeField] private ManagerWeapon _manager;
-    [SerializeField] private PlayerLevelManager _progress;
+    private PlayerLevelManager _progress;
+    private UIManager _uiManager;
 
     [Header("Объекты:")]
     [SerializeField] private GameObject _weaponPanel;
@@ -17,9 +19,9 @@ public class UIWeaponManager : MonoBehaviour
     [SerializeField] private Text[] _texts;
     [SerializeField] private Text[] _levelText;
     [SerializeField] private Image[] _icons;
-    [SerializeField] private ParticleSystem _confeti;
+    private ParticleSystem _confeti;
     [SerializeField] private Text _levelUp;
-    
+
 
     [Header("Настройки анимации")]
     [SerializeField] private Vector2 _hiddenPosition;
@@ -30,7 +32,7 @@ public class UIWeaponManager : MonoBehaviour
 
     [Header("Подсказка")]
     [SerializeField] private GameObject _tooltipPanel;
-    [SerializeField] private Text _tooltipText; 
+    [SerializeField] private Text _tooltipText;
 
     private RectTransform _weaponPanalRect;
     private RectTransform _tooltipPanelRect;
@@ -41,6 +43,7 @@ public class UIWeaponManager : MonoBehaviour
 
     private void Awake()
     {
+        _uiManager = GetComponent<UIManager>();
         _weaponPanalRect = _weaponPanel.GetComponent<RectTransform>();
         _tooltipPanelRect = _tooltipPanel.GetComponent<RectTransform>();
         _buttonManagers = new ButtonManager[_buttons.Length];
@@ -54,20 +57,24 @@ public class UIWeaponManager : MonoBehaviour
         _levelUp.gameObject.SetActive(false);
     }
 
-    private void OnEnable()
-    {
-        _progress.LevelUp += ConfetiBoom;
-    }
-
     private void OnDisable()
     {
-        _progress.LevelUp -= ConfetiBoom;
+        if (_progress != null)
+            _progress.LevelUp -= ConfetiBoom;
+    }
+
+    public void Init()
+    {
+        _progress = Player.singleton.GetComponent<PlayerLevelManager>();
+        _confeti = Player.singleton.LevelUpEffect; 
+        _progress.LevelUp += ConfetiBoom;
     }
 
     public void OnDissactivePanel()
     {
         _weaponPanalRect.DOAnchorPos(_hiddenPosition, _animationDuration);
         _weaponPanel.SetActive(false);
+        _uiManager.SetSettingButton(true);
     }
 
     private void ConfetiBoom()
@@ -96,8 +103,8 @@ public class UIWeaponManager : MonoBehaviour
 
     private void ShowPanel()
     {
-        PlayerLevelManager player = Player.singleton.GetComponent<PlayerLevelManager>();
         _currentChoices = _manager.GetRandomChoices().ToArray(); // Сохраняем текущие варианты
+        _uiManager.SetSettingButton(false);
 
         for (int i = 0; i < _buttons.Length; i++)
         {
@@ -126,7 +133,7 @@ public class UIWeaponManager : MonoBehaviour
                 _buttons[i].onClick.RemoveAllListeners();
                 _buttons[i].onClick.AddListener(() => OnChoiceSelected(currentCoice));
                 WeaponIsChoise?.Invoke(currentCoice);
-                }
+            }
             else
             {
                 _buttons[i].gameObject.SetActive(false);
