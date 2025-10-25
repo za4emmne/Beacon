@@ -7,6 +7,7 @@ public class UIGameOverManager : MonoBehaviour
     [SerializeField] private GameObject _stats;
     [SerializeField] private Button _raisePlayer;
 
+
     [Header("Cтатистика")]
     [SerializeField] private Text _kill;
     [SerializeField] private Text _timer;

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -20,8 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text _levelText;
     [SerializeField] private GameObject _settingButton;
     [SerializeField] private Button _restart;
-    [SerializeField] private Button _menu;
     [SerializeField] private Image[] _icons;
+    [SerializeField] private Button _menu;
 
     private Button _pause;
 
@@ -41,6 +42,7 @@ public class UIManager : MonoBehaviour
         _gameOverManager.OnDeadScreenDisactivate();
         _pause.onClick.AddListener(_pauseMenuManager.Pause);
         _restart.onClick.AddListener(RestartScene);
+        _menu.onClick.AddListener(LoadMenuScene);
     }
 
     private void OnEnable()
@@ -75,6 +77,7 @@ public class UIManager : MonoBehaviour
 
     public void LoadMenuScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 

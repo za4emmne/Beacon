@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 public class UIMenuManager : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class UIMenuManager : MonoBehaviour
 
     private void ShowDemo()//сделать случайную фразу
     {
+
         if (_playerTalk.gameObject.activeSelf != true)
         {
             _playerTalk.gameObject.SetActive(true);
@@ -53,6 +55,9 @@ public class UIMenuManager : MonoBehaviour
 
     public void StartGame()//добавить подписку на события
     {
+        if (Time.timeScale == 0f)
+            Time.timeScale = 1f;
+
         SceneManager.LoadScene("Game");
     }
 }

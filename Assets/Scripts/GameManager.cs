@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     private int _raiseCount;
     private int _level;
     private bool _initialized = false;
+    private string _rewardID;
 
     public int Kill => _kill;
     public int HighScore => _highScore;
@@ -84,11 +85,15 @@ public class GameManager : MonoBehaviour
 
     public void OnRaisePlayer()
     {
-        if (_raiseCount > 0)
-            _raiseCount--;
+        YG2.RewardedAdvShow(_rewardID, () =>
+        {
+            if (_raiseCount > 0)
+                _raiseCount--;
 
-        _playerHealth.Raise();
-        PlayerRaist?.Invoke();
+            _playerHealth.Raise();
+            PlayerRaist?.Invoke();
+        });
+
         Time.timeScale = 1f;
     }
 

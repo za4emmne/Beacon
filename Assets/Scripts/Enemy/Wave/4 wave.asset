@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 4 wave
   m_EditorClassIdentifier: Assembly-CSharp::WaveDataSO
   waveName: demon
-  totalEnemies: 50
+  totalEnemies: 20
   possibleEnemies:
-  - {fileID: 11400000, guid: 8652c6d595fa7a142a01de290f38ac7a, type: 2}
+  - {fileID: 11400000, guid: aaaee22dc35f01c4d959c982e8b58c17, type: 2}
   description: 
