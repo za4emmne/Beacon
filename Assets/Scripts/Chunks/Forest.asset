@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a13707ccbd5d48a1268089f2c9485, type: 3}
+  m_Name: Forest
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeData
+  biomeName: Forest
+  debugColor: {r: 1, g: 1, b: 1, a: 1}
+  tiles:
+  - tile: {fileID: 11400000, guid: 9b65af08607e4e843a8f35c42a241372, type: 2}
+    weight: 50
+  - tile: {fileID: 11400000, guid: 5e4ea436d169c674e879a1148e8d91b5, type: 2}
+    weight: 5
+  - tile: {fileID: 11400000, guid: 22003d0b78ec6f14a8f3bd016e96a103, type: 2}
+    weight: 5
+  - tile: {fileID: 11400000, guid: f934b084509010145a51aa6875a7f521, type: 2}
+    weight: 5
+  - tile: {fileID: 11400000, guid: a8764317256aa674e9d80f035771af3b, type: 2}
+    weight: 5
+  - tile: {fileID: 11400000, guid: 4e640591731a6c3449ae2495790f52e2, type: 2}
+    weight: 15
+  - tile: {fileID: 11400000, guid: ca1ba8972c305604f905f3fce3098cd2, type: 2}
+    weight: 5
+  - tile: {fileID: 11400000, guid: a8764317256aa674e9d80f035771af3b, type: 2}
+    weight: 5
+  - tile: {fileID: 11400000, guid: a38abbfa23c375f4cb3e6fe1c67e1eba, type: 2}
+    weight: 5
+  - tile: {fileID: 11400000, guid: ba3b0f1d288f6e84aa38b3d311f26e36, type: 2}
+    weight: 5
+  - tile: {fileID: 11400000, guid: 3ea43ded9c3ef844e8dee6c438c20dcd, type: 2}
+    weight: 8
+  - tile: {fileID: 11400000, guid: 4e640591731a6c3449ae2495790f52e2, type: 2}
+    weight: 8
+  - tile: {fileID: 11400000, guid: 9d359d978d85f9641bd122d3e39decd4, type: 2}
+    weight: 8
+  - tile: {fileID: 11400000, guid: 6cbf1ab5da415dc4cb7bb2f37a5d93f8, type: 2}
+    weight: 8
+  - tile: {fileID: 11400000, guid: 6b062347a1a345540935244e6c54fcb4, type: 2}
+    weight: 8
+  decorations:
+  - prefab: {fileID: 3000614995373971236, guid: 02532019f0865ec48ab140d62215e47d, type: 3}
+    spawnChance: 10
+  - prefab: {fileID: 323895383514001769, guid: a2e026b36352b6740a5c7e03cc20bf9b, type: 3}
+    spawnChance: 10
+  - prefab: {fileID: 4853360242249434469, guid: cec004c7e2ed83548b0f7b70a4577507, type: 3}
+    spawnChance: 10
+  - prefab: {fileID: 3046968295234395957, guid: d6bc34016188f604aa924ad80a4dd365, type: 3}
+    spawnChance: 10
+  - prefab: {fileID: 6897135665646258884, guid: d5d5b6fa9a3fa0a49ae7c641bb80610d, type: 3}
+    spawnChance: 10
+  - prefab: {fileID: 5890254120246173270, guid: 655ccc56dd8c40b4c8a46ab6d3d28fb3, type: 3}
+    spawnChance: 10
+  - prefab: {fileID: 641917769302678924, guid: 8d921ba19b6364845b6557df9bfb977b, type: 3}
+    spawnChance: 10
+  decorationsPerChunk: 5

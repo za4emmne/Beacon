@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
         _uiManager.Init(_progress);
         _weaponWeapon.Init();
         _pillsGenerator.Init(Player.singleton.HillEffect);
+        TilemapChunkManager.Instance.Init();
 
         _progress.LevelUp += _uiManager.ChangeLevel;
         _progress.LevelUp += LevelUpAudioPlay;

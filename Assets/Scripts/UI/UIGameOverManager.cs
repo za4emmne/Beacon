@@ -4,15 +4,8 @@ using UnityEngine.UI;
 public class UIGameOverManager : MonoBehaviour
 {
     [SerializeField] private GameObject _gameOverScreen;
-    [SerializeField] private GameObject _stats;
+    [SerializeField] private UIStats _stats;
     [SerializeField] private Button _raisePlayer;
-
-
-    [Header("Cтатистика")]
-    [SerializeField] private Text _kill;
-    [SerializeField] private Text _timer;
-    [SerializeField] private Text _coin;
-    [SerializeField] private Text _level;
 
     private GameManager _gameManager;
     private Timer _timerLink;
@@ -31,7 +24,7 @@ public class UIGameOverManager : MonoBehaviour
     public void OnDeadScreenDisactivate()
     {
         _gameOverScreen.SetActive(false);
-        _stats.SetActive(true);
+        //_stats.gameObject.SetActive(true);
     }
 
     public void OnDeadScreenActivate()
@@ -40,11 +33,9 @@ public class UIGameOverManager : MonoBehaviour
         int level = Player.singleton.GetComponent<PlayerLevelManager>().Level;
         string time = _timerLink.GetCurrentTimeText();
 
+        _stats.CurrentStatsUpdate(kill, level, time);
         _gameOverScreen.SetActive(true);
-        _stats.SetActive(false);
-        _kill.text = "Убито: " + kill; 
-        _level.text = "Уровень: " + level;  
-        _timer.text = "Время игры: " + time;
+        //_stats.gameObject.SetActive(false);
 
         if (_gameManager.RaiseCount <= 0)
             _raisePlayer.gameObject.SetActive(false);

@@ -5,5 +5,6 @@ namespace YG
         public int bestScore;
         public int bestLevel;
         public int coins;
+        public float bestTime;
     }
 }

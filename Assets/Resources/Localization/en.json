@@ -1,0 +1,5 @@
+{
+  "kill_text": "Killed: {count}",
+  "level_text": "Level: {level}",
+  "time_text": "Game time: {time}"
+}

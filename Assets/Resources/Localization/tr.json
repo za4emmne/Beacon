@@ -1,0 +1,5 @@
+﻿{
+  "kill_text": "Öldürülen: {count}",
+  "level_text": "Seviye: {level}",
+  "time_text": "Oyun süresi: {time}"
+}

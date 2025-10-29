@@ -1,0 +1,5 @@
+{
+  "kill_text": "Убито: {count}",
+  "level_text": "Уровень: {level}",
+  "time_text": "Время игры: {time}"
+}
