@@ -55,4 +55,9 @@ public class Timer : MonoBehaviour
 
         return string.Format("{0:00 мин} {1:00 сек}", minutes, seconds);
     }
+
+    public float GetFloatTime()
+    {
+        return Time.time - _startTime;
+    }
 }

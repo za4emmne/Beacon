@@ -7,6 +7,8 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
     [Header("Компоненты игрока")]
     [SerializeField] private GameObject _player;
     [SerializeField] private CameraShake _camera;
@@ -33,15 +35,15 @@ public class GameManager : MonoBehaviour
     private AudioSource _audioSource;
 
     private int _kill;
-    private int _highScore;
     private int _coins;
     private int _raiseCount;
     private int _level;
     private bool _initialized = false;
     private string _rewardID;
 
+    public int BestLevel => GameDataManager.Instance.BestLevel;
+    public int HighScore => GameDataManager.Instance.BestScore;
     public int Kill => _kill;
-    public int HighScore => _highScore;
     public int Coins => _coins;
     public int Level => _level;
     public int RaiseCount => _raiseCount;
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _audioSource = GetComponent<AudioSource>();
         _uiManager = GetComponent<UIManager>();
         _weaponWeapon = GetComponent<ManagerWeapon>();
@@ -70,14 +73,11 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        YG2.onGetSDKData += GetLoad;
         _enemyManager.OneKill += ChangeScore;
-
     }
 
     private void OnDisable()
     {
-        YG2.onGetSDKData -= GetLoad;
         _enemyManager.OneKill -= ChangeScore;
         _progress.LevelUp -= _uiManager.ChangeLevel;
         _progress.LevelUp -= LevelUpAudioPlay;
@@ -97,33 +97,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private void GetLoad()
-    {
-        _highScore = YG2.saves.bestScore;
-
-        if (_progress != null)
-        {
-            _progress.GetBestLevel();
-        }
-        else
-        {
-            _progress = Player.singleton.GetComponent<PlayerLevelManager>();
-            _progress.GetBestLevel();
-        }
-
-    }
-
     private void ChangeScore()
     {
         _kill++;
         _uiManager.ChangeScore(_kill);
-
-        if (_kill >= _highScore)
-        {
-            _highScore -= _kill;
-            YG2.saves.bestScore = _highScore;
-            YG2.SaveProgress();
-        }
+        GameDataManager.Instance.UpdateBestScore(_kill);
     }
 
     private void LevelUpAudioPlay()

@@ -8,22 +8,8 @@ public class ObjectPool : MonoBehaviour
     private Dictionary<string, Queue<GameObject>> poolDictionary = new();
     private Dictionary<GameObject, string> activeObjects = new(); // Отслеживание активных объектов
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    private void Awake() => Instance = this;
 
-    /// <summary>
-    /// Получить объект из пула
-    /// </summary>
     public GameObject Get(GameObject prefab, Vector3 position, Transform parent = null)
     {
         string key = prefab.name;

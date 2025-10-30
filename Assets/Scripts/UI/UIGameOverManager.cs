@@ -7,18 +7,16 @@ public class UIGameOverManager : MonoBehaviour
     [SerializeField] private UIStats _stats;
     [SerializeField] private Button _raisePlayer;
 
-    private GameManager _gameManager;
     private Timer _timerLink;
 
     private void Awake()
     {
-        _gameManager = GetComponent<GameManager>();
         _timerLink = GetComponent<Timer>();
     }
 
     private void Start()
     {
-        _raisePlayer.onClick.AddListener(_gameManager.OnRaisePlayer);
+        _raisePlayer.onClick.AddListener(GameManager.Instance.OnRaisePlayer);
     }
 
     public void OnDeadScreenDisactivate()
@@ -29,7 +27,7 @@ public class UIGameOverManager : MonoBehaviour
 
     public void OnDeadScreenActivate()
     {
-        int kill = _gameManager.Kill;
+        int kill = GameManager.Instance.Kill;
         int level = Player.singleton.GetComponent<PlayerLevelManager>().Level;
         string time = _timerLink.GetCurrentTimeText();
 
@@ -37,7 +35,7 @@ public class UIGameOverManager : MonoBehaviour
         _gameOverScreen.SetActive(true);
         //_stats.gameObject.SetActive(false);
 
-        if (_gameManager.RaiseCount <= 0)
+        if (GameManager.Instance.RaiseCount <= 0)
             _raisePlayer.gameObject.SetActive(false);
     }
 }

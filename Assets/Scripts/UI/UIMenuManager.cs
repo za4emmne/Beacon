@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class UIMenuManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private Vector2 _hiddenPosition;
     [SerializeField] private Vector2 _shownPosition;
     [SerializeField] private float _animationDuration;
+    [SerializeField] private UIStats _stats;
+
+    private int _bestScoreKill = -1;
+    private int _bestLevel = -1;
 
     private void Awake()
     {
@@ -37,12 +42,20 @@ public class UIMenuManager : MonoBehaviour
     {
         _buttonManager.OnShowTooltip += ShowDemo;
         _buttonManager.OnHideTooltip += HideDemo;
+        YG2.onGetSDKData += LoadData;
     }
 
     private void OnDisable()
     {
         _buttonManager.OnShowTooltip -= ShowDemo;
-        _buttonManager.OnHideTooltip += HideDemo;
+        _buttonManager.OnHideTooltip -= HideDemo;
+        YG2.onGetSDKData -= LoadData;
+    }
+
+    private void LoadData()
+    {
+        _bestScoreKill = GameDataManager.Instance.BestScore;
+        _bestLevel = GameDataManager.Instance.BestLevel;
     }
 
     private void HideStats()
@@ -55,7 +68,7 @@ public class UIMenuManager : MonoBehaviour
 
     private void ShowStats()
     {
-
+        _stats.CurrentStatsUpdate(GameDataManager.Instance.BestScore, GameDataManager.Instance.BestLevel, "0");
         _statsPanel.gameObject.SetActive(true);
         _statsPanel.DOAnchorPos(_shownPosition, _animationDuration).SetEase(Ease.OutQuad);
     }

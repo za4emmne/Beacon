@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     private PlayerLevelManager _player;
-    private GameManager _gameManager;
     private UIWeaponManager _uiWeaponManager;
     private ButtonManager _settingButtonManager;
     private PauseMenuManager _pauseMenuManager;
@@ -31,7 +30,6 @@ public class UIManager : MonoBehaviour
     {
         _gameOverManager = GetComponent<UIGameOverManager>();
         _uiWeaponManager = GetComponent<UIWeaponManager>();
-        _gameManager = GetComponent<GameManager>();
         _settingButtonManager = _settingButton.GetComponent<ButtonManager>();
         _pauseMenuManager = GetComponent<PauseMenuManager>();
         _pause = _settingButton.GetComponent<Button>();
@@ -49,7 +47,7 @@ public class UIManager : MonoBehaviour
     {
         _settingButtonManager.OnShowTooltip += ShowSettingButtonAnimation;
         _settingButtonManager.OnHideTooltip += ShowSettingButtonAnimationExit;
-        _gameManager.PlayerRaist += _gameOverManager.OnDeadScreenDisactivate;
+        GameManager.Instance.PlayerRaist += _gameOverManager.OnDeadScreenDisactivate;
     }
 
     private void OnDisable()
@@ -57,7 +55,7 @@ public class UIManager : MonoBehaviour
         _settingButtonManager.OnShowTooltip += ShowSettingButtonAnimation;
         _settingButtonManager.OnHideTooltip -= ShowSettingButtonAnimationExit;
         _uiWeaponManager.WeaponIsChoise -= AddIcon;
-        _gameManager.PlayerRaist -= _gameOverManager.OnDeadScreenDisactivate;
+        GameManager.Instance.PlayerRaist -= _gameOverManager.OnDeadScreenDisactivate;
     }
 
     public void Init(PlayerLevelManager player)

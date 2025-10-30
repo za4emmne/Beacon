@@ -32,10 +32,10 @@ public class PlayerLevelManager : MonoBehaviour
         _nextLevel = CalculateXPForLevel(_level);
     }
 
-    public void GetBestLevel()
-    {
-        _bestLevel = YG2.saves.bestLevel;
-    }
+    //public void GetBestLevel()
+    //{
+    //    _bestLevel = YG2.saves.bestLevel;
+    //}
 
     public void EnsureInitialized()
     {
@@ -47,13 +47,10 @@ public class PlayerLevelManager : MonoBehaviour
         }
     }
 
-    public float GetProgressPercent()
-    {
-        return _currentProgress / _nextLevel;
-    }
+    public float GetProgressPercent() => _currentProgress / _nextLevel;
 
-    public float GetNextLevel()
-    { return _nextLevel; }
+
+    public float GetNextLevel() => _nextLevel;
 
     public void AddProgress(float score)
     {
@@ -73,11 +70,7 @@ public class PlayerLevelManager : MonoBehaviour
         LevelUpFloat?.Invoke(_nextLevel); //устанавливает следующий порог уровня
         LevelUp?.Invoke();
 
-        if (_level > _bestLevel)
-        {
-            YG2.saves.bestLevel = _bestLevel;
-            YG2.SaveProgress();
-        }
+        GameDataManager.Instance.UpdateBestLevel(_level);
     }
 
     private float CalculateXPForLevel(int level)
