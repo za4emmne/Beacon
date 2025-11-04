@@ -72,7 +72,7 @@ public class EnemyAnimation : MonoBehaviour
     public void OnHitAnimation()
     {
         _coroutine = StartCoroutine(IAnimateHit());
-        _animator.SetTrigger(AnimationNameHit);
+
     }
 
     private IEnumerator IAnimateHit()
@@ -86,5 +86,7 @@ public class EnemyAnimation : MonoBehaviour
             //_spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
             yield return new WaitForSeconds(.1f);
         }
+
+        _animator.SetTrigger(AnimationNameHit);
     }
 }

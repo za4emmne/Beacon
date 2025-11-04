@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private WaveSystem _waveSystem;
 
     [Header("Скрпипты игры")]
-    [SerializeField] private StarGenerator _starGenerator;
+    [SerializeField] private StarsSpawner _starGenerator;
     [SerializeField] private PillsGenerator _pillsGenerator;
     [SerializeField] private ProgressBar _progressBar;
     [SerializeField] private AudioClip _levelUpAudio;
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
         _progressBar.Init(_progress);
         _uiManager.Init(_progress);
         _weaponWeapon.Init();
-        _pillsGenerator.Init(Player.singleton.HillEffect);
+        _pillsGenerator.Init(Player.singleton.HillEffect, _playerHealth);
         TilemapChunkManager.Instance.Init();
 
         _progress.LevelUp += _uiManager.ChangeLevel;

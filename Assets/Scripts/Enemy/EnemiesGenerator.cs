@@ -13,7 +13,7 @@ public class EnemiesGenerator : MonoBehaviour
     [SerializeField] private float _maxSpawnDistance = 15f;
 
     [Header("Зависимости")]
-    [SerializeField] private StarGenerator _starGenerator;
+    [SerializeField] private StarsSpawner _starGenerator;
 
     public static List<Enemy> AllEnemies = new List<Enemy>();
 

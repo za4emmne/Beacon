@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StarGenerator : Spawner<Star>
+public class StarsSpawner : Spawner<Star>
 {
     [SerializeField] private EnemiesGenerator _enemyManager;
     [SerializeField] private AudioClip _addStar;
@@ -14,11 +12,6 @@ public class StarGenerator : Spawner<Star>
         base.Awake();
         _audioSourse = GetComponent<AudioSource>();
     }
-
-    //private void Start()
-    //{
-    //    base.OnStartGenerator();
-    //}
 
     public override Star GetObject()
     {

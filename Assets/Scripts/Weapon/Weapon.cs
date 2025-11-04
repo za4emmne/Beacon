@@ -37,11 +37,6 @@ public class Weapon : MonoBehaviour
         generator.AddProjectileOnList(this);
     }
 
-    //public void GetTarget(Transform target)
-    //{
-    //    _target = target;
-    //}
-
     public void SetZeroDirection()
     {
         direction = Vector2.zero;
@@ -54,15 +49,19 @@ public class Weapon : MonoBehaviour
             enemyHealth.TakeDamage(damage);
 
             if (data.weaponType == TypeWeapon.Ranged)
-            {
                 generator.PutObject(this);
-            }
         }
         if (collision.TryGetComponent<ObjectKiller>(out ObjectKiller killer))
         {
             if (data.weaponType == TypeWeapon.Ranged)
-            {
                 generator.PutObject(this);
+        }
+
+        if (collision.TryGetComponent<Loot>(out Loot loot))
+        {
+            if (data.weaponType == TypeWeapon.Melee)
+            {
+                loot.Disapear();
             }
         }
     }

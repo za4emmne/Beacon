@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8047950500422623525}
   - component: {fileID: 4149426654669586308}
   - component: {fileID: 2469024657840158396}
+  - component: {fileID: 6272105528079422122}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -128,3 +129,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.32, y: 0.32}
   m_Direction: 0
+--- !u!114 &6272105528079422122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5890254120246173270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e0bed80cb920d46878c90ddd21be3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Loot

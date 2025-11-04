@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1842026274511843296}
   - component: {fileID: 5744047501849060304}
   - component: {fileID: 1166382615965361861}
+  - component: {fileID: -9071472075198285157}
   m_Layer: 0
   m_Name: Totem
   m_TagString: Untagged
@@ -151,3 +152,15 @@ CapsuleCollider2D:
   m_Offset: {x: -0.01, y: 0}
   m_Size: {x: 0.18, y: 0.32}
   m_Direction: 0
+--- !u!114 &-9071472075198285157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641917769302678924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e0bed80cb920d46878c90ddd21be3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Loot

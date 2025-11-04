@@ -16,24 +16,25 @@ public class PillsGenerator : Spawner<Pills>
         _audioSource = GetComponent<AudioSource>();
     }
 
-    public void Init(ParticleSystem effect)
+    public void Init(ParticleSystem effect, PlayerHealth player)
     {
         _hillEffect = effect;
+        _player = player;
     }
 
-    private void OnEnable()
-    {
-        _player = Player.singleton?.GetComponent<PlayerHealth>();
+    //private void OnEnable()
+    //{
+    //    _player = Player.singleton?.GetComponent<PlayerHealth>();
 
-        if (_player != null)
-            _player.CriticalHealth += OneSpawn;
-    }
+    //    if (_player != null)
+    //        _player.CriticalHealth += OneSpawn;
+    //}
 
-    private void OnDisable()
-    {
-        if (_player != null)
-            _player.CriticalHealth -= OneSpawn;
-    }
+    //private void OnDisable()
+    //{
+    //    if (_player != null)
+    //        _player.CriticalHealth -= OneSpawn;
+    //}
 
     public override Pills GetObject()
     {
@@ -51,8 +52,8 @@ public class PillsGenerator : Spawner<Pills>
         base.PutObject(obj);
     }
 
-    public override void OnStartGenerator()
-    {
-        base.OnStartGenerator();
-    }
+    //public override void OnStartGenerator()
+    //{
+    //    base.OnStartGenerator();
+    //}
 }

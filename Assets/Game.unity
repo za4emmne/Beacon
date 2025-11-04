@@ -3638,8 +3638,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 377}
-  m_SizeDelta: {x: 640.76, y: 63}
+  m_AnchoredPosition: {x: 304, y: 439.2}
+  m_SizeDelta: {x: 248.082, y: 63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &857271493
 MonoBehaviour:
@@ -3663,12 +3663,12 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 26e5eb60ed650224d9dfd6d977091991, type: 3}
-    m_FontSize: 70
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 0
     m_MaxSize: 70
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4009,7 +4009,7 @@ RectTransform:
   m_GameObject: {fileID: 960240211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 228589903}
@@ -4210,7 +4210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 311.92776}
+  m_AnchoredPosition: {x: 0, y: 488}
   m_SizeDelta: {x: 640.76, y: 67.139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1060901230
@@ -7484,6 +7484,8 @@ MonoBehaviour:
   octaves: 3
   persistence: 0.5
   lacunarity: 2
+  _spawnerCoins: {fileID: 1920096102}
+  _spawnerPills: {fileID: 1920096100}
 --- !u!114 &1684669148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23739,6 +23741,7 @@ GameObject:
   - component: {fileID: 1920096099}
   - component: {fileID: 1920096100}
   - component: {fileID: 1920096101}
+  - component: {fileID: 1920096102}
   m_Layer: 0
   m_Name: Spawner Loots
   m_TagString: Untagged
@@ -23770,15 +23773,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1920096097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df46755286f0514d85784e149ceef6b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6933c956e14e6fd4ca0b4f31b8d24b59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _objects:
   - {fileID: 8275928557745056788, guid: b04bb083afcb47a48aa74e423483d050, type: 3}
-  minDelay: 1
-  maxDelay: 7
-  _devationPositionY: 4
-  _devationPositionX: 4
+  minDelay: 0
+  maxDelay: 0
+  _devationPositionY: 0
+  _devationPositionX: 0
   _spawnTime: 0
   _enemyManager: {fileID: 61008044}
   _addStar: {fileID: 8300000, guid: 3b81bbd4bbeb05c4d95a3824d7ec05db, type: 3}
@@ -23900,6 +23903,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1920096102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920096097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c483aa78d36a46b4486002228ef66da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnerCoins
+  _objects:
+  - {fileID: 107780196678717621, guid: 110a5b4ceb4c15d49a608d12d9684fc2, type: 3}
+  minDelay: 0
+  maxDelay: 0
+  _devationPositionY: 0
+  _devationPositionX: 0
+  _spawnTime: 0
+  _addCoin: {fileID: 8300000, guid: 27dc72cda9edd324681b3e2421c3138c, type: 3}
 --- !u!1 &1923861145
 GameObject:
   m_ObjectHideFlags: 0

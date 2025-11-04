@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Star : MonoBehaviour
 {
     private Coroutine _coroutine;
-    private StarGenerator _generator;
+    private StarsSpawner _generator;
     private int _price;
 
     private void Start()
@@ -14,7 +14,7 @@ public class Star : MonoBehaviour
         _price = 1;
     }
 
-    public void Initialize(StarGenerator generator)
+    public void Initialize(StarsSpawner generator)
     {
         _generator = generator;
     }

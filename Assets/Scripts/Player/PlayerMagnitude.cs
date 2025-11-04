@@ -8,5 +8,9 @@ public class PlayerMagnitude : MonoBehaviour
         {
             star.Add();
         }
+        if (collision.TryGetComponent<Coin>(out Coin coin))
+        {
+            coin.Add();
+        }
     }
 }

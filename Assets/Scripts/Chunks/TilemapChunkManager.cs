@@ -34,6 +34,10 @@ public class TilemapChunkManager : MonoBehaviour
     private Transform _player;
     private System.Random random;
 
+    [Header("Scripts")]
+    [SerializeField] private SpawnerCoins _spawnerCoins;
+    [SerializeField] private PillsGenerator _spawnerPills;
+
     private class ChunkInfo
     {
         public GameObject gameObject;
@@ -257,6 +261,12 @@ public class TilemapChunkManager : MonoBehaviour
             {
                 GameObject obj = ObjectPool.Instance.Get(selected.prefab, worldPos, parent);
                 chunkInfo.spawnedObjects.Add(obj);
+
+                if (obj.TryGetComponent<Loot>(out Loot loot))
+                {
+                    loot.Initialized(_spawnerCoins, _spawnerPills);
+
+                }
             }
         }
     }

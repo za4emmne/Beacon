@@ -67,9 +67,10 @@ public class GameDataManager : MonoBehaviour
         }
     }
 
-    //public void AddCoins(int amount)
-    //{
-    //    _totalCoins += amount;
-    //    // Сохрани в YG2 если нужно
-    //}
+    public void AddCoins(int amount)
+    {
+        _totalCoins += amount;
+        YG2.saves.coins = _totalCoins;
+        YG2.SaveProgress();
+    }
 }
