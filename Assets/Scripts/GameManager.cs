@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Êîìïîíåíòû èãðîêà")]
     [SerializeField] private GameObject _player;
     [SerializeField] private CameraShake _camera;
-    [SerializeField] private FixedJoystick _fixedJoystick;
+    [SerializeField] private DynamicJoystick _fixedJoystick;
     [SerializeField] private CinemachineVirtualCamera _ñinemachineVirtualCamera;
     [SerializeField] private Follower _follower;
     [SerializeField] private SmoothHealthBar _smoothHealthBar;
@@ -35,20 +35,24 @@ public class GameManager : MonoBehaviour
     private AudioSource _audioSource;
 
     private int _kill;
-    private int _coins;
+    private int _currentCoin;
     private int _raiseCount;
     private int _level;
     private bool _initialized = false;
     private string _rewardID;
+    private int _coinPrice = 100;
+    private bool _isAddPrise;
 
     public int BestLevel => GameDataManager.Instance.BestLevel;
     public int HighScore => GameDataManager.Instance.BestScore;
-    public int Kill => _kill;
-    public int Coins => _coins;
+    public int CurrentKill => _kill;
+    public int CurrentCoin => _currentCoin;
     public int Level => _level;
     public int RaiseCount => _raiseCount;
+    public bool IsAddPrise => _isAddPrise;
 
     public event Action PlayerRaist;
+    public event Action<int> OnAddCoin;
 
     private void Awake()
     {
@@ -69,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         _raiseCount = 1;
         _kill = 0;
+        _isAddPrise = false;
     }
 
     private void OnEnable()
@@ -95,6 +100,24 @@ public class GameManager : MonoBehaviour
         });
 
         Time.timeScale = 1f;
+    }
+
+    public void OnGetCoins()
+    {
+        YG2.RewardedAdvShow(_rewardID, () =>
+        {
+            AddCoins(_coinPrice);
+        });
+
+
+    }
+
+    public void AddCoins(int amount)
+    {
+        _currentCoin += amount;
+        OnAddCoin?.Invoke(_currentCoin);
+        GameDataManager.Instance.AddCoins(amount);
+
     }
 
     private void ChangeScore()

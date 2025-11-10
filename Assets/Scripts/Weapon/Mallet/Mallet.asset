@@ -24,8 +24,10 @@ MonoBehaviour:
   _speed: 7
   _level: 1
   LevelOpen: 1
+  Controller: {fileID: 7002974613099442038, guid: 17a7d67cec847ce4e8a45c4180748753, type: 3}
   CurrentDamage: 50
   CurrentDelay: 0.75
   CurrentAttackRange: 1
   CurrentSpeed: 7
-  CurrentLevel: 1
+  CurrentLevel: 0
+  CurrentDescription: 

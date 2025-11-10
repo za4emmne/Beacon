@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [Header("UI элементы")]
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _levelText;
+    [SerializeField] private Text _coinText;
     [SerializeField] private GameObject _settingButton;
     [SerializeField] private Button _restart;
     [SerializeField] private Image[] _icons;
@@ -45,6 +46,7 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
+        GameManager.Instance.OnAddCoin += ChangeCoin;
         _settingButtonManager.OnShowTooltip += ShowSettingButtonAnimation;
         _settingButtonManager.OnHideTooltip += ShowSettingButtonAnimationExit;
         GameManager.Instance.PlayerRaist += _gameOverManager.OnDeadScreenDisactivate;
@@ -52,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
+        GameManager.Instance.OnAddCoin -= ChangeCoin;
         _settingButtonManager.OnShowTooltip += ShowSettingButtonAnimation;
         _settingButtonManager.OnHideTooltip -= ShowSettingButtonAnimationExit;
         _uiWeaponManager.WeaponIsChoise -= AddIcon;
@@ -87,6 +90,11 @@ public class UIManager : MonoBehaviour
     public void ChangeLevel()
     {
         _levelText.text = "Уровень: " + _player.Level;
+    }
+
+    public void ChangeCoin(int value)
+    {
+        _coinText.text = "Монет: " + value;
     }
 
     public void SetSettingButton(bool set)

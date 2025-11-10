@@ -6,9 +6,13 @@ public class WeaponController : MonoBehaviour
     [SerializeField] protected int level;
     [SerializeField] public WeaponData data;
 
+    protected string _description;
+
+    public string Description => _description;
+
     protected virtual void Awake()
     {
-       // level = 0;
+
     }
 
     public virtual void Initialize(WeaponData weaponData)
@@ -16,6 +20,7 @@ public class WeaponController : MonoBehaviour
         data = weaponData;
         level = data.CurrentLevel;
         Upgraid(level);
+        weaponData.CurrentDescription = _description;
     }
 
     private void Upgraid(int level)

@@ -9,18 +9,18 @@ public class SpeedUpgraidController : WeaponController
     {
         base.Initialize(weaponData);
         _playerMovement = Player.singleton.GetComponent<PlayerMovement>();
-        _playerMovement.UpgraidSpeed(_count);
+        _playerMovement.UpgradeSpeed(_count);
     }
     protected override void Level2(int level)
     {
         base.Level2(level);
 
-        _playerMovement.UpgraidSpeed(_count);
+        _playerMovement.UpgradeSpeed(_count);
     }
 
     protected override void Level3(int level)
     {
         base.Level3(level);
-        _playerMovement.UpgraidSpeed(_count);
+        _playerMovement.UpgradeSpeed(_count);
     }
 }

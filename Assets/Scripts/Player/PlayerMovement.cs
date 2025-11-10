@@ -13,88 +13,127 @@ public class PlayerMovement : MonoBehaviour
     private const string NameDirectionVertical = "Vertical";
 
     [SerializeField] private float _speed = 3;
-    [SerializeField] private FixedJoystick _joystick;
+    [SerializeField] private DynamicJoystick _joystick;
+
+    public float VerticalMove;
+    public float HorizontalMove;
 
     private Rigidbody2D _rigidbody2D;
-    private Transform _transform;
     private SpriteRenderer _spriteRenderer;
-    private float _horizontalMove;
-    private float _verticalMove;
-    private Vector2 _direction;
     private float _lastDirection;
+    private bool _isMobile;
 
     public event Action Run;
     public event Action<bool> Flip;
 
-    public float HorizontalMove => _horizontalMove;
-    public float VerticalMove => _verticalMove;
     public float LastDirection => _lastDirection;
-
 
     private void Awake()
     {
-        _transform = GetComponent<Transform>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        //#if UNITY_EDITOR
+        //           _isMobile = true;
+        //#else
+        //            _isMobile = Application.isMobilePlatform;
+        //#endif
+
+        //_isMobile = Application.isMobilePlatform;
+        // Настраиваем джойстик для платформы
+        if (_joystick != null)
+        {
+            _joystick.gameObject.SetActive(_isMobile);
+        }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (Application.isMobilePlatform)
+        // Вся физика в FixedUpdate для стабильности
+        if (_isMobile && _joystick != null && Time.timeScale != 0f)
         {
             Joy();
         }
         else
         {
-            _joystick.gameObject.SetActive(false);
             Keyboard();
         }
+    }
 
-        if (_horizontalMove < 0 || _joystick.Horizontal < 0)
+    private void Update()
+    {
+        // Логика поворота и событий
+        float currentHorizontal = _isMobile && _joystick != null
+            ? _joystick.Horizontal
+            : Input.GetAxisRaw(NameDirectionHorizontal);
+
+        // Поворот персонажа с мертвой зоной
+        if (currentHorizontal < -0.1f)
         {
             transform.localEulerAngles = new Vector3(0, 180, 0);
+            _lastDirection = -1;
         }
-
-        if (_horizontalMove > 0 || _joystick.Horizontal > 0)
+        else if (currentHorizontal > 0.1f)
         {
             transform.localEulerAngles = new Vector3(0, 0, 0);
+            _lastDirection = 1;
         }
 
-        _lastDirection = _horizontalMove;
-        Run?.Invoke();
+        // Вызываем событие Run только при движении
+        if (_rigidbody2D.linearVelocity.sqrMagnitude > 0.01f)
+        {
+            Run?.Invoke();
+        }
     }
 
-    public void Initialize(FixedJoystick joystick)
+    public void Initialize(DynamicJoystick joystick)
     {
+        if (joystick == null)
+        {
+            Debug.LogWarning("Попытка инициализировать джойстик с null значением");
+            return;
+        }
+
         _joystick = joystick;
+        _joystick.gameObject.SetActive(_isMobile);
     }
 
-    public void UpgraidSpeed(float count)
+    public void UpgradeSpeed(float count)
     {
+        if (count <= 0)
+        {
+            Debug.LogWarning("Значение count должно быть больше 0");
+            return;
+        }
+
         _speed += (_speed / count);
-    }
-
-    public Vector2 GetDirection()
-    {
-        _direction = new Vector2(
-    Input.GetAxisRaw("Horizontal"),
-    Input.GetAxisRaw("Vertical")
-).normalized;
-
-        return _direction;
     }
 
     private void Joy()
     {
-        _rigidbody2D.linearVelocity = new Vector3(_joystick.Horizontal * _speed, _joystick.Vertical * _speed);
-        JoystickCurrentHorizontal = _joystick.Horizontal;
-        JoystickCurrentVertical = _joystick.Vertical;
+        // Получаем значения джойстика
+        float horizontal = _joystick.Horizontal;
+        float vertical = _joystick.Vertical;
+
+        // Применяем движение
+        _rigidbody2D.linearVelocity = new Vector2(horizontal * _speed, vertical * _speed);
+
+        // Сохраняем текущие значения для публичного доступа
+        JoystickCurrentHorizontal = horizontal;
+        JoystickCurrentVertical = vertical;
     }
 
     private void Keyboard()
     {
-        _horizontalMove = Input.GetAxisRaw(NameDirectionHorizontal) * _speed;
-        _verticalMove = Input.GetAxisRaw(NameDirectionVertical) * _speed;
-        _rigidbody2D.linearVelocity = new Vector2(_horizontalMove, _verticalMove);
+        float horizontal = Input.GetAxisRaw(NameDirectionHorizontal);
+        float vertical = Input.GetAxisRaw(NameDirectionVertical);
+        VerticalMove = vertical;
+        HorizontalMove = horizontal;
+
+        _rigidbody2D.linearVelocity = new Vector2(horizontal * _speed, vertical * _speed);
+
+        // Обновляем значения для совместимости
+        JoystickCurrentHorizontal = horizontal;
+        JoystickCurrentVertical = vertical;
     }
 }

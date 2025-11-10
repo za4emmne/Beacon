@@ -68,7 +68,9 @@ public class UIMenuManager : MonoBehaviour
 
     private void ShowStats()
     {
-        _stats.CurrentStatsUpdate(GameDataManager.Instance.BestScore, GameDataManager.Instance.BestLevel, "0");
+        Debug.Log(GameDataManager.Instance.TotalCoins);
+        _stats.CurrentStatsUpdate(GameDataManager.Instance.BestScore, 
+            GameDataManager.Instance.BestLevel, "0", GameDataManager.Instance.TotalCoins);
         _statsPanel.gameObject.SetActive(true);
         _statsPanel.DOAnchorPos(_shownPosition, _animationDuration).SetEase(Ease.OutQuad);
     }

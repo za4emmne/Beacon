@@ -34,7 +34,7 @@ public class Coin : MonoBehaviour
                 _coroutine = null;
             }
 
-            GameDataManager.Instance.AddCoins(_amount);
+            GameManager.Instance.AddCoins(_amount);
             _spawner.PutObject(this);
         }
     }

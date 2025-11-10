@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,6 +19,7 @@ public class UIWeaponManager : MonoBehaviour
     [SerializeField] private Button[] _buttons;
     [SerializeField] private Text[] _texts;
     [SerializeField] private Text[] _levelText;
+    [SerializeField] private Text[] _descriptionText;
     [SerializeField] private Image[] _icons;
     private ParticleSystem _confeti;
     [SerializeField] private Text _levelUp;
@@ -113,21 +115,29 @@ public class UIWeaponManager : MonoBehaviour
                 _buttons[i].gameObject.SetActive(true);
                 _texts[i].text = _currentChoices[i].Name;
                 _icons[i].sprite = _currentChoices[i].Icon;
+ 
 
                 if (_currentChoices[i].CurrentLevel > 0)
-                    _levelText[i].text = "lvl: " + _currentChoices[i].CurrentLevel.ToString();
-                else
-                    _levelText[i].text = "New!";
-
-                // Инициализация менеджера кнопки
-                if (_buttonManagers[i] == null)
                 {
-                    _buttonManagers[i] = _buttons[i].gameObject.GetComponent<ButtonManager>();
-                    int index = i; // Важно сохранить копию индекса для замыкания
-
-                    _buttonManagers[i].OnShowTooltip += () => ShowTooltip(index);
-                    _buttonManagers[i].OnHideTooltip += HideTooltip;
+                    _levelText[i].text = "lvl: " + _currentChoices[i].CurrentLevel.ToString();
+                    _descriptionText[i].text = _currentChoices[i].CurrentDescription;
                 }
+                else
+                {
+                    _descriptionText[i].text = _currentChoices[i].Description;
+                    _levelText[i].text = "New!";
+                }
+
+
+                //// Инициализация менеджера кнопки
+                //if (_buttonManagers[i] == null)
+                //{
+                //    _buttonManagers[i] = _buttons[i].gameObject.GetComponent<ButtonManager>();
+                //    int index = i; // Важно сохранить копию индекса для замыкания
+
+                //    _buttonManagers[i].OnShowTooltip += () => ShowTooltip(index);
+                //    _buttonManagers[i].OnHideTooltip += HideTooltip;
+                //}
 
                 WeaponData currentCoice = _currentChoices[i];
                 _buttons[i].onClick.RemoveAllListeners();
@@ -148,26 +158,29 @@ public class UIWeaponManager : MonoBehaviour
     }
 
 
-    private void ShowTooltip(int buttonIndex)
-    {
-        if (buttonIndex >= 0 && buttonIndex < _currentChoices.Length)
-        {
-            _tooltipText.text = _currentChoices[buttonIndex].Description;
-            _tooltipPanel.SetActive(true);
-            _tooltipPanelRect.DOKill(); // Останавливаем предыдущие анимации
-            _tooltipPanelRect.DOAnchorPos(_shownTooltipPosition, _animationDuration).SetEase(Ease.OutQuad)
-                .SetEase(Ease.OutBack)
-                .SetUpdate(true);
-        }
-    }
+    //private void ShowTooltip(int buttonIndex)
+    //{
+    //    if (buttonIndex >= 0 && buttonIndex < _currentChoices.Length)
+    //    {
+    //        WeaponController weaponController = _currentChoices[buttonIndex].Prefab.GetComponent<WeaponController>();
+            
+    //        _tooltipText.text = weaponController.Description;
+    //        Debug.Log(weaponController.Description);
+    //        _tooltipPanel.SetActive(true);
+    //        _tooltipPanelRect.DOKill(); // Останавливаем предыдущие анимации
+    //        _tooltipPanelRect.DOAnchorPos(_shownTooltipPosition, _animationDuration).SetEase(Ease.OutQuad)
+    //            .SetEase(Ease.OutBack)
+    //            .SetUpdate(true);
+    //    }
+    //}
 
-    private void HideTooltip()
-    {
-        _tooltipPanelRect.DOKill(); // Останавливаем предыдущие анимации
-        _tooltipPanelRect.DOAnchorPos(_hiddenTooltipPosition, _animationDuration).SetEase(Ease.OutQuad)
-            .OnComplete(() => _tooltipPanel.SetActive(false))
-            .SetUpdate(true); // Анимация будет работать даже при Time.timeScale = 0
-    }
+    //private void HideTooltip()
+    //{
+    //    _tooltipPanelRect.DOKill(); // Останавливаем предыдущие анимации
+    //    _tooltipPanelRect.DOAnchorPos(_hiddenTooltipPosition, _animationDuration).SetEase(Ease.OutQuad)
+    //        .OnComplete(() => _tooltipPanel.SetActive(false))
+    //        .SetUpdate(true); // Анимация будет работать даже при Time.timeScale = 0
+    //}
 
     private void OnChoiceSelected(WeaponData selectedWeaponAbility)
     {

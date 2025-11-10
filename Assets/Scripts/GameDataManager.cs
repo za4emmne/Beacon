@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using YG;
 
@@ -9,6 +10,7 @@ public class GameDataManager : MonoBehaviour
     private int _bestLevel;
     private int _totalCoins;
     private float _time;
+
 
     public int BestScore => _bestScore;
     public int BestLevel => _bestLevel;
@@ -43,6 +45,7 @@ public class GameDataManager : MonoBehaviour
     {
         _bestScore = YG2.saves.bestScore;
         _bestLevel = YG2.saves.bestLevel;
+        _totalCoins = YG2.saves.coins;
         // Добавь другие данные по необходимости
         Debug.Log($"Data loaded: BestScore={_bestScore}, BestLevel={_bestLevel}");
     }

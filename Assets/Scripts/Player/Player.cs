@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         _health.Init(_maxHealth);
     }
 
-    public void Initialize(UIManager uiManager, CameraShake camera, FixedJoystick joystick)
+    public void Initialize(UIManager uiManager, CameraShake camera, DynamicJoystick joystick)
     {
         _animator.Initialize(uiManager);
         _camera = camera;

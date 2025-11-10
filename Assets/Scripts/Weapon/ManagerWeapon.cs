@@ -36,7 +36,7 @@ public class ManagerWeapon : MonoBehaviour
 
         foreach (var weapon in _allWeapons)
         {
-            if (weapon.LevelOpen <= _playerProgress.Level)
+            if (weapon.LevelOpen <= _playerProgress.Level && weapon.CurrentLevel < 4)
                 _availableWeapons.Add(weapon);
         }
 

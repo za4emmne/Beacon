@@ -8,12 +8,11 @@ public class UIStats : MonoBehaviour
     [SerializeField] private Text _coin;
     [SerializeField] private Text _level;
 
-    public void CurrentStatsUpdate(int currentKill, int currentLevel, string currentTime)
+    public void CurrentStatsUpdate(int currentKill, int currentLevel, string currentTime, int currentCoin)
     {
         _kill.text = "Убито: " + currentKill;
         _level.text = "Уровень: " + currentLevel;
         _timer.text = "Время игры: " + currentTime;
+        _coin.text = "Монет: " + currentCoin;
     }
-
-
 }

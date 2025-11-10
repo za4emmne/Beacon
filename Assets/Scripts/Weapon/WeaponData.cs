@@ -22,6 +22,7 @@ public class WeaponData : ScriptableObject
     [SerializeField] private float _speed;
     [SerializeField] private int _level;
     [SerializeField] public int LevelOpen;
+    [SerializeField] public WeaponController Controller;
 
     [Header("Текущие значения")]
     public float CurrentDamage;
@@ -29,6 +30,7 @@ public class WeaponData : ScriptableObject
     public float CurrentAttackRange;
     public float CurrentSpeed;
     public int CurrentLevel;
+    public string CurrentDescription;
  
 
     public void Init()
@@ -38,6 +40,7 @@ public class WeaponData : ScriptableObject
         CurrentAttackRange = _attackRange;
         CurrentSpeed = _speed;
         CurrentLevel = _level;
+        //CurrentDescription = Controller.Description;
     }
 
     public void GetStartLevel()

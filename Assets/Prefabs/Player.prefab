@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519a4a26ea7e35042b9ccba273d74525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLevelManager
-  _baseEarlyGameXP: 8
+  _baseEarlyGameXP: 1
   _midGameMultiplier: 12
   _lateGameMultiplier: 15
   _exponentialFactor: 1.1
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapons: []
   _point: {fileID: 4247415996887843371}
-  _startWeapon: {fileID: 11400000, guid: 631ca2f7baaaa964c99e8c3ba533a14c, type: 2}
+  _startWeapon: {fileID: 11400000, guid: fbd9724d221194d4e921e6ab35898485, type: 2}
 --- !u!114 &4121040943350619210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +294,8 @@ MonoBehaviour:
   JoystickCurrentHorizontal: 0
   _speed: 3
   _joystick: {fileID: 0}
+  VerticalMove: 0
+  HorizontalMove: 0
 --- !u!1 &2601719382573905398
 GameObject:
   m_ObjectHideFlags: 0

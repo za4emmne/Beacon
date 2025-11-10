@@ -27,7 +27,6 @@ public class SableBehavior : Weapon
     private IEnumerator AnimatorController()
     {
         var wait = new WaitForSeconds(delay);
-        var delayWeapon = new WaitForSeconds(1f);
 
         while (enabled)
         {
