@@ -12,8 +12,8 @@ public class PlayerAnimation : MonoBehaviour
 
     private PlayerHealth _characters;
     private PlayerMovement _playerMovenment;
-
     private UIManager _uiManager;
+
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private Coroutine _coroutine;
@@ -33,9 +33,8 @@ public class PlayerAnimation : MonoBehaviour
         _playerMovenment.Run -= OnRunAnimation;
     }
 
-    public void Initialize(UIManager manager)
+    public void Initialize()
     {
-        _uiManager = manager;
         _characters = Player.singleton.GetComponent<PlayerHealth>();
         _playerMovenment = Player.singleton.GetComponent<PlayerMovement>();
         _characters.Died += OnDeadAnimation;
@@ -44,7 +43,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void GameOver()
     {
-        _uiManager.OnDeadScreenActivate();
+        UIManager.Instance.OnDeadScreenActivate();
         Time.timeScale = 0f;
     }
 

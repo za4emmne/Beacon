@@ -42,8 +42,8 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     public virtual void PutObject(T obj)
     {
-        pool.Enqueue(obj);
         obj.gameObject.SetActive(false);
+        pool.Enqueue(obj);
     }
 
     protected virtual Vector3 PositionGeneraton()
@@ -67,13 +67,17 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     public virtual void OnStartGenerator()
     {
-        if (_coroutine == null)
+        // Защита от повторного запуска
+        if (_coroutine != null)
         {
-            _coroutine = StartCoroutine(Spawn());
+            Debug.LogWarning("Spawn coroutine already running!");
+            return;
         }
+
+        _coroutine = StartCoroutine(Spawn());
     }
 
-    public void OnStop()
+    public virtual void OnStop()
     {
         if (_coroutine != null)
         {
@@ -96,15 +100,30 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     protected IEnumerator Spawn()
     {
+        Debug.Log($"Spawn coroutine started for {gameObject.name}");
+
         while (true)
-        {           
+        {
             _spawnTime = Random.Range(minDelay, maxDelay);
+            Debug.Log($"Spawning in {_spawnTime} seconds...");
+
             var waitForSeconds = new WaitForSeconds(_spawnTime);
+
             var obj = GetObject();
-            obj.gameObject.SetActive(true);
-            obj.transform.position = PositionGeneraton();
+
+            if (obj != null)
+            {
+                obj.gameObject.SetActive(true);
+                obj.transform.position = PositionGeneraton();
+                Debug.Log($"Object spawned: {obj.name}");
+            }
+            else
+            {
+                Debug.LogWarning("GetObject returned NULL!");
+            }
 
             yield return waitForSeconds;
         }
     }
+
 }

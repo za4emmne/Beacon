@@ -8,12 +8,15 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
+
     private PlayerLevelManager _player;
     private UIWeaponManager _uiWeaponManager;
     private ButtonManager _settingButtonManager;
     private PauseMenuManager _pauseMenuManager;
     private UIGameOverManager _gameOverManager;
     private PlayerWeapons _playerWeapon;
+    private GameManager _gameManager;
 
     [Header("UI элементы")]
     [SerializeField] private Text _scoreText;
@@ -29,11 +32,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _gameOverManager = GetComponent<UIGameOverManager>();
         _uiWeaponManager = GetComponent<UIWeaponManager>();
         _settingButtonManager = _settingButton.GetComponent<ButtonManager>();
         _pauseMenuManager = GetComponent<PauseMenuManager>();
         _pause = _settingButton.GetComponent<Button>();
+        _gameManager = GetComponent<GameManager>();
     }
 
     private void Start()
@@ -46,19 +51,19 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.Instance.OnAddCoin += ChangeCoin;
+        _gameManager.OnAddCoin += ChangeCoin;
         _settingButtonManager.OnShowTooltip += ShowSettingButtonAnimation;
         _settingButtonManager.OnHideTooltip += ShowSettingButtonAnimationExit;
-        GameManager.Instance.PlayerRaist += _gameOverManager.OnDeadScreenDisactivate;
+        _gameManager.PlayerRaist += _gameOverManager.OnDeadScreenDisactivate;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.OnAddCoin -= ChangeCoin;
+        _gameManager.OnAddCoin -= ChangeCoin;
         _settingButtonManager.OnShowTooltip += ShowSettingButtonAnimation;
         _settingButtonManager.OnHideTooltip -= ShowSettingButtonAnimationExit;
         _uiWeaponManager.WeaponIsChoise -= AddIcon;
-        GameManager.Instance.PlayerRaist -= _gameOverManager.OnDeadScreenDisactivate;
+        _gameManager.PlayerRaist -= _gameOverManager.OnDeadScreenDisactivate;
     }
 
     public void Init(PlayerLevelManager player)
@@ -78,6 +83,9 @@ public class UIManager : MonoBehaviour
 
     public void LoadMenuScene()
     {
+        GameDataManager.Instance.UpdateTotalKill(_gameManager.CurrentKill);
+        GameDataManager.Instance.UpdateTotalTime(Timer.Instance.GetCurrentTime());
+        GameDataManager.Instance.UpdateBestTime(Timer.Instance.GetCurrentTime());
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }

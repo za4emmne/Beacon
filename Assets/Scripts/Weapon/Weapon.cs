@@ -16,8 +16,14 @@ public class Weapon : MonoBehaviour
 
     private void OnDisable()
     {
-        if (data.weaponType == TypeWeapon.Ranged)
-            generator.RemoveProjectileFromList(this);
+        // ДОБАВЛЕНЫ ПРОВЕРКИ НА NULL
+        if (data != null && data.weaponType == TypeWeapon.Ranged)
+        {
+            if (generator != null)
+            {
+                generator.RemoveProjectileFromList(this);
+            }
+        }
     }
 
     public virtual void Initialize()
@@ -26,15 +32,25 @@ public class Weapon : MonoBehaviour
             player = Player.singleton.GetComponent<PlayerMovement>();
 
         _target = null;
-        damage = data.CurrentDamage;
-        delay = data.CurrentDelay;
-        speed = data.CurrentSpeed;
+
+        // ПРОВЕРКА: data может быть null для LightningWeapon
+        if (data != null)
+        {
+            damage = data.CurrentDamage;
+            delay = data.CurrentDelay;
+            speed = data.CurrentSpeed;
+        }
     }
 
     public void InitGenerator(GeneratorWeapon gen)
     {
         generator = gen;
-        generator.AddProjectileOnList(this);
+
+        // ПРОВЕРКА: добавляем только если генератор существует
+        if (generator != null)
+        {
+            generator.AddProjectileOnList(this);
+        }
     }
 
     public void SetZeroDirection()
@@ -48,18 +64,25 @@ public class Weapon : MonoBehaviour
         {
             enemyHealth.TakeDamage(damage);
 
-            if (data.weaponType == TypeWeapon.Ranged)
-                generator.PutObject(this);
+            if (data != null && data.weaponType == TypeWeapon.Ranged)
+            {
+                if (generator != null)
+                    generator.PutObject(this);
+            }
         }
+
         if (collision.TryGetComponent<ObjectKiller>(out ObjectKiller killer))
         {
-            if (data.weaponType == TypeWeapon.Ranged)
-                generator.PutObject(this);
+            if (data != null && data.weaponType == TypeWeapon.Ranged)
+            {
+                if (generator != null)
+                    generator.PutObject(this);
+            }
         }
 
         if (collision.TryGetComponent<Loot>(out Loot loot))
         {
-            if (data.weaponType == TypeWeapon.Melee)
+            if (data != null && data.weaponType == TypeWeapon.Melee)
             {
                 loot.Disapear();
             }

@@ -11,6 +11,7 @@ public class UIWeaponManager : MonoBehaviour
 {
     [Header("Ñêğèïòû:")]
     [SerializeField] private ManagerWeapon _manager;
+
     private PlayerLevelManager _progress;
     private UIManager _uiManager;
 
@@ -45,7 +46,6 @@ public class UIWeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        _uiManager = GetComponent<UIManager>();
         _weaponPanalRect = _weaponPanel.GetComponent<RectTransform>();
         _tooltipPanelRect = _tooltipPanel.GetComponent<RectTransform>();
         _buttonManagers = new ButtonManager[_buttons.Length];
@@ -68,15 +68,18 @@ public class UIWeaponManager : MonoBehaviour
     public void Init()
     {
         _progress = Player.singleton.GetComponent<PlayerLevelManager>();
-        _confeti = Player.singleton.LevelUpEffect; 
+        _confeti = Player.singleton.LevelUpEffect;
+        _uiManager = UIManager.Instance;
         _progress.LevelUp += ConfetiBoom;
     }
 
     public void OnDissactivePanel()
     {
-        _weaponPanalRect.DOAnchorPos(_hiddenPosition, _animationDuration);
-        _weaponPanel.SetActive(false);
-        _uiManager.SetSettingButton(true);
+        _weaponPanalRect.DOAnchorPos(_hiddenPosition, _animationDuration).OnComplete(() =>
+        {
+            _weaponPanel.SetActive(false);
+            UIManager.Instance.SetSettingButton(true);
+        });
     }
 
     private void ConfetiBoom()
@@ -106,7 +109,7 @@ public class UIWeaponManager : MonoBehaviour
     private void ShowPanel()
     {
         _currentChoices = _manager.GetRandomChoices().ToArray(); // Ñîõğàíÿåì òåêóùèå âàğèàíòû
-        _uiManager.SetSettingButton(false);
+        UIManager.Instance.SetSettingButton(false);
 
         for (int i = 0; i < _buttons.Length; i++)
         {
@@ -115,7 +118,7 @@ public class UIWeaponManager : MonoBehaviour
                 _buttons[i].gameObject.SetActive(true);
                 _texts[i].text = _currentChoices[i].Name;
                 _icons[i].sprite = _currentChoices[i].Icon;
- 
+
 
                 if (_currentChoices[i].CurrentLevel > 0)
                 {
@@ -157,13 +160,13 @@ public class UIWeaponManager : MonoBehaviour
         });
     }
 
-
+    //İÒÎ ÂÑÏËÛÂÀŞÙÅÅ ÎÏÈÑÀÍÈÅ ÎĞÓÆÈß ÓÁĞÀË ÏÎÒÎÌÓ ×ÒÎ Ñ ÒÅËÅÔÎÍÀ ÍÅÓÄÎÁÍÎ ÏÎËÜÇÎÂÀÒÜÑß
     //private void ShowTooltip(int buttonIndex)
     //{
     //    if (buttonIndex >= 0 && buttonIndex < _currentChoices.Length)
     //    {
     //        WeaponController weaponController = _currentChoices[buttonIndex].Prefab.GetComponent<WeaponController>();
-            
+
     //        _tooltipText.text = weaponController.Description;
     //        Debug.Log(weaponController.Description);
     //        _tooltipPanel.SetActive(true);

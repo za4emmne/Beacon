@@ -39,7 +39,9 @@ public class GeneratorWeapon : Spawner<Weapon>
     public override Weapon GetObject()
     {
         var weapon = base.GetObject();
-
+        ResetWeaponPhysics(weapon);
+        weapon.transform.position = PositionGeneraton();
+        weapon.gameObject.SetActive(true);
         weapon.InitGenerator(this);
         weapon.Initialize();
 
@@ -48,8 +50,9 @@ public class GeneratorWeapon : Spawner<Weapon>
 
     public override void PutObject(Weapon obj)
     {
-        base.PutObject(obj);
+        ResetWeaponPhysics(obj);
         obj.SetZeroDirection();
+        base.PutObject(obj);
     }
 
     public Enemy FindNearestEnemy()
@@ -81,5 +84,19 @@ public class GeneratorWeapon : Spawner<Weapon>
     protected override Vector3 PositionGeneraton()
     {
         return _transform.position;
+    }
+
+    private void ResetWeaponPhysics(Weapon weapon)
+    {
+        // Проверяем, есть ли Rigidbody2D
+        Rigidbody2D rb = weapon.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+
+            // Опционально: сбрасываем вращение
+            weapon.transform.rotation = Quaternion.identity;
+        }
     }
 }

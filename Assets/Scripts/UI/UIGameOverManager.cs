@@ -8,13 +8,6 @@ public class UIGameOverManager : MonoBehaviour
     [SerializeField] private Button _raisePlayer;
     [SerializeField] private Button _addPriceCoin;
 
-    private Timer _timerLink;
-
-    private void Awake()
-    {
-        _timerLink = GetComponent<Timer>();
-    }
-
     private void Start()
     {
         _raisePlayer.onClick.AddListener(GameManager.Instance.OnRaisePlayer);
@@ -31,7 +24,7 @@ public class UIGameOverManager : MonoBehaviour
     {
         int kill = GameManager.Instance.CurrentKill;
         int level = Player.singleton.GetComponent<PlayerLevelManager>().Level;
-        string time = _timerLink.GetCurrentTimeText();
+        string time = Timer.Instance.GetCurrentTimeText();
         int coin = GameManager.Instance.CurrentCoin;
 
         _stats.CurrentStatsUpdate(kill, level, time, coin);

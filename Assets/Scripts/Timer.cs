@@ -4,14 +4,19 @@ using System.Collections;
 
 public class Timer : MonoBehaviour
 {
+    public static Timer Instance { get; private set; }
+
     [SerializeField] private Text timerText; // Ссылка на UI Text объект
 
     private float _startTime; // Время начала таймера
     private bool _isRunning = false; // Флаг работы таймера
 
-    private void Start()
+    private void Awake()
     {
-        // Начать таймер автоматически при старте
+        Instance = this;
+    }
+    private void Start()
+    { 
         StartTimer();
     }
 
@@ -34,8 +39,6 @@ public class Timer : MonoBehaviour
 
             int minutes = (int)(currentTime / 60);
             int seconds = (int)(currentTime % 60);
-
-            // Форматирование строки с ведущими нулями (00:00)
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }

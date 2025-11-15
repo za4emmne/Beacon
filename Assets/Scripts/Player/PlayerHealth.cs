@@ -47,7 +47,7 @@ public class PlayerHealth : CharactersHealth
     {
         base.TakeDamage(damage);
 
-        GetComponent<Rigidbody2D>().AddForce(Vector2.down * 100f, ForceMode2D.Impulse);
+        //GetComponent<Rigidbody2D>().AddForce(Vector2.down * 100f, ForceMode2D.Impulse);
 
         if (_health < _maxHealth / 2)
         {

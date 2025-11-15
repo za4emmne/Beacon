@@ -31,8 +31,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ProgressBar _progressBar;
     [SerializeField] private AudioClip _levelUpAudio;
 
-    private UIManager _uiManager;
     private AudioSource _audioSource;
+    private GameDataManager _gameDataManager;
+    private UIManager _uiManager;
 
     private int _kill;
     private int _currentCoin;
@@ -58,8 +59,9 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         _audioSource = GetComponent<AudioSource>();
-        _uiManager = GetComponent<UIManager>();
         _weaponWeapon = GetComponent<ManagerWeapon>();
+        _uiManager = GetComponent<UIManager>();
+
         CreatePlayer();
 
         if (!_initialized)
@@ -117,14 +119,13 @@ public class GameManager : MonoBehaviour
         _currentCoin += amount;
         OnAddCoin?.Invoke(_currentCoin);
         GameDataManager.Instance.AddCoins(amount);
-
     }
 
     private void ChangeScore()
     {
         _kill++;
         _uiManager.ChangeScore(_kill);
-        GameDataManager.Instance.UpdateBestScore(_kill);
+        _gameDataManager.UpdateBestScore(_kill);
     }
 
     private void LevelUpAudioPlay()
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
     {
         yield return null;
         //инициализация игрока
+        _gameDataManager = GameDataManager.Instance;
         _follower.Playertransform(Player.singleton.transform);
         _progress = Player.singleton.GetComponent<PlayerLevelManager>();
         _playerHealth = Player.singleton.GetComponent<PlayerHealth>();
@@ -163,8 +165,7 @@ public class GameManager : MonoBehaviour
     private void CreatePlayer()
     {
         GameObject player = Instantiate(_player);
-        player.GetComponent<Player>().Initialize(_uiManager, _camera, _fixedJoystick);
+        player.GetComponent<Player>().Initialize(_camera, _fixedJoystick);
         player.transform.position = Vector3.zero;
-
     }
 }

@@ -6,5 +6,7 @@ namespace YG
         public int bestLevel;
         public int coins;
         public float bestTime;
+        public int totalKill;
+        public float totalTime;
     }
 }
