@@ -116,19 +116,21 @@ public class UIWeaponManager : MonoBehaviour
             if (i < _currentChoices.Length)
             {
                 _buttons[i].gameObject.SetActive(true);
-                _texts[i].text = _currentChoices[i].Name;
+                _texts[i].text = LocalizationManager.Instance.GetTranslation(_currentChoices[i].Name); 
+                //_currentChoices[i].Name;
                 _icons[i].sprite = _currentChoices[i].Icon;
 
 
                 if (_currentChoices[i].CurrentLevel > 0)
                 {
-                    _levelText[i].text = "lvl: " + _currentChoices[i].CurrentLevel.ToString();
+                    _levelText[i].text = LocalizationManager.Instance.GetTranslation("stats_lvl")
+                        .Replace("{currentLevel}", _currentChoices[i].CurrentLevel.ToString());
                     _descriptionText[i].text = _currentChoices[i].CurrentDescription;
                 }
                 else
                 {
-                    _descriptionText[i].text = _currentChoices[i].Description;
-                    _levelText[i].text = "New!";
+                    _descriptionText[i].text = LocalizationManager.Instance.GetTranslation(_currentChoices[i].Description);
+                    _levelText[i].text = LocalizationManager.Instance.GetTranslation("new_weapon");
                 }
 
 

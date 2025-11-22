@@ -1,5 +1,17 @@
-{
-  "kill_text": "Убито: {count}",
+ {
+  "kill_text": "Убито: {killCount}",
   "level_text": "Уровень: {level}",
-  "time_text": "Время игры: {time}"
+  "time_text": "Время игры: {time}",
+  "coin_text": "Монет: {countCoins}",
+  "stats_lvl": "Ур. {currentLevel}",
+  "new_weapon": "Новое",
+  "min_text": "мин",
+  "sec_text": "сек",
+  "sableName": "Сабля",
+  "sableDiscription": "Базовое оружие ближнего боя",
+  "sableFirstUpDescription": "Добавляется вторая сабля",
+  "sableSecondUpDescription": "Урон увеличивается на 3 ед",
+  "sableThirdUpDescription": "Перезарядка уменьшается на 10%",
+  "circleName": "Цепной кистень",
+  "circleDescription": "Оружие кругового поражения"
 }

@@ -1,17 +1,17 @@
 {
-    "intExample": 5,
-    "strExample": "Hello!",
-    "boolExample": [
-        false,
-        false,
-        false,
-        false
-    ],
-    "idSave": 2099,
-    "bestScore": 248,
-    "bestLevel": 12,
-    "coins": 214,
-    "bestTime": 47.590328216552737,
-    "totalKill": 4,
-    "totalTime": 47.590328216552737
+  "intExample": 5,
+  "strExample": "Hello!",
+  "boolExample": [
+    false,
+    false,
+    false,
+    false
+  ],
+  "idSave": 2110,
+  "bestScore": 248,
+  "bestLevel": 12,
+  "coins": 220,
+  "bestTime": 191.766663,
+  "totalKill": 218,
+  "totalTime": 241.3259
 }
