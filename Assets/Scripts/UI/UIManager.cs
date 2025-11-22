@@ -1,10 +1,10 @@
 using DG.Tweening;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using YG.LanguageLegacy;
-using YG;
-using UnityEditor;
 
 public class UIManager : MonoBehaviour
 {
@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button _menu;
 
     private Button _pause;
+
 
     private void Awake()
     {
@@ -91,20 +92,17 @@ public class UIManager : MonoBehaviour
 
     public void ChangeScore(int Score)
     {
-        _scoreText.text = LocalizationManager.Instance.GetTranslation("kill_text")
-                               .Replace("{killCount}", Score.ToString());
+        _scoreText.text = "Счет: " + Score;
     }
 
     public void ChangeLevel()
     {
-        _levelText.text = LocalizationManager.Instance.GetTranslation("level_text")
-                        .Replace("{level}", _player.Level.ToString());
+        _levelText.text = "Уровень: " + _player.Level;
     }
 
     public void ChangeCoin(int value)
     {
-        _coinText.text = LocalizationManager.Instance.GetTranslation("coin_text")
-                        .Replace("{countCoins}", value.ToString());
+        _coinText.text = "Монет: " + value;
     }
 
     public void SetSettingButton(bool set)

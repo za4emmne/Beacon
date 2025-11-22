@@ -5,7 +5,7 @@ public class LightningWeaponController : WeaponController
     protected override void Awake()
     {
         base.Awake();
-        _description = "Увеличивается урон и радиус поражения";
+        _description = "Добавляется";
     }
 
     protected override void Level2(int level)
@@ -16,8 +16,7 @@ public class LightningWeaponController : WeaponController
         data.CurrentDamage *= 1.5f;
         data.CurrentAttackRange *= 1.2f;
 
-        _description = "Увеличивается урон и количество цепей";
-        //_description = $"Урон увеличен до {data.CurrentDamage}. Радиус поражения увеличен.";
+        _description = $"Урон увеличен до {data.CurrentDamage}. Радиус поражения увеличен.";
     }
 
     protected override void Level3(int level)
@@ -28,8 +27,7 @@ public class LightningWeaponController : WeaponController
         data.CurrentSpeed += 1; // Speed используется как количество цепей
         data.CurrentDamage *= 1.5f;
 
-        _description = "Увеличивается урон и количество цепей. МАКСИМАЛЬНЫЙ УРОН";
-        //_description = $"Урон увеличен до {data.CurrentDamage}. Молния бьёт {data.CurrentSpeed} целей.";
+        _description = $"Урон увеличен до {data.CurrentDamage}. Молния бьёт {data.CurrentSpeed} целей.";
     }
 
     protected override void Level4(int level)
@@ -41,6 +39,6 @@ public class LightningWeaponController : WeaponController
         data.CurrentSpeed += 1;
         data.CurrentDelay *= 0.8f; // Уменьшаем кулдаун
 
-        //_description = $"Урон увеличен до {data.CurrentDamage}. Молния бьёт {data.CurrentSpeed} целей. Кулдаун уменьшен.";
+        _description = $"Урон увеличен до {data.CurrentDamage}. Молния бьёт {data.CurrentSpeed} целей. Кулдаун уменьшен.";
     }
 }

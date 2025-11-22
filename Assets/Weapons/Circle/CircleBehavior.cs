@@ -38,9 +38,4 @@ public class CircleBehavior : Weapon
         if (currentAngle >= 360f) currentAngle -= 360f;
         if (currentAngle < 0f) currentAngle += 360f;
     }
-
-    public void ChangeOrbitRadius(float value)
-    {
-        orbitRadius = value;
-    }
 }

@@ -53,12 +53,10 @@ public class Timer : MonoBehaviour
     {
         float currentTime = Time.time - _startTime;
 
-        string timeMin = LocalizationManager.Instance.GetTranslation("min_text");
-        string timeSec = LocalizationManager.Instance.GetTranslation("sec_text");
         int minutes = (int)(currentTime / 60);
         int seconds = (int)(currentTime % 60);
 
-        return string.Format("{0:00 " + timeMin + "} {1:00 " + timeSec + "}", minutes, seconds);
+        return string.Format("{0:00 мин} {1:00 сек}", minutes, seconds);
     }
 
     public float GetFloatTime()

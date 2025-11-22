@@ -12,7 +12,7 @@ public class SableController : WeaponController
     protected override void Awake()
     {
         base.Awake();
-        _description = LocalizationManager.Instance.GetTranslation("sableFirstUpDescription");
+        _description = "Добавляется вторая сабля";
         _firstSable = _prefabs[0].GetComponent<SableBehavior>();
         _secondSable = _prefabs[1].GetComponent<SableBehavior>();
         _prefabs[1].SetActive(false);
@@ -21,7 +21,7 @@ public class SableController : WeaponController
     protected override void Level2(int level)
     {
         base.Level2(level);
-        _description = LocalizationManager.Instance.GetTranslation("sableSecondUpDescription");
+        _description = "Урон увеличивается на 3 ед";
         _prefabs[1].SetActive(true);
         _firstSable.Initialize();
         _secondSable.Initialize();
@@ -30,7 +30,7 @@ public class SableController : WeaponController
     protected override void Level3(int level)
     {
         base.Level3(level);
-        _description = LocalizationManager.Instance.GetTranslation("sableThirdUpDescription");
+        _description = "Перезарядка уменьшается на 10%";
         data.CurrentDamage += level;
         _firstSable.Initialize();
         _secondSable.Initialize();

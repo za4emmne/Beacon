@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "intExample": 5,
   "strExample": "Hello!",
   "boolExample": [
@@ -14,4 +15,21 @@
   "bestTime": 191.766663,
   "totalKill": 218,
   "totalTime": 244.489944
+=======
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 2099,
+    "bestScore": 248,
+    "bestLevel": 12,
+    "coins": 214,
+    "bestTime": 47.590328216552737,
+    "totalKill": 4,
+    "totalTime": 47.590328216552737
+>>>>>>> parent of 4d9edb9 (ver 2.5.0)
 }

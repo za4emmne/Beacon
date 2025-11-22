@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519a4a26ea7e35042b9ccba273d74525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLevelManager
-  _baseEarlyGameXP: 1
+  _baseEarlyGameXP: 8
   _midGameMultiplier: 12
   _lateGameMultiplier: 15
   _exponentialFactor: 1.1

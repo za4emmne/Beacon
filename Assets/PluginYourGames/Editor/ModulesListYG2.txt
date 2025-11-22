@@ -1,5 +1,4 @@
 Authorization v1.022
-AutoTranslateLangs v1.002
 Localization v1.01
 RewardedAdv v1.011
 Storage v1.021

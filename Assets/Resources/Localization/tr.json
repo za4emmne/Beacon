@@ -1,15 +1,5 @@
 ﻿{
-  "kill_text": "Öldürülen: {killCount}",
+  "kill_text": "Öldürülen: {count}",
   "level_text": "Seviye: {level}",
-  "time_text": "Oyun süresi: {time}",
-  "coin_text": "Paralar: {countCoins}",
-  "stats_lvl": "Seviye: {currentLevel}",
-  "new_weapon": "Yeni",
-  "min_text": "dakika",
-  "sec_text": "saniye",
-  "sableName": "Kılıç",
-  "sableDiscription": "Temel yakın dövüş silahı",
-"sableFirstUpDescription": "İkinci bir kılıç eklenir",
-"sableSecondUpDescription": "Hasar 3 puan artar",
-"sableThirdUpDescription": "Yeniden doldurma süresi %10 azalır"
+  "time_text": "Oyun süresi: {time}"
 }

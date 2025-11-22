@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Sable
   m_EditorClassIdentifier: 
   weaponType: 0
-  Name: sableName
-  Description: sableDiscription
+  Name: "\u0421\u0430\u0431\u043B\u044F"
+  Description: "\u0411\u0430\u0437\u043E\u0432\u043E\u0435 \u043E\u0440\u0443\u0436\u0438\u0435
+    \u0431\u043B\u0438\u0436\u043D\u0435\u0433\u043E \u0431\u043E\u044F"
   Icon: {fileID: 2036412631080237620, guid: 23476d05c7dc2db4698c2f24c8454c4b, type: 3}
   Prefab: {fileID: 4708683922513603325, guid: 8749d5986fedc8e40ba0cd798234d610, type: 3}
   _damage: 20
@@ -29,4 +30,4 @@ MonoBehaviour:
   CurrentAttackRange: 1
   CurrentSpeed: 0
   CurrentLevel: 0
-  CurrentDescription: Damage increases by 3 points
+  CurrentDescription: 

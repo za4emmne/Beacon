@@ -1,10 +1,8 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using YG;
-using YG.LanguageLegacy;
 using static Cinemachine.DocumentationSortingAttribute;
 
 public class UIMenuManager : MonoBehaviour
@@ -33,15 +31,11 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private float _animationDuration;
     [SerializeField] private UIStats _stats;
 
-    private LangYGAdditionalText _additionalScoreText;
-    private LangYGAdditionalText _additionalTimeText;
     private int _bestScoreKill = -1;
     private int _bestLevel = -1;
 
     private void Awake()
     {
-        _additionalScoreText = _totalKillText.gameObject.GetComponent<LangYGAdditionalText>();
-        _additionalTimeText = _totalTimeText.gameObject.GetComponent<LangYGAdditionalText>();
         _statsPanel.anchoredPosition = _hiddenPosition;
         _statsPanel.gameObject.SetActive(false);
         HideShopPanel();
@@ -87,11 +81,10 @@ public class UIMenuManager : MonoBehaviour
 
     private void ShowStats()
     {
-        _stats.CurrentStatsUpdate(GameDataManager.Instance.TotalKill,
+        _stats.CurrentStatsUpdate(GameDataManager.Instance.BestScore, 
             GameDataManager.Instance.BestLevel, GetTimeText(GameDataManager.Instance.BestTime), GameDataManager.Instance.TotalCoins);
-
-        _additionalScoreText.additionalText = GameDataManager.Instance.BestScore.ToString();
-        _additionalTimeText.additionalText = GetTimeText(GameDataManager.Instance.TotalTime);
+        _totalKillText.text = "Убито: " + GameDataManager.Instance.TotalKill;
+        _totalTimeText.text = "Время игры: " + GetTimeText(GameDataManager.Instance.TotalTime);
 
         _statsPanel.gameObject.SetActive(true);
         _statsPanel.DOAnchorPos(_shownPosition, _animationDuration).SetEase(Ease.OutQuad);
@@ -99,12 +92,10 @@ public class UIMenuManager : MonoBehaviour
 
     private string GetTimeText(float time)
     {
-        string timeMin = LocalizationManager.Instance.GetTranslation("min_text");
-        string timeSec = LocalizationManager.Instance.GetTranslation("sec_text");
         int minutes = (int)(time / 60);
         int seconds = (int)(time % 60);
 
-        return string.Format("{0:00 " + timeMin + "} {1:00 " + timeSec + "}", minutes, seconds);
+        return string.Format("{0:00 мин} {1:00 сек}", minutes, seconds);
     }
 
     //private void ShowDemo()//сделать случайную фразу
