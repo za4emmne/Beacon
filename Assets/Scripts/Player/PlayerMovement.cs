@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private const string NameDirectionVertical = "Vertical";
 
     [SerializeField] private float _speed = 3;
-    [SerializeField] private DynamicJoystick _joystick;
+    [SerializeField] private FixedJoystick _joystick;
 
     public float VerticalMove;
     public float HorizontalMove;
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Initialize(DynamicJoystick joystick)
+    public void Initialize(FixedJoystick joystick)
     {
         if (joystick == null)
         {

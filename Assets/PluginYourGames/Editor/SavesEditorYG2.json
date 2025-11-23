@@ -1,21 +1,4 @@
 {
-<<<<<<< HEAD
-  "intExample": 5,
-  "strExample": "Hello!",
-  "boolExample": [
-    false,
-    false,
-    false,
-    false
-  ],
-  "idSave": 2112,
-  "bestScore": 248,
-  "bestLevel": 12,
-  "coins": 220,
-  "bestTime": 191.766663,
-  "totalKill": 218,
-  "totalTime": 244.489944
-=======
     "intExample": 5,
     "strExample": "Hello!",
     "boolExample": [
@@ -24,12 +7,11 @@
         false,
         false
     ],
-    "idSave": 2099,
-    "bestScore": 248,
-    "bestLevel": 12,
-    "coins": 214,
-    "bestTime": 47.590328216552737,
-    "totalKill": 4,
-    "totalTime": 47.590328216552737
->>>>>>> parent of 4d9edb9 (ver 2.5.0)
+    "idSave": 251,
+    "bestScore": 238,
+    "bestLevel": 7,
+    "coins": 4,
+    "bestTime": 38.636985778808597,
+    "totalKill": 17,
+    "totalTime": 38.636985778808597
 }

@@ -29,7 +29,7 @@ public class UIGameOverManager : MonoBehaviour
 
         _stats.CurrentStatsUpdate(kill, level, time, coin);
         _gameOverScreen.SetActive(true);
-        //_stats.gameObject.SetActive(false);
+        _stats.gameObject.SetActive(false);
 
         if (GameManager.Instance.RaiseCount <= 0)
             _raisePlayer.gameObject.SetActive(false);

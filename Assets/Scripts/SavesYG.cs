@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace YG
 {
     public partial class SavesYG
@@ -8,5 +10,8 @@ namespace YG
         public float bestTime;
         public int totalKill;
         public float totalTime;
+
+        public List<string> unlockedCharacters = new List<string>(); // Список ключей купленных персонажей
+        public string selectedCharacter; // Ключ выбранного персонажа
     }
 }

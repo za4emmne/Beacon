@@ -1,5 +1,15 @@
 {
-  "kill_text": "Killed: {count}",
+  "kill_text": "Killed: {killCount}",
   "level_text": "Level: {level}",
-  "time_text": "Game time: {time}"
+  "time_text": "Game time: {time}",
+  "coin_text": "Coin: {countCoins}",
+  "stats_lvl": "Lvl: {currentLevel}",
+  "new_weapon": "New",
+  "min_text": "min",
+  "sec_text": "sec",
+  "sableName": "Sable",
+  "sableDiscription": "Basic melee weapon",
+"sableFirstUpDescription": "A second saber is added",
+"sableSecondUpDescription": "Damage increases by 3 points",
+"sableThirdUpDescription": "Reload time decreases by 10%"
 }

@@ -12,7 +12,9 @@ public class CircleController : WeaponController
     protected override void Awake()
     {
         base.Awake();
-        _prefabs[1].SetActive(false);
+        _description = LocalizationManager.Instance.GetTranslation("circleDescription");
+        _prefabs[1].SetActive(true);
+        _prefabs[1].GetComponent<CircleBehavior>().ChangeOrbitRadius(3f);
     }
 
     protected override void Level2(int level)

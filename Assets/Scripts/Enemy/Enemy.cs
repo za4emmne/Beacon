@@ -71,7 +71,6 @@ public class Enemy : MonoBehaviour
 
     public void OnRelease()
     {
-        Debug.Log("Remove");
         _manager.ReturnEnemyToPool(this);
     }
 }
