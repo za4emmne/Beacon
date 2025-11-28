@@ -1,4 +1,7 @@
+using Cinemachine;
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using YG;
 
@@ -6,12 +9,15 @@ public class GameDataManager : MonoBehaviour
 {
     public static GameDataManager Instance { get; private set; }
 
+    public List<CharacterData> Characters = new List<CharacterData>();
+
     private int _bestScore;
     private int _bestLevel;
     private int _totalCoins;
     private float _bestTime;
     private float _totalTime;
     private int _totalKill;
+    private CharacterData _currentCharacter;
 
 
     public int BestScore => _bestScore;
@@ -55,6 +61,13 @@ public class GameDataManager : MonoBehaviour
         _totalTime = YG2.saves.totalTime;
         Debug.Log($"Data loaded: BestScore={_bestScore}, BestLevel={_bestLevel}");
     }
+
+    public CharacterData GetCharacter(string key)
+    {
+        return Characters.Find(c => c.characterKey == key);
+    }
+
+    public CharacterData CurrentCharacter => GetCharacter(YG2.saves.selectedCharacter);
 
     public void UpdateTotalKill(int currentKill)
     {

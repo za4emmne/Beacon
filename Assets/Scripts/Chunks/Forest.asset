@@ -46,18 +46,30 @@ MonoBehaviour:
   - tile: {fileID: 11400000, guid: 6b062347a1a345540935244e6c54fcb4, type: 2}
     weight: 8
   decorations:
-  - prefab: {fileID: 3000614995373971236, guid: 02532019f0865ec48ab140d62215e47d, type: 3}
-    spawnChance: 10
-  - prefab: {fileID: 323895383514001769, guid: a2e026b36352b6740a5c7e03cc20bf9b, type: 3}
-    spawnChance: 10
-  - prefab: {fileID: 4853360242249434469, guid: cec004c7e2ed83548b0f7b70a4577507, type: 3}
-    spawnChance: 10
-  - prefab: {fileID: 3046968295234395957, guid: d6bc34016188f604aa924ad80a4dd365, type: 3}
-    spawnChance: 10
+  - prefab: {fileID: 3000614995373971236, guid: 626f253ec95b462469176ab983ba6424, type: 3}
+    spawnChance: 20
+  - prefab: {fileID: 3000614995373971236, guid: 69bcf89c49c2e874e99c98c10f9d5dab, type: 3}
+    spawnChance: 20
+  - prefab: {fileID: 3000614995373971236, guid: 35147c7ba9d45e24193dac8cb3e049cb, type: 3}
+    spawnChance: 20
+  - prefab: {fileID: 3000614995373971236, guid: 0a7168077b814d941b18db6b279fd14a, type: 3}
+    spawnChance: 20
   - prefab: {fileID: 6897135665646258884, guid: d5d5b6fa9a3fa0a49ae7c641bb80610d, type: 3}
     spawnChance: 10
   - prefab: {fileID: 5890254120246173270, guid: 655ccc56dd8c40b4c8a46ab6d3d28fb3, type: 3}
     spawnChance: 10
   - prefab: {fileID: 641917769302678924, guid: 8d921ba19b6364845b6557df9bfb977b, type: 3}
     spawnChance: 10
-  decorationsPerChunk: 5
+  - prefab: {fileID: 3000614995373971236, guid: b91c5ccf559132e41bacf255922a22b8, type: 3}
+    spawnChance: 20
+  - prefab: {fileID: 3000614995373971236, guid: 30062cd15a41f8549bce7c1f04dfd001, type: 3}
+    spawnChance: 20
+  - prefab: {fileID: 3000614995373971236, guid: af45c363d1864944a8460788147d8f4f, type: 3}
+    spawnChance: 40
+  - prefab: {fileID: 3000614995373971236, guid: 0389c54744bc60e43bd63764b30c3feb, type: 3}
+    spawnChance: 40
+  - prefab: {fileID: 3000614995373971236, guid: 58aaf2e21db842443945adc2c1beeea1, type: 3}
+    spawnChance: 20
+  - prefab: {fileID: 3000614995373971236, guid: d9f142cdd9feebe479675ea2fe29027e, type: 3}
+    spawnChance: 20
+  decorationsPerChunk: 10

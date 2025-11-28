@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button _restart;
     [SerializeField] private Image[] _icons;
     [SerializeField] private Button _menu;
+    [SerializeField] private Text _undeadText;
 
     private Button _pause;
 
@@ -46,6 +47,7 @@ public class UIManager : MonoBehaviour
         _pause.onClick.AddListener(_pauseMenuManager.Pause);
         _restart.onClick.AddListener(RestartScene);
         _menu.onClick.AddListener(LoadMenuScene);
+        _undeadText.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -73,6 +75,21 @@ public class UIManager : MonoBehaviour
         ChangeLevel();
         AddIcon(_playerWeapon.GetStartWeapon());
         _uiWeaponManager.WeaponIsChoise += AddIcon;
+    }
+
+    public void UndeadTextActivate()
+    {
+        Vector3 levelUpTransform = _undeadText.transform.position;
+        //_levelUp.text = "Level UP";
+        _undeadText.gameObject.SetActive(true);
+        _undeadText.transform.DOMoveY(_undeadText.transform.position.y + 10, 3)
+            .SetEase(Ease.OutQuad);
+        _undeadText.DOFade(0, 3).OnComplete(() =>
+        {
+            _undeadText.transform.position = levelUpTransform;
+            _undeadText.gameObject.SetActive(false);
+            _undeadText.DOFade(1, 0);
+        });
     }
 
     public void OnDeadScreenActivate()

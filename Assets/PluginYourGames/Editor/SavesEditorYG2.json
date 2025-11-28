@@ -7,11 +7,13 @@
         false,
         false
     ],
-    "idSave": 251,
-    "bestScore": 238,
+    "idSave": 269,
+    "bestScore": 251,
     "bestLevel": 7,
-    "coins": 4,
-    "bestTime": 38.636985778808597,
-    "totalKill": 17,
-    "totalTime": 38.636985778808597
+    "coins": 204,
+    "bestTime": 228.4886016845703,
+    "totalKill": 268,
+    "totalTime": 267.1255798339844,
+    "unlockedCharacters": [],
+    "selectedCharacter": ""
 }

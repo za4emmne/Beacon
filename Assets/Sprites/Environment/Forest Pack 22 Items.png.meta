@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: be6b8f4536e28564996a616118717e97
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7801657152926454426
+    second: Forest Pack 22 Items_0
+  - first:
+      213: 5283663730481013085
+    second: Forest Pack 22 Items_1
+  - first:
+      213: -3485930246144704998
+    second: Forest Pack 22 Items_2
+  - first:
+      213: -7734382536491613353
+    second: Forest Pack 22 Items_3
+  - first:
+      213: 1772961875465455116
+    second: Forest Pack 22 Items_4
+  - first:
+      213: 8717387742248772720
+    second: Forest Pack 22 Items_5
+  - first:
+      213: -4528624483629140484
+    second: Forest Pack 22 Items_6
+  - first:
+      213: -830284393596948840
+    second: Forest Pack 22 Items_7
+  - first:
+      213: 5906995041186484115
+    second: Forest Pack 22 Items_8
+  - first:
+      213: 4016798806823584820
+    second: Forest Pack 22 Items_9
+  - first:
+      213: 4484174202433519271
+    second: Forest Pack 22 Items_10
+  - first:
+      213: 7688561712735808534
+    second: Forest Pack 22 Items_11
+  - first:
+      213: -1720225679487527257
+    second: Forest Pack 22 Items_12
+  - first:
+      213: 9031802827403669479
+    second: Forest Pack 22 Items_13
+  - first:
+      213: 2786266898521800063
+    second: Forest Pack 22 Items_14
+  - first:
+      213: -888688166638471114
+    second: Forest Pack 22 Items_15
+  - first:
+      213: 1435358959469365599
+    second: Forest Pack 22 Items_16
+  - first:
+      213: -6434656126694013214
+    second: Forest Pack 22 Items_17
+  - first:
+      213: -7784329062258468506
+    second: Forest Pack 22 Items_18
+  - first:
+      213: -6043605923263619304
+    second: Forest Pack 22 Items_19
+  - first:
+      213: 8786945026255884241
+    second: Forest Pack 22 Items_20
+  - first:
+      213: 3346333967626180125
+    second: Forest Pack 22 Items_21
+  - first:
+      213: -5316589155235326324
+    second: Forest Pack 22 Items_22
+  - first:
+      213: 8603905047404572234
+    second: Forest Pack 22 Items_23
+  - first:
+      213: 4589185318898251024
+    second: Forest Pack 22 Items_24
+  - first:
+      213: 7362322947443148621
+    second: Forest Pack 22 Items_25
+  - first:
+      213: 4872251117183660647
+    second: Forest Pack 22 Items_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 83
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66dee648722fab390800000000000000
+      internalID: -7801657152926454426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 63
+        width: 38
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d51afe73b28535940800000000000000
+      internalID: 5283663730481013085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_2
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 80
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1e31ce09ec7f9fc0800000000000000
+      internalID: -3485930246144704998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_3
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 94
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 753ce63cf04f9a490800000000000000
+      internalID: -7734382536491613353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_4
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 76
+        width: 32
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c06cd63ae63da9810800000000000000
+      internalID: 1772961875465455116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_5
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 87
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 074251207f16af870800000000000000
+      internalID: 8717387742248772720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_6
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 78
+        width: 24
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf5f52c96081721c0800000000000000
+      internalID: -4528624483629140484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_7
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 77
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89e6a193ebc3a74f0800000000000000
+      internalID: -830284393596948840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_8
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 64
+        width: 34
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39f0aef71bcd9f150800000000000000
+      internalID: 5906995041186484115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_9
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 72
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 434ceee9b398eb730800000000000000
+      internalID: 4016798806823584820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_10
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 60
+        width: 35
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ae350fcdacfa3e30800000000000000
+      internalID: 4484174202433519271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_11
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 75
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61c6949542243ba60800000000000000
+      internalID: 7688561712735808534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_12
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 81
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a614a0dbd78028e0800000000000000
+      internalID: -1720225679487527257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_13
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 81
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7efa3c8a1d8675d70800000000000000
+      internalID: 9031802827403669479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_14
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1
+        width: 38
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7d32df5bfecaa620800000000000000
+      internalID: 2786266898521800063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_15
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 11
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 638bb6722debaa3f0800000000000000
+      internalID: -888688166638471114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_16
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 13
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5988586e5b6be310800000000000000
+      internalID: 1435358959469365599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_17
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 21
+        width: 33
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e6cc94585283b6a0800000000000000
+      internalID: -6434656126694013214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_18
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 23
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 669955506f188f390800000000000000
+      internalID: -7784329062258468506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_19
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 13
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81fdc65ee6cc02ca0800000000000000
+      internalID: -6043605923263619304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_20
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 22
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1df0ed632ff71f970800000000000000
+      internalID: 8786945026255884241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_21
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 15
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d169e209301907e20800000000000000
+      internalID: 3346333967626180125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_22
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 25
+        width: 13
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c861181f45ea736b0800000000000000
+      internalID: -5316589155235326324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_23
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 25
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4e6dbf1e06376770800000000000000
+      internalID: 8603905047404572234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_24
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 26
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0153e55abbf00bf30800000000000000
+      internalID: 4589185318898251024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_25
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 22
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d474e04a6b93c2660800000000000000
+      internalID: 7362322947443148621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Forest Pack 22 Items_26
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 17
+        width: 33
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7627b38a396bd9340800000000000000
+      internalID: 4872251117183660647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Forest Pack 22 Items_0: -7801657152926454426
+      Forest Pack 22 Items_1: 5283663730481013085
+      Forest Pack 22 Items_10: 4484174202433519271
+      Forest Pack 22 Items_11: 7688561712735808534
+      Forest Pack 22 Items_12: -1720225679487527257
+      Forest Pack 22 Items_13: 9031802827403669479
+      Forest Pack 22 Items_14: 2786266898521800063
+      Forest Pack 22 Items_15: -888688166638471114
+      Forest Pack 22 Items_16: 1435358959469365599
+      Forest Pack 22 Items_17: -6434656126694013214
+      Forest Pack 22 Items_18: -7784329062258468506
+      Forest Pack 22 Items_19: -6043605923263619304
+      Forest Pack 22 Items_2: -3485930246144704998
+      Forest Pack 22 Items_20: 8786945026255884241
+      Forest Pack 22 Items_21: 3346333967626180125
+      Forest Pack 22 Items_22: -5316589155235326324
+      Forest Pack 22 Items_23: 8603905047404572234
+      Forest Pack 22 Items_24: 4589185318898251024
+      Forest Pack 22 Items_25: 7362322947443148621
+      Forest Pack 22 Items_26: 4872251117183660647
+      Forest Pack 22 Items_3: -7734382536491613353
+      Forest Pack 22 Items_4: 1772961875465455116
+      Forest Pack 22 Items_5: 8717387742248772720
+      Forest Pack 22 Items_6: -4528624483629140484
+      Forest Pack 22 Items_7: -830284393596948840
+      Forest Pack 22 Items_8: 5906995041186484115
+      Forest Pack 22 Items_9: 4016798806823584820
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

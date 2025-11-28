@@ -27,14 +27,21 @@ public class Star : MonoBehaviour
 
     private IEnumerator MoveStar()
     {
-        while (transform.position != Player.singleton.transform.position)
-        {
-            //transform.DOMoveY(transform.position.y + 0.3f, 0.3f)
-            //.SetEase(Ease.Linear).From(0).SetLoops(1, LoopType.Yoyo).OnComplete(() =>
-            transform.DOMove(Player.singleton.transform.position, 0.5f);
+        Vector2 bounceDir = Random.insideUnitCircle.normalized * 1f;
+        Vector3 bounceTarget = transform.position + new Vector3(bounceDir.x, bounceDir.y, 0);
 
-            yield return null;
+        // Отскок
+        yield return transform.DOMove(bounceTarget, 0.2f).SetEase(Ease.InCubic).WaitForCompletion();
+        yield return new WaitForSeconds(0.1f);
+
+        // Магнит: всегда летим к актуальной позиции игрока
+        while (Vector3.Distance(transform.position, Player.singleton.transform.position) > 0.1f)
+        {
+            transform.DOMove(Player.singleton.transform.position, 0.1f).SetEase(Ease.OutQuad);
+            yield return new WaitForSeconds(0.01f); // Короткая анимация и пауза
         }
+
+        _coroutine = null;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

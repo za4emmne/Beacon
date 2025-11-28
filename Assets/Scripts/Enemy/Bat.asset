@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3a0792e330ccb64e8538987d95e6c0a, type: 3}
+  m_Name: Bat
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  _name: "\u041B\u0435\u0442\u0443\u0447\u0430\u044F \u043C\u044B\u0448"
+  _health: 10
+  _damage: 7
+  _speed: 1
+  _prefab: {fileID: 8934125023748507319, guid: 1cebdb994b8a12d49abb2915cc8419e4, type: 3}
+  SpawnWeight: 0

@@ -48,22 +48,14 @@ public class LightningGenerator : Spawner<LightningWeapon>
             hasStarted = true;
         }
     }
-
-    // ПЕРЕОПРЕДЕЛЯЕМ МЕТОД — не используем базовый Spawn()
     public override void OnStartGenerator()
     {
-        // НЕ вызываем base.OnStartGenerator() !!!
-        // base.OnStartGenerator(); ← УБРАЛИ ЭТО
-
-        // Запускаем только НАШУ корутину
         if (lightningCoroutine == null)
         {
             lightningCoroutine = StartCoroutine(LightningSpawn());
-            Debug.Log("Lightning spawn coroutine started");
         }
     }
 
-    // СОБСТВЕННАЯ КОРУТИНА без обращения к базовому Spawn()
     private IEnumerator LightningSpawn()
     {
         while (true)

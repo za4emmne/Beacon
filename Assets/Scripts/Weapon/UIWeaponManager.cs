@@ -91,7 +91,7 @@ public class UIWeaponManager : MonoBehaviour
     private void LevelUpAnimationText()
     {
         Vector3 levelUpTransform = _levelUp.transform.position;
-        _levelUp.text = "Level UP";
+        //_levelUp.text = "Level UP";
         _levelUp.gameObject.SetActive(true);
         _levelUp.transform.DOMoveY(_levelUp.transform.position.y + 8, 2)
             .SetEase(Ease.OutQuad);

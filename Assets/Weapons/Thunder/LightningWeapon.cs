@@ -27,19 +27,15 @@ public class LightningWeapon : Weapon
             _audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    // НОВЫЙ МЕТОД для связи с LightningGenerator
     public void InitGenerator(LightningGenerator generator)
     {
         lightningGenerator = generator;
-        // НЕ вызываем base.InitGenerator, потому что это другой тип генератора
     }
 
     public override void Initialize()
     {
-        // Вызываем базовую инициализацию
         base.Initialize();
 
-        // Получаем параметры из data (если есть)
         if (data != null)
         {
             strikeRadius = data.CurrentAttackRange;
@@ -74,6 +70,7 @@ public class LightningWeapon : Weapon
         }
 
         EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>();
+
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(damage);
@@ -203,9 +200,7 @@ public class LightningWeapon : Weapon
         return closest;
     }
 
-    // Переопределяем OnTriggerEnter2D — молния не использует коллизии
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        // Молния не реагирует на физические коллизии
     }
 }

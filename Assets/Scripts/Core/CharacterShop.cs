@@ -1,7 +1,9 @@
+using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using YG;
+using static UnityEditor.Progress;
 
 public class CharacterShop : MonoBehaviour
 {
@@ -12,10 +14,15 @@ public class CharacterShop : MonoBehaviour
         public Sprite icon;
         public int price;
         public Button buyButton;
+        public Text buyText;
         public Button selectButton;
+        public Text selectText;
         public Image characterImage;
         public GameObject selectedMarker;
         public Text priceText;
+        public Image startedWeapon;
+        public CharacterData characterData;
+        public Text CharacterNameText;
     }
 
     public List<CharacterItem> characters;
@@ -51,15 +58,22 @@ public class CharacterShop : MonoBehaviour
         }
     }
 
-    void UpdateShopUI()
+    private void UpdateShopUI()
     {
-        coinsText.text = YG2.saves.coins.ToString();
+        coinsText.text = LocalizationManager.Instance.GetTranslation("balace_text")
+                        .Replace("{countCoins}", YG2.saves.coins.ToString());
 
         foreach (var item in characters)
         {
             // Иконка и цена
+            item.CharacterNameText.text = item.characterData.characterName;
             item.characterImage.sprite = item.icon;
-            item.priceText.text = item.price.ToString();
+            item.priceText.text = LocalizationManager.Instance.GetTranslation("price_text")
+                        .Replace("{price}", item.price.ToString());
+            item.selectText.text = LocalizationManager.Instance.GetTranslation("select_button");
+            item.buyText.text = LocalizationManager.Instance.GetTranslation("buy_button");
+            item.startedWeapon.sprite = item.characterData.startedWeapon.Icon;
+   
 
             bool unlocked = YG2.saves.unlockedCharacters.Contains(item.key);
             bool selected = item.key == YG2.saves.selectedCharacter;
@@ -69,7 +83,6 @@ public class CharacterShop : MonoBehaviour
             item.selectButton.gameObject.SetActive(unlocked);
             item.selectedMarker.SetActive(selected);
 
-            // Назначаем действия (убедитесь, что кнопки подписаны только 1 раз!)
             item.buyButton.onClick.RemoveAllListeners();
             item.buyButton.onClick.AddListener(() => BuyCharacter(item.key));
             item.selectButton.onClick.RemoveAllListeners();

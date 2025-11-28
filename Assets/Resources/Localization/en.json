@@ -1,5 +1,11 @@
 {
-  "kill_text": "Killed: {killCount}",
+  "price_text": "Price: {price}",
+  "balace_text": "Balance: {countCoins}",
+  "buy_button": "Buy",
+  "select_button": "Select",
+
+
+ "kill_text": "Killed: {killCount}",
   "level_text": "Level: {level}",
   "time_text": "Game time: {time}",
   "coin_text": "Coin: {countCoins}",
@@ -7,6 +13,7 @@
   "new_weapon": "New",
   "min_text": "min",
   "sec_text": "sec",
+
   "sableName": "Sable",
   "sableDiscription": "Basic melee weapon",
 "sableFirstUpDescription": "A second saber is added",

@@ -9,6 +9,35 @@ public class PlayerHealth : CharactersHealth
     public event Action SuperCriticalHealth;
     public event Action NormalHealth;
 
+    private bool _isUndead;
+    private Coroutine _coroutine;
+
+    private void Start()
+    {
+        _isUndead = false;
+    }
+
+    private IEnumerator UndeadWait()
+    {
+        int secondWait = 4;
+        var waitForSeconds = new WaitForSeconds(1f);
+        _isUndead = true;
+
+        for (int i = 0; i < secondWait + 1; i++)
+            yield return waitForSeconds;
+
+        _isUndead = false;
+        _coroutine = null;
+    }
+
+    public void StartUndeadProcess()
+    {
+        if (_coroutine == null && _isUndead == false)
+        {
+            _coroutine = StartCoroutine(UndeadWait());
+        }
+    }
+
     public void UpgraidMaxHealth(int count)
     {
         _maxHealth += (_maxHealth / count);
@@ -45,7 +74,8 @@ public class PlayerHealth : CharactersHealth
 
     public override void TakeDamage(float damage)
     {
-        base.TakeDamage(damage);
+        if (_isUndead == false)
+            base.TakeDamage(damage);
 
         //GetComponent<Rigidbody2D>().AddForce(Vector2.down * 100f, ForceMode2D.Impulse);
 

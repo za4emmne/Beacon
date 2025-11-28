@@ -1,4 +1,9 @@
  {
+  "price_text": "Цена: {price}",
+  "balace_text": "Баланс: {countCoins}",
+  "buy_button": "Купить",
+"select_button": "Выбрать",
+
   "kill_text": "Убито: {killCount}",
   "level_text": "Уровень: {level}",
   "time_text": "Время игры: {time}",
@@ -7,6 +12,7 @@
   "new_weapon": "Новое",
   "min_text": "мин",
   "sec_text": "сек",
+
   "sableName": "Сабля",
   "sableDiscription": "Базовое оружие ближнего боя",
   "sableFirstUpDescription": "Добавляется вторая сабля",

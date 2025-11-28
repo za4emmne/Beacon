@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1 Wave
   m_EditorClassIdentifier: 
   waveName: "\u0421\u043A\u0435\u043B\u0435\u0442\u044B"
-  totalEnemies: 80
+  totalEnemies: 70
   possibleEnemies:
   - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
   description: 

@@ -67,7 +67,6 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     public virtual void OnStartGenerator()
     {
-        // Защита от повторного запуска
         if (_coroutine != null)
         {
             Debug.LogWarning("Spawn coroutine already running!");
@@ -100,12 +99,10 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
 
     protected IEnumerator Spawn()
     {
-        Debug.Log($"Spawn coroutine started for {gameObject.name}");
-
         while (true)
         {
             _spawnTime = Random.Range(minDelay, maxDelay);
-            Debug.Log($"Spawning in {_spawnTime} seconds...");
+            //Debug.Log($"Spawning in {_spawnTime} seconds...");
 
             var waitForSeconds = new WaitForSeconds(_spawnTime);
 
@@ -115,7 +112,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
             {
                 obj.gameObject.SetActive(true);
                 obj.transform.position = PositionGeneraton();
-                Debug.Log($"Object spawned: {obj.name}");
+                //Debug.Log($"Object spawned: {obj.name}");
             }
             else
             {

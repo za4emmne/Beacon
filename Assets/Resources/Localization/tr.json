@@ -1,4 +1,9 @@
 ﻿{
+  "price_text": "Fiyat: {price}",
+  "balace_text": "Denge: {countCoins}",
+  "buy_button": "Satın Al",
+  "select_button": "Seç",
+
   "kill_text": "Öldürülen: {killCount}",
   "level_text": "Seviye: {level}",
   "time_text": "Oyun süresi: {time}",
@@ -7,6 +12,7 @@
   "new_weapon": "Yeni",
   "min_text": "dakika",
   "sec_text": "saniye",
+
   "sableName": "Kılıç",
   "sableDiscription": "Temel yakın dövüş silahı",
 "sableFirstUpDescription": "İkinci bir kılıç eklenir",

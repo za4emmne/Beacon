@@ -98,6 +98,9 @@ public class GameManager : MonoBehaviour
                 _raiseCount--;
 
             _playerHealth.Raise();
+            _playerHealth.StartUndeadProcess();
+            Player.singleton.UndeadEffect.Play();
+            _uiManager.UndeadTextActivate();
             PlayerRaist?.Invoke();
         });
 
@@ -152,7 +155,7 @@ public class GameManager : MonoBehaviour
         _waveSystem.StartWave();
 
         //инициализация 
-        _progressBar.Init(_progress);
+        _progressBar.Init();
         _uiManager.Init(_progress);
         _weaponWeapon.Init();
         _pillsGenerator.Init(Player.singleton.HillEffect, _playerHealth);

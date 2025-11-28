@@ -6,7 +6,7 @@ public class EnemiesGenerator : MonoBehaviour
 {
     [Header("Настройки пула")]
     [SerializeField] private int _initialPoolSize = 50;
-    [SerializeField] private int _maxPoolSize = 500; // Увеличили лимит, т.к. враги накапливаются
+    [SerializeField] private int _maxPoolSize = 500; 
 
     [Header("Спавн параметры")]
     [SerializeField] private float _minSpawnDistance = 10f;
@@ -37,11 +37,6 @@ public class EnemiesGenerator : MonoBehaviour
     {
         _transform = transform;
     }
-
-    //private void Update()
-    //{
-    //    Debug.Log(_allEnemies.Count);
-    //}
 
     public void SpawnEnemyWithModifiers(EnemyData enemyData, Transform playerTransform)
     {
@@ -110,9 +105,15 @@ public class EnemiesGenerator : MonoBehaviour
 
         if (enemy == null)
         {
-            Debug.LogError($"У префаба {enemyData.Prefab.name} нет компонента Enemy!");
-            Destroy(enemyObj);
-            return null;
+            EnemyBoss boss = enemyObj.GetComponent<EnemyBoss>();
+
+            if (boss == null)
+            {
+                Debug.LogError($"У префаба {enemyData.Prefab.name} нет компонента Enemy!");
+                Destroy(enemyObj);
+
+                return null;
+            }
         }
 
         return enemy;
