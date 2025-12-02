@@ -16,4 +16,5 @@ MonoBehaviour:
   totalEnemies: 70
   possibleEnemies:
   - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
+  - {fileID: 11400000, guid: 3248c1589605fd141a5e62c7a2a486f8, type: 2}
   description: 

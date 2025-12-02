@@ -6,7 +6,7 @@ public class EnemiesGenerator : MonoBehaviour
 {
     [Header("Настройки пула")]
     [SerializeField] private int _initialPoolSize = 50;
-    [SerializeField] private int _maxPoolSize = 500; 
+    [SerializeField] private int _maxPoolSize = 500;
 
     [Header("Спавн параметры")]
     [SerializeField] private float _minSpawnDistance = 10f;
@@ -143,7 +143,10 @@ public class EnemiesGenerator : MonoBehaviour
         _activeEnemiesCount = Mathf.Max(0, _activeEnemiesCount - 1);
 
         // Спавним звезду опыта
-        SpawnExperienceStar(enemy.transform.position);
+        int procentChance = UnityEngine.Random.Range(0, 100);
+
+        if (procentChance > enemy.Data.dropChance * 100)
+            SpawnExperienceStar(enemy.transform.position);
 
         // Возвращаем в пул
         EnemyData enemyData = enemy.Data;

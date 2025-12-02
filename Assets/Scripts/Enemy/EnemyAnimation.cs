@@ -19,6 +19,7 @@ public class EnemyAnimation : MonoBehaviour
     private EnemyHealth _health;
     private EnemyMovement _enemyMovement;
     private Enemy _enemy;
+    public GameObject _deathDustPrefab;
 
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -33,8 +34,7 @@ public class EnemyAnimation : MonoBehaviour
         _health = GetComponent<EnemyHealth>();
         _enemyMovement = GetComponent<EnemyMovement>();
         _animator = GetComponent<Animator>();
-        _color = _spriteRenderer.color;
-        _dust.SetActive(false);
+        Color _color = _spriteRenderer != null ? _spriteRenderer.color : Color.white;
     }
 
     private void OnEnable()
@@ -56,8 +56,10 @@ public class EnemyAnimation : MonoBehaviour
     public void OnDeadAnimation()
     {
         _animator.SetTrigger(AnimationNameDead);
-        _dust.SetActive(true);
+        //_dust.SetActive(true);
     }
+
+
 
     public void OnAttackAnimation()
     {
@@ -71,8 +73,8 @@ public class EnemyAnimation : MonoBehaviour
 
     public void OnHitAnimation()
     {
-        _coroutine = StartCoroutine(IAnimateHit());
 
+        _animator.SetTrigger(AnimationNameHit);
     }
 
     private IEnumerator IAnimateHit()
@@ -87,6 +89,5 @@ public class EnemyAnimation : MonoBehaviour
             yield return new WaitForSeconds(.1f);
         }
 
-        _animator.SetTrigger(AnimationNameHit);
     }
 }

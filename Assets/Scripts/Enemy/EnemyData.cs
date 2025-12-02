@@ -12,9 +12,18 @@ public class EnemyData : ScriptableObject
     [Header("Spawning")]
     public float SpawnWeight;
 
+    [Header("Награды")]
+    public int experienceReward;
+    public float dropChance = 1f;
+
+    [Header("Описание")]
+    [TextArea(2, 4)]
+    public string description;
+
     public string Name => _name;
     public float Health => _health;
     public float Damage => _damage;
     public float Speed => _speed;
     public GameObject Prefab => _prefab;
+
 }
