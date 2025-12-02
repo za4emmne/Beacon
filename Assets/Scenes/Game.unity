@@ -15082,7 +15082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8375845fe267ae46a01eb8af981c034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 23845883796524886, guid: 5f639906a67d8564488274f5499113b5, type: 3}
+  _player: {fileID: 4482176337423681348, guid: f53a4237e8a694142be6b74d5a1dfcd4, type: 3}
   _camera: {fileID: 257054590}
   _fixedJoystick: {fileID: 0}
   "_\u0441inemachineVirtualCamera": {fileID: 257054588}

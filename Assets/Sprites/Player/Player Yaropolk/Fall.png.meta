@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 1a5d653e0352e014b858ac5e870bf594
+guid: e9ea3dbea5ab71246b8c6cbab2d11d91
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7460046300004610927
-    second: Jump_0
+      213: -5966621866309598838
+    second: Fall_0
   - first:
-      213: 7034338576483803127
-    second: Jump_1
+      213: -2069157278089061004
+    second: Fall_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jump_0
+      name: Fall_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 12
-        width: 44
-        height: 80
+        x: 67
+        y: 13
+        width: 48
+        height: 78
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f63fdb7b598678760800000000000000
-      internalID: 7460046300004610927
+      spriteID: a81c98d660d423da0800000000000000
+      internalID: -5966621866309598838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jump_1
+      name: Fall_1
       rect:
         serializedVersion: 2
-        x: 258
+        x: 251
         y: 12
-        width: 44
-        height: 80
+        width: 49
+        height: 78
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7ffd4217aadfe9160800000000000000
-      internalID: 7034338576483803127
+      spriteID: 47d561f1b60e843e0800000000000000
+      internalID: -2069157278089061004
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jump_0: 7460046300004610927
-      Jump_1: 7034338576483803127
+      Fall_0: -5966621866309598838
+      Fall_1: -2069157278089061004
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

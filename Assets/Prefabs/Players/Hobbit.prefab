@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 7551785050502070503}
   - component: {fileID: 4121040943350619210}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Hobbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

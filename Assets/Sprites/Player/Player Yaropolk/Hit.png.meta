@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: e9ea3dbea5ab71246b8c6cbab2d11d91
+guid: fcfe4bbb96d13a64baac327be67b8c2a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5966621866309598838
-    second: Fall_0
+      213: 4457663794195168306
+    second: Hit_0
   - first:
-      213: -2069157278089061004
-    second: Fall_1
+      213: -5364657433725072944
+    second: Hit_1
+  - first:
+      213: -4947864620551752270
+    second: Hit_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -116,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fall_0
+      name: Hit_0
       rect:
         serializedVersion: 2
-        x: 67
-        y: 13
-        width: 48
-        height: 78
+        x: 60
+        y: 11
+        width: 50
+        height: 81
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a81c98d660d423da0800000000000000
-      internalID: -5966621866309598838
+      spriteID: 23c7f156a9dccdd30800000000000000
+      internalID: 4457663794195168306
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fall_1
+      name: Hit_1
       rect:
         serializedVersion: 2
-        x: 251
-        y: 12
-        width: 49
-        height: 78
+        x: 241
+        y: 11
+        width: 55
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +156,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 47d561f1b60e843e0800000000000000
-      internalID: -2069157278089061004
+      spriteID: 0d98829bc78ec85b0800000000000000
+      internalID: -5364657433725072944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit_2
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 11
+        width: 50
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b53a4fa757a55bb0800000000000000
+      internalID: -4947864620551752270
       vertices: []
       indices: 
       edges: []
@@ -173,8 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fall_0: -5966621866309598838
-      Fall_1: -2069157278089061004
+      Hit_0: 4457663794195168306
+      Hit_1: -5364657433725072944
+      Hit_2: -4947864620551752270
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
