@@ -38,7 +38,7 @@ public class MagicBall : Weapon
     {
         if (collision.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
         {
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(damage, transform.position);
 
             if (data.weaponType == TypeWeapon.Ranged)
             {

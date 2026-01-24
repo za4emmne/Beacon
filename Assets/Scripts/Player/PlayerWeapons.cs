@@ -8,14 +8,8 @@ public class PlayerWeapons : MonoBehaviour
     [SerializeField] private Transform _point;
     [SerializeField] private WeaponData _startWeapon;
 
-    private PlayerLevelManager _progress;
-
     public Transform Point => _point;
-
-    private void Awake()
-    {
-        _progress = GetComponent<PlayerLevelManager>();
-    }
+    public WeaponData StartWeapon => _startWeapon;
 
     public List<WeaponController> Weapons()
     {

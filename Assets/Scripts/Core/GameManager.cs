@@ -97,8 +97,9 @@ public class GameManager : MonoBehaviour
             if (_raiseCount > 0)
                 _raiseCount--;
 
-            _playerHealth.Raise();
+            //_playerHealth.Raise();
             _playerHealth.StartUndeadProcess();
+            Player.singleton.GetComponent<PlayerAnimation>().OnRecoverAnimation();
             Player.singleton.UndeadEffect.Play();
             _uiManager.UndeadTextActivate();
             PlayerRaist?.Invoke();

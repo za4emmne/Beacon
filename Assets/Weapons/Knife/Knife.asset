@@ -20,15 +20,15 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: f76ab7a8dd0d19347a6d92ddea185f01, type: 3}
   Prefab: {fileID: 8857171250562260045, guid: 3ef1d7b222326cb4295d6ff6995b1633, type: 3}
   _damage: 20
-  _delay: 1.2
+  _delay: 1
   _attackRange: 0
   _speed: 10
   _level: 1
   LevelOpen: 1
   Controller: {fileID: 9104205988304887042, guid: 3ef1d7b222326cb4295d6ff6995b1633, type: 3}
   CurrentDamage: 20
-  CurrentDelay: 1.2
+  CurrentDelay: 1
   CurrentAttackRange: 0
   CurrentSpeed: 10
-  CurrentLevel: 0
+  CurrentLevel: 1
   CurrentDescription: 

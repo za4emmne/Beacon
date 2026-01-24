@@ -4,29 +4,36 @@ using UnityEngine;
 
 public class KnifeController : WeaponController
 {
-    private GeneratorWeapon _generator;
-
     protected override void Awake()
     {
         base.Awake();
-        _generator = GetComponent<GeneratorWeapon>();
+        generator = GetComponent<GeneratorWeapon>();
+        generator.SetProjectilesPerShot(1);
     }
 
-    protected override void Level2(int level)
+    private void Start()
+    {
+        generator.InitSpawnDelay(data.CurrentDelay, data.CurrentDelay);
+        fireCoroutine = StartCoroutine(FireLoop());
+    }
+
+    protected override void Level2(int level)  //появляется второй снаряд
     {
         base.Level2(level);
-        _generator.ChangedSpawnDelay(level);
+        generator.SetProjectilesPerShot(2);
     }
 
-    protected override void Level3(int level)
+    protected override void Level3(int level)  //уменьшается скорость перезарядки
     {
         base.Level3(level);
-        _generator.OnStartSecondGeneration();
+        generator.ChangedSpawnDelay(level);
+        generator.SetProjectilesPerShot(3);
+        //_generator.OnStartSecondGeneration();
     }
 
     protected override void Level4(int level)
     {
         base.Level4(level);
-        _generator.ChangedSpawnDelay(level);
+        generator.SetProjectilesPerShot(4);
     }
 }

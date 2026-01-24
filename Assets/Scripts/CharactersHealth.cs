@@ -20,12 +20,12 @@ public class CharactersHealth : MonoBehaviour
         _health = _maxHealth;
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage, Vector2 hitSourcePosition)
     {
         if (damage >= 0 & _health > 0)
         {
             _health -= damage;
-
+            
             if (_health <= 0)
             {
                 _health = 0;
@@ -33,6 +33,10 @@ public class CharactersHealth : MonoBehaviour
             }
 
             Changed?.Invoke();
+        }
+        else if (_health <= 0)
+        {
+            Died?.Invoke();
         }
     }
 

@@ -15,6 +15,5 @@ MonoBehaviour:
   waveName: "\u0421\u043A\u0435\u043B\u0435\u0442\u044B"
   totalEnemies: 70
   possibleEnemies:
-  - {fileID: 11400000, guid: 832b82f674448da4ba62c6cba88634ea, type: 2}
-  - {fileID: 11400000, guid: 3248c1589605fd141a5e62c7a2a486f8, type: 2}
+  - {fileID: 11400000, guid: ad52879d9d024824087e51239213558c, type: 2}
   description: 

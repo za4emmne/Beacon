@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using System.Collections;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float _speed = 3;
     [SerializeField] private FixedJoystick _joystick;
+    [SerializeField] private float _knockbackDistance = 0.4f;
+    [SerializeField] private float _knockbackTime = 0.1f;
 
     public float VerticalMove;
     public float HorizontalMove;
@@ -22,52 +25,67 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private float _lastDirection;
     private bool _isMobile;
+    private bool _isKnockedBack;
+    private Vector2 _input;
 
     public event Action Run;
     public event Action<bool> Flip;
 
     public float LastDirection => _lastDirection;
+    public Vector2 MovementDirection => _input;
+    public Vector2 LastMoveDirection { get; private set; } = Vector2.right;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
-        //#if UNITY_EDITOR
-        //           _isMobile = true;
-        //#else
-        //            _isMobile = Application.isMobilePlatform;
-        //#endif
-
-        //_isMobile = Application.isMobilePlatform;
-        // Настраиваем джойстик для платформы
+        _isMobile = Application.isMobilePlatform;   // ВКЛЮЧАЕМ
+                                                    // _isMobile = true;
         if (_joystick != null)
-        {
             _joystick.gameObject.SetActive(_isMobile);
-        }
     }
 
     private void FixedUpdate()
     {
-        // Вся физика в FixedUpdate для стабильности
-        if (_isMobile && _joystick != null && Time.timeScale != 0f)
+        if (Time.timeScale == 0f)
+            return;
+
+        if (_isMobile && _joystick != null)
         {
-            Joy();
+            _input = new Vector2(_joystick.Horizontal, _joystick.Vertical);
         }
         else
         {
-            Keyboard();
+            _input = new Vector2(
+                Input.GetAxisRaw(NameDirectionHorizontal),
+                Input.GetAxisRaw(NameDirectionVertical)
+            );
         }
+
+        _input = Vector2.ClampMagnitude(_input, 1f); // нормализация
+
+        if (_input.sqrMagnitude > 0.001f)
+        {
+            LastMoveDirection = _input.normalized;
+        }
+
+        _rigidbody2D.linearVelocity = _input * _speed;
+
+        JoystickCurrentHorizontal = _input.x;
+        JoystickCurrentVertical = _input.y;
+
+        HorizontalMove = _input.x;
+        VerticalMove = _input.y;
+
+        if (_rigidbody2D.linearVelocity.sqrMagnitude > 0.01f)
+            Run?.Invoke();
     }
 
     private void Update()
     {
-        // Логика поворота и событий
-        float currentHorizontal = _isMobile && _joystick != null
-            ? _joystick.Horizontal
-            : Input.GetAxisRaw(NameDirectionHorizontal);
+        float currentHorizontal = _input.x;
 
-        // Поворот персонажа с мертвой зоной
         if (currentHorizontal < -0.1f)
         {
             transform.localEulerAngles = new Vector3(0, 180, 0);
@@ -77,12 +95,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localEulerAngles = new Vector3(0, 0, 0);
             _lastDirection = 1;
-        }
-
-        // Вызываем событие Run только при движении
-        if (_rigidbody2D.linearVelocity.sqrMagnitude > 0.01f)
-        {
-            Run?.Invoke();
         }
     }
 
@@ -135,5 +147,30 @@ public class PlayerMovement : MonoBehaviour
         // Обновляем значения для совместимости
         JoystickCurrentHorizontal = horizontal;
         JoystickCurrentVertical = vertical;
+    }
+
+    public void KnockbackFromPlayer(Vector3 playerPos)
+    {
+        Vector3 dir = (transform.position - playerPos).normalized;
+        StartCoroutine(KnockbackRoutine(dir));
+    }
+
+    private IEnumerator KnockbackRoutine(Vector3 dir)
+    {
+        _isKnockedBack = true;
+
+        Vector3 startPos = transform.position;
+        Vector3 endPos = startPos + dir * _knockbackDistance;
+        float t = 0f;
+
+        while (t < _knockbackTime)
+        {
+            t += Time.deltaTime;
+            float k = t / _knockbackTime;
+            transform.position = Vector3.Lerp(startPos, endPos, k);
+            yield return null;
+        }
+
+        _isKnockedBack = false;
     }
 }

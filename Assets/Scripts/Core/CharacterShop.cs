@@ -1,4 +1,4 @@
-using Newtonsoft.Json.Linq;
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,17 +25,34 @@ public class CharacterShop : MonoBehaviour
         public Text CharacterNameText;
     }
 
+    [SerializeField] private RectTransform[] _heroes;
+    [SerializeField] private Button _nextButton;
+
     public List<CharacterItem> characters;
     public Text coinsText;
 
-    void Start()
+
+    private void Start()
     {
         UpdateShopUI();
     }
 
+    private void OnEnable()
+    {
+
+        _nextButton.onClick.AddListener(NextHero);
+    }
+
+    private void OnDisable()
+    {
+        _nextButton.onClick.RemoveListener(NextHero);
+    }
+
     public void BuyCharacter(string characterKey)
     {
+        Debug.Log(characterKey);
         var item = characters.Find(x => x.key == characterKey);
+
         if (item == null) return;
 
         if (!YG2.saves.unlockedCharacters.Contains(characterKey) && YG2.saves.coins >= item.price)
@@ -73,7 +90,7 @@ public class CharacterShop : MonoBehaviour
             item.selectText.text = LocalizationManager.Instance.GetTranslation("select_button");
             item.buyText.text = LocalizationManager.Instance.GetTranslation("buy_button");
             item.startedWeapon.sprite = item.characterData.startedWeapon.Icon;
-   
+
 
             bool unlocked = YG2.saves.unlockedCharacters.Contains(item.key);
             bool selected = item.key == YG2.saves.selectedCharacter;
@@ -87,6 +104,16 @@ public class CharacterShop : MonoBehaviour
             item.buyButton.onClick.AddListener(() => BuyCharacter(item.key));
             item.selectButton.onClick.RemoveAllListeners();
             item.selectButton.onClick.AddListener(() => SelectCharacter(item.key));
+        }
+
+
+    }
+
+    private void NextHero()
+    {
+        foreach (var hero in _heroes)
+        {
+            hero.DOAnchorPos3DX(hero.transform.position.x - 1000, 2).SetEase(Ease.OutQuad);
         }
     }
 }

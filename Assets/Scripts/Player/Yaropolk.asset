@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
   characterKey: Yaropolk
   characterName: "\u042F\u0440\u043E\u043F\u043E\u043B\u043A"
-  icon: {fileID: 0}
-  price: 0
+  icon: {fileID: -6228988679541835135, guid: 27c0babadb77fc94e919deb5d6d12bd4, type: 3}
+  price: 100
   isDefault: 0
   startedWeapon: {fileID: 0}
   playerPrefab: {fileID: 4482176337423681348, guid: f53a4237e8a694142be6b74d5a1dfcd4, type: 3}

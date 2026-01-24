@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,7 +26,18 @@ public class ManagerWeapon : MonoBehaviour
             weapon.CurrentLevel = 0;
         }
 
-        CreateNewWeapon(_player.GetStartWeapon());
+        var startWeaponData = _player.GetStartWeapon();
+
+        // 1. Создаём стартовое оружие
+        CreateNewWeapon(startWeaponData);
+
+        // 2. ИСПОЛНЯЕМ улучшение сразу на только что созданном
+        WeaponController createdController = _player.Weapons().Last(); // последнее добавленное
+        createdController.Initialize(startWeaponData);
+
+        // 3. Опционально: если хочешь сразу уровень 2
+        startWeaponData.CurrentLevel++; // с 1 → 2
+        createdController.Initialize(startWeaponData);
     }
 
     public List<WeaponData> GetRandomChoices()
@@ -56,10 +67,10 @@ public class ManagerWeapon : MonoBehaviour
 
         foreach (var weapon in _weaponsInHand)
         {
-            Debug.Log("������� ������ - " + weapon.name);
+            Debug.Log("Текущее оружие - " + weapon.name);
         }
 
-        if (selectedWeaponAbility.Prefab == null)//�������� �� ������� �������
+        if (selectedWeaponAbility.Prefab == null)//проверка на наличие префаба
         {
             Debug.LogWarning("Prefab is missing for: " + selectedWeaponAbility.name);
             return;
@@ -74,7 +85,7 @@ public class ManagerWeapon : MonoBehaviour
             }
             else
             {
-                Debug.Log("�������� ������ - " + selectedWeaponAbility.name);
+                Debug.Log("Улучшаем оружие - " + selectedWeaponAbility.name);
                 selectedWeaponAbility.CurrentLevel++;
                 weaponController.Initialize(selectedWeaponAbility);
             }
@@ -83,7 +94,7 @@ public class ManagerWeapon : MonoBehaviour
 
     private void CreateNewWeapon(WeaponData weaponData)
     {
-        Debug.Log("������� ������ - " + weaponData.name);
+        Debug.Log("Создаем оружие - " + weaponData.name);
         var weaponPrefab = Instantiate(weaponData.Prefab, _playerWeaponPoint.position,
             _playerWeaponPoint.rotation, _playerWeaponPoint);
 
@@ -92,7 +103,7 @@ public class ManagerWeapon : MonoBehaviour
 
         if (weaponController == null)
         {
-            Debug.LogError($"WeaponController ����������� �� ������� {weaponData.name}");
+            Debug.LogError($"WeaponController отсутствует на префабе {weaponData.name}");
             return;
         }
 

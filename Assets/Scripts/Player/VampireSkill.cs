@@ -95,7 +95,7 @@ public class VampireSkill : MonoBehaviour
 
         for (int i = 0; i < _vampireSkillCount; i++)
         {
-            enemy.TakeDamage(_vampireDamageIndex);
+            //enemy.TakeDamage(_vampireDamageIndex);
             timer -= _delay;
             _vampireHelp.text = timer.ToString();
             _health.TakePills(_vampireDamageIndex);

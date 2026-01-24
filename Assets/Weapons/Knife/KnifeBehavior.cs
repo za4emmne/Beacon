@@ -2,30 +2,54 @@ using UnityEngine;
 
 public class KnifeBehavior : Weapon
 {
-    private Vector2 _lastMovementDirection = Vector2.right;
+    private Vector2 _direction = Vector2.right;
 
-    private void Start()
+    private void OnEnable()
     {
-        base.Initialize();
+        // если направление ещЄ не задано Ц инициируем обычной логикой
+        if (_direction == Vector2.zero)
+            Initialize();
     }
 
     private void Update()
     {
-        transform.Translate(_lastMovementDirection * speed * Time.deltaTime, Space.World);
+        transform.Translate(_direction * speed * Time.deltaTime, Space.World);
     }
 
     public override void Initialize()
     {
         base.Initialize();
 
-        Vector2 movementInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        if (player == null)
+            player = Player.singleton.GetComponent<PlayerMovement>();
 
-        if (movementInput.magnitude > 0.1f)
+        Vector2 moveDir = player.MovementDirection;
+
+        if (moveDir.sqrMagnitude > 0.001f)
         {
-            _lastMovementDirection = movementInput.normalized;
+            _direction = moveDir.normalized;
+        }
+        else
+        {
+            Vector2 last = player.LastMoveDirection;
+            if (last.sqrMagnitude > 0.001f)
+                _direction = last.normalized;
+            else
+                _direction = Vector2.right;
         }
 
-        float angle = Mathf.Atan2(_lastMovementDirection.y, _lastMovementDirection.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    // Ќќ¬џ…: вызываетс€ генератором дл€ залпа
+    public void InitializeWithDirection(Vector2 dir)
+    {
+        base.Initialize();
+
+        _direction = dir.normalized;
+
+        float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
@@ -38,7 +62,7 @@ public class KnifeBehavior : Weapon
     {
         if (collision.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
         {
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(damage, transform.position);
             Deactivate();
             generator.PutObject(this);
         }

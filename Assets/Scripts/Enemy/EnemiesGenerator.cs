@@ -141,14 +141,11 @@ public class EnemiesGenerator : MonoBehaviour
 
         OneKill?.Invoke();
         _activeEnemiesCount = Mathf.Max(0, _activeEnemiesCount - 1);
-
-        // Спавним звезду опыта
         int procentChance = UnityEngine.Random.Range(0, 100);
 
-        if (procentChance > enemy.Data.dropChance * 100)
+        if (procentChance < enemy.Data.dropChance * 100)
             SpawnExperienceStar(enemy.transform.position);
 
-        // Возвращаем в пул
         EnemyData enemyData = enemy.Data;
         if (enemyData != null)
         {
@@ -161,7 +158,6 @@ public class EnemiesGenerator : MonoBehaviour
             }
         }
 
-        // Если не удалось вернуть в пул, уничтожаем
         Destroy(enemy.gameObject);
     }
 
@@ -170,6 +166,7 @@ public class EnemiesGenerator : MonoBehaviour
         if (_starGenerator != null)
         {
             var star = _starGenerator.GetObject();
+
             if (star != null)
             {
                 star.transform.position = position;

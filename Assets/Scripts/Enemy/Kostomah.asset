@@ -19,5 +19,5 @@ MonoBehaviour:
   _prefab: {fileID: 4299470319330083341, guid: 53a67ae7af636f34185192e9429cffda, type: 3}
   SpawnWeight: 0
   experienceReward: 0
-  dropChance: 0.5
+  dropChance: 1
   description: 

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e22d4f5108c25a40965cf156fbbd29f, type: 3}
+  m_Name: Sword
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  weaponType: 0
+  Name: Sword
+  Description: 
+  Icon: {fileID: 2119701335, guid: b96cafd382b4e69449f99c4357080573, type: 3}
+  Prefab: {fileID: 9086138987061496549, guid: 3819e62fc893f1d449f941e6a31ba9c0, type: 3}
+  _damage: 20
+  _delay: 2
+  _attackRange: 0
+  _speed: 0
+  _level: 1
+  LevelOpen: 0
+  Controller: {fileID: 8439754830049575918, guid: 3819e62fc893f1d449f941e6a31ba9c0, type: 3}
+  CurrentDamage: 20
+  CurrentDelay: 2
+  CurrentAttackRange: 0
+  CurrentSpeed: 0
+  CurrentLevel: 2
+  CurrentDescription: 

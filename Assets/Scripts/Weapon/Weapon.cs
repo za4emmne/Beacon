@@ -16,13 +16,10 @@ public class Weapon : MonoBehaviour
 
     private void OnDisable()
     {
-        // ДОБАВЛЕНЫ ПРОВЕРКИ НА NULL
         if (data != null && data.weaponType == TypeWeapon.Ranged)
         {
             if (generator != null)
-            {
                 generator.RemoveProjectileFromList(this);
-            }
         }
     }
 
@@ -33,7 +30,6 @@ public class Weapon : MonoBehaviour
 
         _target = null;
 
-        // ПРОВЕРКА: data может быть null для LightningWeapon
         if (data != null)
         {
             damage = data.CurrentDamage;
@@ -46,11 +42,8 @@ public class Weapon : MonoBehaviour
     {
         generator = gen;
 
-        // ПРОВЕРКА: добавляем только если генератор существует
         if (generator != null)
-        {
             generator.AddProjectileOnList(this);
-        }
     }
 
     public void SetZeroDirection()
@@ -58,11 +51,16 @@ public class Weapon : MonoBehaviour
         direction = Vector2.zero;
     }
 
+    public void UpgraidDelay(float current)
+    {
+        delay *= current;
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
         {
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(damage, transform.position);
 
             if (data != null && data.weaponType == TypeWeapon.Ranged)
             {
@@ -83,9 +81,7 @@ public class Weapon : MonoBehaviour
         if (collision.TryGetComponent<Loot>(out Loot loot))
         {
             if (data != null && data.weaponType == TypeWeapon.Melee)
-            {
                 loot.Disapear();
-            }
         }
     }
 }

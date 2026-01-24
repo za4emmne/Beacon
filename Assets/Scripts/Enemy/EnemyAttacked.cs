@@ -23,7 +23,7 @@ public class EnemyAttacked : MonoBehaviour
     {
         if (collision.collider.TryGetComponent<Player>(out Player player) && _health.Current > 0)
         {
-            player.TakeDamage(_damage);
+            player.TakeDamage(_damage, transform.position);
             Attacked?.Invoke();
         }
     }

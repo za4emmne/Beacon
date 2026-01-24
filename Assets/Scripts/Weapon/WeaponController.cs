@@ -1,10 +1,14 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] protected int level;
     [SerializeField] public WeaponData data;
+
+    protected Coroutine fireCoroutine;
+    protected GeneratorWeapon generator;
 
     protected string _description;
 
@@ -13,6 +17,15 @@ public class WeaponController : MonoBehaviour
     protected virtual void Awake()
     {
 
+    }
+
+    protected virtual IEnumerator FireLoop()
+    {
+        while (enabled)
+        {
+            generator.SpawnProjectilesBurst();
+            yield return new WaitForSeconds(data.CurrentDelay);
+        }
     }
 
     public virtual void Initialize(WeaponData weaponData)
@@ -38,16 +51,21 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Level2(int level)
     {
-        Debug.Log(data.name + " - " + level);
+        UpText();
     }
 
     protected virtual void Level3(int level)
     {
-        Debug.Log(data.name + " - " + level);
+        UpText();
     }
 
     protected virtual void Level4(int level)
     {
-        Debug.Log(data.name + " - " + level);
+        UpText();
+    }
+
+    private void UpText()
+    {
+        Debug.Log(data.name + " улучшено до " + level + " уровня");
     }
 }

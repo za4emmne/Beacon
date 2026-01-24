@@ -1,10 +1,6 @@
 using DG.Tweening;
 using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 //дописать событие подсказок!
 public class UIWeaponManager : MonoBehaviour
@@ -91,7 +87,6 @@ public class UIWeaponManager : MonoBehaviour
     private void LevelUpAnimationText()
     {
         Vector3 levelUpTransform = _levelUp.transform.position;
-        //_levelUp.text = "Level UP";
         _levelUp.gameObject.SetActive(true);
         _levelUp.transform.DOMoveY(_levelUp.transform.position.y + 8, 2)
             .SetEase(Ease.OutQuad);

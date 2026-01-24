@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyAttacked))]
 [RequireComponent(typeof(EnemyMovement))]
 [RequireComponent(typeof(EnemyHealth))]
-
+[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyAnimation : MonoBehaviour
 {
     private const string AnimationNameDead = "Dead";
@@ -13,18 +13,19 @@ public class EnemyAnimation : MonoBehaviour
     private const string AnimationNameRun = "Run";
     private const string AnimationNameHit = "Hit";
 
-    [SerializeField] private GameObject _dust;
+    [Header("Death VFX")]
+    [SerializeField] private float _dissolveSpeed = 2f;
+    [ColorUsage(true, true)][SerializeField] private Color _dissolveOutColor = Color.cyan;
+    [ColorUsage(true, true)][SerializeField] private Color _dissolveInColor = Color.green;
 
+    private Animator _animator;
     private EnemyAttacked _enemyAttacked;
     private EnemyHealth _health;
     private EnemyMovement _enemyMovement;
-    private Enemy _enemy;
-    public GameObject _deathDustPrefab;
-
-    private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private Color _color;
-    private Coroutine _coroutine;
+    private Material _mat;
+    private Coroutine _deathCoroutine;
+    private Enemy _enemy;
 
     private void Awake()
     {
@@ -34,7 +35,11 @@ public class EnemyAnimation : MonoBehaviour
         _health = GetComponent<EnemyHealth>();
         _enemyMovement = GetComponent<EnemyMovement>();
         _animator = GetComponent<Animator>();
-        Color _color = _spriteRenderer != null ? _spriteRenderer.color : Color.white;
+
+        // экземпл€р материала дл€ этого врага
+        _mat = _spriteRenderer.material;
+        _mat.SetFloat("_DissolveAmount", 1f);           // 1 Ч полностью видим
+        _mat.SetColor("_DissolveColor", _dissolveOutColor);
     }
 
     private void OnEnable()
@@ -56,38 +61,32 @@ public class EnemyAnimation : MonoBehaviour
     public void OnDeadAnimation()
     {
         _animator.SetTrigger(AnimationNameDead);
-        //_dust.SetActive(true);
+
+        if (_deathCoroutine == null)
+            _deathCoroutine = StartCoroutine(DieWithDissolve());
     }
 
+    public void OnAttackAnimation() => _animator.SetTrigger(AnimationNameAttack);
+    public void OnRunAnimation() => _animator.SetTrigger(AnimationNameRun);
+    public void OnHitAnimation() => _animator.SetTrigger(AnimationNameHit);
 
-
-    public void OnAttackAnimation()
+    private IEnumerator DieWithDissolve()
     {
-        _animator.SetTrigger(AnimationNameAttack);
-    }
+        float dissolveAmount = 1f;       // начало: враг видим
+        _mat.SetColor("_DissolveColor", _dissolveOutColor);
 
-    public void OnRunAnimation()
-    {
-        _animator.SetTrigger(AnimationNameRun);
-    }
+        // отключаем коллайдер/логику, чтобы мЄртвый враг не мешал
+        var col = GetComponent<Collider2D>();
+        if (col) col.enabled = false;
+        _enemyMovement.enabled = false;
 
-    public void OnHitAnimation()
-    {
-
-        _animator.SetTrigger(AnimationNameHit);
-    }
-
-    private IEnumerator IAnimateHit()
-    {
-        for (int i = 0; i < 6; i++)
+        while (dissolveAmount > -0.1f)
         {
-            //_spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 0f);
-            _spriteRenderer.color = Color.white;
-            yield return new WaitForSeconds(.1f);
-            _spriteRenderer.color = Color.white;
-            //_spriteRenderer.color = new Color(_spriteRenderer.color.r, _spriteRenderer.color.g, _spriteRenderer.color.b, 1f);
-            yield return new WaitForSeconds(.1f);
+            dissolveAmount -= Time.deltaTime * _dissolveSpeed;
+            _mat.SetFloat("_DissolveAmount", dissolveAmount);
+            yield return null;
         }
 
+        _enemy.OnRelease();
     }
 }

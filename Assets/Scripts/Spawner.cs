@@ -85,18 +85,6 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    public void OneSpawn()
-    {
-        int count = Random.Range(0, 3);
-
-        for(int i = 0; i < count; i++)
-        {
-            var obj = GetObject();
-            obj.gameObject.SetActive(true);
-            obj.transform.position = PositionGeneraton();
-        }
-    }
-
     protected IEnumerator Spawn()
     {
         while (true)

@@ -73,7 +73,7 @@ public class LightningWeapon : Weapon
 
         if (enemyHealth != null)
         {
-            enemyHealth.TakeDamage(damage);
+            enemyHealth.TakeDamage(damage, transform.position);
         }
 
         hitEnemies.Add(target);

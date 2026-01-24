@@ -4,29 +4,36 @@ using UnityEngine;
 
 public class MalletController : WeaponController
 {
-    private GeneratorWeapon _generator;
+
 
     protected override void Awake()
     {
         base.Awake();
-        _generator = GetComponent<GeneratorWeapon>();
+        generator = GetComponent<GeneratorWeapon>();
+        generator.SetProjectilesPerShot(1);
+    }
+
+    private void Start()
+    {
+        generator.InitSpawnDelay(data.CurrentDelay, data.CurrentDelay);
+        fireCoroutine = StartCoroutine(FireLoop());
     }
 
     protected override void Level2(int level)
     {
         base.Level2(level);
-        _generator.ChangedSpawnDelay(level);
+        generator.SetProjectilesPerShot(level);
     }
 
     protected override void Level3(int level)
     {
         base.Level3(level);
-        _generator.OnStartSecondGeneration();
+        generator.OnStartSecondGeneration();
     }
 
     protected override void Level4(int level)
     {
         base.Level4(level);
-        _generator.ChangedSpawnDelay(level);
+        generator.SetProjectilesPerShot(level);
     }
 }

@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _damage;
 
+    public Transform Transform { get; private set; }
+
+
     private EnemiesGenerator _manager;
     private EnemyAttacked _attackController;
     private EnemyHealth _healthController;
@@ -61,7 +64,6 @@ public class Enemy : MonoBehaviour
         _movementController.Init(_speed);
         _healthController.Init(_health);
         _manager.AddEnemyOnList(this);
-
     }
 
     public void RemoveFromList()

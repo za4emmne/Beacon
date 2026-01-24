@@ -33,6 +33,7 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private float _animationDuration;
     [SerializeField] private UIStats _stats;
 
+    private CharacterShop _shop;
     private LangYGAdditionalText _additionalScoreText;
     private LangYGAdditionalText _additionalTimeText;
     private int _bestScoreKill = -1;
@@ -40,6 +41,7 @@ public class UIMenuManager : MonoBehaviour
 
     private void Awake()
     {
+        _shop = GetComponent<CharacterShop>();
         _additionalScoreText = _totalKillText.gameObject.GetComponent<LangYGAdditionalText>();
         _additionalTimeText = _totalTimeText.gameObject.GetComponent<LangYGAdditionalText>();
         _statsPanel.anchoredPosition = _hiddenPosition;
@@ -136,6 +138,7 @@ public class UIMenuManager : MonoBehaviour
     private void ShowShopPanel()
     {
         _shopPanel.SetActive(true);
+
     }
 
     private void HideShopPanel()
