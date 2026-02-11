@@ -26,7 +26,7 @@ public class ManagerWeapon : MonoBehaviour
             weapon.CurrentLevel = 0;
         }
 
-        var startWeaponData = _player.GetStartWeapon();
+        var startWeaponData = _player.StartWeapon;
 
         // 1. Создаём стартовое оружие
         CreateNewWeapon(startWeaponData);

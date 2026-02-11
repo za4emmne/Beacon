@@ -16,6 +16,6 @@ MonoBehaviour:
   characterName: "\u0425\u043E\u0431\u0431\u0438\u0442"
   icon: {fileID: 8578169221128371831, guid: f9e0f8dc52d346d4abce5a538ed9e13c, type: 3}
   price: 0
-  isDefault: 1
+  isDefault: 0
   startedWeapon: {fileID: 11400000, guid: 631ca2f7baaaa964c99e8c3ba533a14c, type: 2}
   playerPrefab: {fileID: 23845883796524886, guid: 5f639906a67d8564488274f5499113b5, type: 3}

@@ -865,7 +865,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 12694619dbdcfe04fad143d060fbd80a, type: 2}
   - {fileID: 11400000, guid: ab46c8d5097af484b8cf5951f9b80d04, type: 2}
   - {fileID: 11400000, guid: 0b14d44a39aff234fa3c0b8691875e9e, type: 2}
-  waveDuration: 60
+  waveDuration: 30
   healthMultiplierPerWave: 1.1
   damageMultiplierPerWave: 1.05
   bossEnemies: []
@@ -14896,9 +14896,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _allWeapons:
   - {fileID: 11400000, guid: dc8f05a92d2282e42976c7563444bea5, type: 2}
-  - {fileID: 11400000, guid: 631ca2f7baaaa964c99e8c3ba533a14c, type: 2}
+  - {fileID: 11400000, guid: d7e6c57c418691f489c70be521e2930e, type: 2}
   - {fileID: 11400000, guid: df59c25d1f3f7ca4cb5cb0b3182132e7, type: 2}
   - {fileID: 11400000, guid: ceec88ba41d656a4d993ddcd391d3630, type: 2}
+  - {fileID: 11400000, guid: b36c51a99d0cf3c49bb1cdf32e9eb0ad, type: 2}
+  - {fileID: 11400000, guid: c88e7a1019f08bf4b9a7576c9694dda0, type: 2}
+  - {fileID: 11400000, guid: fbd9724d221194d4e921e6ab35898485, type: 2}
+  - {fileID: 11400000, guid: e710988120900f14ba4a4953a8fd7c13, type: 2}
+  - {fileID: 11400000, guid: c919f323f27c4bc4c90af9f73aac0471, type: 2}
+  - {fileID: 11400000, guid: 8d40a5964f0e1db4990d687308748f7f, type: 2}
 --- !u!82 &1684669143
 AudioSource:
   m_ObjectHideFlags: 0

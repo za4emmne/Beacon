@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 using UnityEngine.SceneManagement;
 using YG;
 using System;
@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("Компоненты игрока")]
+    [Header("РљРѕРјРїРѕРЅРµРЅС‚С‹ РёРіСЂРѕРєР°")]
     [SerializeField] private GameObject _player;
     [SerializeField] private CameraShake _camera;
     [SerializeField] private FixedJoystick _fixedJoystick;
-    [SerializeField] private CinemachineVirtualCamera _сinemachineVirtualCamera;
+    [SerializeField] private CinemachineVirtualCamera _СЃinemachineVirtualCamera;
     [SerializeField] private Follower _follower;
     [SerializeField] private SmoothHealthBar _smoothHealthBar;
 
@@ -21,11 +21,11 @@ public class GameManager : MonoBehaviour
     private PlayerHealth _playerHealth;
     private ManagerWeapon _weaponWeapon;
 
-    [Header("Менеджеры врагов")]
+    [Header("РњРµРЅРµРґР¶РµСЂС‹ РІСЂР°РіРѕРІ")]
     [SerializeField] private EnemiesGenerator _enemyManager;
     [SerializeField] private WaveSystem _waveSystem;
 
-    [Header("Скрпипты игры")]
+    [Header("РЎРєСЂРїРёРїС‚С‹ РёРіСЂС‹")]
     [SerializeField] private StarsSpawner _starGenerator;
     [SerializeField] private PillsGenerator _pillsGenerator;
     [SerializeField] private ProgressBar _progressBar;
@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator InitializeGame()
     {
         yield return null;
-        //инициализация игрока
+        //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РёРіСЂРѕРєР°
         _gameDataManager = GameDataManager.Instance;
         _follower.Playertransform(Player.singleton.transform);
         _progress = Player.singleton.GetComponent<PlayerLevelManager>();
@@ -148,14 +148,14 @@ public class GameManager : MonoBehaviour
 
         _smoothHealthBar.Init(_playerHealth);
 
-        //инициализация камеры
-        _сinemachineVirtualCamera.Follow = Player.singleton.transform;
+        //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєР°РјРµСЂС‹
+        _СЃinemachineVirtualCamera.Follow = Player.singleton.transform;
 
-        //инициализация системы врагов
+        //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРёСЃС‚РµРјС‹ РІСЂР°РіРѕРІ
         _waveSystem.Initialized(Player.singleton.transform);
         _waveSystem.StartWave();
 
-        //инициализация 
+        //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ 
         _progressBar.Init();
         _uiManager.Init(_progress);
         _weaponWeapon.Init();
@@ -168,8 +168,16 @@ public class GameManager : MonoBehaviour
 
     private void CreatePlayer()
     {
-        GameObject player = Instantiate(_player);
+        // Р‘РµСЂС‘Рј РІС‹Р±СЂР°РЅРЅРѕРіРѕ РіРµСЂРѕСЏ РёР· GameDataManager
+        CharacterData character = GameDataManager.Instance.CurrentCharacter;
+        GameObject prefabToSpawn = character != null && character.playerPrefab != null
+            ? character.playerPrefab
+            : _player; // fallback, РµСЃР»Рё С‡С‚РѕвЂ‘С‚Рѕ РЅРµ РЅР°СЃС‚СЂРѕРµРЅРѕ
+
+        GameObject player = Instantiate(prefabToSpawn);
         player.GetComponent<Player>().Initialize(_camera, _fixedJoystick);
+        player.GetComponent<PlayerWeapons>().AddStartWeapon(character.startedWeapon);
         player.transform.position = Vector3.zero;
     }
+
 }

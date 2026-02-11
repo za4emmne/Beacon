@@ -6,10 +6,16 @@ public class PlayerWeapons : MonoBehaviour
 {
     [SerializeField] private List<WeaponController> _weapons;
     [SerializeField] private Transform _point;
+    
     [SerializeField] private WeaponData _startWeapon;
 
     public Transform Point => _point;
     public WeaponData StartWeapon => _startWeapon;
+
+    private void Start()
+    {
+        
+    }
 
     public List<WeaponController> Weapons()
     {
@@ -21,8 +27,8 @@ public class PlayerWeapons : MonoBehaviour
         _weapons.Add(weapon);   
     }
 
-    public WeaponData GetStartWeapon()
+    public void AddStartWeapon(WeaponData startWeapon)
     {
-        return _startWeapon;
+        _startWeapon = startWeapon;
     }
 }

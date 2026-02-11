@@ -18,7 +18,7 @@ MonoBehaviour:
   Icon: {fileID: 2119701335, guid: b96cafd382b4e69449f99c4357080573, type: 3}
   Prefab: {fileID: 9086138987061496549, guid: 3819e62fc893f1d449f941e6a31ba9c0, type: 3}
   _damage: 20
-  _delay: 2
+  _delay: 1.7
   _attackRange: 0
   _speed: 0
   _level: 1

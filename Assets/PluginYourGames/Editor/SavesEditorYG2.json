@@ -7,13 +7,18 @@
         false,
         false
     ],
-    "idSave": 294,
+    "idSave": 323,
     "bestScore": 251,
     "bestLevel": 9,
-    "coins": 613,
+    "coins": 213,
     "bestTime": 228.4886016845703,
-    "totalKill": 315,
-    "totalTime": 428.9623107910156,
-    "unlockedCharacters": [],
-    "selectedCharacter": ""
+    "totalKill": 390,
+    "totalTime": 585.2587280273438,
+    "unlockedCharacters": [
+        "Hobbit",
+        "Yaropolk",
+        "Vladimir",
+        "Druid"
+    ],
+    "selectedCharacter": "Yaropolk"
 }

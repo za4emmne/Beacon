@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapons
   _weapons: []
   _point: {fileID: 5388840860497328391}
-  _startWeapon: {fileID: 11400000, guid: ceec88ba41d656a4d993ddcd391d3630, type: 2}
+  _startWeapon: {fileID: 11400000, guid: dc8f05a92d2282e42976c7563444bea5, type: 2}
 --- !u!61 &5093109865498660907
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519a4a26ea7e35042b9ccba273d74525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLevelManager
-  _baseEarlyGameXP: 1
+  _baseEarlyGameXP: 2
   _midGameMultiplier: 12
   _lateGameMultiplier: 15
   _exponentialFactor: 1.1

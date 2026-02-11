@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b2e9594cc63182499d7b38cdd81f6b0, type: 3}
   m_Name: 1 Wave
   m_EditorClassIdentifier: 
-  waveName: "\u0421\u043A\u0435\u043B\u0435\u0442\u044B"
+  waveName: "\u041B\u0435\u0442\u0443\u0447\u0438\u0435 \u043C\u044B\u0448\u0438"
   totalEnemies: 70
   possibleEnemies:
   - {fileID: 11400000, guid: ad52879d9d024824087e51239213558c, type: 2}

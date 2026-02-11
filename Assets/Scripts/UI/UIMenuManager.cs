@@ -11,7 +11,6 @@ public class UIMenuManager : MonoBehaviour
 {
     //[SerializeField] private ButtonManager _buttonManager;
     [SerializeField] private Text _playerTalk;
-    [SerializeField] private Button _achive;
     [SerializeField] private Button _start;
 
 
@@ -26,6 +25,24 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private Button _shopButton;
     [SerializeField] private GameObject _shopPanel;
     [SerializeField] private Button _closeShopPanel;
+    [SerializeField] private GameObject _mainShopPanel;
+
+    [Header("UI внутри магазина")]
+    [SerializeField] private Button _heroesShopButton;
+    [SerializeField] private Button _achiveShopButton;
+    [SerializeField] private Button _locationShopButton;
+    //[SerializeField] private GameObject _shopAchivePanel;
+    //[SerializeField] private Button _closeShopAchivePanel;
+
+    [Header("Магазин героев")]
+    [SerializeField] private GameObject _shopHeroesPanel;
+    //[SerializeField] private GameObject _shopAchivePanel;
+    [SerializeField] private Button _closeShopHeroPanel;
+
+    [Header("Магазин улучшений")]
+    [SerializeField] private Button _achive;
+    [SerializeField] private GameObject _shopAchivePanel;
+    [SerializeField] private Button _closeShopAchivePanel;
 
     [Header("Настройки анимации")]
     [SerializeField] private Vector2 _hiddenPosition;
@@ -46,30 +63,35 @@ public class UIMenuManager : MonoBehaviour
         _additionalTimeText = _totalTimeText.gameObject.GetComponent<LangYGAdditionalText>();
         _statsPanel.anchoredPosition = _hiddenPosition;
         _statsPanel.gameObject.SetActive(false);
+
         HideShopPanel();
+        HideAchiveScreen();
+        HideHeroesShopPanel();
     }
 
     private void Start()
     {
-        _achive.onClick.AddListener(ShowAchiveScreen);
-        _start.onClick.AddListener(StartGame);
-        _statsButton.onClick.AddListener(ShowStats);
-        _closeStatsPanel.onClick.AddListener(HideStats);
-        _shopButton.onClick.AddListener(ShowShopPanel);
-        _closeShopPanel.onClick.AddListener(HideShopPanel);
+        //_achive.onClick.AddListener(ShowAchiveScreen);
+        _start.onClick.AddListener(StartGame); //старт игры (1 кнопка)
+        _statsButton.onClick.AddListener(ShowStats); // статистика (2 кнопка)
+        _closeStatsPanel.onClick.AddListener(HideStats); //крестик внутри окна статистики
+        _shopButton.onClick.AddListener(ShowShopPanel); //таверна(3 кнопка)
+        _closeShopPanel.onClick.AddListener(HideShopPanel); //закрыть таверну(внутри панели)
+        //магазин героев
+        _heroesShopButton.onClick.AddListener(ShowHeroesShopPanel);
+        _closeShopHeroPanel.onClick.AddListener(HideHeroesShopPanel);
+        _closeShopAchivePanel.onClick.AddListener(HideAchiveScreen);
+
+        _achiveShopButton.onClick.AddListener (ShowAchiveScreen);
     }
 
     private void OnEnable()
     {
-        //_buttonManager.OnShowTooltip += ShowDemo;
-        //_buttonManager.OnHideTooltip += HideDemo;
         YG2.onGetSDKData += LoadData;
     }
 
     private void OnDisable()
     {
-        //_buttonManager.OnShowTooltip -= ShowDemo;
-        //_buttonManager.OnHideTooltip -= HideDemo;
         YG2.onGetSDKData -= LoadData;
     }
 
@@ -110,35 +132,54 @@ public class UIMenuManager : MonoBehaviour
         return string.Format("{0:00 " + timeMin + "} {1:00 " + timeSec + "}", minutes, seconds);
     }
 
-    //private void ShowDemo()//сделать случайную фразу
-    //{
+    private void ManageObject(GameObject panel, bool status)
+    {
+        panel.SetActive(status);
+    }
 
-    //    if (_playerTalk.gameObject.activeSelf != true)
-    //    {
-    //        _playerTalk.gameObject.SetActive(true);
-    //        _playerTalk.text = "Нажимай, Шрек!";
-    //    }
-    //    else
-    //    {
-    //        _playerTalk.text = "Нажимай, Шрек!";
-    //    }
-    //}
+    private void HideMainShopPanel()
+    {
+        _mainShopPanel.SetActive(false);
+    }
 
-    //private void HideDemo()
-    //{
-    //    if (_playerTalk.gameObject.activeSelf)
-    //        _playerTalk.gameObject.SetActive(false);
-    //}
+    private void ShowMainShopPanel()
+    {
+        _mainShopPanel.SetActive(true);
+    }
+
+    private void ShowHeroesShopPanel()
+    {
+        HideMainShopPanel();
+
+        _shopHeroesPanel.gameObject.SetActive(true);
+        _shopHeroesPanel.transform.DOLocalMoveY(10, 1f);
+        _closeShopHeroPanel.gameObject.SetActive(true);
+    }
+
+    private void HideHeroesShopPanel()
+    {
+        _shopHeroesPanel.gameObject.SetActive(false);
+        _closeShopHeroPanel.gameObject.SetActive(false);
+
+        ShowMainShopPanel();
+    }
 
     private void ShowAchiveScreen()
     {
-        Debug.Log("Show");
+        _shopAchivePanel.SetActive(true);
+    }
+
+    private void HideAchiveScreen()
+    {
+        _shopAchivePanel.SetActive(false);
     }
 
     private void ShowShopPanel()
     {
-        _shopPanel.SetActive(true);
+        HideAchiveScreen();
+        HideHeroesShopPanel();
 
+        _shopPanel.SetActive(true);
     }
 
     private void HideShopPanel()

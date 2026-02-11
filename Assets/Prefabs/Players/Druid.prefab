@@ -523,6 +523,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HillEffect Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8381106970958147368, guid: 19ccb4bbfb079df428d1553b2c192e83, type: 3}
+      propertyPath: _targetCharacter
+      value: 
+      objectReference: {fileID: 3905439561603880030}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

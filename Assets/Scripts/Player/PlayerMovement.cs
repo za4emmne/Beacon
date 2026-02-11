@@ -152,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
     public void KnockbackFromPlayer(Vector3 playerPos)
     {
         Vector3 dir = (transform.position - playerPos).normalized;
-        StartCoroutine(KnockbackRoutine(dir));
+       // StartCoroutine(KnockbackRoutine(dir));
     }
 
     private IEnumerator KnockbackRoutine(Vector3 dir)

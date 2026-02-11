@@ -16,5 +16,8 @@ MonoBehaviour:
   _health: 10
   _damage: 7
   _speed: 1
-  _prefab: {fileID: 8934125023748507319, guid: 1cebdb994b8a12d49abb2915cc8419e4, type: 3}
+  _prefab: {fileID: 8008174079747344496, guid: 4ecc4451d22d08345999d757848d5fff, type: 3}
   SpawnWeight: 0
+  experienceReward: 0
+  dropChance: 1
+  description: 

@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
         _player = Player.singleton.GetComponent<PlayerLevelManager>();
         _uiWeaponManager.Init();
         ChangeLevel();
-        AddIcon(_playerWeapon.GetStartWeapon());
+        AddIcon(_playerWeapon.StartWeapon);
         _uiWeaponManager.WeaponIsChoise += AddIcon;
     }
 
