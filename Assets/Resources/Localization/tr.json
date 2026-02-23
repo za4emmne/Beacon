@@ -3,6 +3,7 @@
   "balace_text": "Denge: {countCoins}",
   "buy_button": "Satın Al",
   "select_button": "Seç",
+  "selected_button": "Seçildi",
 
   "kill_text": "Öldürülen: {killCount}",
   "level_text": "Seviye: {level}",

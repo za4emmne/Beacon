@@ -114,8 +114,6 @@ public class GameManager : MonoBehaviour
         {
             AddCoins(_coinPrice);
         });
-
-
     }
 
     public void AddCoins(int amount)
@@ -140,27 +138,36 @@ public class GameManager : MonoBehaviour
     private IEnumerator InitializeGame()
     {
         yield return null;
-        //инициализация игрока
+
         _gameDataManager = GameDataManager.Instance;
+        yield return null;
+
         _follower.Playertransform(Player.singleton.transform);
         _progress = Player.singleton.GetComponent<PlayerLevelManager>();
+        yield return null;
+
         _playerHealth = Player.singleton.GetComponent<PlayerHealth>();
-
         _smoothHealthBar.Init(_playerHealth);
+        yield return null;
 
-        //инициализация камеры
         _сinemachineVirtualCamera.Follow = Player.singleton.transform;
+        yield return null;
 
-        //инициализация системы врагов
+        // Инициализация врагов - может быть дорого
         _waveSystem.Initialized(Player.singleton.transform);
-        _waveSystem.StartWave();
+        yield return null;
 
-        //инициализация 
+        _waveSystem.StartWave();
+        yield return null;
+
         _progressBar.Init();
         _uiManager.Init(_progress);
         _weaponWeapon.Init();
+        yield return null;
+
         _pillsGenerator.Init(Player.singleton.HillEffect, _playerHealth);
         TilemapChunkManager.Instance.Init();
+        yield return null;
 
         _progress.LevelUp += _uiManager.ChangeLevel;
         _progress.LevelUp += LevelUpAudioPlay;

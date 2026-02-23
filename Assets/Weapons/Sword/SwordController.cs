@@ -8,6 +8,8 @@ public class SwordController : WeaponController
         base.Awake();
         generator = GetComponent<GeneratorWeapon>();
         generator.SetProjectilesPerShot(1);
+        generator.SetSwordSpreadAngle(0f);
+        generator.SetSwordOffsetDistance(0.4f);
     }
 
     private void Start()
@@ -25,25 +27,27 @@ public class SwordController : WeaponController
         }
     }
 
-    protected override void Level2(int level)  //появляется второй снаряд
+    protected override void Level2(int level)
     {
         base.Level2(level);
-        generator.SetSwordSpreadAngle(30f);
+        Debug.Log($"[SwordController] Level2 called, setting 2 swords");
         generator.SetProjectilesPerShot(2);
-
+        generator.SetSwordSpreadAngle(20f);
+        generator.SetSwordOffsetDistance(0.3f);
     }
 
-    protected override void Level3(int level)  //уменьшается скорость перезарядки
+    protected override void Level3(int level)
     {
         base.Level3(level);
-        generator.ChangedSpawnDelay(level);
-        generator.SetProjectilesPerShot(3);
-        //_generator.OnStartSecondGeneration();
+        data.CurrentDelay *= 0.75f;
+        generator.InitSpawnDelay(data.CurrentDelay, data.CurrentDelay);
     }
 
     protected override void Level4(int level)
     {
         base.Level4(level);
-        generator.SetProjectilesPerShot(4);
+        generator.SetProjectilesPerShot(3);
+        generator.SetSwordSpreadAngle(12f);
+        generator.SetSwordOffsetDistance(0.25f);
     }
 }

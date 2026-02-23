@@ -1,8 +1,9 @@
- {
+{
   "price_text": "Цена: {price}",
   "balace_text": "Баланс: {countCoins}",
   "buy_button": "Купить",
-"select_button": "Выбрать",
+  "select_button": "Выбрать",
+  "selected_button": "Выбран",
 
   "kill_text": "Убито: {killCount}",
   "level_text": "Уровень: {level}",

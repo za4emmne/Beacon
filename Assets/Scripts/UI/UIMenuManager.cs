@@ -14,47 +14,68 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private Button _start;
 
 
-    [Header("Панель статистики")]
+    [Header("РџРљ СЌР»РµРјРµРЅС‚С‹")]
+    [SerializeField] private GameObject _pcMenuPanel;
     [SerializeField] private Button _statsButton;
     [SerializeField] private RectTransform _statsPanel;
     [SerializeField] private Button _closeStatsPanel;
     [SerializeField] private Text _totalKillText;
     [SerializeField] private Text _totalTimeText;
 
-    [Header("Магазин")]
+    [Header("РњР°РіР°Р·РёРЅ")]
     [SerializeField] private Button _shopButton;
     [SerializeField] private GameObject _shopPanel;
     [SerializeField] private Button _closeShopPanel;
     [SerializeField] private GameObject _mainShopPanel;
 
-    [Header("UI внутри магазина")]
+    [Header("РљРЅРѕРїРєРё РјР°РіР°Р·РёРЅР°")]
     [SerializeField] private Button _heroesShopButton;
     [SerializeField] private Button _achiveShopButton;
     [SerializeField] private Button _locationShopButton;
     //[SerializeField] private GameObject _shopAchivePanel;
     //[SerializeField] private Button _closeShopAchivePanel;
 
-    [Header("Магазин героев")]
+    [Header("РњР°РіР°Р·РёРЅ РіРµСЂРѕРµРІ")]
     [SerializeField] private GameObject _shopHeroesPanel;
     //[SerializeField] private GameObject _shopAchivePanel;
     [SerializeField] private Button _closeShopHeroPanel;
 
-    [Header("Магазин улучшений")]
+    [Header("РњР°РіР°Р·РёРЅ Р°С‡РёРІРѕРє")]
     [SerializeField] private Button _achive;
     [SerializeField] private GameObject _shopAchivePanel;
     [SerializeField] private Button _closeShopAchivePanel;
 
-    [Header("Настройки анимации")]
+    [Header("РќР°СЃС‚СЂРѕР№РєРё Р°РЅРёРјР°С†РёРё")]
     [SerializeField] private Vector2 _hiddenPosition;
     [SerializeField] private Vector2 _shownPosition;
     [SerializeField] private float _animationDuration;
     [SerializeField] private UIStats _stats;
+
+    [Header("РњРѕР±РёР»СЊРЅР°СЏ РІРµСЂСЃРёСЏ")]
+    [SerializeField] private GameObject _mobileBackgroundImage;
+
+    [Header("РњРѕР±РёР»СЊРЅС‹Р№ РјР°РіР°Р·РёРЅ")]
+    [SerializeField] private GameObject _mobileShopPanel;
+    [SerializeField] private Button _mobileShopTabButton;
+    [SerializeField] private Image _mobileShopTabIcon;
+    [SerializeField] private Button _mobilePrevTabButton;
+    [SerializeField] private Button _mobileNextTabButton;
+    [SerializeField] private Sprite _heroesIcon;
+    [SerializeField] private Sprite _achiveIcon;
+
+    [Header("РњРѕР±РёР»СЊРЅС‹Рµ РїР°РЅРµР»Рё РјР°РіР°Р·РёРЅР°")]
+    [SerializeField] private GameObject _mobileHeroesPanel;
+    [SerializeField] private GameObject _mobileAchivePanel;
+
+    private int _currentMobileShopTab = 0;
+    private readonly int _totalMobileTabs = 2;
 
     private CharacterShop _shop;
     private LangYGAdditionalText _additionalScoreText;
     private LangYGAdditionalText _additionalTimeText;
     private int _bestScoreKill = -1;
     private int _bestLevel = -1;
+    private bool _isMobile;
 
     private void Awake()
     {
@@ -67,22 +88,99 @@ public class UIMenuManager : MonoBehaviour
         HideShopPanel();
         HideAchiveScreen();
         HideHeroesShopPanel();
+
+        _isMobile = DeviceDetector.Instance != null ? DeviceDetector.Instance.IsMobile : false;
     }
 
     private void Start()
     {
+        ConfigureMenuForPlatform();
+
         //_achive.onClick.AddListener(ShowAchiveScreen);
-        _start.onClick.AddListener(StartGame); //старт игры (1 кнопка)
-        _statsButton.onClick.AddListener(ShowStats); // статистика (2 кнопка)
-        _closeStatsPanel.onClick.AddListener(HideStats); //крестик внутри окна статистики
-        _shopButton.onClick.AddListener(ShowShopPanel); //таверна(3 кнопка)
-        _closeShopPanel.onClick.AddListener(HideShopPanel); //закрыть таверну(внутри панели)
-        //магазин героев
+        _start.onClick.AddListener(StartGame); //СЃС‚Р°СЂС‚ РёРіСЂС‹ (1 РєРЅРѕРїРєР°)
+        _statsButton.onClick.AddListener(ShowStats); //СЃС‚Р°С‚РёСЃС‚РёРєР° (2 РєРЅРѕРїРєР°)
+        _closeStatsPanel.onClick.AddListener(HideStats); //Р·Р°РєСЂС‹С‚СЊ РїР°РЅРµР»СЊ СЃС‚Р°С‚РёСЃС‚РёРєРё
+        _shopButton.onClick.AddListener(ShowShopPanel); //РјР°РіР°Р·РёРЅ(3 РєРЅРѕРїРєР°)
+        _closeShopPanel.onClick.AddListener(HideShopPanel); //Р·Р°РєСЂС‹С‚СЊ РјР°РіР°Р·РёРЅ(РЅР°Р¶Р°С‚РёРµ РєРЅРѕРїРєРё)
+        //РєРЅРѕРїРєРё РјР°РіР°Р·РёРЅР°
         _heroesShopButton.onClick.AddListener(ShowHeroesShopPanel);
         _closeShopHeroPanel.onClick.AddListener(HideHeroesShopPanel);
         _closeShopAchivePanel.onClick.AddListener(HideAchiveScreen);
 
         _achiveShopButton.onClick.AddListener (ShowAchiveScreen);
+
+        // РњРѕР±РёР»СЊРЅС‹Р№ РјР°РіР°Р·РёРЅ
+        if (_isMobile)
+        {
+            if (_mobileShopTabButton != null)
+                _mobileShopTabButton.onClick.AddListener(OnMobileShopTabClick);
+            if (_mobilePrevTabButton != null)
+                _mobilePrevTabButton.onClick.AddListener(PreviousMobileShopTab);
+            if (_mobileNextTabButton != null)
+                _mobileNextTabButton.onClick.AddListener(NextMobileShopTab);
+            UpdateMobileShopTab();
+        }
+    }
+
+    private void OnMobileShopTabClick()
+    {
+        if (_currentMobileShopTab == 0 && _mobileHeroesPanel != null)
+        {
+            ShowHeroesShopPanel();
+        }
+        else if (_currentMobileShopTab == 1 && _mobileAchivePanel != null)
+        {
+            ShowAchiveScreen();
+        }
+    }
+
+    private void PreviousMobileShopTab()
+    {
+        _currentMobileShopTab = (_currentMobileShopTab - 1 + _totalMobileTabs) % _totalMobileTabs;
+        UpdateMobileShopTab();
+    }
+
+    private void NextMobileShopTab()
+    {
+        _currentMobileShopTab = (_currentMobileShopTab + 1) % _totalMobileTabs;
+        UpdateMobileShopTab();
+    }
+
+    private void UpdateMobileShopTab()
+    {
+        if (_mobileShopTabIcon != null)
+        {
+            _mobileShopTabIcon.sprite = _currentMobileShopTab == 0 ? _heroesIcon : _achiveIcon;
+        }
+
+        if (_mobileHeroesPanel != null)
+            _mobileHeroesPanel.SetActive(_currentMobileShopTab == 0);
+        if (_mobileAchivePanel != null)
+            _mobileAchivePanel.SetActive(_currentMobileShopTab == 1);
+    }
+
+    private void ConfigureMenuForPlatform()
+    {
+        if (_isMobile)
+        {
+
+            if (_pcMenuPanel != null)
+                _pcMenuPanel.SetActive(false);
+            if (_mobileBackgroundImage != null)
+                _mobileBackgroundImage.SetActive(true);
+            if (_mobileShopPanel != null)
+                _mobileShopPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("РґРµР»Р°Р№");
+            if (_pcMenuPanel != null)
+                _pcMenuPanel.SetActive(true);
+            if (_mobileBackgroundImage != null)
+                _mobileBackgroundImage.SetActive(false);
+            if (_mobileShopPanel != null)
+                _mobileShopPanel.SetActive(false);
+        }
     }
 
     private void OnEnable()
@@ -179,19 +277,43 @@ public class UIMenuManager : MonoBehaviour
         HideAchiveScreen();
         HideHeroesShopPanel();
 
-        _shopPanel.SetActive(true);
+        if (_isMobile && _mobileShopPanel != null)
+        {
+            _mobileShopPanel.SetActive(true);
+            UpdateMobileShopTab();
+        }
+        else
+        {
+            _shopPanel.SetActive(true);
+        }
     }
 
     private void HideShopPanel()
     {
         _shopPanel.gameObject.SetActive(false);
+        if (_mobileShopPanel != null)
+            _mobileShopPanel.SetActive(false);
     }
 
-    public void StartGame()//добавить подписку на события
+    private void ShowHeroShopBeforeBegin()
+    {
+        ShowShopPanel();
+        ShowHeroesShopPanel();
+        _closeShopHeroPanel.gameObject.SetActive(false);
+    }
+
+    public void StartGame()//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     {
         if (Time.timeScale == 0f)
             Time.timeScale = 1f;
 
+        ShowHeroShopBeforeBegin();
+
+        //
+    }
+
+    public void StartAfter()
+    {
         SceneManager.LoadScene("Game");
     }
 }

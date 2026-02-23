@@ -59,7 +59,27 @@ public class GameDataManager : MonoBehaviour
         _totalKill = YG2.saves.totalKill;
         _bestTime = YG2.saves.bestTime;
         _totalTime = YG2.saves.totalTime;
+
+        InitializeDefaultData();
+
         Debug.Log($"Data loaded: BestScore={_bestScore}, BestLevel={_bestLevel}");
+    }
+
+    private void InitializeDefaultData()
+    {
+        bool isFirstLaunch = YG2.saves.unlockedCharacters == null || YG2.saves.unlockedCharacters.Count == 0;
+
+        if (isFirstLaunch)
+        {
+            CharacterData defaultCharacter = Characters.Find(c => c.isDefault);
+            if (defaultCharacter != null)
+            {
+                YG2.saves.unlockedCharacters = new List<string> { defaultCharacter.characterKey };
+                YG2.saves.selectedCharacter = defaultCharacter.characterKey;
+                YG2.SaveProgress();
+                Debug.Log($"First launch: unlocked default character '{defaultCharacter.characterKey}'");
+            }
+        }
     }
 
     public CharacterData GetCharacter(string key)
@@ -118,5 +138,37 @@ public class GameDataManager : MonoBehaviour
         _totalCoins += amount;
         YG2.saves.coins = _totalCoins;
         YG2.SaveProgress();
+    }
+
+    public void ResetProgress()
+    {
+        _bestScore = 0;
+        _bestLevel = 0;
+        _totalCoins = 0;
+        _bestTime = 0f;
+        _totalTime = 0f;
+        _totalKill = 0;
+
+        YG2.saves.bestScore = 0;
+        YG2.saves.bestLevel = 0;
+        YG2.saves.coins = 0;
+        YG2.saves.bestTime = 0f;
+        YG2.saves.totalTime = 0f;
+        YG2.saves.totalKill = 0;
+
+        CharacterData defaultCharacter = Characters.Find(c => c.isDefault);
+        if (defaultCharacter != null)
+        {
+            YG2.saves.unlockedCharacters = new List<string> { defaultCharacter.characterKey };
+            YG2.saves.selectedCharacter = defaultCharacter.characterKey;
+        }
+        else
+        {
+            YG2.saves.unlockedCharacters = new List<string>();
+            YG2.saves.selectedCharacter = "";
+        }
+
+        YG2.SaveProgress();
+        Debug.Log("Progress reset!");
     }
 }

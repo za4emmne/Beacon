@@ -38,12 +38,7 @@ public class SwordBehavior : Weapon
         if (_sr != null)
             _sr.color = new Color(1, 1, 1, 1);
 
-        Vector2 dir = player.MovementDirection;
-
-        if (dir.sqrMagnitude < 0.001f)
-            dir = player.LastMoveDirection.sqrMagnitude > 0.001f
-                ? player.LastMoveDirection
-                : Vector2.right;
+        Vector2 dir = GetDirectionToNearestEnemy();
 
         dir = dir.normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
@@ -73,6 +68,43 @@ public class SwordBehavior : Weapon
             if (generator != null) 
                 generator.PutObject(this);
         });
+    }
+
+    private Vector2 GetDirectionToNearestEnemy()
+    {
+        Enemy nearestEnemy = null;
+        float minDist = Mathf.Infinity;
+        Vector3 playerPos = player.transform.position;
+
+        if (EnemiesGenerator.AllEnemies != null && EnemiesGenerator.AllEnemies.Count > 0)
+        {
+            for (int i = 0; i < EnemiesGenerator.AllEnemies.Count; i++)
+            {
+                Enemy enemy = EnemiesGenerator.AllEnemies[i];
+                if (enemy == null) continue;
+
+                float dist = (enemy.transform.position - playerPos).sqrMagnitude;
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    nearestEnemy = enemy;
+                }
+            }
+        }
+
+        if (nearestEnemy != null)
+        {
+            return (nearestEnemy.transform.position - playerPos).normalized;
+        }
+
+        // Fallback: использовать направление игрока
+        Vector2 moveDir = player.MovementDirection;
+        if (moveDir.sqrMagnitude < 0.001f)
+            moveDir = player.LastMoveDirection.sqrMagnitude > 0.001f
+                ? player.LastMoveDirection
+                : Vector2.right;
+
+        return moveDir;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
