@@ -4,31 +4,37 @@ using UnityEngine;
 
 public class EnemiesGenerator : MonoBehaviour
 {
-    [Header("Настройки пула")]
+    [Header("РџСѓР» РІСЂР°РіРѕРІ")]
     [SerializeField] private int _initialPoolSize = 50;
     [SerializeField] private int _maxPoolSize = 500;
 
-    [Header("Спавн параметры")]
+    [Header("Р”РёСЃС‚Р°РЅС†РёСЏ СЃРїР°РІРЅР°")]
     [SerializeField] private float _minSpawnDistance = 10f;
     [SerializeField] private float _maxSpawnDistance = 15f;
 
-    [Header("Зависимости")]
+    [Header("РћСЂРґР° - РЎРїР°РІРЅ")]
+    [SerializeField] private bool _spawnOnArc = true;
+    [SerializeField] private float _arcSpreadAngle = 120f;
+    [SerializeField] private float _minSpawnAngleDistance = 15f;
+    [SerializeField] private float _spawnAngleOffset = 0f;
+
+    [Header("Р“РµРЅРµСЂР°С‚РѕСЂС‹")]
     [SerializeField] private StarsSpawner _starGenerator;
 
     public static List<Enemy> AllEnemies = new List<Enemy>();
 
-    // Оптимизированные пулы
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
     private Dictionary<int, Queue<Enemy>> _enemyPools = new Dictionary<int, Queue<Enemy>>();
     private Dictionary<int, EnemyData> _enemyDataMap = new Dictionary<int, EnemyData>();
 
-    // Кэшированные компоненты
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private Transform _transform;
 
-    // Переиспользуемые переменные для избежания аллокаций
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private Vector3 _spawnPosition = Vector3.zero;
     private Vector2 _randomDirection = Vector2.zero;
 
-    // Счетчик активных врагов для мониторинга
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     private int _activeEnemiesCount = 0;
 
     public event Action OneKill;
@@ -43,11 +49,11 @@ public class EnemiesGenerator : MonoBehaviour
         Enemy enemy = GetEnemyFromPool(enemyData);
         if (enemy == null) return;
 
-        // Применяем модификаторы
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         enemy.Initialize(enemyData, this);
         enemy.gameObject.SetActive(true);
 
-        // Устанавливаем позицию
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         CalculateSpawnPosition(playerTransform);
         enemy.transform.position = _spawnPosition;
 
@@ -68,7 +74,7 @@ public class EnemiesGenerator : MonoBehaviour
     {
         int enemyId = enemyData.GetInstanceID();
 
-        // Создаем пул если его нет
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
         if (!_enemyPools.ContainsKey(enemyId))
         {
             _enemyPools[enemyId] = new Queue<Enemy>();
@@ -78,12 +84,12 @@ public class EnemiesGenerator : MonoBehaviour
 
         Queue<Enemy> pool = _enemyPools[enemyId];
 
-        // Создаем новый объект если пул пуст
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
         if (pool.Count == 0)
         {
             if (GetTotalPooledObjects() >= _maxPoolSize)
             {
-                Debug.LogWarning($"Достигнут максимальный размер пула! Активных врагов: {_activeEnemiesCount}");
+                Debug.LogWarning($"пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ: {_activeEnemiesCount}");
                 return null;
             }
             return CreateNewEnemy(enemyData);
@@ -96,7 +102,7 @@ public class EnemiesGenerator : MonoBehaviour
     {
         if (enemyData.Prefab == null)
         {
-            Debug.LogError($"У {enemyData.name} не назначен префаб!");
+            Debug.LogError($"пїЅ {enemyData.name} пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ!");
             return null;
         }
 
@@ -109,7 +115,7 @@ public class EnemiesGenerator : MonoBehaviour
 
             if (boss == null)
             {
-                Debug.LogError($"У префаба {enemyData.Prefab.name} нет компонента Enemy!");
+                Debug.LogError($"пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ {enemyData.Prefab.name} пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Enemy!");
                 Destroy(enemyObj);
 
                 return null;
@@ -182,16 +188,32 @@ public class EnemiesGenerator : MonoBehaviour
             return;
         }
 
-        // Генерируем случайное направление
-        _randomDirection.x = UnityEngine.Random.Range(-1f, 1f);
-        _randomDirection.y = UnityEngine.Random.Range(-1f, 1f);
-        _randomDirection.Normalize();
+        if (_spawnOnArc)
+        {
+            float angle = _spawnAngleOffset + UnityEngine.Random.Range(_minSpawnAngleDistance, _arcSpreadAngle);
+            _spawnAngleOffset = angle % 360f;
 
-        float spawnDistance = UnityEngine.Random.Range(_minSpawnDistance, _maxSpawnDistance);
+            float distance = UnityEngine.Random.Range(_minSpawnDistance, _maxSpawnDistance);
+            float rad = angle * Mathf.Deg2Rad;
 
-        _spawnPosition.x = playerTransform.position.x + _randomDirection.x * spawnDistance;
-        _spawnPosition.y = playerTransform.position.y + _randomDirection.y * spawnDistance;
-        _spawnPosition.z = playerTransform.position.z;
+            _spawnPosition = playerTransform.position + new Vector3(
+                Mathf.Cos(rad) * distance,
+                Mathf.Sin(rad) * distance,
+                0
+            );
+        }
+        else
+        {
+            _randomDirection.x = UnityEngine.Random.Range(-1f, 1f);
+            _randomDirection.y = UnityEngine.Random.Range(-1f, 1f);
+            _randomDirection.Normalize();
+
+            float spawnDistance = UnityEngine.Random.Range(_minSpawnDistance, _maxSpawnDistance);
+
+            _spawnPosition.x = playerTransform.position.x + _randomDirection.x * spawnDistance;
+            _spawnPosition.y = playerTransform.position.y + _randomDirection.y * spawnDistance;
+            _spawnPosition.z = playerTransform.position.z;
+        }
     }
 
     private int GetTotalPooledObjects()
@@ -228,7 +250,7 @@ public class EnemiesGenerator : MonoBehaviour
         ClearAllPools();
     }
 
-    // Публичные методы для мониторинга
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     public int GetTotalActiveEnemies() => _activeEnemiesCount;
 
     public int GetPoolCount(EnemyData enemyData)

@@ -137,43 +137,49 @@ public class GeneratorWeapon : Spawner<Weapon>
 
         if (count == 1)
         {
-            SpawnSingleSword(baseAngle);
+            SpawnSingleSword(0f); // без оффсета
             return;
         }
 
-        // ������������ ���� �� ����
         float totalSpread = _swordSpreadAngle * (count - 1);
-        float startAngle = baseAngle - totalSpread / 2f;
+        float startOffset = -totalSpread / 2f;
 
         for (int i = 0; i < count; i++)
         {
-            float angle = startAngle + _swordSpreadAngle * i;
-            SpawnSingleSword(angle);
+            float offset = startOffset + _swordSpreadAngle * i; // локальный сдвиг от автонаводки
+            SpawnSingleSword(offset);
         }
     }
 
-    private void SpawnSingleSword(float angle)
+
+    private void SpawnSingleSword(float localOffsetAngle)
     {
         SwordBehavior sword = base.GetObject() as SwordBehavior;
-        if (sword == null) 
+        if (sword == null)
         {
             Debug.LogWarning("[Sword] Failed to get sword from pool!");
             return;
         }
 
-        Debug.Log($"[Sword] Spawning sword at angle {angle}");
-
         ResetWeaponPhysics(sword);
 
-        // ������������� ��� �� ��������� �� ������
-        Vector2 offsetDir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad),
-                                       Mathf.Sin(angle * Mathf.Deg2Rad));
-        sword.transform.position = PositionGeneraton() + (Vector3)(offsetDir * _swordOffsetDistance);
+        // Стартовая позиция — чуть впереди игрока по направлению движения
+        Vector2 forward = GetPlayerDirection();
+        if (forward.sqrMagnitude < 0.001f)
+            forward = Vector2.right;
+
+        forward.Normalize();
+
+        Vector3 basePos = PositionGeneraton();
+        sword.transform.position = basePos + (Vector3)(forward * _swordOffsetDistance);
+
+        sword.SetLocalAngleOffset(localOffsetAngle);
 
         sword.gameObject.SetActive(true);
         sword.InitGenerator(this);
         sword.Initialize();
     }
+
 
 
     public Enemy FindNearestEnemy()

@@ -8,6 +8,7 @@ public class KnifeController : WeaponController
     {
         base.Awake();
         generator = GetComponent<GeneratorWeapon>();
+        _description = LocalizationManager.Instance.GetTranslation("knifeFirstUpDescription");
         generator.SetProjectilesPerShot(1);
     }
 
@@ -20,6 +21,7 @@ public class KnifeController : WeaponController
     protected override void Level2(int level)  //появляется второй снаряд
     {
         base.Level2(level);
+        _description = LocalizationManager.Instance.GetTranslation("knifeSecondUpDescription");
         generator.SetProjectilesPerShot(2);
     }
 
@@ -28,7 +30,7 @@ public class KnifeController : WeaponController
         base.Level3(level);
         generator.ChangedSpawnDelay(level);
         generator.SetProjectilesPerShot(3);
-        //_generator.OnStartSecondGeneration();
+        _description = LocalizationManager.Instance.GetTranslation("knifeThirdUpDescription");
     }
 
     protected override void Level4(int level)

@@ -15,8 +15,80 @@
   "sec_text": "saniye",
 
   "sableName": "Kılıç",
-  "sableDiscription": "Temel yakın dövüş silahı",
-"sableFirstUpDescription": "İkinci bir kılıç eklenir",
-"sableSecondUpDescription": "Hasar 3 puan artar",
-"sableThirdUpDescription": "Yeniden doldurma süresi %10 azalır"
+  "sableDescription": "Atalardan kalan yakın dövüş bıçağı",
+  "sableFirstUpDescription": "İkinci bir kılıç eklenir",
+  "sableSecondUpDescription": "Hasar 3 puan artar",
+  "sableThirdUpDescription": "Bekleme süresi %10 azaltılır",
+
+  "circleName": "Zincirli Topuz",
+  "circleDescription": "Dairesel biçimde biçen bir silah",
+  "circleFirstUpDescription": "Saldırı yarıçapı artırılır",
+  "circleSecondUpDescription": "Dönüş hızı artırılır",
+  "circleThirdUpDescription": "İkinci bir topuz eklenir",
+
+  "SwordName": "Kılıç",
+  "SwordDescription": "Sadık yakın dövüş bıçağı",
+  "SwordFirstUpDescription": "İkinci bir kılıç eklenir",
+  "SwordSecondUpDescription": "Bekleme süresi %25 azaltılır",
+  "SwordThirdUpDescription": "Üçüncü bir kılıç eklenir",
+
+  "knifeName": "Fırlatma Bıçağı",
+  "knifeDescription": "Düşmanları uzaktan anında deler",
+  "knifeFirstUpDescription": "İkinci bir bıçak eklenir",
+  "knifeSecondUpDescription": "Bekleme süresi azaltılır",
+  "knifeThirdUpDescription": "Üçüncü bir bıçak eklenir",
+
+  "SerpName": "Orak",
+  "SerpDescription": "Geri dönen keskin bir silah",
+  "SerpFirstUpDescription": "Uçuş süresi artırılır",
+  "SerpSecondUpDescription": "Hasar artırılır",
+  "SerpThirdUpDescription": "İkinci bir orak eklenir",
+
+  "MalletName": "Savaş Baltası",
+  "MalletDescription": "Ağır bir fırlatma silahı",
+  "MalletFirstUpDescription": "Fırlatma gücü artırılır",
+  "MalletSecondUpDescription": "Bekleme süresi azaltılır",
+  "MalletThirdUpDescription": "İkinci bir savaş baltası eklenir",
+
+  "YaropolkSableName": "Yaropolk'un Kılıcı",
+  "YaropolkSableDescription": "Kadim bir savaşçının efsanevi bıçağı",
+  "YaropolkSableFirstUpDescription": "Saldırı hızı artırılır",
+  "YaropolkSableSecondUpDescription": "Hasar artırılır",
+  "YaropolkSableThirdUpDescription": "Kanama etkisi eklenir",
+
+  "ThunderName": "Yıldırım",
+  "ThunderDescription": "Düşmanları göksel şimşekle vurur",
+  "ThunderFirstUpDescription": "Menzil artırılır",
+  "ThunderSecondUpDescription": "Hasar artırılır",
+  "ThunderThirdUpDescription": "Bekleme süresi azaltılır",
+
+  "MagicTricName": "Büyülü Lanet",
+  "MagicTricDescription": "Saf büyüden dokunmuş lanetli mermiler",
+  "MagicTricFirstUpDescription": "Bir mermi eklenir",
+  "MagicTricSecondUpDescription": "Hasar artırılır",
+  "MagicTricThirdUpDescription": "Bekleme süresi azaltılır",
+
+  "FireBallName": "Ateş Topu",
+  "FireBallDescription": "Yanan mermi düşmanları alevle yakar",
+  "FireBallFirstUpDescription": "Boyut artırılır",
+  "FireBallSecondUpDescription": "Hasar artırılır",
+  "FireBallThirdUpDescription": "İkinci bir ateş topu eklenir",
+
+  "SpeedUpgraidName": "Çevik Adım",
+  "SpeedUpgraidDescription": "Hareket hızını artırır",
+  "SpeedUpgraidFirstUpDescription": "Hız +%10",
+  "SpeedUpgraidSecondUpDescription": "Hız +%15",
+  "SpeedUpgraidThirdUpDescription": "Hız +%20",
+
+  "CooldownName": "Hızlı El",
+  "CooldownDescription": "Silahın bekleme süresini azaltır",
+  "CooldownFirstUpDescription": "Bekleme süresi -%10",
+  "CooldownSecondUpDescription": "Bekleme süresi -%15",
+  "CooldownThirdUpDescription": "Bekleme süresi -%20",
+
+  "HealthUpgraidName": "Sağlam Can",
+  "HealthUpgraidDescription": "Maksimum sağlığı artırır",
+  "HealthUpgraidFirstUpDescription": "Sağlık +10",
+  "HealthUpgraidSecondUpDescription": "Sağlık +15",
+  "HealthUpgraidThirdUpDescription": "Sağlık +20"
 }

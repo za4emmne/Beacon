@@ -10,6 +10,7 @@ public class SwordBehavior : Weapon
     private Tween _moveTween;
     private Tween _fadeTween;
     private SpriteRenderer _sr;
+    private float _localAngleOffset;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class SwordBehavior : Weapon
 
     private void OnEnable()
     {
-        Initialize();
+        //Initialize();
     }
 
     private void OnDisable()
@@ -26,6 +27,11 @@ public class SwordBehavior : Weapon
         // Чистим твины, чтобы не висели
         _moveTween?.Kill();
         _fadeTween?.Kill();
+    }
+
+    public void SetLocalAngleOffset(float offsetDegrees)
+    {
+        _localAngleOffset = offsetDegrees;
     }
 
     public override void Initialize()
@@ -38,37 +44,51 @@ public class SwordBehavior : Weapon
         if (_sr != null)
             _sr.color = new Color(1, 1, 1, 1);
 
-        Vector2 dir = GetDirectionToNearestEnemy();
+        // 1) Базовое направление — автонаводка на ближайшего врага
+        Vector2 dirToEnemy = GetDirectionToNearestEnemy();
+        if (dirToEnemy.sqrMagnitude < 0.001f)
+            dirToEnemy = Vector2.right;
 
-        dir = dir.normalized;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // 2) Применяем локальный offset (веер)
+        float baseAngle = Mathf.Atan2(dirToEnemy.y, dirToEnemy.x) * Mathf.Rad2Deg;
+        float finalAngle = baseAngle + _localAngleOffset;
 
-        transform
-            .DOMove(player.transform.position + (Vector3)dir * slashDistance, lifeTime * 0.5f)
+        Vector2 finalDir = new Vector2(
+            Mathf.Cos(finalAngle * Mathf.Deg2Rad),
+            Mathf.Sin(finalAngle * Mathf.Deg2Rad)
+        ).normalized;
+
+        // Поворот спрайта
+        float visualAngle = Mathf.Atan2(finalDir.y, finalDir.x) * Mathf.Rad2Deg - 90f;
+        transform.rotation = Quaternion.AngleAxis(visualAngle, Vector3.forward);
+
+        // 3) Движение вдоль finalDir
+        Vector3 startPos = transform.position; // задаётся генератором
+        Vector3 targetPos = player.transform.position + (Vector3)finalDir * slashDistance;
+
+        _moveTween = transform
+            .DOMove(targetPos, lifeTime * 0.5f)
             .SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
-                transform.DOMove(player.transform.position, lifeTime * 0.5f)
+                transform.DOMove(startPos, lifeTime * 0.5f)
                     .SetEase(Ease.InQuad);
             });
 
-        // 3) плавное исчезновение в конце
-
         if (_sr != null)
         {
-            _fadeTween = _sr.DOFade(0f, lifeTime * 0.4f) // последние 40% времени
+            _fadeTween = _sr.DOFade(0f, lifeTime * 0.4f)
                 .SetEase(Ease.InQuad)
                 .SetDelay(lifeTime * 0.6f);
         }
 
-        // 4) Возврат в пул по окончании
         DOVirtual.DelayedCall(lifeTime, () =>
         {
-            if (generator != null) 
+            if (generator != null)
                 generator.PutObject(this);
         });
     }
+
 
     private Vector2 GetDirectionToNearestEnemy()
     {

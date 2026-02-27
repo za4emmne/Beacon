@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: MagicTric
   m_EditorClassIdentifier: 
   weaponType: 1
-  Name: "\u0412\u043E\u043B\u0448\u0435\u0431\u043D\u0430\u044F \u043F\u0430\u043B\u043E\u0447\u043A\u0430"
-  Description: "\u0421\u0430\u043C\u043E\u043D\u0430\u0432\u043E\u0434\u044F\u0449\u0438\u0435\u0441\u044F
-    \u043E\u0440\u0443\u0436\u0438\u0435"
+  Name: MagicTricName
+  Description: MagicTricDescription
   Icon: {fileID: 21300000, guid: c6ccbba74d8a9794bbc3dfe59e577b0f, type: 3}
   Prefab: {fileID: 6635376974961456329, guid: e47fab5511f98e64db42b9dcf2257126, type: 3}
   _damage: 20
@@ -29,5 +28,5 @@ MonoBehaviour:
   CurrentDelay: 1.5
   CurrentAttackRange: 3
   CurrentSpeed: 4
-  CurrentLevel: 1
+  CurrentLevel: 2
   CurrentDescription: 

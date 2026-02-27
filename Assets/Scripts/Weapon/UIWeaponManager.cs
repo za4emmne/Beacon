@@ -112,7 +112,6 @@ public class UIWeaponManager : MonoBehaviour
             {
                 _buttons[i].gameObject.SetActive(true);
                 _texts[i].text = LocalizationManager.Instance.GetTranslation(_currentChoices[i].Name);
-                //_currentChoices[i].Name;
                 _icons[i].sprite = _currentChoices[i].Icon;
 
 
@@ -120,7 +119,7 @@ public class UIWeaponManager : MonoBehaviour
                 {
                     _levelText[i].text = LocalizationManager.Instance.GetTranslation("stats_lvl")
                         .Replace("{currentLevel}", _currentChoices[i].CurrentLevel.ToString());
-                    _descriptionText[i].text = _currentChoices[i].CurrentDescription;
+                    _descriptionText[i].text = GetUpgradeDescription(_currentChoices[i]);
                 }
                 else
                 {
@@ -154,6 +153,32 @@ public class UIWeaponManager : MonoBehaviour
         {
             FreezeTime(0f);
         });
+    }
+
+    private string GetUpgradeDescription(WeaponData weapon)
+    {
+        string key = weapon.Name + "FirstUpDescription";
+        int level = weapon.CurrentLevel;
+
+        switch (level)
+        {
+            case 2:
+                key = weapon.Name + "SecondUpDescription";
+                break;
+            case 3:
+                key = weapon.Name + "ThirdUpDescription";
+                break;
+            default:
+                key = weapon.Name + "FirstUpDescription";
+                break;
+        }
+
+        string translated = LocalizationManager.Instance.GetTranslation(key);
+        if (string.IsNullOrEmpty(translated) || translated == key)
+        {
+            return weapon.CurrentDescription;
+        }
+        return translated;
     }
 
     //��� ����������� �������� ������ ����� ������ ��� � �������� �������� ������������

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: Assembly-CSharp::WeaponData
   weaponType: 0
-  Name: Sword
-  Description: 
+  Name: SwordName
+  Description: SwordDescription
   Icon: {fileID: 2119701335, guid: b96cafd382b4e69449f99c4357080573, type: 3}
   Prefab: {fileID: 9086138987061496549, guid: 3819e62fc893f1d449f941e6a31ba9c0, type: 3}
   _damage: 20
@@ -25,8 +25,9 @@ MonoBehaviour:
   LevelOpen: 0
   Controller: {fileID: 8439754830049575918, guid: 3819e62fc893f1d449f941e6a31ba9c0, type: 3}
   CurrentDamage: 20
-  CurrentDelay: 2
+  CurrentDelay: 1.7
   CurrentAttackRange: 0
   CurrentSpeed: 0
-  CurrentLevel: 2
-  CurrentDescription: 
+  CurrentLevel: 0
+  CurrentDescription: "\u041F\u043E\u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F
+    \u0432\u0442\u043E\u0440\u043E\u0439 \u043C\u0435\u0447"

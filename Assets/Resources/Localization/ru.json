@@ -15,13 +15,81 @@
   "sec_text": "сек",
 
   "sableName": "Сабля",
-  "sableDiscription": "Базовое оружие ближнего боя",
-  "sableFirstUpDescription": "Добавляется вторая сабля",
-  "sableSecondUpDescription": "Урон увеличивается на 3 ед",
+  "sableDescription": "Родовой клинок ближнего боя",
+  "sableFirstUpDescription": "Появляется вторая сабля",
+  "sableSecondUpDescription": "Урон увеличивается на 3 ед.",
   "sableThirdUpDescription": "Перезарядка уменьшается на 10%",
-  
-  "circleName": "Цепной кистень",
-  "circleDescription": "Оружие кругового поражения"
 
+  "circleName": "Цепной кистень",
+  "circleDescription": "Оружие круговой сечи",
+  "circleFirstUpDescription": "Увеличивается радиус удара",
+  "circleSecondUpDescription": "Увеличивается скорость вращения",
+  "circleThirdUpDescription": "Появляется второй кистень",
+
+  "SwordName": "Меч",
+  "SwordDescription": "Верный клинок ближнего боя",
+  "SwordFirstUpDescription": "Появляется второй меч",
+  "SwordSecondUpDescription": "Перезарядка уменьшается на 25%",
+  "SwordThirdUpDescription": "Появляется третий меч",
+
+  "knifeName": "Метательный нож",
+  "knifeDescription": "Мгновенно пронзает врагов издали",
+  "knifeFirstUpDescription": "Появляется второй нож",
+  "knifeSecondUpDescription": "Перезарядка уменьшается",
+  "knifeThirdUpDescription": "Появляется третий нож",
+
+  "SerpName": "Серп",
+  "SerpDescription": "Возвращающееся клинковое оружие",
+  "SerpFirstUpDescription": "Увеличивается время полёта",
+  "SerpSecondUpDescription": "Увеличивается урон",
+  "SerpThirdUpDescription": "Появляется второй серп",
+
+  "MalletName": "Боевой топор",
+  "MalletDescription": "Тяжёлое метательное оружие",
+  "MalletFirstUpDescription": "Увеличивается сила броска",
+  "MalletSecondUpDescription": "Уменьшается перезарядка",
+  "MalletThirdUpDescription": "Появляется второй боевой топор",
+
+  "YaropolkSableName": "Сабля Ярополка",
+  "YaropolkSableDescription": "Легендарный клинок древнего воина",
+  "YaropolkSableFirstUpDescription": "Увеличивается скорость атаки",
+  "YaropolkSableSecondUpDescription": "Увеличивается урон",
+  "YaropolkSableThirdUpDescription": "Появляется эффект кровотечения",
+
+  "ThunderName": "Молния",
+  "ThunderDescription": "Разит врагов небесным огнём",
+  "ThunderFirstUpDescription": "Увеличивается дальность удара",
+  "ThunderSecondUpDescription": "Увеличивается урон",
+  "ThunderThirdUpDescription": "Уменьшается перезарядка",
+
+  "MagicTricName": "Магическая порча",
+  "MagicTricDescription": "Проклятые снаряды из чистой чаровни",
+  "MagicTricFirstUpDescription": "Добавляется снаряд",
+  "MagicTricSecondUpDescription": "Увеличивается урон",
+  "MagicTricThirdUpDescription": "Уменьшается перезарядка",
+
+  "FireBallName": "Огненный шар",
+  "FireBallDescription": "Пылающий снаряд жжёт врагов пламенем",
+  "FireBallFirstUpDescription": "Увеличивается размер",
+  "FireBallSecondUpDescription": "Увеличивается урон",
+  "FireBallThirdUpDescription": "Появляется второй шар",
+
+  "SpeedUpgraidName": "Скорый ход",
+  "SpeedUpgraidDescription": "Увеличивает скорость передвижения",
+  "SpeedUpgraidFirstUpDescription": "Скорость +10%",
+  "SpeedUpgraidSecondUpDescription": "Скорость +15%",
+  "SpeedUpgraidThirdUpDescription": "Скорость +20%",
+
+  "CooldownName": "Быстрая рука",
+  "CooldownDescription": "Уменьшает время перезарядки оружия",
+  "CooldownFirstUpDescription": "Перезарядка -10%",
+  "CooldownSecondUpDescription": "Перезарядка -15%",
+  "CooldownThirdUpDescription": "Перезарядка -20%",
+
+  "HealthUpgraidName": "Крепкое здоровье",
+  "HealthUpgraidDescription": "Увеличивает максимальный запас сил",
+  "HealthUpgraidFirstUpDescription": "Здоровье +10",
+  "HealthUpgraidSecondUpDescription": "Здоровье +15",
+  "HealthUpgraidThirdUpDescription": "Здоровье +20"
 
 }

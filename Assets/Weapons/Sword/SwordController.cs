@@ -10,6 +10,7 @@ public class SwordController : WeaponController
         generator.SetProjectilesPerShot(1);
         generator.SetSwordSpreadAngle(0f);
         generator.SetSwordOffsetDistance(0.4f);
+        _description = LocalizationManager.Instance.GetTranslation("SwordFirstUpDescription");
     }
 
     private void Start()
@@ -30,7 +31,7 @@ public class SwordController : WeaponController
     protected override void Level2(int level)
     {
         base.Level2(level);
-        Debug.Log($"[SwordController] Level2 called, setting 2 swords");
+        _description = LocalizationManager.Instance.GetTranslation("SwordSecondUpDescription");
         generator.SetProjectilesPerShot(2);
         generator.SetSwordSpreadAngle(20f);
         generator.SetSwordOffsetDistance(0.3f);
@@ -39,6 +40,7 @@ public class SwordController : WeaponController
     protected override void Level3(int level)
     {
         base.Level3(level);
+        _description = LocalizationManager.Instance.GetTranslation("SwordThirdUpDescription");
         data.CurrentDelay *= 0.75f;
         generator.InitSpawnDelay(data.CurrentDelay, data.CurrentDelay);
     }

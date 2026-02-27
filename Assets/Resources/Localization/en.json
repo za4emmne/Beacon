@@ -5,8 +5,7 @@
   "select_button": "Select",
   "selected_button": "Selected",
 
-
- "kill_text": "Killed: {killCount}",
+  "kill_text": "Killed: {killCount}",
   "level_text": "Level: {level}",
   "time_text": "Game time: {time}",
   "coin_text": "Coin: {countCoins}",
@@ -15,9 +14,82 @@
   "min_text": "min",
   "sec_text": "sec",
 
-  "sableName": "Sable",
-  "sableDiscription": "Basic melee weapon",
-"sableFirstUpDescription": "A second saber is added",
-"sableSecondUpDescription": "Damage increases by 3 points",
-"sableThirdUpDescription": "Reload time decreases by 10%"
+
+  "sableName": "Saber",
+  "sableDescription": "Ancestral melee blade",
+  "sableFirstUpDescription": "A second saber is added",
+  "sableSecondUpDescription": "Damage is increased by 3",
+  "sableThirdUpDescription": "Cooldown is reduced by 10%",
+
+  "circleName": "Chain Flail",
+  "circleDescription": "Weapon of circular carnage",
+  "circleFirstUpDescription": "Attack radius is increased",
+  "circleSecondUpDescription": "Spin speed is increased",
+  "circleThirdUpDescription": "A second flail is added",
+
+  "SwordName": "Sword",
+  "SwordDescription": "Faithful close‑combat blade",
+  "SwordFirstUpDescription": "A second sword is added",
+  "SwordSecondUpDescription": "Cooldown is reduced by 25%",
+  "SwordThirdUpDescription": "A third sword is added",
+
+  "knifeName": "Throwing Knife",
+  "knifeDescription": "Instantly pierces enemies from afar",
+  "knifeFirstUpDescription": "A second knife is added",
+  "knifeSecondUpDescription": "Cooldown is reduced",
+  "knifeThirdUpDescription": "A third knife is added",
+
+  "SerpName": "Sickle",
+  "SerpDescription": "A returning bladed weapon",
+  "SerpFirstUpDescription": "Flight time is increased",
+  "SerpSecondUpDescription": "Damage is increased",
+  "SerpThirdUpDescription": "A second sickle is added",
+
+  "MalletName": "Battle Axe",
+  "MalletDescription": "Heavy throwing weapon",
+  "MalletFirstUpDescription": "Throwing power is increased",
+  "MalletSecondUpDescription": "Cooldown is reduced",
+  "MalletThirdUpDescription": "A second battle axe is added",
+
+  "YaropolkSableName": "Yaropolk's Saber",
+  "YaropolkSableDescription": "Legendary blade of an ancient warrior",
+  "YaropolkSableFirstUpDescription": "Attack speed is increased",
+  "YaropolkSableSecondUpDescription": "Damage is increased",
+  "YaropolkSableThirdUpDescription": "Bleeding effect is added",
+
+  "ThunderName": "Thunderbolt",
+  "ThunderDescription": "Strikes foes with heavenly lightning",
+  "ThunderFirstUpDescription": "Range is increased",
+  "ThunderSecondUpDescription": "Damage is increased",
+  "ThunderThirdUpDescription": "Cooldown is reduced",
+
+  "MagicTricName": "Hexed Magic",
+  "MagicTricDescription": "Cursed projectiles woven from pure sorcery",
+  "MagicTricFirstUpDescription": "A projectile is added",
+  "MagicTricSecondUpDescription": "Damage is increased",
+  "MagicTricThirdUpDescription": "Cooldown is reduced",
+
+  "FireBallName": "Fireball",
+  "FireBallDescription": "A blazing projectile burns enemies with flame",
+  "FireBallFirstUpDescription": "Size is increased",
+  "FireBallSecondUpDescription": "Damage is increased",
+  "FireBallThirdUpDescription": "A second fireball is added",
+
+  "SpeedUpgraidName": "Swift Step",
+  "SpeedUpgraidDescription": "Increases movement speed",
+  "SpeedUpgraidFirstUpDescription": "Speed +10%",
+  "SpeedUpgraidSecondUpDescription": "Speed +15%",
+  "SpeedUpgraidThirdUpDescription": "Speed +20%",
+
+  "CooldownName": "Quick Hand",
+  "CooldownDescription": "Reduces weapon cooldown time",
+  "CooldownFirstUpDescription": "Cooldown -10%",
+  "CooldownSecondUpDescription": "Cooldown -15%",
+  "CooldownThirdUpDescription": "Cooldown -20%",
+
+  "HealthUpgraidName": "Stout Vitality",
+  "HealthUpgraidDescription": "Increases maximum health",
+  "HealthUpgraidFirstUpDescription": "Health +10",
+  "HealthUpgraidSecondUpDescription": "Health +15",
+  "HealthUpgraidThirdUpDescription": "Health +20"
 }

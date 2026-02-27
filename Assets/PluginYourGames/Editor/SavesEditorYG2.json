@@ -7,15 +7,16 @@
         false,
         false
     ],
-    "idSave": 414,
-    "bestScore": 47,
-    "bestLevel": 2,
-    "coins": 0,
+    "idSave": 792,
+    "bestScore": 339,
+    "bestLevel": 9,
+    "coins": 100,
     "bestTime": 0.0,
     "totalKill": 0,
     "totalTime": 0.0,
     "unlockedCharacters": [
-        "Yaropolk"
+        "Vladimir",
+        "Druid"
     ],
-    "selectedCharacter": "Yaropolk"
+    "selectedCharacter": "Druid"
 }
