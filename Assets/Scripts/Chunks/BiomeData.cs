@@ -5,8 +5,19 @@ using UnityEngine.Tilemaps;
 public class BiomeData : ScriptableObject
 {
     [Header("Biome Info")]
-    public string biomeName;
-    public Color debugColor = Color.white; // Для отладки в Scene View
+    public string biomeId;
+    public string displayName;
+    public string description;
+    public Color debugColor = Color.white;
+
+    [Header("Shop")]
+    public Sprite icon;
+    public Sprite preview;
+    public int price;
+    public bool isDefault;
+
+    [Header("Audio")]
+    public AudioClip backgroundMusic;
 
     [Header("Tiles")]
     public TileData[] tiles;

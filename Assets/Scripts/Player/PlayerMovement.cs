@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private const string NameDirectionVertical = "Vertical";
 
     [SerializeField] private float _speed = 3;
-    [SerializeField] private FixedJoystick _joystick;
+    [SerializeField] private Joystick _joystick;
     [SerializeField] private float _knockbackDistance = 0.4f;
     [SerializeField] private float _knockbackTime = 0.1f;
 
@@ -97,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Initialize(FixedJoystick joystick)
+    public void Initialize(Joystick joystick)
     {
         if (joystick == null)
         {

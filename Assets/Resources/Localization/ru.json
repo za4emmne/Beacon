@@ -5,6 +5,16 @@
   "select_button": "Выбрать",
   "selected_button": "Выбран",
 
+  "location_shop_title": "Локации",
+
+  "forest_name": "Лес",
+  "forest_desc": "Тёмный лес с опасными тварями",
+  "dark_name": "Тьма",
+  "dark_desc": "Царство тьмы и теней",
+  "buy_button": "Купить",
+  "select_button": "Выбрать",
+  "selected_button": "Выбрано",
+
   "kill_text": "Убито: {killCount}",
   "level_text": "Уровень: {level}",
   "time_text": "Время игры: {time}",

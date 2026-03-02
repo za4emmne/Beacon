@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Компоненты игрока")]
     [SerializeField] private GameObject _player;
     [SerializeField] private CameraShake _camera;
-    [SerializeField] private FixedJoystick _fixedJoystick;
+    [SerializeField] private FloatingJoystick _joystick;
     [SerializeField] private CinemachineVirtualCamera _сinemachineVirtualCamera;
     [SerializeField] private Follower _follower;
     [SerializeField] private SmoothHealthBar _smoothHealthBar;
@@ -166,6 +166,9 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         _pillsGenerator.Init(Player.singleton.HillEffect, _playerHealth);
+        
+        BiomeData currentLocation = _gameDataManager.CurrentLocation;
+        TilemapChunkManager.Instance.SetLocation(currentLocation);
         TilemapChunkManager.Instance.Init();
         yield return null;
 
@@ -175,15 +178,40 @@ public class GameManager : MonoBehaviour
 
     private void CreatePlayer()
     {
-        // Берём выбранного героя из GameDataManager
-        CharacterData character = GameDataManager.Instance.CurrentCharacter;
-        GameObject prefabToSpawn = character != null && character.playerPrefab != null
-            ? character.playerPrefab
-            : _player; // fallback, если что‑то не настроено
+        CharacterData character = null;
+        
+        if (GameDataManager.Instance != null)
+        {
+            character = GameDataManager.Instance.CurrentCharacter;
+        }
+        
+        // Fallback если игра запущена напрямую из сцены Game
+        if (character == null || character.playerPrefab == null)
+        {
+            Debug.LogWarning("GameManager: персонаж не выбран, используем default");
+            if (GameDataManager.Instance != null && GameDataManager.Instance.Characters != null)
+            {
+                character = GameDataManager.Instance.Characters.Find(c => c.isDefault);
+            }
+            if (character == null || character.playerPrefab == null)
+            {
+                character = _player.GetComponent<Player>()?.GetComponent<CharacterData>();
+                if (character == null)
+                {
+                    Debug.LogError("GameManager: не удалось создать игрока!");
+                    return;
+                }
+            }
+        }
 
+        GameObject prefabToSpawn = character.playerPrefab;
         GameObject player = Instantiate(prefabToSpawn);
-        player.GetComponent<Player>().Initialize(_camera, _fixedJoystick);
-        player.GetComponent<PlayerWeapons>().AddStartWeapon(character.startedWeapon);
+        player.GetComponent<Player>().Initialize(_camera, _joystick);
+        
+        var playerWeapons = player.GetComponent<PlayerWeapons>();
+        if (character.startedWeapon != null)
+            playerWeapons.AddStartWeapon(character.startedWeapon);
+        
         player.transform.position = Vector3.zero;
     }
 

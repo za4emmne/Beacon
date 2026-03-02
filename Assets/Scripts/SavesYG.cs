@@ -11,7 +11,10 @@ namespace YG
         public int totalKill;
         public float totalTime;
 
-        public List<string> unlockedCharacters = new List<string>(); // Список ключей купленных персонажей
-        public string selectedCharacter; // Ключ выбранного персонажа
+        public List<string> unlockedCharacters = new List<string>();
+        public string selectedCharacter;
+
+        public List<string> unlockedLocations = new List<string>();
+        public string selectedLocation;
     }
 }

@@ -45,6 +45,11 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private GameObject _shopAchivePanel;
     [SerializeField] private Button _closeShopAchivePanel;
 
+    [Header("Магазин локаций")]
+    [SerializeField] private GameObject _shopLocationsPanel;
+    [SerializeField] private Button _closeShopLocationsPanel;
+    [SerializeField] private LocationShopUI _locationShopUI;
+
     [Header("Настройки анимации")]
     [SerializeField] private Vector2 _hiddenPosition;
     [SerializeField] private Vector2 _shownPosition;
@@ -88,12 +93,14 @@ public class UIMenuManager : MonoBehaviour
         HideShopPanel();
         HideAchiveScreen();
         HideHeroesShopPanel();
-
-        _isMobile = DeviceDetector.Instance != null ? DeviceDetector.Instance.IsMobile : false;
+        HideLocationsShopPanel();
     }
 
     private void Start()
     {
+        _isMobile = DeviceDetector.Instance != null ? DeviceDetector.Instance.IsMobile : false;
+        Debug.Log($"[UIMenuManager] Start: _isMobile={_isMobile}, DeviceDetector={DeviceDetector.Instance?.IsMobile}");
+        
         ConfigureMenuForPlatform();
 
         //_achive.onClick.AddListener(ShowAchiveScreen);
@@ -107,7 +114,13 @@ public class UIMenuManager : MonoBehaviour
         _closeShopHeroPanel.onClick.AddListener(HideHeroesShopPanel);
         _closeShopAchivePanel.onClick.AddListener(HideAchiveScreen);
 
-        _achiveShopButton.onClick.AddListener (ShowAchiveScreen);
+        _achiveShopButton.onClick.AddListener(ShowAchiveScreen);
+
+        // Магазин локаций
+        if (_locationShopButton != null)
+            _locationShopButton.onClick.AddListener(ShowLocationsShopPanel);
+        if (_closeShopLocationsPanel != null)
+            _closeShopLocationsPanel.onClick.AddListener(HideLocationsShopPanel);
 
         // Мобильный магазин
         if (_isMobile)
@@ -161,6 +174,8 @@ public class UIMenuManager : MonoBehaviour
 
     private void ConfigureMenuForPlatform()
     {
+        Debug.Log($"[UIMenuManager] ConfigureMenuForPlatform: _isMobile={_isMobile}, _mobileBackgroundImage={_mobileBackgroundImage}, _pcMenuPanel={_pcMenuPanel}");
+        
         if (_isMobile)
         {
 
@@ -173,7 +188,6 @@ public class UIMenuManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("делай");
             if (_pcMenuPanel != null)
                 _pcMenuPanel.SetActive(true);
             if (_mobileBackgroundImage != null)
@@ -291,8 +305,46 @@ public class UIMenuManager : MonoBehaviour
     private void HideShopPanel()
     {
         _shopPanel.gameObject.SetActive(false);
+
         if (_mobileShopPanel != null)
             _mobileShopPanel.SetActive(false);
+    }
+
+    private void ShowLocationsShopPanel()
+    {
+        Debug.Log("[UIMenuManager] ShowLocationsShopPanel called");
+        
+        HideHeroesShopPanel();
+        HideAchiveScreen();
+        HideMainShopPanel();
+
+        if (_shopLocationsPanel != null)
+        {
+            Debug.Log("[UIMenuManager] _shopLocationsPanel found, activating");
+            _shopLocationsPanel.SetActive(true);
+
+            if (_locationShopUI != null)
+            {
+                Debug.Log("[UIMenuManager] Calling _locationShopUI.Show()");
+                _locationShopUI.Show();
+            }
+            else
+            {
+                Debug.LogError("[UIMenuManager] _locationShopUI is NULL!");
+            }
+        }
+        else
+        {
+            Debug.LogError("[UIMenuManager] _shopLocationsPanel is NULL!");
+        }
+    }
+
+    private void HideLocationsShopPanel()
+    {
+        if (_shopLocationsPanel != null)
+            _shopLocationsPanel.SetActive(false);
+
+        ShowMainShopPanel();
     }
 
     private void ShowHeroShopBeforeBegin()

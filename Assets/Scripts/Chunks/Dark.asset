@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a13707ccbd5d48a1268089f2c9485, type: 3}
+  m_Name: Dark
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeData
+  biomeId: dark
+  displayName: dark_name
+  description: dark_desc
+  debugColor: {r: 1, g: 1, b: 1, a: 1}
+  icon: {fileID: 4110731835463972652, guid: 27992f4c2b250de429a52c0dc0527428, type: 3}
+  preview: {fileID: 0}
+  price: 500
+  isDefault: 0
+  backgroundMusic: {fileID: 8300000, guid: c5f1b4858307a1b4ca61bae601892e2e, type: 3}
+  tiles:
+  - tile: {fileID: 11400000, guid: 8c60e794f98a0e94895cd3200178a4ed, type: 2}
+    weight: 40
+  - tile: {fileID: 11400000, guid: 70be2a31dc2c72841a821efe65f44fae, type: 2}
+    weight: 40
+  - tile: {fileID: 11400000, guid: dc06a4e076880ba4096944b275564220, type: 2}
+    weight: 15
+  - tile: {fileID: 11400000, guid: aa8122bb35c5dae4784b3f0db4529695, type: 2}
+    weight: 15
+  - tile: {fileID: 11400000, guid: 22c6327be9633ca42abc3b5a52bf3d4f, type: 2}
+    weight: 15
+  - tile: {fileID: 11400000, guid: 59d92aaa3a74d9b4ba583a37ef4962bd, type: 2}
+    weight: 15
+  - tile: {fileID: 11400000, guid: 954083077979020468a57151e2e03dd1, type: 2}
+    weight: 15
+  - tile: {fileID: 11400000, guid: 4233e2df9e1bd7c4196c643dbd2ffafd, type: 2}
+    weight: 15
+  - tile: {fileID: 11400000, guid: 924bc4fc8d243dc4295505dab7bec3ad, type: 2}
+    weight: 15
+  decorations: []
+  decorationsPerChunk: 5

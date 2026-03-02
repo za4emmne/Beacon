@@ -5,6 +5,15 @@
   "select_button": "Seç",
   "selected_button": "Seçildi",
 
+  "location_shop_title": "Konumlar",
+"forest_name": "Orman",
+"forest_desc": "Tehlikeli yaratıklarla dolu karanlık bir orman",
+"dark_name": "Karanlık",
+"dark_desc": "Karanlığın ve gölgelerin diyarı",
+"buy_button": "Satın al",
+"select_button": "Seç",
+"selected_button": "Seçildi",
+
   "kill_text": "Öldürülen: {killCount}",
   "level_text": "Seviye: {level}",
   "time_text": "Oyun süresi: {time}",

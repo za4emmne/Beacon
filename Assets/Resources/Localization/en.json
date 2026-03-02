@@ -5,6 +5,15 @@
   "select_button": "Select",
   "selected_button": "Selected",
 
+  "location_shop_title": "Locations",
+"forest_name": "Forest",
+"forest_desc": "A dark forest filled with dangerous creatures",
+"dark_name": "Darkness",
+"dark_desc": "The realm of darkness and shadows",
+"buy_button": "Buy",
+"select_button": "Select",
+"selected_button": "Selected",
+
   "kill_text": "Killed: {killCount}",
   "level_text": "Level: {level}",
   "time_text": "Game time: {time}",

@@ -12,39 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1a13707ccbd5d48a1268089f2c9485, type: 3}
   m_Name: Forest
   m_EditorClassIdentifier: Assembly-CSharp::BiomeData
-  biomeName: Forest
+  biomeId: forest
+  displayName: forest_name
+  description: forest_desc
   debugColor: {r: 1, g: 1, b: 1, a: 1}
+  icon: {fileID: 0}
+  preview: {fileID: 0}
+  price: 0
+  isDefault: 1
+  backgroundMusic: {fileID: 0}
   tiles:
-  - tile: {fileID: 11400000, guid: 9b65af08607e4e843a8f35c42a241372, type: 2}
-    weight: 50
-  - tile: {fileID: 11400000, guid: 5e4ea436d169c674e879a1148e8d91b5, type: 2}
-    weight: 5
-  - tile: {fileID: 11400000, guid: 22003d0b78ec6f14a8f3bd016e96a103, type: 2}
-    weight: 5
-  - tile: {fileID: 11400000, guid: f934b084509010145a51aa6875a7f521, type: 2}
-    weight: 5
-  - tile: {fileID: 11400000, guid: a8764317256aa674e9d80f035771af3b, type: 2}
-    weight: 5
-  - tile: {fileID: 11400000, guid: 4e640591731a6c3449ae2495790f52e2, type: 2}
-    weight: 15
-  - tile: {fileID: 11400000, guid: ca1ba8972c305604f905f3fce3098cd2, type: 2}
-    weight: 5
-  - tile: {fileID: 11400000, guid: a8764317256aa674e9d80f035771af3b, type: 2}
-    weight: 5
-  - tile: {fileID: 11400000, guid: a38abbfa23c375f4cb3e6fe1c67e1eba, type: 2}
-    weight: 5
-  - tile: {fileID: 11400000, guid: ba3b0f1d288f6e84aa38b3d311f26e36, type: 2}
-    weight: 5
-  - tile: {fileID: 11400000, guid: 3ea43ded9c3ef844e8dee6c438c20dcd, type: 2}
-    weight: 8
-  - tile: {fileID: 11400000, guid: 4e640591731a6c3449ae2495790f52e2, type: 2}
-    weight: 8
-  - tile: {fileID: 11400000, guid: 9d359d978d85f9641bd122d3e39decd4, type: 2}
-    weight: 8
-  - tile: {fileID: 11400000, guid: 6cbf1ab5da415dc4cb7bb2f37a5d93f8, type: 2}
-    weight: 8
-  - tile: {fileID: 11400000, guid: 6b062347a1a345540935244e6c54fcb4, type: 2}
-    weight: 8
+  - tile: {fileID: 11400000, guid: 77f19cd9cd76b054ca22fd15413006c6, type: 2}
+    weight: 20
+  - tile: {fileID: 11400000, guid: baa32789afb736549a796da52c05889d, type: 2}
+    weight: 20
+  - tile: {fileID: 11400000, guid: fef545581229f7842bb0053c000d4b5a, type: 2}
+    weight: 20
+  - tile: {fileID: 11400000, guid: 1d8ada8c2ff522c4c8e16ce324c1b54c, type: 2}
+    weight: 10
+  - tile: {fileID: 11400000, guid: c8d345b450dbc4a478887a951d62b73d, type: 2}
+    weight: 10
+  - tile: {fileID: 11400000, guid: 01b68f2d74fec304ea14968e8be5bbc4, type: 2}
+    weight: 10
   decorations:
   - prefab: {fileID: 3000614995373971236, guid: 626f253ec95b462469176ab983ba6424, type: 3}
     spawnChance: 20

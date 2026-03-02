@@ -7,16 +7,22 @@
         false,
         false
     ],
-    "idSave": 792,
+    "idSave": 834,
     "bestScore": 339,
     "bestLevel": 9,
     "coins": 100,
-    "bestTime": 0.0,
-    "totalKill": 0,
-    "totalTime": 0.0,
+    "bestTime": 127.23335266113281,
+    "totalKill": 384,
+    "totalTime": 427.5761413574219,
     "unlockedCharacters": [
         "Vladimir",
-        "Druid"
+        "Druid",
+        "Yaropolk"
     ],
-    "selectedCharacter": "Druid"
+    "selectedCharacter": "Druid",
+    "unlockedLocations": [
+        "forest",
+        "dark"
+    ],
+    "selectedLocation": "dark"
 }
