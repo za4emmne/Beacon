@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1a13707ccbd5d48a1268089f2c9485, type: 3}
+  m_Name: Base
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeData
+  biomeId: Base
+  displayName: Base Plan
+  description: Test Location
+  debugColor: {r: 0.2901961, g: 0.27058825, b: 0.19215688, a: 1}
+  icon: {fileID: 0}
+  preview: {fileID: 0}
+  price: 0
+  isDefault: 1
+  backgroundMusic: {fileID: 0}
+  tiles: []
+  decorations: []
+  decorationsPerChunk: 5

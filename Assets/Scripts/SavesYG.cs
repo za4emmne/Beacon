@@ -16,5 +16,8 @@ namespace YG
 
         public List<string> unlockedLocations = new List<string>();
         public string selectedLocation;
+
+        public double lastDailyRewardTime;
+        public double lastCoinsRewardTime;
     }
 }

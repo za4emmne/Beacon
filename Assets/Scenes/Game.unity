@@ -5075,6 +5075,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &556654589
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 8734440147681224639, guid: a2e026b36352b6740a5c7e03cc20bf9b, type: 3}
   m_PrefabInstance: {fileID: 313452531}
@@ -5120,6 +5121,7 @@ SpriteRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -353249814, guid: aee0c5db698fd404ca3a6c64b3db662e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5129,7 +5131,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &559376069
 GameObject:
@@ -5581,6 +5582,7 @@ Animator:
   m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &604941084
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5626,6 +5628,7 @@ SpriteRenderer:
   m_SortingLayerID: -587207065
   m_SortingLayer: 3
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -1661252443, guid: 2cda4704d215aed45b0ac1f2463e6b65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5635,7 +5638,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &604941085
 MonoBehaviour:
@@ -6142,6 +6144,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &660450224
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -6187,6 +6190,7 @@ TilemapRenderer:
   m_SortingLayerID: 1320264615
   m_SortingLayer: 5
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -6194,7 +6198,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &660450225
 Tilemap:
   m_ObjectHideFlags: 0
@@ -8128,6 +8131,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &858492007
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -8173,6 +8177,7 @@ TilemapRenderer:
   m_SortingLayerID: 251380573
   m_SortingLayer: 2
   m_SortingOrder: 1
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -8180,7 +8185,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &858492008
 Tilemap:
   m_ObjectHideFlags: 0
@@ -11066,6 +11070,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1248371024
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11111,6 +11116,7 @@ TilemapRenderer:
   m_SortingLayerID: 251380573
   m_SortingLayer: 2
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -11118,7 +11124,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &1248371025
 Tilemap:
   m_ObjectHideFlags: 0
@@ -12151,6 +12156,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &1281517630
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 8734440147681224639, guid: a2e026b36352b6740a5c7e03cc20bf9b, type: 3}
   m_PrefabInstance: {fileID: 1281517626}
@@ -12196,6 +12202,7 @@ SpriteRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -353249814, guid: aee0c5db698fd404ca3a6c64b3db662e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12205,7 +12212,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1284718077
 GameObject:
@@ -12669,6 +12675,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &1297245663
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 428294664148538700, guid: cec004c7e2ed83548b0f7b70a4577507, type: 3}
   m_PrefabInstance: {fileID: 1297245659}
@@ -12714,6 +12721,7 @@ SpriteRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 245214802, guid: aee0c5db698fd404ca3a6c64b3db662e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12723,7 +12731,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1303007903
 GameObject:
@@ -12806,6 +12813,7 @@ TilemapCollider2D:
   m_UseDelaunayMesh: 0
 --- !u!483693784 &1303007906
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -12851,6 +12859,7 @@ TilemapRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -12858,7 +12867,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &1303007907
 Tilemap:
   m_ObjectHideFlags: 0
@@ -13791,6 +13799,7 @@ GameObject:
   m_IsActive: 1
 --- !u!212 &1362511712
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -13836,6 +13845,7 @@ SpriteRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 6911056676163173146, guid: 73da1ea7062a5624aac1d382c696e150, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -13845,7 +13855,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1362511713
 Transform:
@@ -14281,7 +14290,7 @@ GameObject:
   m_IsActive: 1
 --- !u!199 &1522177091
 ParticleSystemRenderer:
-  serializedVersion: 6
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14327,6 +14336,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 1
+  m_MaskInteraction: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -14358,7 +14368,6 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
 --- !u!198 &1522177092
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -19312,6 +19321,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &1550486953
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 9175984823202942381, guid: 02532019f0865ec48ab140d62215e47d, type: 3}
   m_PrefabInstance: {fileID: 1550486949}
@@ -19357,6 +19367,7 @@ SpriteRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -304927038, guid: aee0c5db698fd404ca3a6c64b3db662e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -19366,7 +19377,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1552334408
 GameObject:
@@ -20934,6 +20944,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1712149025
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -20979,6 +20990,7 @@ TilemapRenderer:
   m_SortingLayerID: -360988997
   m_SortingLayer: 1
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -20986,7 +20998,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &1712149026
 Tilemap:
   m_ObjectHideFlags: 0
@@ -33207,6 +33218,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &1716924768
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 9175984823202942381, guid: 02532019f0865ec48ab140d62215e47d, type: 3}
   m_PrefabInstance: {fileID: 1716924764}
@@ -33252,6 +33264,7 @@ SpriteRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -304927038, guid: aee0c5db698fd404ca3a6c64b3db662e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -33261,7 +33274,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!213 &1719974234
 Sprite:
@@ -35417,7 +35429,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.75294125, g: 0.8313726, b: 0.43921572, a: 0}
+  m_BackGroundColor: {r: 0.3584906, g: 0.33048776, b: 0.21847633, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -35824,6 +35836,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1836994304
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -35869,6 +35882,7 @@ TilemapRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -35876,7 +35890,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &1836994305
 Tilemap:
   m_ObjectHideFlags: 0
@@ -38864,6 +38877,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &1866293786
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 9175984823202942381, guid: 02532019f0865ec48ab140d62215e47d, type: 3}
   m_PrefabInstance: {fileID: 1168500779}
@@ -38909,6 +38923,7 @@ SpriteRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -304927038, guid: aee0c5db698fd404ca3a6c64b3db662e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -38918,7 +38933,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1866958110
 GameObject:
@@ -39240,6 +39254,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1885681823
 TilemapRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -39285,6 +39300,7 @@ TilemapRenderer:
   m_SortingLayerID: 696068133
   m_SortingLayer: 6
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -39292,7 +39308,6 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
-  m_MaskInteraction: 0
 --- !u!1839735485 &1885681824
 Tilemap:
   m_ObjectHideFlags: 0
@@ -39363,53 +39378,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1895852561
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1895852562}
-  - component: {fileID: 1895852563}
-  m_Layer: 0
-  m_Name: GameDataManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1895852562
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895852561}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.92403, y: 53.67361, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1895852563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895852561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c44c7823b451fb84b8f6e0ca53b900e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameDataManager
-  Characters:
-  - {fileID: 11400000, guid: 7596066cab04ae24293116ba6d59bf3d, type: 2}
-  Locations: []
 --- !u!114 &1916326899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40045,6 +40013,7 @@ BoxCollider2D:
   m_EdgeRadius: 0
 --- !u!212 &1975288509
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 428294664148538700, guid: cec004c7e2ed83548b0f7b70a4577507, type: 3}
   m_PrefabInstance: {fileID: 1975288505}
@@ -40090,6 +40059,7 @@ SpriteRenderer:
   m_SortingLayerID: -581105993
   m_SortingLayer: 4
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 245214802, guid: aee0c5db698fd404ca3a6c64b3db662e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -40099,7 +40069,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1997118725
 GameObject:
@@ -42052,7 +42021,6 @@ SceneRoots:
   - {fileID: 1916982301}
   - {fileID: 1205500654}
   - {fileID: 1066625756}
-  - {fileID: 1895852562}
   - {fileID: 669075603}
   - {fileID: 1362511713}
   - {fileID: 1339921988}

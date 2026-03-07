@@ -19,7 +19,7 @@ MonoBehaviour:
   icon: {fileID: 0}
   preview: {fileID: 0}
   price: 0
-  isDefault: 1
+  isDefault: 0
   backgroundMusic: {fileID: 0}
   tiles:
   - tile: {fileID: 11400000, guid: 77f19cd9cd76b054ca22fd15413006c6, type: 2}

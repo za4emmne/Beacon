@@ -179,4 +179,40 @@ UIManager
 
 ---
 
-*Обновлено: Февраль 2026*
+## Текущее состояние проекта
+
+### Основные скрипты (нужные исправлений)
+
+| Скрипт | Строк | Проблемы |
+|--------|-------|-----------|
+| TilemapChunkManager | 317 | Аллокации в Update |
+| EnemyMovement | ~150 | Вызывается 500+ раз |
+| PlayerMovement | ~175 | Аллокации |
+| Timer | ~50 | string.Format каждый кадр |
+| VampireSkill | ~80 | Physics2D каждый кадр |
+| UIMenuManager | 348 | God Object |
+
+### Скрипты UI
+
+| Скрипт | Назначение |
+|--------|-----------|
+| UIMenuManager | Главное меню |
+| ShopNavigation | Навигация по магазину (нужно выделить) |
+| StatsPanelController | Статистика (нужно выделить) |
+| PlatformConfigurator | Адаптация ПК/мобильная (нужно выделить) |
+| LocationShopUI | Магазин локаций |
+| LocationCardUI | Карточка локации |
+
+### Системы
+
+| Система | Файлы |
+|---------|-------|
+| Оружие | Weapon.cs, WeaponController.cs, GeneratorWeapon.cs, ManagerWeapon.cs |
+| Враги | Enemy.cs, EnemyMovement.cs, EnemiesGenerator.cs, WaveSystem.cs |
+| Игрок | Player.cs, PlayerMovement.cs, PlayerHealth.cs, PlayerWeapons.cs |
+| Читы | SavesYG.cs, GameDataManager.cs |
+| Локации | TilemapChunkManager.cs, BiomeData.cs |
+
+---
+
+*Обновлено: Март 2026*

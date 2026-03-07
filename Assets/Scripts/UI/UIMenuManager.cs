@@ -32,12 +32,9 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private Button _heroesShopButton;
     [SerializeField] private Button _achiveShopButton;
     [SerializeField] private Button _locationShopButton;
-    //[SerializeField] private GameObject _shopAchivePanel;
-    //[SerializeField] private Button _closeShopAchivePanel;
 
     [Header("Магазин героев")]
     [SerializeField] private GameObject _shopHeroesPanel;
-    //[SerializeField] private GameObject _shopAchivePanel;
     [SerializeField] private Button _closeShopHeroPanel;
 
     [Header("Магазин ачивок")]
@@ -67,6 +64,10 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private Button _mobileNextTabButton;
     [SerializeField] private Sprite _heroesIcon;
     [SerializeField] private Sprite _achiveIcon;
+
+    [Header("Ежедневные награды")]
+    [SerializeField] private Button _dailyRewardButton;
+    [SerializeField] private Text _dailyRewardTimerText;
 
     [Header("Мобильные панели магазина")]
     [SerializeField] private GameObject _mobileHeroesPanel;
@@ -121,6 +122,10 @@ public class UIMenuManager : MonoBehaviour
             _locationShopButton.onClick.AddListener(ShowLocationsShopPanel);
         if (_closeShopLocationsPanel != null)
             _closeShopLocationsPanel.onClick.AddListener(HideLocationsShopPanel);
+
+        // Ежедневная награда
+        if (_dailyRewardButton != null)
+            _dailyRewardButton.onClick.AddListener(OnDailyRewardButtonClick);
 
         // Мобильный магазин
         if (_isMobile)
@@ -345,6 +350,14 @@ public class UIMenuManager : MonoBehaviour
             _shopLocationsPanel.SetActive(false);
 
         ShowMainShopPanel();
+    }
+
+    private void OnDailyRewardButtonClick()
+    {
+        if (_shop != null)
+        {
+            _shop.OnDailyRewardButtonClick();
+        }
     }
 
     private void ShowHeroShopBeforeBegin()

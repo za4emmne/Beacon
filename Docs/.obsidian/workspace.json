@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a0a437e3b49d3739",
+            "id": "72b5d26b5b3fe567",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -175,20 +175,24 @@
   "left-ribbon": {
     "hiddenItems": {
       "switcher:Меню быстрого перехода": false,
-      "graph:Граф": false,
       "canvas:Создать новый холст": false,
       "daily-notes:Сегодняшняя заметка": false,
       "templates:Вставить шаблон": false,
       "command-palette:Открыть палитру команд": false,
-      "bases:Создать новую базу": false
+      "bases:Создать новую базу": false,
+      "graph:Граф": false
     }
   },
-  "active": "a0a437e3b49d3739",
+  "active": "72b5d26b5b3fe567",
   "lastOpenFiles": [
-    "The Sich/SECH_LOCATIONS.md",
+    "Промт по новой фишке.md",
     "The Sich/Задачи по игре.md",
-    "The Sich/SECH_HORDE_BEHAVIOR.md",
+    "[Промт по новой фишке.md",
     "Без названия/Что нужно сделать дома на ПК.md",
+    "Без названия.base",
+    "Без названия.canvas",
+    "The Sich/SECH_LOCATIONS.md",
+    "The Sich/SECH_HORDE_BEHAVIOR.md",
     "Без названия 1"
   ]
 }
