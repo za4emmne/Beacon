@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -116,12 +116,12 @@ TextureImporter:
       name: Pixel Mushroom Asset Cluster_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        x: 119
+        y: 846
+        width: 73
+        height: 74
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,11 +134,275 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_1
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 846
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa1f42647cb321a44b1b6b38f46ab1f6
+      internalID: -1743842001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_2
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 846
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c3195d98a476647b7c84ac3adc5844
+      internalID: -145573945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_3
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 846
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8058ce993e52cfb49b530dd4c8691ac2
+      internalID: -1835998414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_4
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 596
+        width: 73
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 452ece775080c2b409013100a0a1ad91
+      internalID: -1041984973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_5
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 596
+        width: 74
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 851fee4d522be644d85b385a314f4cbf
+      internalID: 582916407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_6
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 596
+        width: 73
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f11d409b89c93d745b4616ef1ebf7d38
+      internalID: 874402323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_7
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 598
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fc9fdba4157d040bb34af03415255a
+      internalID: 693811647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_8
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 347
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de51cffb0ff30fd41b40228dfda42568
+      internalID: 2109000667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_9
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 347
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8eee6bfdb8e374cb074d945a4ed17e
+      internalID: 1453404140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_10
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 347
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb37449cd124cca4c995059f851c381e
+      internalID: 152755994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_11
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 98
+        width: 73
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e500fdb0dfef84c498619bff0b880379
+      internalID: -1852027442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pixel Mushroom Asset Cluster_12
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 98
+        width: 74
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25ce2365a4cc564d8f83beb894a0001
+      internalID: 926039878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 69f48a6db52694348bb5908ca13dbe7f
     internalID: 0
     vertices: []
     indices: 
@@ -146,9 +410,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Pixel Mushroom Asset Cluster_0: -975055504430505785
+      Pixel Mushroom Asset Cluster_1: -1743842001
+      Pixel Mushroom Asset Cluster_10: 152755994
+      Pixel Mushroom Asset Cluster_11: -1852027442
+      Pixel Mushroom Asset Cluster_12: 926039878
+      Pixel Mushroom Asset Cluster_2: -145573945
+      Pixel Mushroom Asset Cluster_3: -1835998414
+      Pixel Mushroom Asset Cluster_4: -1041984973
+      Pixel Mushroom Asset Cluster_5: 582916407
+      Pixel Mushroom Asset Cluster_6: 874402323
+      Pixel Mushroom Asset Cluster_7: 693811647
+      Pixel Mushroom Asset Cluster_8: 2109000667
+      Pixel Mushroom Asset Cluster_9: 1453404140
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

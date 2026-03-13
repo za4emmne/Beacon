@@ -1,0 +1,2028 @@
+fileFormatVersion: 2
+guid: deef0ba7ea7bf7a41b18cd0c9d245f93
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7439222439075522232
+    second: Sparse Pixel Bush Asset1_0
+  - first:
+      213: -8042923913640793641
+    second: Sparse Pixel Bush Asset1_1
+  - first:
+      213: 3407298511328609244
+    second: Sparse Pixel Bush Asset1_2
+  - first:
+      213: -148877310189143080
+    second: Sparse Pixel Bush Asset1_3
+  - first:
+      213: -3719463236578149304
+    second: Sparse Pixel Bush Asset1_4
+  - first:
+      213: -5002455499492296199
+    second: Sparse Pixel Bush Asset1_5
+  - first:
+      213: 9139465942225338763
+    second: Sparse Pixel Bush Asset1_6
+  - first:
+      213: 3413495249580594795
+    second: Sparse Pixel Bush Asset1_7
+  - first:
+      213: -8973883481396079780
+    second: Sparse Pixel Bush Asset1_8
+  - first:
+      213: 3657084924330532288
+    second: Sparse Pixel Bush Asset1_9
+  - first:
+      213: 2485945700723403670
+    second: Sparse Pixel Bush Asset1_10
+  - first:
+      213: -9197639548473205052
+    second: Sparse Pixel Bush Asset1_11
+  - first:
+      213: 484324092587958319
+    second: Sparse Pixel Bush Asset1_12
+  - first:
+      213: -8528694720720100419
+    second: Sparse Pixel Bush Asset1_13
+  - first:
+      213: 4999855560701328275
+    second: Sparse Pixel Bush Asset1_14
+  - first:
+      213: 3449395769696477354
+    second: Sparse Pixel Bush Asset1_15
+  - first:
+      213: 595160207745540099
+    second: Sparse Pixel Bush Asset1_16
+  - first:
+      213: 4779187756768885643
+    second: Sparse Pixel Bush Asset1_17
+  - first:
+      213: -3808657621026782358
+    second: Sparse Pixel Bush Asset1_18
+  - first:
+      213: -7814329415244202244
+    second: Sparse Pixel Bush Asset1_19
+  - first:
+      213: 8274983120914428925
+    second: Sparse Pixel Bush Asset1_20
+  - first:
+      213: -6623600675268978490
+    second: Sparse Pixel Bush Asset1_21
+  - first:
+      213: 4727711374294599180
+    second: Sparse Pixel Bush Asset1_22
+  - first:
+      213: -1301432303504536194
+    second: Sparse Pixel Bush Asset1_23
+  - first:
+      213: -645598758506783337
+    second: Sparse Pixel Bush Asset1_24
+  - first:
+      213: 3559841994815832635
+    second: Sparse Pixel Bush Asset1_25
+  - first:
+      213: 7463448398870557581
+    second: Sparse Pixel Bush Asset1_26
+  - first:
+      213: 4117558517119981275
+    second: Sparse Pixel Bush Asset1_27
+  - first:
+      213: 236483510353498388
+    second: Sparse Pixel Bush Asset1_28
+  - first:
+      213: 501663488564080259
+    second: Sparse Pixel Bush Asset1_29
+  - first:
+      213: 155617578805525319
+    second: Sparse Pixel Bush Asset1_30
+  - first:
+      213: 1062418614337116892
+    second: Sparse Pixel Bush Asset1_31
+  - first:
+      213: -4542584973668068020
+    second: Sparse Pixel Bush Asset1_32
+  - first:
+      213: 4037373557665763816
+    second: Sparse Pixel Bush Asset1_33
+  - first:
+      213: -8261906441741081408
+    second: Sparse Pixel Bush Asset1_34
+  - first:
+      213: -2976472670450401243
+    second: Sparse Pixel Bush Asset1_35
+  - first:
+      213: 7283190873718381371
+    second: Sparse Pixel Bush Asset1_36
+  - first:
+      213: 2507601819873664302
+    second: Sparse Pixel Bush Asset1_37
+  - first:
+      213: -5748061023744204188
+    second: Sparse Pixel Bush Asset1_38
+  - first:
+      213: 3863157768673085697
+    second: Sparse Pixel Bush Asset1_39
+  - first:
+      213: 5398087418585299501
+    second: Sparse Pixel Bush Asset1_40
+  - first:
+      213: -8317969425178814925
+    second: Sparse Pixel Bush Asset1_41
+  - first:
+      213: -5082228875221544695
+    second: Sparse Pixel Bush Asset1_42
+  - first:
+      213: 1586594958945243103
+    second: Sparse Pixel Bush Asset1_43
+  - first:
+      213: -6992375457786753995
+    second: Sparse Pixel Bush Asset1_44
+  - first:
+      213: 1834775052240417060
+    second: Sparse Pixel Bush Asset1_45
+  - first:
+      213: 6642887732128251453
+    second: Sparse Pixel Bush Asset1_46
+  - first:
+      213: -7904673962568354136
+    second: Sparse Pixel Bush Asset1_47
+  - first:
+      213: -1539740316967150071
+    second: Sparse Pixel Bush Asset1_48
+  - first:
+      213: -5981596414725192149
+    second: Sparse Pixel Bush Asset1_49
+  - first:
+      213: 557776155730388051
+    second: Sparse Pixel Bush Asset1_50
+  - first:
+      213: -1179104799439654212
+    second: Sparse Pixel Bush Asset1_51
+  - first:
+      213: 1502236165704734028
+    second: Sparse Pixel Bush Asset1_52
+  - first:
+      213: 1612359212485871807
+    second: Sparse Pixel Bush Asset1_53
+  - first:
+      213: 5842414465065020524
+    second: Sparse Pixel Bush Asset1_54
+  - first:
+      213: -6779318721188619515
+    second: Sparse Pixel Bush Asset1_55
+  - first:
+      213: -1011531936233814215
+    second: Sparse Pixel Bush Asset1_56
+  - first:
+      213: 4334585525990985651
+    second: Sparse Pixel Bush Asset1_57
+  - first:
+      213: 12121292748754363
+    second: Sparse Pixel Bush Asset1_58
+  - first:
+      213: 4454558677324350815
+    second: Sparse Pixel Bush Asset1_59
+  - first:
+      213: -4820045071773666013
+    second: Sparse Pixel Bush Asset1_60
+  - first:
+      213: -3541809003891696951
+    second: Sparse Pixel Bush Asset1_61
+  - first:
+      213: 7736569562634045819
+    second: Sparse Pixel Bush Asset1_62
+  - first:
+      213: 2512018700769209272
+    second: Sparse Pixel Bush Asset1_63
+  - first:
+      213: -6782054078486929204
+    second: Sparse Pixel Bush Asset1_64
+  - first:
+      213: -2173449825071465836
+    second: Sparse Pixel Bush Asset1_65
+  - first:
+      213: 3222728888876871430
+    second: Sparse Pixel Bush Asset1_66
+  - first:
+      213: 2079384960271241744
+    second: Sparse Pixel Bush Asset1_67
+  - first:
+      213: 5813011027808267896
+    second: Sparse Pixel Bush Asset1_68
+  - first:
+      213: -7030481599619469538
+    second: Sparse Pixel Bush Asset1_69
+  - first:
+      213: 2870156758821774661
+    second: Sparse Pixel Bush Asset1_70
+  - first:
+      213: -1012128993153792901
+    second: Sparse Pixel Bush Asset1_71
+  - first:
+      213: 5385552667686118208
+    second: Sparse Pixel Bush Asset1_72
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_0
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1004
+        width: 85
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b62636c46d6d3760800000000000000
+      internalID: 7439222439075522232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_1
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1019
+        width: 59
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d922f3505bc16090800000000000000
+      internalID: -8042923913640793641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_2
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 981
+        width: 57
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd3857381f7294f20800000000000000
+      internalID: 3407298511328609244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_3
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 1010
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8db7f0b00e41fedf0800000000000000
+      internalID: -148877310189143080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_4
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 883
+        width: 151
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84c72a494efc16cc0800000000000000
+      internalID: -3719463236578149304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_5
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 1000
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f9ff043a35b39ab0800000000000000
+      internalID: -5002455499492296199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_6
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 943
+        width: 28
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b814f1bf9d7e5de70800000000000000
+      internalID: 9139465942225338763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_7
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 974
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b661cb118db2f5f20800000000000000
+      internalID: 3413495249580594795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_8
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 966
+        width: 19
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5314a3f48c567380800000000000000
+      internalID: -8973883481396079780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_9
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1000
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cd5824dc5390c230800000000000000
+      internalID: 3657084924330532288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_10
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 995
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69b2786917adf7220800000000000000
+      internalID: 2485945700723403670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_11
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 979
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ce9b25df8b6b5080800000000000000
+      internalID: -9197639548473205052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_12
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 977
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f206ed6323aa8b600800000000000000
+      internalID: 484324092587958319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_13
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 972
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db3aab5a65df3a980800000000000000
+      internalID: -8528694720720100419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_14
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 983
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39b3ddf542e036540800000000000000
+      internalID: 4999855560701328275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_15
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 977
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa06e764d27bedf20800000000000000
+      internalID: 3449395769696477354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_16
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 960
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 300ee1f3e0f624800800000000000000
+      internalID: 595160207745540099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_17
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 981
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8bfa1d81f5135240800000000000000
+      internalID: 4779187756768885643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_18
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 960
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a634d93a21ee42bc0800000000000000
+      internalID: -3808657621026782358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_19
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 966
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfebb768ccced8390800000000000000
+      internalID: -7814329415244202244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_20
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 940
+        width: 13
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df335744e45a6d270800000000000000
+      internalID: 8274983120914428925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_21
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 940
+        width: 9
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c81e88774e3414a0800000000000000
+      internalID: -6623600675268978490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_22
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 949
+        width: 19
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c06476942743c9140800000000000000
+      internalID: 4727711374294599180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_23
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 953
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7dc46a173260fde0800000000000000
+      internalID: -1301432303504536194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_24
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 949
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d15c3895f5a07f0800000000000000
+      internalID: -645598758506783337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_25
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 955
+        width: 17
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b320485fe69176130800000000000000
+      internalID: 3559841994815832635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_26
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 934
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d83332696ce739760800000000000000
+      internalID: 7463448398870557581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_27
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 945
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd612d2d7a1842930800000000000000
+      internalID: 4117558517119981275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_28
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 938
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4119bddef78284300800000000000000
+      internalID: 236483510353498388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_29
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 926
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38e25a0f84446f600800000000000000
+      internalID: 501663488564080259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_30
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 886
+        width: 109
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74b72890d5dd82200800000000000000
+      internalID: 155617578805525319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_31
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 858
+        width: 50
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda935ec9187ebe00800000000000000
+      internalID: 1062418614337116892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_32
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 886
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c45dc7ab80f75f0c0800000000000000
+      internalID: -4542584973668068020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_33
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 923
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1193a1cd1a70830800000000000000
+      internalID: 4037373557665763816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_34
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 911
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c4e28c5ddfc75d80800000000000000
+      internalID: -8261906441741081408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_35
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 915
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 520452250e171b6d0800000000000000
+      internalID: -2976472670450401243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_36
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 915
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3bd95bf287131560800000000000000
+      internalID: 7283190873718381371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_37
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 892
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2d51bfb19accc220800000000000000
+      internalID: 2507601819873664302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_38
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 820
+        width: 114
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 462657414f8ca30b0800000000000000
+      internalID: -5748061023744204188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_39
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 887
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 109cc01d581bc9530800000000000000
+      internalID: 3863157768673085697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_40
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 890
+        width: 51
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2a384b28ebd9ea40800000000000000
+      internalID: 5398087418585299501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_41
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 866
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33618a7d0e2a09c80800000000000000
+      internalID: -8317969425178814925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_42
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 818
+        width: 36
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 901df29c3cb4879b0800000000000000
+      internalID: -5082228875221544695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_43
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 835
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf4b5285b7b40610800000000000000
+      internalID: 1586594958945243103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_44
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 860
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53c067e719716fe90800000000000000
+      internalID: -6992375457786753995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_45
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 794
+        width: 38
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 421f98f503e667910800000000000000
+      internalID: 1834775052240417060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_46
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 830
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3efd446237403c50800000000000000
+      internalID: 6642887732128251453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_47
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 853
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a675db69e4fc4290800000000000000
+      internalID: -7904673962568354136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_48
+      rect:
+        serializedVersion: 2
+        x: 909
+        y: 866
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90e53d0f65eb1aae0800000000000000
+      internalID: -1539740316967150071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_49
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 701
+        width: 109
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b260e8ea0c91dfca0800000000000000
+      internalID: -5981596414725192149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_50
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 792
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3542e7a557e9db700800000000000000
+      internalID: 557776155730388051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_51
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 764
+        width: 28
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb2f07c9e6af2afe0800000000000000
+      internalID: -1179104799439654212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_52
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 723
+        width: 36
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c45539165d309d410800000000000000
+      internalID: 1502236165704734028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_53
+      rect:
+        serializedVersion: 2
+        x: 850
+        y: 746
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb88c8e3920406610800000000000000
+      internalID: 1612359212485871807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_54
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 695
+        width: 21
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6cedc4600d641150800000000000000
+      internalID: 5842414465065020524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_55
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 716
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50b956c9a850be1a0800000000000000
+      internalID: -6779318721188619515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_56
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 180
+        width: 669
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93702d5301156f1f0800000000000000
+      internalID: -1011531936233814215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_57
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 678
+        width: 23
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf0e3df19a872c30800000000000000
+      internalID: 4334585525990985651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_58
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 716
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbd028460401b2000800000000000000
+      internalID: 12121292748754363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_59
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 686
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f554d090485c1dd30800000000000000
+      internalID: 4454558677324350815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_60
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 668
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 325fe8f7b82cb1db0800000000000000
+      internalID: -4820045071773666013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_61
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 661
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca51cce977f8dec0800000000000000
+      internalID: -3541809003891696951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_62
+      rect:
+        serializedVersion: 2
+        x: 890
+        y: 667
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b79c6e0f601dd5b60800000000000000
+      internalID: 7736569562634045819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_63
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 670
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bbac78f2bb7cd220800000000000000
+      internalID: 2512018700769209272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_64
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 648
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc02c4c9fbd41e1a0800000000000000
+      internalID: -6782054078486929204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_65
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 651
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49afa7746ea56d1e0800000000000000
+      internalID: -2173449825071465836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_66
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 634
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60f25e489de69bc20800000000000000
+      internalID: 3222728888876871430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_67
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 623
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 012d144ba957bdc10800000000000000
+      internalID: 2079384960271241744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_68
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 335
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87ea0fb2bb6fba050800000000000000
+      internalID: 5813011027808267896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_69
+      rect:
+        serializedVersion: 2
+        x: 1008
+        y: 348
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1fe2c6fb36be6e90800000000000000
+      internalID: -7030481599619469538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_70
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 314
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 545224b8d58d4d720800000000000000
+      internalID: 2870156758821774661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_71
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 312
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b74c1301b0234f1f0800000000000000
+      internalID: -1012128993153792901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sparse Pixel Bush Asset1_72
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 172
+        width: 35
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 043a69c0e935dba40800000000000000
+      internalID: 5385552667686118208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sparse Pixel Bush Asset1_0: 7439222439075522232
+      Sparse Pixel Bush Asset1_1: -8042923913640793641
+      Sparse Pixel Bush Asset1_10: 2485945700723403670
+      Sparse Pixel Bush Asset1_11: -9197639548473205052
+      Sparse Pixel Bush Asset1_12: 484324092587958319
+      Sparse Pixel Bush Asset1_13: -8528694720720100419
+      Sparse Pixel Bush Asset1_14: 4999855560701328275
+      Sparse Pixel Bush Asset1_15: 3449395769696477354
+      Sparse Pixel Bush Asset1_16: 595160207745540099
+      Sparse Pixel Bush Asset1_17: 4779187756768885643
+      Sparse Pixel Bush Asset1_18: -3808657621026782358
+      Sparse Pixel Bush Asset1_19: -7814329415244202244
+      Sparse Pixel Bush Asset1_2: 3407298511328609244
+      Sparse Pixel Bush Asset1_20: 8274983120914428925
+      Sparse Pixel Bush Asset1_21: -6623600675268978490
+      Sparse Pixel Bush Asset1_22: 4727711374294599180
+      Sparse Pixel Bush Asset1_23: -1301432303504536194
+      Sparse Pixel Bush Asset1_24: -645598758506783337
+      Sparse Pixel Bush Asset1_25: 3559841994815832635
+      Sparse Pixel Bush Asset1_26: 7463448398870557581
+      Sparse Pixel Bush Asset1_27: 4117558517119981275
+      Sparse Pixel Bush Asset1_28: 236483510353498388
+      Sparse Pixel Bush Asset1_29: 501663488564080259
+      Sparse Pixel Bush Asset1_3: -148877310189143080
+      Sparse Pixel Bush Asset1_30: 155617578805525319
+      Sparse Pixel Bush Asset1_31: 1062418614337116892
+      Sparse Pixel Bush Asset1_32: -4542584973668068020
+      Sparse Pixel Bush Asset1_33: 4037373557665763816
+      Sparse Pixel Bush Asset1_34: -8261906441741081408
+      Sparse Pixel Bush Asset1_35: -2976472670450401243
+      Sparse Pixel Bush Asset1_36: 7283190873718381371
+      Sparse Pixel Bush Asset1_37: 2507601819873664302
+      Sparse Pixel Bush Asset1_38: -5748061023744204188
+      Sparse Pixel Bush Asset1_39: 3863157768673085697
+      Sparse Pixel Bush Asset1_4: -3719463236578149304
+      Sparse Pixel Bush Asset1_40: 5398087418585299501
+      Sparse Pixel Bush Asset1_41: -8317969425178814925
+      Sparse Pixel Bush Asset1_42: -5082228875221544695
+      Sparse Pixel Bush Asset1_43: 1586594958945243103
+      Sparse Pixel Bush Asset1_44: -6992375457786753995
+      Sparse Pixel Bush Asset1_45: 1834775052240417060
+      Sparse Pixel Bush Asset1_46: 6642887732128251453
+      Sparse Pixel Bush Asset1_47: -7904673962568354136
+      Sparse Pixel Bush Asset1_48: -1539740316967150071
+      Sparse Pixel Bush Asset1_49: -5981596414725192149
+      Sparse Pixel Bush Asset1_5: -5002455499492296199
+      Sparse Pixel Bush Asset1_50: 557776155730388051
+      Sparse Pixel Bush Asset1_51: -1179104799439654212
+      Sparse Pixel Bush Asset1_52: 1502236165704734028
+      Sparse Pixel Bush Asset1_53: 1612359212485871807
+      Sparse Pixel Bush Asset1_54: 5842414465065020524
+      Sparse Pixel Bush Asset1_55: -6779318721188619515
+      Sparse Pixel Bush Asset1_56: -1011531936233814215
+      Sparse Pixel Bush Asset1_57: 4334585525990985651
+      Sparse Pixel Bush Asset1_58: 12121292748754363
+      Sparse Pixel Bush Asset1_59: 4454558677324350815
+      Sparse Pixel Bush Asset1_6: 9139465942225338763
+      Sparse Pixel Bush Asset1_60: -4820045071773666013
+      Sparse Pixel Bush Asset1_61: -3541809003891696951
+      Sparse Pixel Bush Asset1_62: 7736569562634045819
+      Sparse Pixel Bush Asset1_63: 2512018700769209272
+      Sparse Pixel Bush Asset1_64: -6782054078486929204
+      Sparse Pixel Bush Asset1_65: -2173449825071465836
+      Sparse Pixel Bush Asset1_66: 3222728888876871430
+      Sparse Pixel Bush Asset1_67: 2079384960271241744
+      Sparse Pixel Bush Asset1_68: 5813011027808267896
+      Sparse Pixel Bush Asset1_69: -7030481599619469538
+      Sparse Pixel Bush Asset1_7: 3413495249580594795
+      Sparse Pixel Bush Asset1_70: 2870156758821774661
+      Sparse Pixel Bush Asset1_71: -1012128993153792901
+      Sparse Pixel Bush Asset1_72: 5385552667686118208
+      Sparse Pixel Bush Asset1_8: -8973883481396079780
+      Sparse Pixel Bush Asset1_9: 3657084924330532288
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -15,12 +15,18 @@ MonoBehaviour:
   biomeId: Base
   displayName: Base Plan
   description: Test Location
-  debugColor: {r: 0.2901961, g: 0.27058825, b: 0.19215688, a: 1}
+  debugColor: {r: 0.33333334, g: 0.36078432, b: 0.21176472, a: 1}
   icon: {fileID: 0}
   preview: {fileID: 0}
   price: 0
   isDefault: 1
   backgroundMusic: {fileID: 0}
   tiles: []
-  decorations: []
+  decorations:
+  - prefab: {fileID: 3000614995373971236, guid: 8c9c8c1d48554934f937078c9ecb9cf8, type: 3}
+    spawnChance: 5
+  - prefab: {fileID: 3000614995373971236, guid: 7a6b8f8f37ad30c49b0f30c31ec6164b, type: 3}
+    spawnChance: 5
+  - prefab: {fileID: 3000614995373971236, guid: 2bd2a710d963af947a35b0e2a4923acc, type: 3}
+    spawnChance: 5
   decorationsPerChunk: 5

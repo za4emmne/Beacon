@@ -5027,6 +5027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fdf551b3aba4c4ba331436e7d5397a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadedAlpha: 0.4
+  fadeSpeed: 8
 --- !u!61 &556654588
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9430,7 +9432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.5529412, g: 0.52156866, b: 0.43137258, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12108,6 +12110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fdf551b3aba4c4ba331436e7d5397a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadedAlpha: 0.4
+  fadeSpeed: 8
 --- !u!61 &1281517629
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12627,6 +12631,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fdf551b3aba4c4ba331436e7d5397a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadedAlpha: 0.4
+  fadeSpeed: 8
 --- !u!61 &1297245662
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19273,6 +19279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fdf551b3aba4c4ba331436e7d5397a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadedAlpha: 0.4
+  fadeSpeed: 8
 --- !u!61 &1550486952
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20137,7 +20145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.7058824, g: 0.67058825, b: 0.5529412, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -20400,6 +20408,7 @@ GameObject:
   - component: {fileID: 1684669143}
   - component: {fileID: 1684669144}
   - component: {fileID: 1684669148}
+  - component: {fileID: 1684669149}
   m_Layer: 0
   m_Name: GameGod
   m_TagString: Untagged
@@ -20721,6 +20730,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbaf7c66bd7fcd0449e693a87dfa41fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
+--- !u!114 &1684669149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684669136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97a5f6cb8f56df4a815497b2fa1ab1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloodSplatterManager
+  _maxSplatters: 50
+  _splatterLifetime: 15
+  _fadeStartTime: 12
+  _splatterSizeMin: 0.3
+  _splatterSizeMax: 0.8
+  _poolSize: 60
+  _splatterPrefab: {fileID: 0}
+  _bloodSprites: []
 --- !u!114 &1692718421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33170,6 +33199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fdf551b3aba4c4ba331436e7d5397a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadedAlpha: 0.4
+  fadeSpeed: 8
 --- !u!61 &1716924767
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34615,7 +34646,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.5568628, g: 0.5254902, b: 0.43529415, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38829,6 +38860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fdf551b3aba4c4ba331436e7d5397a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadedAlpha: 0.4
+  fadeSpeed: 8
 --- !u!61 &1866293785
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39965,6 +39998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51fdf551b3aba4c4ba331436e7d5397a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadedAlpha: 0.4
+  fadeSpeed: 8
 --- !u!61 &1975288508
 BoxCollider2D:
   m_ObjectHideFlags: 0
