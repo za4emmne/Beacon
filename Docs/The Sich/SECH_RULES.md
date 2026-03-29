@@ -177,4 +177,4 @@ UI/
 
 - Основной разработчик: Илья
 - Платформа: Yandex Games (WebGL)
-- Unity Version: 2022+
+- Unity Version: 6.3 LTS

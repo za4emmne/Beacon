@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
@@ -14,7 +13,7 @@ public class Spawner<T> : MonoBehaviour where T : MonoBehaviour
     protected Transform _transform;
     protected EnemiesGenerator _enemyGenerator;
 
-    [Header("Мониторинг данных")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private float _spawnTime;
     private Coroutine _coroutine;
 

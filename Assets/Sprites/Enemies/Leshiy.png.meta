@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: f78970e6149b8c5499d6dca421487f60
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6278235679633184926
+    second: Leshiy_0
+  - first:
+      213: 5883136270129377051
+    second: Leshiy_1
+  - first:
+      213: 925169415990358659
+    second: Leshiy_2
+  - first:
+      213: 7042001116410633303
+    second: Leshiy_3
+  - first:
+      213: 4489351586277004759
+    second: Leshiy_4
+  - first:
+      213: 4991001699103972189
+    second: Leshiy_5
+  - first:
+      213: 2886939573290703337
+    second: Leshiy_6
+  - first:
+      213: -8761151401432872431
+    second: Leshiy_7
+  - first:
+      213: -2148197874788001083
+    second: Leshiy_8
+  - first:
+      213: -330719851779091431
+    second: Leshiy_9
+  - first:
+      213: 8038021969653034053
+    second: Leshiy_10
+  - first:
+      213: -5261941906968332027
+    second: Leshiy_11
+  - first:
+      213: -8571383985314364571
+    second: Leshiy_12
+  - first:
+      213: 4466972799323363862
+    second: Leshiy_13
+  - first:
+      213: -8140516639308426606
+    second: Leshiy_14
+  - first:
+      213: 7964414225752041608
+    second: Leshiy_15
+  - first:
+      213: -4744804942443336323
+    second: Leshiy_16
+  - first:
+      213: -5642826032590605914
+    second: Leshiy_17
+  - first:
+      213: -3472258415145999039
+    second: Leshiy_18
+  - first:
+      213: -6337127260112314419
+    second: Leshiy_19
+  - first:
+      213: 4509326044740023251
+    second: Leshiy_20
+  - first:
+      213: 4967655075598198953
+    second: Leshiy_21
+  - first:
+      213: -2752086853883508500
+    second: Leshiy_22
+  - first:
+      213: -6364371553809622241
+    second: Leshiy_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Leshiy_0
+      rect:
+        serializedVersion: 2
+        x: 2235
+        y: 285
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9818bc4616c02750800000000000000
+      internalID: 6278235679633184926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_1
+      rect:
+        serializedVersion: 2
+        x: 3402
+        y: 285
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1f274a744915a150800000000000000
+      internalID: 5883136270129377051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 267
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 382392d9eacd6dc00800000000000000
+      internalID: 925169415990358659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_3
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 273
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75c5f8b84b63ab160800000000000000
+      internalID: 7042001116410633303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_4
+      rect:
+        serializedVersion: 2
+        x: 3795
+        y: 273
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d590eb6b716d4e30800000000000000
+      internalID: 4489351586277004759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_5
+      rect:
+        serializedVersion: 2
+        x: 4188
+        y: 267
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5b96741a99934540800000000000000
+      internalID: 4991001699103972189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_6
+      rect:
+        serializedVersion: 2
+        x: 4575
+        y: 267
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e9920a0f38701820800000000000000
+      internalID: 2886939573290703337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 15
+        width: 380
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11a8d2e08332a6680800000000000000
+      internalID: -8761151401432872431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_8
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 261
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ca130e1a611032e0800000000000000
+      internalID: -2148197874788001083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_9
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 255
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 914998a0c0c096bf0800000000000000
+      internalID: -330719851779091431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_10
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 255
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54c64f5e46acc8f60800000000000000
+      internalID: 8038021969653034053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_11
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 255
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 509396ee6b3d9f6b0800000000000000
+      internalID: -5261941906968332027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_12
+      rect:
+        serializedVersion: 2
+        x: 1443
+        y: 261
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5638dd1bda35c0980800000000000000
+      internalID: -8571383985314364571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_13
+      rect:
+        serializedVersion: 2
+        x: 1608
+        y: 15
+        width: 380
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61a500d0810edfd30800000000000000
+      internalID: 4466972799323363862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_14
+      rect:
+        serializedVersion: 2
+        x: 2007
+        y: 15
+        width: 380
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2925dd13f33170f80800000000000000
+      internalID: -8140516639308426606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_15
+      rect:
+        serializedVersion: 2
+        x: 2406
+        y: 15
+        width: 380
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 888a4028a88478e60800000000000000
+      internalID: 7964414225752041608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_16
+      rect:
+        serializedVersion: 2
+        x: 4002
+        y: 15
+        width: 380
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7da52d3b01172eb0800000000000000
+      internalID: -4744804942443336323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_17
+      rect:
+        serializedVersion: 2
+        x: 4388
+        y: 15
+        width: 393
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a13c1ece97a0b1b0800000000000000
+      internalID: -5642826032590605914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_18
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 15
+        width: 380
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 145acd44e5f00dfc0800000000000000
+      internalID: -3472258415145999039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_19
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 15
+        width: 380
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dcf9f8c15500e08a0800000000000000
+      internalID: -6337127260112314419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_20
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 15
+        width: 380
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d375217528549e30800000000000000
+      internalID: 4509326044740023251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_21
+      rect:
+        serializedVersion: 2
+        x: 2805
+        y: 15
+        width: 380
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a862b3b8f7a0f440800000000000000
+      internalID: 4967655075598198953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_22
+      rect:
+        serializedVersion: 2
+        x: 3204
+        y: 15
+        width: 380
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce8404b669f9ec9d0800000000000000
+      internalID: -2752086853883508500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leshiy_23
+      rect:
+        serializedVersion: 2
+        x: 3603
+        y: 15
+        width: 380
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b939caac53da7a0800000000000000
+      internalID: -6364371553809622241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Leshiy_0: 6278235679633184926
+      Leshiy_1: 5883136270129377051
+      Leshiy_10: 8038021969653034053
+      Leshiy_11: -5261941906968332027
+      Leshiy_12: -8571383985314364571
+      Leshiy_13: 4466972799323363862
+      Leshiy_14: -8140516639308426606
+      Leshiy_15: 7964414225752041608
+      Leshiy_16: -4744804942443336323
+      Leshiy_17: -5642826032590605914
+      Leshiy_18: -3472258415145999039
+      Leshiy_19: -6337127260112314419
+      Leshiy_2: 925169415990358659
+      Leshiy_20: 4509326044740023251
+      Leshiy_21: 4967655075598198953
+      Leshiy_22: -2752086853883508500
+      Leshiy_23: -6364371553809622241
+      Leshiy_3: 7042001116410633303
+      Leshiy_4: 4489351586277004759
+      Leshiy_5: 4991001699103972189
+      Leshiy_6: 2886939573290703337
+      Leshiy_7: -8761151401432872431
+      Leshiy_8: -2148197874788001083
+      Leshiy_9: -330719851779091431
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,9 +1,10 @@
 # Система крови (Blood System)
 
-Система эффектов крови в игре "Сечь" состоит из трёх основных компонентов:
+Система эффектов крови в игре "Сечь" состоит из четырёх основных компонентов:
 1. **BloodParticles** — разлетающиеся частицы крови при ударе и смерти
 2. **BloodDecal** — пятна крови на земле
 3. **BloodSplatterManager** — менеджер пула пятен и процедурной генерации спрайтов
+4. **BloodTrailEmitter** — следы крови, оставляемые при беге ранеными персонажами
 
 ---
 
@@ -24,6 +25,16 @@
 | **Splatter Size Max** | Максимальный размер пятна | 0.8 |
 | **Pool Size** | Размер пула объектов | 60 |
 | **Blood Sprites** | Массив спрайтов крови (если null — генерируются процедурно) | null |
+
+#### Настройки следов (Trail Settings):
+
+| Параметр | Описание | По умолчанию |
+|----------|----------|--------------|
+| **Trail Lifetime** | Время жизни следа крови | 8 |
+| **Trail Fade Start** | Время начала затухания следа | 5 |
+| **Trail Size Min** | Минимальный размер следа | 0.15 |
+| **Trail Size Max** | Максимальный размер следа | 0.3 |
+| **Trail Color** | Цвет следов | (0.6, 0.1, 0.1, 0.8) |
 
 #### Спрайты:
 - Если не назначены спрайты — создаются автоматически процедурно при запуске
@@ -57,25 +68,43 @@
 | **Death Speed Min** | Минимальная скорость разлёта | 3 |
 | **Death Speed Max** | Максимальная скорость разлёта | 6 |
 
-**Global Settings:**
-| Параметр | Описание | По умолчанию |
-|----------|----------|--------------|
-| **Gravity** | Гравитация частиц (положительное значение = вниз) | 15 |
-
 ---
 
-### 3. BloodDecal
+### 3. BloodTrailEmitter
 
-Автоматически добавляется к префабу пятна. Управляет анимацией появления и затухания.
+Компонент для создания кровавых следов при беге. Добавьте на игрока и/или врагов.
 
 #### Параметры:
 
 | Параметр | Описание | По умолчанию |
 |----------|----------|--------------|
-| **Lifetime** | Время жизни пятна (сек) | 15 |
-| **Fade Start Time** | Время начала затухания | 12 |
-| **Fade Duration** | Длительность затухания | 3 |
-| **Spawn Duration** | Длительность анимации появления | 0.3 |
+| **Min Speed For Trail** | Минимальная скорость для появления следов | 2 |
+| **Drops Per Second** | Количество капель в секунду | 8 |
+| **Trail Duration** | Продолжительность кровотечения после удара | 3 |
+| **Intensity** | Интенсивность (множитель) | 1 |
+| **Only On Ground Hit** | Оставлять следы только на земле | false |
+
+#### Trail Appearance:
+
+| Параметр | Описание | По умолчанию |
+|----------|----------|--------------|
+| **Size Multiplier** | Размер относительно обычных пятен | 0.4 |
+| **Position Randomness** | Случайное смещение позиции | 0.1 |
+| **Rotation Randomness** | Случайный поворот | 30° |
+
+#### Ground Check:
+
+| Параметр | Описание | По умолчанию |
+|----------|----------|--------------|
+| **Ground Layer** | Слой земли | -1 (все слои) |
+| **Ground Check Distance** | Дистанция проверки земли | 0.5 |
+
+#### Optimization:
+
+| Параметр | Описание | По умолчанию |
+|----------|----------|--------------|
+| **Low Blood Mode** | Упрощённый режим (меньше следов) | false |
+| **Max Active Trails** | Максимум активных следов на существо | 50 |
 
 ---
 
@@ -89,30 +118,29 @@
 [Header("Blood Settings")]
 [SerializeField] private bool _spawnBloodOnHit = true;
 [SerializeField] private bool _spawnBloodOnDeath = true;
+[SerializeField] private bool _enableTrailOnHit = true;
+[SerializeField] private float _trailDuration = 2f;
+[SerializeField, Range(0.1f, 2f)] private float _trailIntensity = 0.8f;
 ```
 
-При получении урона вызывается `BloodSplatterManager.Instance.SpawnSplatter()`.
-При смерти — `BloodSplatterManager.Instance.SpawnSplatterAtDeath()`.
+При получении урона:
+- Вызывается `BloodSplatterManager.Instance.SpawnSplatter()` (мгновенный сплэш)
+- Вызывается `BloodTrailEmitter.StartBleeding()` (следы при беге)
 
-### Включение/отключение
+### PlayerHealth
 
-- **_spawnBloodOnHit** — включить кровь при попадании
-- **_spawnBloodOnDeath** — включить кровь при смерти
+Добавлена интеграция следов крови:
 
-Отключите обе галочки, чтобы полностью убрать эффекты крови.
+```csharp
+[Header("Blood Trail Settings")]
+[SerializeField] private bool _enableBloodTrail = true;
+[SerializeField] private float _trailDuration = 3f;
+[SerializeField, Range(0.1f, 2f)] private float _trailIntensity = 1f;
+```
 
 ---
 
-## Технические детали
-
-### Архитектура
-
-- **Пул объектов**: BloodSplatterManager использует пул для переиспользования пятен (оптимизация)
-- **Процедурные спрайты**: Если спрайты не назначены, генерируются 8 уникальных текстур 64x64 с шумом Перлина
-- **Автоматическая очистка**: Старые пятна удаляются при достижении лимита MaxSplatters
-- **Sorting Order**: Спрайты крови используют sortingOrder = 100 (выше врагов)
-
-### Функции API
+## API
 
 ```csharp
 // Создать пятно крови при попадании
@@ -121,44 +149,65 @@ BloodSplatterManager.Instance.SpawnSplatter(position, direction);
 // Создать пятно крови при смерти
 BloodSplatterManager.Instance.SpawnSplatterAtDeath(position);
 
-// Создать всплеск частиц (вызывается автоматически)
-BloodParticles.CreateBloodBurst(position, direction, isDeath);
+// Создать след крови (меньшие, частые пятна)
+BloodSplatterManager.Instance.SpawnTrailSplatter(position, direction, size);
 
-// Очистить все пятна (например, при смене сцены)
+// Очистить все пятна
 BloodSplatterManager.Instance.ClearAllSplatters();
+
+// Начать кровотечение (для следов)
+bloodTrailEmitter.StartBleeding(duration, intensity);
+
+// Остановить кровотечение
+bloodTrailEmitter.StopBleeding();
+
+// Проверить состояние
+bool isBleeding = bloodTrailEmitter.IsBleeding;
+float timeRemaining = bloodTrailEmitter.BleedTimeRemaining;
 ```
-
-### Оптимизация
-
-- Максимум 50 активных пятен
-- Пул из 60 объектов
-- Автоматическое затухание и возврат в пул
-- Процедурные спрайты создаются один раз при старте
 
 ---
 
-## Устранение проблем
+## Визуальные настройки для референса
 
-### Кровь не появляется
+### Размер пятен
 
-1. Убедитесь, что `BloodSplatterManager` добавлен в активную сцену
-2. Проверьте, что у EnemyHealth включены флаги `_spawnBloodOnHit` и `_spawnBloodOnDeath`
-3. Проверьте консоль на ошибки
+| Тип | Размер | Коэффициент |
+|-----|--------|-------------|
+| **Сплэш при ударе** | 0.3 - 0.8 | 1.0x |
+| **Сплэш при смерти** | 0.36 - 1.2 | 1.5x |
+| **След при беге** | 0.12 - 0.24 | 0.3-0.4x |
 
-### Частицы фиолетовые
+### Цвет пятен
 
-- Проблема с материалом Particle System
-- Решение: назначьте вручную материал "Particles/Alpha Blended" на ParticleSystemRenderer
+| Тип | RGB | Alpha |
+|-----|-----|-------|
+| **Сплэш при ударе** | (112, 16, 16) | 1.0 |
+| **Сплэш при смерти** | (102-153, 13-38, 13-38) | 1.0 |
+| **След при беге** | (153, 26, 26) | 0.7-0.8 |
 
-### Частицы улетают далеко
+### Время жизни
 
-- Увеличьте `Gravity` в BloodParticles
-- Уменьшите `Speed Min/Max` 
-- Включите `Limit Velocity Over Lifetime` в коде (уже включено)
+| Тип | Lifetime | Fade Start |
+|-----|----------|------------|
+| **Обычные пятна** | 15 сек | 12 сек |
+| **Следы** | 8 сек | 5 сек |
 
-### Пятна слишком маленькие/большие
+### Разброс для линейного следа
 
-- Измените `Splatter Size Min/Max` в BloodSplatterManager
+- **Position Randomness**: 0.1 — чуть смещает пятно в сторону от линии
+- **Rotation Randomness**: 30° — пятна повёрнуты хаотично, но общий след читается
+- **Drops Per Second**: 8-12 — частота капель при беге
+
+---
+
+## Оптимизация
+
+1. **Пул объектов**: BloodSplatterManager использует пул (60 объектов)
+2. **Max Splatters**: Лимит 50 активных пятен на сцене
+3. **Low Blood Mode**: Упрощённый режим с удвоенным интервалом
+4. **Lifetime**: Следы живут меньше (8 сек vs 15 сек)
+5. **Ground Check**: Опциональная проверка земли
 
 ---
 
@@ -167,3 +216,4 @@ BloodSplatterManager.Instance.ClearAllSplatters();
 - **v1.0** — Базовая система с пулом и процедурными спрайтами
 - **v1.1** — Добавлена граница скорости частиц, увеличено количество, уменьшен размер
 - **v1.2** — Улучшена хаотичность краёв пятен
+- **v1.3** — Добавлена система кровавых следов (BloodTrailEmitter)

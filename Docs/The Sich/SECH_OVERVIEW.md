@@ -8,7 +8,7 @@
 
 ## Технологический стек
 
-- **Unity 2022+** с URP (Universal Render Pipeline)
+- **Unity 6.3 LTS** с URP (Universal Render Pipeline)
 - **Zenject** — Dependency Injection
 - **Leopotam.EcsLite** — ECS (частично, в зачатке)
 - **Yandex Games SDK (YG2)** — платформа, сохранения, реклама
@@ -225,4 +225,4 @@ OneKill?.Invoke() + SpawnExperienceStar()
 
 - Основной разработчик: Илья
 - Платформа: Yandex Games (WebGL)
-- Unity Version: 2022+
+- Unity Version: 6.3 LTS
