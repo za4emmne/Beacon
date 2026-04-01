@@ -9,13 +9,18 @@ public class EnemyHealth : CharactersHealth
     [Header("Blood Settings")]
     [SerializeField] private bool _spawnBloodOnHit = true;
     [SerializeField] private bool _spawnBloodOnDeath = true;
+    [SerializeField] private bool _enableTrailOnHit = true;
+    [SerializeField] private float _trailDuration = 2f;
+    [SerializeField, Range(0.1f, 2f)] private float _trailIntensity = 0.8f;
 
     private EnemyMovement _movement;
+    private BloodTrailEmitter _bloodTrailEmitter;
     private bool _hasSubscribedToDeath;
 
     private void Awake()
     {
         _movement = GetComponent<EnemyMovement>();
+        _bloodTrailEmitter = GetComponentInChildren<BloodTrailEmitter>();
     }
 
     private void Start()
@@ -41,6 +46,13 @@ public class EnemyHealth : CharactersHealth
             Vector3 direction = (enemyPos - hitPos).normalized;
             
             BloodSplatterManager.Instance.SpawnSplatter(hitPos, direction);
+        }
+
+        // Start blood trail on hit if enabled
+        if (_enableTrailOnHit && _bloodTrailEmitter != null)
+        {
+            Debug.Log("Wat?");
+            _bloodTrailEmitter.StartBleeding(_trailDuration, _trailIntensity);
         }
     }
 

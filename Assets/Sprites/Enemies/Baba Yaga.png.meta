@@ -106,7 +106,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -198,12 +198,12 @@ TextureImporter:
       name: Baba Yaga_0
       rect:
         serializedVersion: 2
-        x: 374
-        y: 260
-        width: 8
-        height: 8
+        x: 0
+        y: 0
+        width: 234
+        height: 294
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -220,12 +220,12 @@ TextureImporter:
       name: Baba Yaga_1
       rect:
         serializedVersion: 2
-        x: 620
-        y: 260
-        width: 8
-        height: 8
+        x: 234
+        y: 0
+        width: 234
+        height: 294
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -242,12 +242,12 @@ TextureImporter:
       name: Baba Yaga_2
       rect:
         serializedVersion: 2
-        x: 1058
-        y: 254
-        width: 8
-        height: 8
+        x: 468
+        y: 0
+        width: 234
+        height: 294
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -264,12 +264,12 @@ TextureImporter:
       name: Baba Yaga_3
       rect:
         serializedVersion: 2
-        x: 44
-        y: 38
-        width: 146
-        height: 212
+        x: 702
+        y: 0
+        width: 234
+        height: 294
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -286,12 +286,12 @@ TextureImporter:
       name: Baba Yaga_4
       rect:
         serializedVersion: 2
-        x: 302
-        y: 242
-        width: 8
-        height: 8
+        x: 936
+        y: 0
+        width: 234
+        height: 294
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -304,429 +304,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_5
-      rect:
-        serializedVersion: 2
-        x: 542
-        y: 242
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8df6ceb46accc2c80800000000000000
-      internalID: -8346070994813947944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_6
-      rect:
-        serializedVersion: 2
-        x: 746
-        y: 38
-        width: 152
-        height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0bb7fe222149dba50800000000000000
-      internalID: 6538545039628270512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_7
-      rect:
-        serializedVersion: 2
-        x: 818
-        y: 248
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7e8a5ee906e0752b0800000000000000
-      internalID: -5595988203839051545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_8
-      rect:
-        serializedVersion: 2
-        x: 860
-        y: 248
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 274ef7085d43b8190800000000000000
-      internalID: -7959209824858676110
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_9
-      rect:
-        serializedVersion: 2
-        x: 980
-        y: 38
-        width: 146
-        height: 212
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0a014a62353388e90800000000000000
-      internalID: -7023307186660700000
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_10
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 38
-        width: 146
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9384728e9e69cbee0800000000000000
-      internalID: -1243953465694664647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_11
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 38
-        width: 146
-        height: 206
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 87a02a18886d629b0800000000000000
-      internalID: -5105157245799101832
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_12
-      rect:
-        serializedVersion: 2
-        x: 662
-        y: 224
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 23186cd9b33625690800000000000000
-      internalID: -7614914912228835022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_13
-      rect:
-        serializedVersion: 2
-        x: 902
-        y: 218
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fde33a70ada0be5a0800000000000000
-      internalID: -6491082506377150753
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_14
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 212
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 83402e6c8b0ac0630800000000000000
-      internalID: 3894664493239764024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_15
-      rect:
-        serializedVersion: 2
-        x: 1136
-        y: 206
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2bae8caa1c6e6c380800000000000000
-      internalID: -8951213489883911502
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_16
-      rect:
-        serializedVersion: 2
-        x: 422
-        y: 200
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e4c248e60b223bfe0800000000000000
-      internalID: -1174556936649823154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_17
-      rect:
-        serializedVersion: 2
-        x: 728
-        y: 158
-        width: 8
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3aef2fda98b8ab9f0800000000000000
-      internalID: -451895389152149853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_18
-      rect:
-        serializedVersion: 2
-        x: 968
-        y: 170
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13ba2f041b5b9bf30800000000000000
-      internalID: 4591901067984415537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_19
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 140
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6c69700ae92e9aa20800000000000000
-      internalID: 3074237391574636230
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_20
-      rect:
-        serializedVersion: 2
-        x: 494
-        y: 146
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8e2dbb0d346f67620800000000000000
-      internalID: 2771673391818330856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_21
-      rect:
-        serializedVersion: 2
-        x: 662
-        y: 134
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 06100a8255c376640800000000000000
-      internalID: 5073089841707614560
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_22
-      rect:
-        serializedVersion: 2
-        x: 422
-        y: 122
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4ba9ecc63579dc370800000000000000
-      internalID: 8344492069150956212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Baba Yaga_23
-      rect:
-        serializedVersion: 2
-        x: 686
-        y: 44
-        width: 17
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0406d30cfd6704460800000000000000
-      internalID: 7223904505677307968
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f9147ccdfda98d04eb6744eafecdf176
     internalID: 0
     vertices: []
     indices: 
@@ -734,32 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":5.0,"y":1.0},"gridSpriteSize":{"x":234.0,"y":294.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Baba Yaga_0: 7505089513520117780
       Baba Yaga_1: -8129367196858826971
-      Baba Yaga_10: -1243953465694664647
-      Baba Yaga_11: -5105157245799101832
-      Baba Yaga_12: -7614914912228835022
-      Baba Yaga_13: -6491082506377150753
-      Baba Yaga_14: 3894664493239764024
-      Baba Yaga_15: -8951213489883911502
-      Baba Yaga_16: -1174556936649823154
-      Baba Yaga_17: -451895389152149853
-      Baba Yaga_18: 4591901067984415537
-      Baba Yaga_19: 3074237391574636230
       Baba Yaga_2: 6594676803399647494
-      Baba Yaga_20: 2771673391818330856
-      Baba Yaga_21: 5073089841707614560
-      Baba Yaga_22: 8344492069150956212
-      Baba Yaga_23: 7223904505677307968
       Baba Yaga_3: 7528607921297787334
       Baba Yaga_4: -2912368466989270167
-      Baba Yaga_5: -8346070994813947944
-      Baba Yaga_6: 6538545039628270512
-      Baba Yaga_7: -5595988203839051545
-      Baba Yaga_8: -7959209824858676110
-      Baba Yaga_9: -7023307186660700000
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

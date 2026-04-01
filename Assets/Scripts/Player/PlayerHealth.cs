@@ -9,15 +9,22 @@ public class PlayerHealth : CharactersHealth
     public event Action SuperCriticalHealth;
     public event Action NormalHealth;
 
+    [Header("Blood Trail Settings")]
+    [SerializeField] private bool _enableBloodTrail = true;
+    [SerializeField] private float _trailDuration = 3f;
+    [SerializeField, Range(0.1f, 2f)] private float _trailIntensity = 1f;
+
     private bool _isUndead;
     private Coroutine _coroutine;
     private PlayerMovement _movement;
     private PlayerAnimation _animator;
+    private BloodTrailEmitter _bloodTrailEmitter;
 
     private void Awake()
     {
         _movement = GetComponent<PlayerMovement>();
         _animator = GetComponent<PlayerAnimation>();
+        _bloodTrailEmitter = GetComponentInChildren<BloodTrailEmitter>();
     }
 
     private void Start()
@@ -95,6 +102,12 @@ public class PlayerHealth : CharactersHealth
                 _animator.OnGetDamageAnimation();
                 _movement.KnockbackFromPlayer(hitSourcePosition);
             }
+        }
+
+        // Start blood trail on hit if enabled
+        if (_enableBloodTrail && _bloodTrailEmitter != null)
+        {
+            _bloodTrailEmitter.StartBleeding(_trailDuration, _trailIntensity);
         }
 
         if (_health < _maxHealth / 2)

@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     {
         if (_health.Current > 0)
         {
+            
             _camera.Shake();
             _health.TakeDamage(damage, hitSourcePosition);
         }

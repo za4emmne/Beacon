@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     private PlayerWeapons _playerWeapon;
     private GameManager _gameManager;
 
-    [Header("UI элементы")]
+    [Header("UI СЌР»РµРјРµРЅС‚С‹")]
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _levelText;
     [SerializeField] private Text _coinText;

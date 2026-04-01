@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public EnemyData Data;
     //[SerializeField] private Sprite _image;
     [SerializeField] private float _health;
-    [SerializeField] private float _speed;
+    [SerializeField] protected float _speed;
     [SerializeField] private float _damage;
 
     public Transform Transform { get; private set; }
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     private EnemyHealth _healthController;
     private EnemyMovement _movementController;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _attackController = GetComponent<EnemyAttacked>();
         _healthController = GetComponent<EnemyHealth>();

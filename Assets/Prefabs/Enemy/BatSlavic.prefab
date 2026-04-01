@@ -41,6 +41,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1342807138277873302
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -64,7 +65,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 6fedb59199c14b64da06d933cf624493, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,6 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: -587207065
   m_SortingLayer: 3
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -6749138805629266739, guid: e7b3fb00baa5eda4e9469228360d1664, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,7 +97,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &6167254288527628975
 CircleCollider2D:
@@ -170,6 +171,9 @@ MonoBehaviour:
   _speed: 0
   _knockbackDistance: 0.4
   _knockbackTime: 0.1
+  _speedVariance: 0.2
+  _separationRadius: 1.2
+  _separationForce: 2
 --- !u!114 &2921020431239395508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +188,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   _maxHealth: 0
   _health: 0
+  _spawnBloodOnHit: 1
+  _spawnBloodOnDeath: 1
+  _enableTrailOnHit: 1
+  _trailDuration: 2
+  _trailIntensity: 0.8
 --- !u!114 &611768376638303066
 MonoBehaviour:
   m_ObjectHideFlags: 0

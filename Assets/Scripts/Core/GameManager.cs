@@ -62,6 +62,17 @@ public class GameManager : MonoBehaviour
         _weaponWeapon = GetComponent<ManagerWeapon>();
         _uiManager = GetComponent<UIManager>();
 
+        StartCoroutine(InitializeRoutine());
+    }
+
+    private IEnumerator InitializeRoutine()
+    {
+        // Wait for GameDataManager to be ready
+        while (GameDataManager.Instance == null)
+        {
+            yield return null;
+        }
+
         CreatePlayer();
 
         if (!_initialized)
@@ -85,9 +96,14 @@ public class GameManager : MonoBehaviour
 
     private void OnDisable()
     {
-        _enemyManager.OneKill -= ChangeScore;
-        _progress.LevelUp -= _uiManager.ChangeLevel;
-        _progress.LevelUp -= LevelUpAudioPlay;
+        if (_enemyManager != null)
+            _enemyManager.OneKill -= ChangeScore;
+        if (_progress != null)
+        {
+            if (_uiManager != null)
+                _progress.LevelUp -= _uiManager.ChangeLevel;
+            _progress.LevelUp -= LevelUpAudioPlay;
+        }
     }
 
     public void OnRaisePlayer()

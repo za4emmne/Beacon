@@ -9,7 +9,7 @@ public class Follower : MonoBehaviour
     {
         if (_targetCharacter == null)
         {
-            Debug.LogError("_targetCharacter не назначен для Follower!", gameObject);
+            Debug.LogError("_targetCharacter РЅРµ РЅР°Р·РЅР°С‡РµРЅ РґР»СЏ Follower!", gameObject);
             return;
         }
     }

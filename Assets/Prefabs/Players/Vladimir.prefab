@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4269708050416689310}
   - component: {fileID: 5093109865498660907}
   - component: {fileID: -3280724168482087707}
+  - component: {fileID: 3246335218365741342}
   m_Layer: 0
   m_Name: Vladimir
   m_TagString: Untagged
@@ -52,6 +53,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8502273647831136873
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,6 +99,7 @@ SpriteRenderer:
   m_SortingLayerID: -587207065
   m_SortingLayer: 3
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: -691344357057151719, guid: dc52e4f7600eeda46b05a10c5fd2b927, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,7 +109,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &1469593313306470607
 Animator:
@@ -219,6 +221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   _maxHealth: 0
   _health: 0
+  _enableBloodTrail: 1
+  _trailDuration: 3
+  _trailIntensity: 1
 --- !u!114 &4269708050416689310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +301,33 @@ MonoBehaviour:
   _midGameMultiplier: 12
   _lateGameMultiplier: 15
   _exponentialFactor: 1.1
+--- !u!114 &3246335218365741342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773002099029480025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7933e86682c72c4419575ca903791835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BloodTrailEmitter
+  _minSpeedForTrail: 2
+  _dropsPerSecond: 8
+  _trailDuration: 3
+  _intensity: 1
+  _onlyOnGroundHit: 0
+  _sizeMultiplier: 0.4
+  _positionRandomness: 0.1
+  _rotationRandomness: 30
+  _trailOffset: {x: 0, y: 0, z: 0}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 216
+  _groundCheckDistance: 0.5
+  _lowBloodMode: 0
+  _maxActiveTrails: 50
 --- !u!1 &1330650648942678063
 GameObject:
   m_ObjectHideFlags: 0

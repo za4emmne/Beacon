@@ -13,6 +13,9 @@ public class BloodSplatterManager : MonoBehaviour
     [SerializeField] private float _splatterSizeMax = 0.8f;
     [SerializeField] private int _poolSize = 60;
 
+    public float SplatterSizeMin => _splatterSizeMin;
+    public float SplatterSizeMax => _splatterSizeMax;
+
     [Header("References")]
     [SerializeField] private GameObject _splatterPrefab;
     [SerializeField] private Sprite[] _bloodSprites;
@@ -241,6 +244,45 @@ public class BloodSplatterManager : MonoBehaviour
             }
         }
         _activeSplatters.Clear();
+    }
+
+    /// <summary>
+    /// Create a trail splatter (smaller, for blood trails)
+    /// </summary>
+    public GameObject CreateTrailSplatter(Vector3 position, Vector3 direction, float size)
+    {
+        if (_activeSplatters.Count >= _maxSplatters)
+        {
+            BloodDecal oldest = _activeSplatters[0];
+            if (oldest != null)
+            {
+                _activeSplatters.RemoveAt(0);
+                if (oldest.gameObject != null)
+                    Destroy(oldest.gameObject);
+            }
+        }
+
+        BloodDecal decal = GetFromPool();
+        if (decal == null) return null;
+
+        decal.transform.position = new Vector3(position.x, position.y, 0);
+
+        // Trail splatters don't need directional rotation
+        decal.SetRotation(Random.Range(0f, 360f));
+
+        // Use provided size (already calculated for trails in emitter)
+        decal.SetSize(size);
+
+        if (_bloodSprites != null && _bloodSprites.Length > 0)
+            decal.SetSprite(_bloodSprites[Random.Range(0, _bloodSprites.Length)]);
+
+        // Trail splatters have shorter lifetimes
+        float trailLifetime = 8f; // From docs
+        float trailFadeStart = 5f; // From docs
+        decal.Initialize(trailLifetime, trailFadeStart);
+
+        _activeSplatters.Add(decal);
+        return decal.gameObject;
     }
 
     public int ActiveCount => _activeSplatters.Count;

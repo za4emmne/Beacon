@@ -7,23 +7,24 @@
         false,
         false
     ],
-    "idSave": 915,
+    "idSave": 923,
     "bestScore": 47,
     "bestLevel": 3,
-    "coins": 400,
+    "coins": 1100,
     "bestTime": 45.06666564941406,
     "totalKill": 23,
     "totalTime": 47.27783203125,
     "unlockedCharacters": [
         "Yaropolk",
-        "Druid"
+        "Druid",
+        "Vladimir"
     ],
-    "selectedCharacter": "Yaropolk",
+    "selectedCharacter": "Vladimir",
     "unlockedLocations": [
         "forest",
         "Base"
     ],
     "selectedLocation": "Base",
-    "lastDailyRewardTime": 1773389659.0,
-    "lastCoinsRewardTime": 1772568705.0
+    "lastDailyRewardTime": 1775058951.0,
+    "lastCoinsRewardTime": 1775058939.0
 }
