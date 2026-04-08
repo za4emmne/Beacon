@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1886511300335092171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7550217564652673252}
+  m_Layer: 8
+  m_Name: BatSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7550217564652673252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886511300335092171}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.85, y: 0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6655215548450350059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6253962229371262913
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,9 +45,9 @@ GameObject:
   - component: {fileID: 263950202778979202}
   - component: {fileID: 7552040185530407895}
   - component: {fileID: 184177944493919125}
-  - component: {fileID: 4915360994277550330}
   - component: {fileID: 7377457269518735414}
   - component: {fileID: 7312672107934555748}
+  - component: {fileID: 4563066722020244078}
   m_Layer: 8
   m_Name: Leshiy
   m_TagString: Untagged
@@ -36,7 +67,8 @@ Transform:
   m_LocalPosition: {x: -1.83, y: -2.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7550217564652673252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5696540435145598759
@@ -169,22 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f053241e91269dd449f8e38bea6773bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttacked
---- !u!114 &4915360994277550330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6253962229371262913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 763f2284638d9b04e9eb7b162660974f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  Data: {fileID: 11400000, guid: 1078eb6568b9d8d458a4f171318e9d75, type: 2}
-  _health: 0
-  _speed: 0
-  _damage: 0
 --- !u!114 &7377457269518735414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,3 +262,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.99, y: 2.9223633}
   m_EdgeRadius: 0
+--- !u!114 &4563066722020244078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6253962229371262913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189a93f560552c1469a6a49147d71d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Leshy
+  Data: {fileID: 11400000, guid: f399172356138a5499232673b8b1a99f, type: 2}
+  _health: 0
+  _speed: 0
+  _damage: 0
+  _data: {fileID: 11400000, guid: f399172356138a5499232673b8b1a99f, type: 2}
+  _batSpawnPoint: {fileID: 7550217564652673252}

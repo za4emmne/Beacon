@@ -90,6 +90,7 @@ public class Leshy : Enemy
             {
                 // Create a bat enemy through the generator
                 Enemy batEnemy = _enemyGenerator.GetEnemyFromPool(batData);
+                
                 if (batEnemy != null)
                 {
                     batEnemy.Initialize(batData, _enemyGenerator);

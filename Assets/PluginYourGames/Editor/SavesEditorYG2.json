@@ -7,10 +7,10 @@
         false,
         false
     ],
-    "idSave": 923,
+    "idSave": 927,
     "bestScore": 47,
     "bestLevel": 3,
-    "coins": 1100,
+    "coins": 1300,
     "bestTime": 45.06666564941406,
     "totalKill": 23,
     "totalTime": 47.27783203125,
@@ -19,12 +19,12 @@
         "Druid",
         "Vladimir"
     ],
-    "selectedCharacter": "Vladimir",
+    "selectedCharacter": "Druid",
     "unlockedLocations": [
         "forest",
         "Base"
     ],
     "selectedLocation": "Base",
-    "lastDailyRewardTime": 1775058951.0,
+    "lastDailyRewardTime": 1775220300.0,
     "lastCoinsRewardTime": 1775058939.0
 }

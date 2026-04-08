@@ -70,7 +70,7 @@ public class EnemiesGenerator : MonoBehaviour
         AllEnemies.Remove(enemy);
     }
 
-    private Enemy GetEnemyFromPool(EnemyData enemyData)
+    public Enemy GetEnemyFromPool(EnemyData enemyData)
     {
         int enemyId = enemyData.GetInstanceID();
 
