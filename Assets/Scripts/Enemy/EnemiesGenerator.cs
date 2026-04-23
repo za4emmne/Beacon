@@ -29,6 +29,7 @@ public class EnemiesGenerator : MonoBehaviour
 
     // ������������ ����������
     private Transform _transform;
+    private Transform _playerTransform;
 
     // ���������������� ���������� ��� ��������� ���������
     private Vector3 _spawnPosition = Vector3.zero;
@@ -44,14 +45,30 @@ public class EnemiesGenerator : MonoBehaviour
         _transform = transform;
     }
 
+    public void SetPlayerTransform(Transform playerTransform)
+    {
+        _playerTransform = playerTransform;
+    }
+
+    public Transform GetPlayerTransform() => _playerTransform;
+
     public void SpawnEnemyWithModifiers(EnemyData enemyData, Transform playerTransform)
     {
         Enemy enemy = GetEnemyFromPool(enemyData);
         if (enemy == null) return;
 
-        // ��������� ������������
-        enemy.Initialize(enemyData, this);
-        enemy.gameObject.SetActive(true);
+        // ��� ����� ����� �� ����� LeshyData, ����� �� ������ Initialize �� ����� �� ���� �� ����
+        if (enemy is Leshy leshy && enemyData is LeshyData leshyData)
+        {
+            // ����� ������ ����� ����� ����� �� ������ корутину
+            leshy.gameObject.SetActive(true);
+            leshy.Initialize(leshyData, this, _playerTransform != null ? _playerTransform : playerTransform);
+        }
+        else
+        {
+            enemy.Initialize(enemyData, this);
+            enemy.gameObject.SetActive(true);
+        }
 
         // ������������� �������
         CalculateSpawnPosition(playerTransform);

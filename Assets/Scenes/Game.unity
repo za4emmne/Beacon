@@ -941,8 +941,8 @@ MonoBehaviour:
   healthMultiplierPerWave: 1.1
   damageMultiplierPerWave: 1.05
   bossEnemies:
-  - {fileID: 11400000, guid: 7a3c95214ea12c14dbc4e40e6be0cb21, type: 2}
-  bossSpawnChance: 0.16
+  - {fileID: 11400000, guid: f399172356138a5499232673b8b1a99f, type: 2}
+  bossSpawnChance: 0.09
   _enemySpawner: {fileID: 61008044}
   _playerTransform: {fileID: 0}
   OnWaveStart:

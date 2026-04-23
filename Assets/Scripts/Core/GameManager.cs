@@ -171,6 +171,7 @@ public class GameManager : MonoBehaviour
 
         // Инициализация врагов - может быть дорого
         _waveSystem.Initialized(Player.singleton.transform);
+        _enemyManager.SetPlayerTransform(Player.singleton.transform);
         yield return null;
 
         _waveSystem.StartWave();

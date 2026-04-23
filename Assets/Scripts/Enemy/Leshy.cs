@@ -74,9 +74,9 @@ public class Leshy : Enemy
     
     private IEnumerator SpawnBats()
     {
-        if (_data.BatPrefab == null)
+        if (_data.BatData == null)
         {
-            Debug.LogWarning("Bat prefab not assigned to Leshy!");
+            Debug.LogWarning("Bat data not assigned to Leshy!");
             yield break;
         }
         
@@ -84,27 +84,22 @@ public class Leshy : Enemy
         {
             if (_isDead) yield break;
             
-            // Spawn bat using the enemy generator
-            var batData = _data.BatPrefab.GetComponent<EnemyData>();
-            if (batData != null)
+            // Spawn bat using the enemy generator with EnemyData
+            Enemy batEnemy = _enemyGenerator.GetEnemyFromPool(_data.BatData);
+            
+            if (batEnemy != null)
             {
-                // Create a bat enemy through the generator
-                Enemy batEnemy = _enemyGenerator.GetEnemyFromPool(batData);
+                batEnemy.Initialize(_data.BatData, _enemyGenerator);
+                batEnemy.gameObject.SetActive(true);
                 
-                if (batEnemy != null)
-                {
-                    batEnemy.Initialize(batData, _enemyGenerator);
-                    batEnemy.gameObject.SetActive(true);
-                    
-                    // Position the bat at the spawn point
-                    Vector3 spawnPos = _batSpawnPoint.position;
-                    // Add small random offset to prevent overlap
-                    spawnPos.x += Random.Range(-0.5f, 0.5f);
-                    spawnPos.y += Random.Range(-0.5f, 0.5f);
-                    batEnemy.transform.position = spawnPos;
-                    
-                    // Set bat to fly toward player (assuming bat movement is handled by its own components)
-                }
+                // Position the bat at the spawn point
+                Vector3 spawnPos = _batSpawnPoint.position;
+                // Add small random offset to prevent overlap
+                spawnPos.x += Random.Range(-0.5f, 0.5f);
+                spawnPos.y += Random.Range(-0.5f, 0.5f);
+                batEnemy.transform.position = spawnPos;
+                
+                // Set bat to fly toward player (assuming bat movement is handled by its own components)
             }
             
             // Wait between bat spawns

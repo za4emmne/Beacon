@@ -26,5 +26,5 @@ MonoBehaviour:
     \u043C\u044B\u0448\u0435\u0439"
   _batsPerAttack: 3
   _batSpawnDelay: 0.5
-  _batPrefab: {fileID: 8008174079747344496, guid: 4ecc4451d22d08345999d757848d5fff, type: 3}
+  _batData: {fileID: 11400000, guid: ad52879d9d024824087e51239213558c, type: 2}
   _attackCooldown: 3

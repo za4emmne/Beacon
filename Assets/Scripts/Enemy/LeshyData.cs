@@ -11,14 +11,14 @@ public class LeshyData : EnemyData
     [Tooltip("Delay between bat spawns in seconds")]
     [SerializeField] private float _batSpawnDelay = 0.5f;
     
-    [Tooltip("Reference to bat prefab to spawn")]
-    [SerializeField] private GameObject _batPrefab;
+    [Tooltip("Reference to bat data to spawn")]
+    [SerializeField] private EnemyData _batData;
     
     [Tooltip("Attack cooldown in seconds")]
     [SerializeField] private float _attackCooldown = 3f;
     
     public int BatsPerAttack => _batsPerAttack;
     public float BatSpawnDelay => _batSpawnDelay;
-    public GameObject BatPrefab => _batPrefab;
+    public EnemyData BatData => _batData;
     public float AttackCooldown => _attackCooldown;
 }
