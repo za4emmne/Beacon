@@ -12,9 +12,10 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button _continueButton;
     [SerializeField] private UnityEngine.UI.Slider _sliderMusic;
     [SerializeField] private UnityEngine.UI.Toggle _toggleMusic;
+    [SerializeField] private UnityEngine.UI.Toggle _toggleBlood;
     [SerializeField] private UnityEngine.UI.Button _menu;
 
-    [Header("Íàñòðîéêè àíèìàöèè")]
+    [Header("ÐÐ½Ð¸Ð¼Ð°Ñ†Ð¸Ñ Ð¿Ð°Ð½ÐµÐ»Ð¸")]
     [SerializeField] private Vector2 _hiddenPosition;
     [SerializeField] private Vector2 _shownPosition;
     [SerializeField] private float _animationDuration;
@@ -33,11 +34,16 @@ public class PauseMenuManager : MonoBehaviour
         _pauseUI.gameObject.SetActive(false);
         _continueButton.onClick.AddListener(ContinueGame);
         _menu.onClick.AddListener(_manager.LoadMenuScene);
+        
+        if (_toggleBlood != null)
+        {
+            _toggleBlood.isOn = BloodSplatterManager.BloodEnabled;
+            _toggleBlood.onValueChanged.AddListener(ToggleBlood);
+        }
     }
 
     public void Pause()
     {
-
         _pauseScreen.SetActive(true);
         _pauseUI.gameObject.SetActive(true);
         _pauseUI.DOAnchorPos(_shownPosition, _animationDuration).SetEase(Ease.OutQuad).OnComplete(() =>
@@ -52,6 +58,11 @@ public class PauseMenuManager : MonoBehaviour
             _audioMixer.audioMixer.SetFloat("MusicVolume", 0);
         else
             _audioMixer.audioMixer.SetFloat("MusicVolume", -80);
+    }
+
+    public void ToggleBlood(bool enabled)
+    {
+        BloodSplatterManager.SetBloodEnabled(enabled);
     }
 
     public void ChangeVolume(float volume)

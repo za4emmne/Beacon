@@ -94,36 +94,53 @@ public class TilemapChunkManager : MonoBehaviour
         Debug.Log("Decoration pools prewarmed");
     }
 
+    private List<Vector2Int> _chunksToCreate = new();
+    private List<Vector2Int> _chunksToRemove = new();
+    private Vector2Int _lastPlayerChunk;
+
     private void Update()
     {
         if (_player == null) return;
 
         Vector2Int playerChunk = WorldToChunk(_player.position);
 
-        // ���������� ����� ������ ������
+        // Только если игрок переместился в другой чанк
+        if (playerChunk == _lastPlayerChunk) return;
+        _lastPlayerChunk = playerChunk;
+
+        // Очищаем списки переиспользованием
+        _chunksToCreate.Clear();
+        _chunksToRemove.Clear();
+
+        // Создаём чанки вокруг игрока
         for (int x = -chunksVisible; x <= chunksVisible; x++)
         {
             for (int y = -chunksVisible; y <= chunksVisible; y++)
             {
-                Vector2Int coord = playerChunk + new Vector2Int(x, y);
+                Vector2Int coord = new Vector2Int(playerChunk.x + x, playerChunk.y + y);
                 if (!activeChunks.ContainsKey(coord))
                 {
-                    CreateChunk(coord);
+                    _chunksToCreate.Add(coord);
                 }
             }
         }
 
-        // ������� ������ �����
-        List<Vector2Int> toRemove = new();
+        // Создаём новые чанки
+        foreach (var coord in _chunksToCreate)
+        {
+            CreateChunk(coord);
+        }
+
+        // Удаляем дальние чанки
         foreach (var coord in activeChunks.Keys)
         {
             if (Vector2Int.Distance(coord, playerChunk) > chunksVisible + 1)
             {
-                toRemove.Add(coord);
+                _chunksToRemove.Add(coord);
             }
         }
 
-        foreach (var coord in toRemove)
+        foreach (var coord in _chunksToRemove)
         {
             ReturnChunkToPool(coord);
         }

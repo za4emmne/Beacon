@@ -4,11 +4,21 @@ using UnityEngine;
 public class BloodSplatterManager : MonoBehaviour
 {
     public static BloodSplatterManager Instance { get; private set; }
+    public static bool BloodEnabled = true;
 
     [Header("Settings")]
     [SerializeField] private int _maxSplatters = 50;
     [SerializeField] private float _splatterLifetime = 15f;
     [SerializeField] private float _fadeStartTime = 12f;
+
+    public static void SetBloodEnabled(bool enabled)
+    {
+        BloodEnabled = enabled;
+        if (!enabled && Instance != null)
+        {
+            Instance.ClearAllSplatters();
+        }
+    }
     [SerializeField] private float _splatterSizeMin = 0.3f;
     [SerializeField] private float _splatterSizeMax = 0.8f;
     [SerializeField] private int _poolSize = 60;
@@ -128,6 +138,8 @@ public class BloodSplatterManager : MonoBehaviour
 
     public void SpawnSplatter(Vector3 position, Vector3 direction)
     {
+        if (!BloodEnabled) return;
+        
         if (_activeSplatters.Count >= _maxSplatters)
         {
             BloodDecal oldest = _activeSplatters[0];
@@ -160,6 +172,8 @@ public class BloodSplatterManager : MonoBehaviour
 
     public void SpawnSplatterAtDeath(Vector3 position)
     {
+        if (!BloodEnabled) return;
+        
         if (_activeSplatters.Count >= _maxSplatters)
         {
             BloodDecal oldest = _activeSplatters[0];
@@ -287,4 +301,10 @@ public class BloodSplatterManager : MonoBehaviour
 
     public int ActiveCount => _activeSplatters.Count;
     public int PoolCount => _pool.Count;
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
 }

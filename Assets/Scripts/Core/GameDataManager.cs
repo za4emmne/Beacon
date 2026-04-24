@@ -195,6 +195,7 @@ public class GameDataManager : MonoBehaviour
         _currentLocation = location;
         YG2.SaveProgress();
 
+        
         Debug.Log($"Selected location: {location.displayName}");
     }
 

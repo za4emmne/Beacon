@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "The Sich/Задачи по игре.md",
+                "file": "The Sich/SECH_ROADMAP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Задачи по игре"
+              "title": "SECH_ROADMAP"
             }
           }
         ]
@@ -185,15 +185,15 @@
   },
   "active": "72b5d26b5b3fe567",
   "lastOpenFiles": [
-    "The Sich/SECH_WEAPONS.md",
     "The Sich/Задачи по игре.md",
-    "The Sich/SECH_BLOOD_SYSTEM.md",
-    "Промт по новой фишке.md",
-    "The Sich/SECH_RULES.md",
     "The Sich/SECH_ROADMAP.md",
     "The Sich/SECH_OVERVIEW.md",
     "The Sich/SECH_LOCATIONS.md",
     "The Sich/SECH_HORDE_BEHAVIOR.md",
+    "The Sich/SECH_BLOOD_SYSTEM.md",
+    "The Sich/SECH_RULES.md",
+    "The Sich/SECH_WEAPONS.md",
+    "Промт по новой фишке.md",
     "[Промт по новой фишке.md",
     "Без названия/Что нужно сделать дома на ПК.md",
     "Без названия.base",

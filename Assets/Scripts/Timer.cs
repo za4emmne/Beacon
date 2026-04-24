@@ -6,15 +6,23 @@ public class Timer : MonoBehaviour
 {
     public static Timer Instance { get; private set; }
 
-    [SerializeField] private Text timerText; // Ссылка на UI Text объект
+    [SerializeField] private Text timerText;
 
-    private float _startTime; // Время начала таймера
-    private bool _isRunning = false; // Флаг работы таймера
+    private float _startTime;
+    private bool _isRunning = false;
+    private int _lastMinutes = -1;
+    private int _lastSeconds = -1;
 
     private void Awake()
     {
         Instance = this;
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
+    
     private void Start()
     { 
         StartTimer();
@@ -33,17 +41,21 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if (_isRunning)
-        {
-            float currentTime = Time.time - _startTime;
+        if (!_isRunning) return;
 
-            int minutes = (int)(currentTime / 60);
-            int seconds = (int)(currentTime % 60);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        float currentTime = Time.time - _startTime;
+        int minutes = (int)(currentTime / 60);
+        int seconds = (int)(currentTime % 60);
+
+        // РћР±РЅРѕРІР»СЏРµРј С‚РѕР»СЊРєРѕ РїСЂРё РёР·РјРµРЅРµРЅРёРё Р·РЅР°С‡РµРЅРёР№
+        if (minutes != _lastMinutes || seconds != _lastSeconds)
+        {
+            _lastMinutes = minutes;
+            _lastSeconds = seconds;
+            timerText.text = $"{minutes:00}:{seconds:00}";
         }
     }
 
-    // Метод для получения текущего времени в секундах
     public float GetCurrentTime()
     {
         return Time.time - _startTime;
@@ -52,13 +64,11 @@ public class Timer : MonoBehaviour
     public string GetCurrentTimeText()
     {
         float currentTime = Time.time - _startTime;
-
         string timeMin = LocalizationManager.Instance.GetTranslation("min_text");
         string timeSec = LocalizationManager.Instance.GetTranslation("sec_text");
         int minutes = (int)(currentTime / 60);
         int seconds = (int)(currentTime % 60);
-
-        return string.Format("{0:00 " + timeMin + "} {1:00 " + timeSec + "}", minutes, seconds);
+        return $"{minutes:00} {timeMin} {seconds:00} {timeSec}";
     }
 
     public float GetFloatTime()

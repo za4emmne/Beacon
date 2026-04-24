@@ -26,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
     private float _lastDirection;
     private bool _isMobile;
     private bool _isKnockedBack;
+    
+    // Оптимизация: переиспользуемые векторы
     private Vector2 _input;
+    private Vector3 _rotation;
 
     public event Action Run;
     public event Action<bool> Flip;
@@ -52,17 +55,16 @@ public class PlayerMovement : MonoBehaviour
 
         if (_isMobile && _joystick != null)
         {
-            _input = new Vector2(_joystick.Horizontal, _joystick.Vertical);
+            _input.x = _joystick.Horizontal;
+            _input.y = _joystick.Vertical;
         }
         else
         {
-            _input = new Vector2(
-                Input.GetAxisRaw(NameDirectionHorizontal),
-                Input.GetAxisRaw(NameDirectionVertical)
-            );
+            _input.x = Input.GetAxisRaw(NameDirectionHorizontal);
+            _input.y = Input.GetAxisRaw(NameDirectionVertical);
         }
 
-        _input = Vector2.ClampMagnitude(_input, 1f); // ������������
+        _input = Vector2.ClampMagnitude(_input, 1f);
 
         if (_input.sqrMagnitude > 0.001f)
         {
@@ -87,12 +89,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (currentHorizontal < -0.1f)
         {
-            transform.localEulerAngles = new Vector3(0, 180, 0);
+            _rotation.y = 180;
+            transform.localEulerAngles = _rotation;
             _lastDirection = -1;
         }
         else if (currentHorizontal > 0.1f)
         {
-            transform.localEulerAngles = new Vector3(0, 0, 0);
+            _rotation.y = 0;
+            transform.localEulerAngles = _rotation;
             _lastDirection = 1;
         }
     }
