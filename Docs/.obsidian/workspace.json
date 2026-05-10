@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "The Sich/SECH_ROADMAP.md",
+                "file": "The Sich/DEBUG_LOGS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SECH_ROADMAP"
+              "title": "DEBUG_LOGS"
+            }
+          },
+          {
+            "id": "16b2ee2293077a1f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "The Sich/SICH-Reload.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SICH-Reload"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,8 +198,10 @@
       "graph:Граф": false
     }
   },
-  "active": "72b5d26b5b3fe567",
+  "active": "cb674ab49be38b9e",
   "lastOpenFiles": [
+    "The Sich/DEBUG_LOGS.md",
+    "The Sich/SICH-Reload.md",
     "The Sich/Задачи по игре.md",
     "The Sich/SECH_ROADMAP.md",
     "The Sich/SECH_OVERVIEW.md",

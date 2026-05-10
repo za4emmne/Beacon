@@ -16,6 +16,7 @@ public class CharacterShop : MonoBehaviour
         public Image iconImage;
         public Text characterNameText;
         public Image startedWeaponImage;
+        public CardFlipper cardFlipper;
 
         public Text priceText;
         public Button buyButton;
@@ -23,6 +24,8 @@ public class CharacterShop : MonoBehaviour
 
         public Button selectButton;
         public Text selectText;
+
+        public Button descriptionButton;
 
         public GameObject selectedMarker;
     }
@@ -46,6 +49,7 @@ public class CharacterShop : MonoBehaviour
     private const float COOLDOWN_SECONDS = 300f;
     private const float DAILY_REWARD_COOLDOWN = 300f;
 
+    
     private void Start()
     {
         InitButtons();
@@ -131,6 +135,9 @@ public class CharacterShop : MonoBehaviour
 
             item.selectButton.onClick.RemoveAllListeners();
             item.selectButton.onClick.AddListener(() => SelectCharacter(localKey));
+            
+            item.descriptionButton.onClick.RemoveAllListeners();
+            item.descriptionButton.onClick.AddListener(() => OnSelectDescriptionHero(localKey));
         }
     }
 
@@ -194,6 +201,10 @@ public class CharacterShop : MonoBehaviour
             if (item.selectedMarker != null)
                 item.selectedMarker.SetActive(selected);
 
+            if (item.descriptionButton != null)
+            {
+                
+            }
         }
     }
 
@@ -250,6 +261,11 @@ public class CharacterShop : MonoBehaviour
             YG2.SaveProgress();
             UpdateShopUI();
         });
+    }
+
+    public void OnSelectDescriptionHero(string characterKey)
+    {
+        
     }
 
     // ������������ ������ � ��������� DOTween

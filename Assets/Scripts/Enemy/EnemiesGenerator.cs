@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemiesGenerator : MonoBehaviour
 {
@@ -23,31 +24,57 @@ public class EnemiesGenerator : MonoBehaviour
 
     public static List<Enemy> AllEnemies = new List<Enemy>();
 
-    // ���������������� ����
     private Dictionary<int, Queue<Enemy>> _enemyPools = new Dictionary<int, Queue<Enemy>>();
     private Dictionary<int, EnemyData> _enemyDataMap = new Dictionary<int, EnemyData>();
 
-    // ������������ ����������
     private Transform _transform;
     private Transform _playerTransform;
 
-    // ���������������� ���������� ��� ��������� ���������
     private Vector3 _spawnPosition = Vector3.zero;
     private Vector2 _randomDirection = Vector2.zero;
 
-    // ������� �������� ������ ��� �����������
     private int _activeEnemiesCount = 0;
 
     public event Action OneKill;
 
     private void Awake()
     {
+        InitDebug.Log($"[INIT][EnemiesGenerator] Awake() - this={GetInstanceID()}, scene={SceneManager.GetActiveScene().name}");
+        
         _transform = transform;
+        
+        InitDebug.Log($"[INIT][EnemiesGenerator] AllEnemies count: {AllEnemies.Count}");
+    }
+
+    private void OnEnable()
+    {
+        InitDebug.Log("[INIT][EnemiesGenerator] OnEnable()");
+        ClearAllPools();
+        AllEnemies.Clear();
+        InitDebug.Log("[INIT][EnemiesGenerator] Pools cleared");
+    }
+
+    private void OnDisable()
+    {
+        InitDebug.Log("[INIT][EnemiesGenerator] OnDisable()");
+        
+        ClearAllPools();
+        AllEnemies.Clear();
+        
+        InitDebug.Log($"[INIT][EnemiesGenerator] Cleared - activeEnemies={_activeEnemiesCount}, AllEnemies={AllEnemies.Count}");
+    }
+
+    private void OnDestroy()
+    {
+        InitDebug.Log($"[INIT][EnemiesGenerator] OnDestroy() - this={GetInstanceID()}");
+        ClearAllPools();
+        AllEnemies.Clear();
     }
 
     public void SetPlayerTransform(Transform playerTransform)
     {
         _playerTransform = playerTransform;
+        InitDebug.Log($"[INIT][EnemiesGenerator] SetPlayerTransform: {playerTransform?.GetInstanceID()}");
     }
 
     public Transform GetPlayerTransform() => _playerTransform;
@@ -55,22 +82,25 @@ public class EnemiesGenerator : MonoBehaviour
     public void SpawnEnemyWithModifiers(EnemyData enemyData, Transform playerTransform)
     {
         Enemy enemy = GetEnemyFromPool(enemyData);
-        if (enemy == null) return;
+        if (enemy == null)
+        {
+            InitDebug.LogWarning($"[SPAWN][EnemiesGenerator] Failed to get enemy from pool: {enemyData?.name}");
+            return;
+        }
 
-        // ��� ����� ����� �� ����� LeshyData, ����� �� ������ Initialize �� ����� �� ���� �� ����
         if (enemy is Leshy leshy && enemyData is LeshyData leshyData)
         {
-            // ����� ������ ����� ����� ����� �� ������ корутину
             leshy.gameObject.SetActive(true);
             leshy.Initialize(leshyData, this, _playerTransform != null ? _playerTransform : playerTransform);
+            InitDebug.Log($"[SPAWN][EnemiesGenerator] Spawned Leshy: {enemy.GetInstanceID()}");
         }
         else
         {
             enemy.Initialize(enemyData, this);
             enemy.gameObject.SetActive(true);
+            InitDebug.Log($"[SPAWN][EnemiesGenerator] Spawned {enemyData?.name}: {enemy.GetInstanceID()}");
         }
 
-        // ������������� �������
         CalculateSpawnPosition(playerTransform);
         enemy.transform.position = _spawnPosition;
 
@@ -80,33 +110,40 @@ public class EnemiesGenerator : MonoBehaviour
     public void AddEnemyOnList(Enemy enemy)
     {
         AllEnemies.Add(enemy);
+        InitDebug.Log($"[EVENT][EnemiesGenerator] Added to AllEnemies: {enemy.GetInstanceID()}, total={AllEnemies.Count}");
     }
 
     public void RemoveEnemyFromList(Enemy enemy)
     {
         AllEnemies.Remove(enemy);
+        InitDebug.Log($"[EVENT][EnemiesGenerator] Removed from AllEnemies: {enemy?.GetInstanceID()}, total={AllEnemies.Count}");
     }
 
     public Enemy GetEnemyFromPool(EnemyData enemyData)
     {
+        if (enemyData == null)
+        {
+            InitDebug.LogError("[SPAWN][EnemiesGenerator] enemyData is NULL!");
+            return null;
+        }
+        
         int enemyId = enemyData.GetInstanceID();
 
-        // ������� ��� ���� ��� ���
         if (!_enemyPools.ContainsKey(enemyId))
         {
             _enemyPools[enemyId] = new Queue<Enemy>();
             _enemyDataMap[enemyId] = enemyData;
             PrewarmPool(enemyData, _initialPoolSize);
+            InitDebug.Log($"[POOL][EnemiesGenerator] Created new pool for {enemyData.name}, id={enemyId}");
         }
 
         Queue<Enemy> pool = _enemyPools[enemyId];
 
-        // ������� ����� ������ ���� ��� ����
         if (pool.Count == 0)
         {
             if (GetTotalPooledObjects() >= _maxPoolSize)
             {
-                Debug.LogWarning($"��������� ������������ ������ ����! �������� ������: {_activeEnemiesCount}");
+                InitDebug.LogWarning($"[POOL][EnemiesGenerator] Max pool size reached! active={_activeEnemiesCount}");
                 return null;
             }
             return CreateNewEnemy(enemyData);
@@ -119,7 +156,7 @@ public class EnemiesGenerator : MonoBehaviour
     {
         if (enemyData.Prefab == null)
         {
-            Debug.LogError($"� {enemyData.name} �� �������� ������!");
+            InitDebug.LogError($"[SPAWN][EnemiesGenerator] Prefab is null for {enemyData.name}");
             return null;
         }
 
@@ -129,16 +166,15 @@ public class EnemiesGenerator : MonoBehaviour
         if (enemy == null)
         {
             EnemyBoss boss = enemyObj.GetComponent<EnemyBoss>();
-
             if (boss == null)
             {
-                Debug.LogError($"� ������� {enemyData.Prefab.name} ��� ���������� Enemy!");
+                InitDebug.LogError($"[SPAWN][EnemiesGenerator] No Enemy or EnemyBoss component on prefab {enemyData.Prefab.name}");
                 Destroy(enemyObj);
-
                 return null;
             }
         }
 
+        InitDebug.Log($"[POOL][EnemiesGenerator] Created new enemy: {enemyObj.GetInstanceID()}");
         return enemy;
     }
 
@@ -156,6 +192,8 @@ public class EnemiesGenerator : MonoBehaviour
                 pool.Enqueue(enemy);
             }
         }
+        
+        InitDebug.Log($"[POOL][EnemiesGenerator] Prewarmed {count} enemies for {enemyData.name}");
     }
 
     public void ReturnEnemyToPool(Enemy enemy)
@@ -163,6 +201,7 @@ public class EnemiesGenerator : MonoBehaviour
         if (enemy == null) return;
 
         OneKill?.Invoke();
+        
         _activeEnemiesCount = Mathf.Max(0, _activeEnemiesCount - 1);
         int procentChance = UnityEngine.Random.Range(0, 100);
 
@@ -189,7 +228,6 @@ public class EnemiesGenerator : MonoBehaviour
         if (_starGenerator != null)
         {
             var star = _starGenerator.GetObject();
-
             if (star != null)
             {
                 star.transform.position = position;
@@ -260,14 +298,10 @@ public class EnemiesGenerator : MonoBehaviour
         _enemyPools.Clear();
         _enemyDataMap.Clear();
         _activeEnemiesCount = 0;
+        
+        InitDebug.Log("[POOL][EnemiesGenerator] All pools cleared");
     }
 
-    private void OnDestroy()
-    {
-        ClearAllPools();
-    }
-
-    // ��������� ������ ��� �����������
     public int GetTotalActiveEnemies() => _activeEnemiesCount;
 
     public int GetPoolCount(EnemyData enemyData)

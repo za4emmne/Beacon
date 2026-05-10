@@ -1,23 +1,24 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveSystem : MonoBehaviour
 {
-    [Header("Настройки волн")]
+    [Header("РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ РІРѕР»РЅ")]
     public WaveDataSO[] waveConfigs;
-    public float waveDuration = 60f; // Строго 60 секунд на волну
+    public float waveDuration = 60f;
     public float healthMultiplierPerWave = 1.1f;
     public float damageMultiplierPerWave = 1.05f;
 
-    [Header("Боссы")]
+    [Header("Р‘РѕСЃСЃС‹")]
     public EnemyData[] bossEnemies;
     [Range(0f, 1f)] public float bossSpawnChance = 0.15f;
 
-    [Header("Зависимости")]
+    [Header("Р—Р°РІРёСЃРёРјРѕСЃС‚Рё")]
     [SerializeField] private EnemiesGenerator _enemySpawner;
     [SerializeField] private Transform _playerTransform;
 
-    [Header("События")]
+    [Header("РЎРѕР±С‹С‚РёСЏ")]
     public UnityEngine.Events.UnityEvent<int> OnWaveStart;
     public UnityEngine.Events.UnityEvent<int> OnWaveComplete;
 
@@ -25,24 +26,91 @@ public class WaveSystem : MonoBehaviour
     private bool _isWaveActive;
     private Coroutine _currentWaveCoroutine;
 
-    // Кэшированные значения для оптимизации
     private float[] _cachedHealthMultipliers = new float[100];
     private float[] _cachedDamageMultipliers = new float[100];
 
     private void Awake()
     {
+        InitDebug.Log($"[INIT][WaveSystem] Awake() - this={GetInstanceID()}, scene={SceneManager.GetActiveScene().name}");
         PrecomputeMultipliers();
+    }
+
+    private void OnEnable()
+    {
+        InitDebug.Log("[INIT][WaveSystem] OnEnable()");
+        
+        _isWaveActive = false;
+        _currentWaveIndex = 0;
+        
+        InitDebug.Log($"[INIT][WaveSystem] Reset - waveIndex={_currentWaveIndex}, active={_isWaveActive}");
+    }
+
+    private void OnDisable()
+    {
+        InitDebug.Log("[INIT][WaveSystem] OnDisable()");
+        
+        _isWaveActive = false;
+        
+        if (_currentWaveCoroutine != null)
+        {
+            StopCoroutine(_currentWaveCoroutine);
+            _currentWaveCoroutine = null;
+            InitDebug.Log("[INIT][WaveSystem] Stopped wave coroutine");
+        }
+    }
+
+    private void OnDestroy()
+    {
+        InitDebug.Log($"[INIT][WaveSystem] OnDestroy() - this={GetInstanceID()}");
     }
 
     public void Initialized(Transform transform)
     {
         _playerTransform = transform;
+        InitDebug.Log($"[INIT][WaveSystem] Initialized with player: {transform?.GetInstanceID()}");
     }
 
     public void StartWave()
     {
-        ValidateDependencies();
+        InitDebug.Log("[INIT][WaveSystem] StartWave() called");
+        
+        if (!ValidateDependencies())
+        {
+            InitDebug.LogError("[INIT][WaveSystem] Dependencies validation FAILED!");
+            return;
+        }
+        
         StartCoroutine(WaveTimer());
+    }
+
+    private bool ValidateDependencies()
+    {
+        bool valid = true;
+        
+        if (_enemySpawner == null)
+        {
+            InitDebug.LogError("[INIT][WaveSystem] _enemySpawner is NULL!");
+            valid = false;
+            enabled = false;
+        }
+
+        if (_playerTransform == null)
+        {
+            InitDebug.LogError("[INIT][WaveSystem] _playerTransform is NULL!");
+            valid = false;
+            enabled = false;
+        }
+
+        if (waveConfigs == null || waveConfigs.Length == 0)
+        {
+            InitDebug.LogError("[INIT][WaveSystem] waveConfigs is NULL or EMPTY!");
+            valid = false;
+        }
+        
+        if (valid)
+            InitDebug.Log("[INIT][WaveSystem] Dependencies validated OK");
+        
+        return valid;
     }
 
     private void PrecomputeMultipliers()
@@ -54,31 +122,10 @@ public class WaveSystem : MonoBehaviour
         }
     }
 
-    private void ValidateDependencies()
-    {
-        if (_enemySpawner == null)
-        {
-            Debug.LogError("EnemiesGenerator не назначен в WaveSystem!");
-            enabled = false;
-            return;
-        }
-
-        if (_playerTransform == null)
-        {
-            Debug.LogError("Player Transform не назначен в WaveSystem!");
-            enabled = false;
-            return;
-        }
-
-        if (waveConfigs == null || waveConfigs.Length == 0)
-        {
-            Debug.LogError("Конфигурации волн не назначены!");
-            enabled = false;
-        }
-    }
-
     private IEnumerator WaveTimer()
     {
+        InitDebug.Log("[WAVE][WaveSystem] WaveTimer STARTED");
+        
         while (enabled)
         {
             _currentWaveIndex++;
@@ -86,25 +133,24 @@ public class WaveSystem : MonoBehaviour
 
             WaveDataSO currentWave = GetCurrentWaveConfig();
 
-            Debug.Log($"?? Волна {_currentWaveIndex} началась! ({currentWave.waveName})");
+            InitDebug.Log($"=== WAVE {_currentWaveIndex} STARTED: {currentWave?.waveName} ===");
             OnWaveStart?.Invoke(_currentWaveIndex);
 
-            // Запускаем спавн врагов параллельно с таймером
             bool shouldSpawnBoss = Random.value < bossSpawnChance;
 
-            if (shouldSpawnBoss && bossEnemies.Length > 0)
+            if (shouldSpawnBoss && bossEnemies != null && bossEnemies.Length > 0)
             {
+                InitDebug.Log($"[WAVE][WaveSystem] Spawning BOSS (chance: {bossSpawnChance})");
                 _currentWaveCoroutine = StartCoroutine(SpawnBossWave());
             }
             else
             {
+                InitDebug.Log($"[WAVE][WaveSystem] Spawning regular wave");
                 _currentWaveCoroutine = StartCoroutine(SpawnRegularWave(currentWave));
             }
 
-            // Ждем СТРОГО 60 секунд независимо от врагов
             yield return new WaitForSeconds(waveDuration);
 
-            // Останавливаем спавн если он еще идет
             if (_currentWaveCoroutine != null)
             {
                 StopCoroutine(_currentWaveCoroutine);
@@ -113,36 +159,50 @@ public class WaveSystem : MonoBehaviour
 
             _isWaveActive = false;
             OnWaveComplete?.Invoke(_currentWaveIndex);
-            Debug.Log($"Волна {_currentWaveIndex} завершена! (Время истекло)");
-
-            // Сразу переходим к следующей волне без паузы
+            
+            InitDebug.Log($"=== WAVE {_currentWaveIndex} COMPLETED ===");
         }
     }
 
     private IEnumerator SpawnRegularWave(WaveDataSO wave)
     {
+        if (wave == null || wave.possibleEnemies == null)
+        {
+            InitDebug.LogError("[WAVE][WaveSystem] Wave config is NULL!");
+            yield break;
+        }
+        
         float spawnInterval = waveDuration / wave.totalEnemies;
         var spawnWait = new WaitForSeconds(spawnInterval);
 
-        // Спавним врагов равномерно в течение 60 секунд
+        InitDebug.Log($"[WAVE][WaveSystem] Spawning {wave.totalEnemies} enemies, interval={spawnInterval:F2}s");
+
         for (int i = 0; i < wave.totalEnemies; i++)
         {
             SpawnRandomEnemy(wave);
             yield return spawnWait;
         }
 
-        // Корутина завершается, но волна продолжается до истечения таймера
+        InitDebug.Log($"[WAVE][WaveSystem] Regular wave SPAWN COMPLETE");
     }
 
     private IEnumerator SpawnBossWave()
     {
-        // Спавним босса в начале волны
+        if (bossEnemies == null || bossEnemies.Length == 0)
+        {
+            InitDebug.LogWarning("[WAVE][WaveSystem] No bosses configured!");
+            yield break;
+        }
+        
         int randomBossIndex = Random.Range(0, bossEnemies.Length);
-        SpawnBoss(bossEnemies[randomBossIndex]);
+        EnemyData bossData = bossEnemies[randomBossIndex];
+        
+        InitDebug.Log($"[WAVE][WaveSystem] Spawning BOSS: {bossData?.name} (index={randomBossIndex})");
+        
+        SpawnBoss(bossData);
 
-        // Можем добавить дополнительных врагов к боссу
         WaveDataSO currentWave = GetCurrentWaveConfig();
-        int additionalEnemies = currentWave.totalEnemies / 3; // 1/3 от обычного количества
+        int additionalEnemies = currentWave != null ? currentWave.totalEnemies / 3 : 10;
 
         if (additionalEnemies > 0)
         {
@@ -155,26 +215,41 @@ public class WaveSystem : MonoBehaviour
                 yield return spawnWait;
             }
         }
+        
+        InitDebug.Log("[WAVE][WaveSystem] Boss wave SPAWN COMPLETE");
     }
 
     private void SpawnRandomEnemy(WaveDataSO wave)
     {
+        if (wave == null || wave.possibleEnemies == null || wave.possibleEnemies.Length == 0)
+        {
+            InitDebug.LogError("[WAVE][WaveSystem] No enemies to spawn!");
+            return;
+        }
+        
         int randomIndex = Random.Range(0, wave.possibleEnemies.Length);
         EnemyData randomEnemy = wave.possibleEnemies[randomIndex];
 
         float healthMultiplier = GetHealthMultiplier(_currentWaveIndex - 1);
         float damageMultiplier = GetDamageMultiplier(_currentWaveIndex - 1);
 
-        _enemySpawner.SpawnEnemyWithModifiers(randomEnemy, _playerTransform);
+        _enemySpawner?.SpawnEnemyWithModifiers(randomEnemy, _playerTransform);
     }
 
     private void SpawnBoss(EnemyData bossData)
     {
+        if (bossData == null)
+        {
+            InitDebug.LogError("[WAVE][WaveSystem] Boss data is NULL!");
+            return;
+        }
+        
         float healthMultiplier = GetHealthMultiplier(_currentWaveIndex - 1) * 3f;
         float damageMultiplier = GetDamageMultiplier(_currentWaveIndex - 1) * 2f;
 
-        _enemySpawner.SpawnEnemyWithModifiers(bossData, _playerTransform);
-        Debug.Log("?? БОСС появился!");
+        _enemySpawner?.SpawnEnemyWithModifiers(bossData, _playerTransform);
+        
+        InitDebug.Log($"[WAVE][WaveSystem] BOSS spawned with multipliers: health={healthMultiplier:F2}, damage={damageMultiplier:F2}");
     }
 
     private float GetHealthMultiplier(int waveIndex)
@@ -193,24 +268,23 @@ public class WaveSystem : MonoBehaviour
 
     private WaveDataSO GetCurrentWaveConfig()
     {
+        if (waveConfigs == null || waveConfigs.Length == 0)
+            return null;
+            
         int waveIndex = Mathf.Min(_currentWaveIndex - 1, waveConfigs.Length - 1);
         return waveConfigs[waveIndex];
     }
 
-    // Метод для получения оставшегося времени волны (для UI)
     public float GetWaveTimeRemaining()
     {
-        // Можно добавить отдельный таймер если нужно показывать оставшееся время
         return _isWaveActive ? waveDuration : 0f;
     }
 
-    // Публичные свойства для UI
     public int CurrentWave => _currentWaveIndex;
     public bool IsWaveActive => _isWaveActive;
 
-    // Метод для получения общего количества врагов на сцене
     public int GetTotalEnemiesOnScene()
     {
-        return _enemySpawner.GetTotalActiveEnemies();
+        return _enemySpawner != null ? _enemySpawner.GetTotalActiveEnemies() : 0;
     }
 }

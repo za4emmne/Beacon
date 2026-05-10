@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using YG;
+using UnityEngine.SceneManagement;
 
 public class GameDataManager : MonoBehaviour
 {
     public static GameDataManager Instance { get; private set; }
+    public static Action OnDataReset;
 
     public List<CharacterData> Characters = new List<CharacterData>();
     public List<BiomeData> Locations = new List<BiomeData>();
@@ -29,33 +31,54 @@ public class GameDataManager : MonoBehaviour
     public float TotalTime => _totalTime;
     public int TotalKill => _totalKill;
     public BiomeData CurrentLocation => _currentLocation;
+    public CharacterData CurrentCharacter => _currentCharacter;
 
     private void Awake()
     {
+        InitDebug.Log($"[INIT][GameDataManager] Awake() - Instance={Instance?.GetInstanceID()}, this={GetInstanceID()}, scene={SceneManager.GetActiveScene().name}");
+        
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            InitDebug.Log("[INIT][GameDataManager] Set as Instance, DontDestroyOnLoad=true");
             LoadData();
         }
         else
         {
+            InitDebug.LogWarning("[INIT][GameDataManager] Duplicate! Destroying this");
             Destroy(gameObject);
         }
     }
 
     private void OnEnable()
     {
+        InitDebug.Log("[INIT][GameDataManager] OnEnable()");
         YG2.onGetSDKData += LoadData;
+        InitDebug.Log("[EVENT][GameDataManager] Subscribed to onGetSDKData");
     }
 
     private void OnDisable()
     {
+        InitDebug.Log("[INIT][GameDataManager] OnDisable()");
         YG2.onGetSDKData -= LoadData;
+        InitDebug.Log("[EVENT][GameDataManager] Unsubscribed from onGetSDKData");
+    }
+
+    private void OnDestroy()
+    {
+        InitDebug.Log($"[INIT][GameDataManager] OnDestroy() - Instance={Instance?.GetInstanceID()}, this={GetInstanceID()}");
+        
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     private void Start()
     {
+        InitDebug.Log($"[INIT][GameDataManager] Start() - bestScore={_bestScore}, bestLevel={_bestLevel}, totalCoins={_totalCoins}");
+        
         if (_bestScore == 0 && _bestLevel == 0 && _totalCoins == 0 && YG2.saves != null)
         {
             LoadData();
@@ -64,6 +87,8 @@ public class GameDataManager : MonoBehaviour
 
     public void LoadData()
     {
+        InitDebug.Log("[INIT][GameDataManager] LoadData() called");
+        
         _bestScore = YG2.saves.bestScore;
         _bestLevel = YG2.saves.bestLevel;
         _totalCoins = YG2.saves.coins;
@@ -73,7 +98,69 @@ public class GameDataManager : MonoBehaviour
 
         InitializeDefaultData();
 
-        Debug.Log($"Data loaded: BestScore={_bestScore}, BestLevel={_bestLevel}");
+        InitDebug.Log($"[INIT][GameDataManager] Data loaded: BestScore={_bestScore}, BestLevel={_bestLevel}, TotalCoins={_totalCoins}");
+    }
+
+    public void ResetRunData()
+    {
+        InitDebug.Log("[INIT][GameDataManager] ResetRunData() called");
+        
+        _currentCharacter = null;
+        _currentLocation = null;
+        
+        OnDataReset?.Invoke();
+        InitDebug.Log("[EVENT][GameDataManager] OnDataReset invoked");
+    }
+
+    public void SetCurrentCharacter(CharacterData character)
+    {
+        _currentCharacter = character;
+        InitDebug.Log($"[INIT][GameDataManager] SetCurrentCharacter: {character?.characterKey}");
+    }
+
+    public void SetLocation(BiomeData location)
+    {
+        _currentLocation = location;
+        InitDebug.Log($"[INIT][GameDataManager] SetLocation: {location?.name}");
+    }
+
+    public CharacterData GetCurrentCharacter()
+    {
+        return _currentCharacter;
+    }
+
+    public void AddCoins(int amount)
+    {
+        _totalCoins += amount;
+        YG2.saves.coins = _totalCoins;
+        YG2.SaveProgress();
+    }
+
+    public void UpdateBestScore(int score)
+    {
+        if (score > _bestScore)
+        {
+            _bestScore = score;
+            YG2.saves.bestScore = _bestScore;
+            YG2.SaveProgress();
+        }
+    }
+
+    public void UpdateBestLevel(int level)
+    {
+        if (level > _bestLevel)
+        {
+            _bestLevel = level;
+            YG2.saves.bestLevel = _bestLevel;
+            YG2.SaveProgress();
+        }
+    }
+
+    public void UpdateTotalKill(int kills)
+    {
+        _totalKill += kills;
+        YG2.saves.totalKill = _totalKill;
+        YG2.SaveProgress();
     }
 
     private void InitializeDefaultData()
@@ -87,47 +174,16 @@ public class GameDataManager : MonoBehaviour
             {
                 YG2.saves.unlockedCharacters = new List<string> { defaultCharacter.characterKey };
                 YG2.saves.selectedCharacter = defaultCharacter.characterKey;
-                YG2.SaveProgress();
-                Debug.Log($"First launch: unlocked default character '{defaultCharacter.characterKey}'");
             }
         }
 
-        InitializeDefaultLocation();
-        _currentLocation = GetCurrentSelectedLocation();
-    }
+        CharacterData selectedChar = Characters.Find(c => c.characterKey == YG2.saves.selectedCharacter);
+        if (selectedChar == null)
+            selectedChar = Characters.Find(c => c.isDefault);
 
-    public CharacterData GetCharacter(string key)
-    {
-        return Characters.Find(c => c.characterKey == key);
-    }
+        if (selectedChar != null)
+            _currentCharacter = selectedChar;
 
-    public CharacterData CurrentCharacter => GetCharacter(YG2.saves.selectedCharacter);
-
-    public void UpdateTotalKill(int currentKill)
-    {
-        _totalKill += currentKill;
-        YG2.saves.totalKill = _totalKill;
-        YG2.SaveProgress();
-    }
-
-    public void UpdateBestScore(int newScore)
-    {
-        if (newScore > _bestScore)
-        {
-            _bestScore = newScore;
-            YG2.saves.bestScore = _bestScore;
-            YG2.SaveProgress();
-        }
-    }
-
-    public void UpdateBestTime(float time)
-    {
-        if (_bestTime < time)
-        {
-            _bestTime = time;
-            YG2.saves.bestTime = _bestTime;
-            YG2.SaveProgress(); 
-        }
     }
 
     public void UpdateTotalTime(float time)
@@ -137,142 +193,99 @@ public class GameDataManager : MonoBehaviour
         YG2.SaveProgress();
     }
 
-    public void UpdateBestLevel(int newLevel)
+    public void UpdateBestTime(float time)
     {
-        if (newLevel > _bestLevel)
+        if (time > _bestTime)
         {
-            _bestLevel = newLevel;
-            YG2.saves.bestLevel = _bestLevel;
+            _bestTime = time;
+            YG2.saves.bestTime = _bestTime;
             YG2.SaveProgress();
         }
     }
 
-    public void AddCoins(int amount)
+public bool IsLocationUnlocked(BiomeData location)
     {
-        _totalCoins += amount;
-        YG2.saves.coins = _totalCoins;
-        YG2.SaveProgress();
+        if (location == null) return false;
+        string biomeId = location.biomeId;
+        return YG2.saves.unlockedLocations != null && YG2.saves.unlockedLocations.Contains(biomeId);
     }
-
-    public BiomeData GetLocation(string locationId)
+    
+    public bool IsLocationUnlocked(string biomeId)
     {
-        return Locations.Find(l => l.biomeId == locationId);
-    }
-
-    public bool IsLocationUnlocked(string locationId)
-    {
-        return YG2.saves.unlockedLocations.Contains(locationId);
-    }
-
-    public bool CanAffordLocation(BiomeData location)
-    {
-        return _totalCoins >= location.price;
-    }
-
-    public bool PurchaseLocation(BiomeData location)
-    {
-        if (IsLocationUnlocked(location.biomeId))
-            return false;
-
-        if (!CanAffordLocation(location))
-            return false;
-
-        _totalCoins -= location.price;
-        YG2.saves.coins = _totalCoins;
-        YG2.saves.unlockedLocations.Add(location.biomeId);
-        YG2.SaveProgress();
-
-        Debug.Log($"Purchased location: {location.displayName}");
-        return true;
+        if (string.IsNullOrEmpty(biomeId)) return false;
+        return YG2.saves.unlockedLocations != null && YG2.saves.unlockedLocations.Contains(biomeId);
     }
 
     public void SelectLocation(BiomeData location)
     {
-        if (!IsLocationUnlocked(location.biomeId))
-            return;
-
-        YG2.saves.selectedLocation = location.biomeId;
+        if (location == null || !IsLocationUnlocked(location.biomeId)) return;
         _currentLocation = location;
+        YG2.saves.selectedLocation = location.biomeId;
         YG2.SaveProgress();
+    }
+    
+    public void SelectLocation(string biomeId)
+    {
+        if (string.IsNullOrEmpty(biomeId) || !IsLocationUnlocked(biomeId)) return;
+        BiomeData location = Locations.Find(l => l.biomeId == biomeId);
+        if (location != null)
+        {
+            _currentLocation = location;
+            YG2.saves.selectedLocation = biomeId;
+            YG2.SaveProgress();
+        }
+    }
 
+    public bool PurchaseLocation(BiomeData location)
+    {
+        if (location == null || IsLocationUnlocked(location.biomeId)) return false;
         
-        Debug.Log($"Selected location: {location.displayName}");
-    }
-
-    public BiomeData GetCurrentSelectedLocation()
-    {
-        if (!string.IsNullOrEmpty(YG2.saves.selectedLocation))
-        {
-            BiomeData loc = GetLocation(YG2.saves.selectedLocation);
-            if (loc != null) return loc;
-        }
-
-        return GetDefaultLocation();
-    }
-
-    public BiomeData GetDefaultLocation()
-    {
-        return Locations.Find(l => l.isDefault);
-    }
-
-    private void InitializeDefaultLocation()
-    {
-        bool isFirstLaunch = YG2.saves.unlockedLocations == null || YG2.saves.unlockedLocations.Count == 0;
-
-        if (isFirstLaunch)
-        {
-            BiomeData defaultLocation = Locations.Find(l => l.isDefault);
-            if (defaultLocation != null)
-            {
-                YG2.saves.unlockedLocations = new List<string> { defaultLocation.biomeId };
-                YG2.saves.selectedLocation = defaultLocation.biomeId;
-                YG2.SaveProgress();
-                Debug.Log($"First launch: unlocked default location '{defaultLocation.biomeId}'");
-            }
-        }
-    }
-
-    public void ResetProgress()
-    {
-        _bestScore = 0;
-        _bestLevel = 0;
-        _totalCoins = 0;
-        _bestTime = 0f;
-        _totalTime = 0f;
-        _totalKill = 0;
-
-        YG2.saves.bestScore = 0;
-        YG2.saves.bestLevel = 0;
-        YG2.saves.coins = 0;
-        YG2.saves.bestTime = 0f;
-        YG2.saves.totalTime = 0f;
-        YG2.saves.totalKill = 0;
-
-        CharacterData defaultCharacter = Characters.Find(c => c.isDefault);
-        if (defaultCharacter != null)
-        {
-            YG2.saves.unlockedCharacters = new List<string> { defaultCharacter.characterKey };
-            YG2.saves.selectedCharacter = defaultCharacter.characterKey;
-        }
-        else
-        {
-            YG2.saves.unlockedCharacters = new List<string>();
-            YG2.saves.selectedCharacter = "";
-        }
-
-        BiomeData defaultLocation = Locations.Find(l => l.isDefault);
-        if (defaultLocation != null)
-        {
-            YG2.saves.unlockedLocations = new List<string> { defaultLocation.biomeId };
-            YG2.saves.selectedLocation = defaultLocation.biomeId;
-        }
-        else
-        {
+        int price = location.price;
+        if (_totalCoins < price) return false;
+        
+        _totalCoins -= price;
+        YG2.saves.coins = _totalCoins;
+        
+        if (YG2.saves.unlockedLocations == null)
             YG2.saves.unlockedLocations = new List<string>();
-            YG2.saves.selectedLocation = "";
-        }
-
+        YG2.saves.unlockedLocations.Add(location.biomeId);
+        
         YG2.SaveProgress();
-        Debug.Log("Progress reset!");
+        return true;
+    }
+    
+    public bool PurchaseLocation(string biomeId)
+    {
+        if (string.IsNullOrEmpty(biomeId) || IsLocationUnlocked(biomeId)) return false;
+        
+        BiomeData location = Locations.Find(l => l.biomeId == biomeId);
+        if (location == null) return false;
+        
+        int price = location.price;
+        if (_totalCoins < price) return false;
+        
+        _totalCoins -= price;
+        YG2.saves.coins = _totalCoins;
+        
+        if (YG2.saves.unlockedLocations == null)
+            YG2.saves.unlockedLocations = new List<string>();
+        YG2.saves.unlockedLocations.Add(biomeId);
+        
+        YG2.SaveProgress();
+        return true;
+    }
+
+    public bool CanAffordLocation(BiomeData location)
+    {
+        if (location == null) return false;
+        return _totalCoins >= location.price;
+    }
+    
+    public bool CanAffordLocation(string biomeId)
+    {
+        if (string.IsNullOrEmpty(biomeId)) return false;
+        BiomeData location = Locations.Find(l => l.biomeId == biomeId);
+        if (location == null) return false;
+        return _totalCoins >= location.price;
     }
 }

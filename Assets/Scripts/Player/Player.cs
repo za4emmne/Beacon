@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -28,32 +29,54 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        InitDebug.Log($"[INIT][Player] Awake() - singleton={singleton?.GetInstanceID()}, this={GetInstanceID()}, scene={SceneManager.GetActiveScene().name}");
+        
+        if (singleton != null && singleton != this)
+        {
+            InitDebug.LogWarning($"[INIT][Player] Duplicate! destroying old singleton={singleton.GetInstanceID()}");
+            Destroy(singleton.gameObject);
+        }
+        
         _movenment = GetComponent<PlayerMovement>();
         _health = GetComponent<PlayerHealth>();
         _animator = GetComponent<PlayerAnimation>();
         singleton = this;
+        
+        InitDebug.Log($"[INIT][Player] singleton set to {singleton.GetInstanceID()}");
     }
 
     private void Start()
     {
-        _health.Init(_maxHealth);
+        InitDebug.Log($"[INIT][Player] Start() - maxHealth={_maxHealth}, current={_health?.Current}");
+        _health?.Init(_maxHealth);
+    }
+
+    private void OnDestroy()
+    {
+        InitDebug.Log($"[INIT][Player] OnDestroy() - singleton={singleton?.GetInstanceID()}, this={GetInstanceID()}");
+        
+        if (singleton == this)
+        {
+            singleton = null;
+            InitDebug.Log("[INIT][Player] singleton = null");
+        }
     }
 
     public void Initialize(CameraShake camera, Joystick joystick)
     {
-        _animator.Initialize();
+        InitDebug.Log("[INIT][Player] Initialize() called");
+        _animator?.Initialize();
         _camera = camera;
-        _movenment.Initialize(joystick);
-
+        _movenment?.Initialize(joystick);
+        InitDebug.Log("[INIT][Player] Initialize() complete");
     }
 
     public void TakeDamage(float damage, Vector2 hitSourcePosition)
     {
-        if (_health.Current > 0)
+        if (_health?.Current > 0)
         {
-            
-            _camera.Shake();
-            _health.TakeDamage(damage, hitSourcePosition);
+            _camera?.Shake();
+            _health?.TakeDamage(damage, hitSourcePosition);
         }
     }
 }

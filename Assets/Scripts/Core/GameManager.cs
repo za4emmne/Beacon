@@ -8,6 +8,8 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public static Action OnGameRestart;
+    public static bool IsRestarting = false;
 
     [Header("Компоненты игрока")]
     [SerializeField] private GameObject _player;
@@ -44,8 +46,8 @@ public class GameManager : MonoBehaviour
     private int _coinPrice = 100;
     private bool _isAddPrise;
 
-    public int BestLevel => GameDataManager.Instance.BestLevel;
-    public int HighScore => GameDataManager.Instance.BestScore;
+    public int BestLevel => GameDataManager.Instance?.BestLevel ?? 0;
+    public int HighScore => GameDataManager.Instance?.BestScore ?? 0;
     public int CurrentKill => _kill;
     public int CurrentCoin => _currentCoin;
     public int Level => _level;
@@ -57,53 +59,189 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        InitDebug.Log($"[INIT][GameManager] Awake() called - Instance={Instance != null}, this={GetInstanceID()}, scene={SceneManager.GetActiveScene().name}");
+        
+        if (Instance != null && Instance != this)
+        {
+            InitDebug.LogWarning($"[INIT][GameManager] Duplicate detected, destroying this");
+            Destroy(gameObject);
+            return;
+        }
+        
         Instance = this;
         _audioSource = GetComponent<AudioSource>();
         _weaponWeapon = GetComponent<ManagerWeapon>();
         _uiManager = GetComponent<UIManager>();
+        
+        InitDebug.Log("[INIT][GameManager] Resetting game state");
+        _initialized = false;
+        _kill = 0;
+        _raiseCount = 1;
+        _isAddPrise = false;
+    }
 
+    private void Start()
+    {
+        InitDebug.Log($"[INIT][GameManager] Start() called - initialized={_initialized}");
         StartCoroutine(InitializeRoutine());
     }
 
     private IEnumerator InitializeRoutine()
     {
-        // Wait for GameDataManager to be ready
+        InitDebug.Log("[INIT][GameManager] InitializeRoutine started");
+        
         while (GameDataManager.Instance == null)
         {
+            InitDebug.Log("[INIT][GameManager] Waiting for GameDataManager...");
             yield return null;
         }
-
+        
+        InitDebug.Log("[INIT][GameManager] GameDataManager ready, calling CreatePlayer");
         CreatePlayer();
 
         if (!_initialized)
         {
             _initialized = true;
+            InitDebug.Log("[INIT][GameManager] Starting InitializeGame coroutine");
             StartCoroutine(InitializeGame());
         }
     }
 
-    private void Start()
-    {
-        _raiseCount = 1;
-        _kill = 0;
-        _isAddPrise = false;
-    }
-
     private void OnEnable()
     {
-        _enemyManager.OneKill += ChangeScore;
+        InitDebug.Log($"[INIT][GameManager] OnEnable() - _enemyManager={_enemyManager != null}");
+        
+        if (_enemyManager != null)
+        {
+            _enemyManager.OneKill += ChangeScore;
+            InitDebug.Log("[EVENT][GameManager] Subscribed to OneKill");
+        }
     }
 
     private void OnDisable()
     {
+        InitDebug.Log("[INIT][GameManager] OnDisable()");
+        
         if (_enemyManager != null)
+        {
             _enemyManager.OneKill -= ChangeScore;
+            InitDebug.Log("[EVENT][GameManager] Unsubscribed from OneKill");
+        }
+        
         if (_progress != null)
         {
             if (_uiManager != null)
                 _progress.LevelUp -= _uiManager.ChangeLevel;
             _progress.LevelUp -= LevelUpAudioPlay;
+            InitDebug.Log("[EVENT][GameManager] Unsubscribed from LevelUp");
         }
+    }
+
+    private void OnDestroy()
+    {
+        InitDebug.Log($"[INIT][GameManager] OnDestroy() - Instance={Instance?.GetInstanceID()}, this={GetInstanceID()}");
+        
+        if (Instance == this)
+        {
+            Instance = null;
+            InitDebug.Log("[INIT][GameManager] Instance set to null");
+        }
+    }
+
+    private IEnumerator InitializeGame()
+    {
+        InitDebug.Log("[INIT][GameManager] InitializeGame started");
+        yield return null;
+
+        _gameDataManager = GameDataManager.Instance;
+        yield return null;
+
+        if (Player.singleton == null)
+        {
+            InitDebug.LogError("[INIT][GameManager] Player.singleton is NULL!");
+            yield break;
+        }
+
+        InitDebug.Log($"[INIT][GameManager] Setting up Player - singleton={Player.singleton.GetInstanceID()}");
+        
+        _follower.Playertransform(Player.singleton.transform);
+        _progress = Player.singleton.GetComponent<PlayerLevelManager>();
+        yield return null;
+
+        _playerHealth = Player.singleton.GetComponent<PlayerHealth>();
+        _smoothHealthBar.Init(_playerHealth);
+        yield return null;
+
+        _сinemachineVirtualCamera.Follow = Player.singleton.transform;
+        yield return null;
+
+        InitDebug.Log("[INIT][GameManager] Initializing WaveSystem and EnemiesGenerator");
+        _waveSystem.Initialized(Player.singleton.transform);
+        _enemyManager.SetPlayerTransform(Player.singleton.transform);
+        yield return null;
+
+        _waveSystem.StartWave();
+        yield return null;
+
+        _progressBar.Init();
+        _uiManager.Init(_progress);
+        _weaponWeapon.Init();
+        yield return null;
+
+        _pillsGenerator.Init(Player.singleton.HillEffect, _playerHealth);
+        
+        BiomeData currentLocation = _gameDataManager.CurrentLocation;
+        TilemapChunkManager.Instance.SetLocation(currentLocation);
+        TilemapChunkManager.Instance.Init();
+        yield return null;
+
+        _progress.LevelUp += _uiManager.ChangeLevel;
+        _progress.LevelUp += LevelUpAudioPlay;
+        
+        InitDebug.Log("[EVENT][GameManager] Subscribed to LevelUp events");
+        InitDebug.Log("[INIT][GameManager] InitializeGame COMPLETE");
+    }
+
+    private void CreatePlayer()
+    {
+        CharacterData character = null;
+        
+        if (GameDataManager.Instance != null)
+        {
+            character = GameDataManager.Instance.CurrentCharacter;
+        }
+        
+        if (character == null || character.playerPrefab == null)
+        {
+            InitDebug.LogWarning("[INIT][GameManager] Character not selected, using default");
+            if (GameDataManager.Instance != null && GameDataManager.Instance.Characters != null)
+            {
+                character = GameDataManager.Instance.Characters.Find(c => c.isDefault);
+            }
+            if (character == null || character.playerPrefab == null)
+            {
+                character = _player.GetComponent<Player>()?.GetComponent<CharacterData>();
+                if (character == null)
+                {
+                    InitDebug.LogError("[INIT][GameManager] FAILED TO CREATE PLAYER!");
+                    return;
+                }
+            }
+        }
+
+        GameObject prefabToSpawn = character.playerPrefab;
+        GameObject player = Instantiate(prefabToSpawn);
+        
+        InitDebug.Log($"[INIT][GameManager] Player created - instanceID={player.GetInstanceID()}, position={player.transform.position}");
+        
+        player.GetComponent<Player>().Initialize(_camera, _joystick);
+        
+        var playerWeapons = player.GetComponent<PlayerWeapons>();
+        if (character.startedWeapon != null)
+            playerWeapons.AddStartWeapon(character.startedWeapon);
+        
+        player.transform.position = Vector3.zero;
+        InitDebug.Log("[INIT][GameManager] Player Initialize complete");
     }
 
     public void OnRaisePlayer()
@@ -113,7 +251,6 @@ public class GameManager : MonoBehaviour
             if (_raiseCount > 0)
                 _raiseCount--;
 
-            //_playerHealth.Raise();
             _playerHealth.StartUndeadProcess();
             Player.singleton.GetComponent<PlayerAnimation>().OnRecoverAnimation();
             Player.singleton.UndeadEffect.Play();
@@ -150,86 +287,4 @@ public class GameManager : MonoBehaviour
     {
         _audioSource.PlayOneShot(_levelUpAudio);
     }
-
-    private IEnumerator InitializeGame()
-    {
-        yield return null;
-
-        _gameDataManager = GameDataManager.Instance;
-        yield return null;
-
-        _follower.Playertransform(Player.singleton.transform);
-        _progress = Player.singleton.GetComponent<PlayerLevelManager>();
-        yield return null;
-
-        _playerHealth = Player.singleton.GetComponent<PlayerHealth>();
-        _smoothHealthBar.Init(_playerHealth);
-        yield return null;
-
-        _сinemachineVirtualCamera.Follow = Player.singleton.transform;
-        yield return null;
-
-        // Инициализация врагов - может быть дорого
-        _waveSystem.Initialized(Player.singleton.transform);
-        _enemyManager.SetPlayerTransform(Player.singleton.transform);
-        yield return null;
-
-        _waveSystem.StartWave();
-        yield return null;
-
-        _progressBar.Init();
-        _uiManager.Init(_progress);
-        _weaponWeapon.Init();
-        yield return null;
-
-        _pillsGenerator.Init(Player.singleton.HillEffect, _playerHealth);
-        
-        BiomeData currentLocation = _gameDataManager.CurrentLocation;
-        TilemapChunkManager.Instance.SetLocation(currentLocation);
-        TilemapChunkManager.Instance.Init();
-        yield return null;
-
-        _progress.LevelUp += _uiManager.ChangeLevel;
-        _progress.LevelUp += LevelUpAudioPlay;
-    }
-
-    private void CreatePlayer()
-    {
-        CharacterData character = null;
-        
-        if (GameDataManager.Instance != null)
-        {
-            character = GameDataManager.Instance.CurrentCharacter;
-        }
-        
-        // Fallback если игра запущена напрямую из сцены Game
-        if (character == null || character.playerPrefab == null)
-        {
-            Debug.LogWarning("GameManager: персонаж не выбран, используем default");
-            if (GameDataManager.Instance != null && GameDataManager.Instance.Characters != null)
-            {
-                character = GameDataManager.Instance.Characters.Find(c => c.isDefault);
-            }
-            if (character == null || character.playerPrefab == null)
-            {
-                character = _player.GetComponent<Player>()?.GetComponent<CharacterData>();
-                if (character == null)
-                {
-                    Debug.LogError("GameManager: не удалось создать игрока!");
-                    return;
-                }
-            }
-        }
-
-        GameObject prefabToSpawn = character.playerPrefab;
-        GameObject player = Instantiate(prefabToSpawn);
-        player.GetComponent<Player>().Initialize(_camera, _joystick);
-        
-        var playerWeapons = player.GetComponent<PlayerWeapons>();
-        if (character.startedWeapon != null)
-            playerWeapons.AddStartWeapon(character.startedWeapon);
-        
-        player.transform.position = Vector3.zero;
-    }
-
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class TilemapChunkManager : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class TilemapChunkManager : MonoBehaviour
 
     [Header("Biomes")]
     [SerializeField] private BiomeData[] biomes;
-    [SerializeField] private float biomeScale = 0.05f; // ������� ���� ��� ������
-    [SerializeField] private int seed = 12345; // ��� ��� �����������������
+    [SerializeField] private float biomeScale = 0.05f;
+    [SerializeField] private int seed = 12345;
 
     [Header("Chunk Settings")]
     [SerializeField] private int chunkSize = 16;
@@ -20,12 +21,12 @@ public class TilemapChunkManager : MonoBehaviour
     [SerializeField] private int poolSize = 15;
 
     [Header("Pooling Settings")]
-    [SerializeField] private int prewarmDecorations = 20; // ������� ���� ���������
+    [SerializeField] private int prewarmDecorations = 20;
 
     [Header("Noise Settings")]
     [SerializeField] private NoiseType noiseType = NoiseType.Perlin;
     [SerializeField] private float noiseScale = 0.1f;
-    [SerializeField] private int octaves = 3; // ��� ������������ ����
+    [SerializeField] private int octaves = 3;
     [SerializeField] private float persistence = 0.5f;
     [SerializeField] private float lacunarity = 2f;
 
@@ -44,7 +45,37 @@ public class TilemapChunkManager : MonoBehaviour
         public List<GameObject> spawnedObjects = new();
     }
 
-    private void Awake() => Instance = this;
+    private void Awake()
+    {
+        InitDebug.Log($"[INIT][TilemapChunkManager] Awake() - Instance={Instance?.GetInstanceID()}, this={GetInstanceID()}, scene={SceneManager.GetActiveScene().name}");
+        
+        if (Instance != null && Instance != this)
+        {
+            InitDebug.LogWarning("[INIT][TilemapChunkManager] Duplicate! Destroying this");
+            Destroy(gameObject);
+            return;
+        }
+        
+        Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        InitDebug.Log($"[INIT][TilemapChunkManager] OnDestroy() - Instance={Instance?.GetInstanceID()}, this={GetInstanceID()}");
+        
+        if (Instance == this)
+            Instance = null;
+    }
+
+    public void SetLocation(BiomeData location)
+    {
+        InitDebug.Log($"[INIT][TilemapChunkManager] SetLocation: {location?.name}");
+        
+                if (location != null)
+        {
+            biomes = new BiomeData[] { location };
+        }
+    }
 
     public void Init()
     {
@@ -53,19 +84,22 @@ public class TilemapChunkManager : MonoBehaviour
 
     public void Init(BiomeData location)
     {
-        _player = Player.singleton.transform;
+        InitDebug.Log("[INIT][TilemapChunkManager] Init() called");
+        
+        _player = Player.singleton?.transform;
+        
+        if (_player == null)
+        {
+            InitDebug.LogError("[INIT][TilemapChunkManager] Player.singleton is NULL!");
+            return;
+        }
+        
         random = new System.Random(seed);
 
         InitializeChunkPool();
         PrewarmDecorationPools();
-    }
 
-    public void SetLocation(BiomeData location)
-    {
-        if (location != null)
-        {
-            biomes = new BiomeData[] { location };
-        }
+        InitDebug.Log("[INIT][TilemapChunkManager] Init() complete - pools ready");
     }
 
     private void InitializeChunkPool()
