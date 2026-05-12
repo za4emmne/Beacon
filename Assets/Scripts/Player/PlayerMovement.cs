@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private float _lastDirection;
     private bool _isMobile;
     private bool _isKnockedBack;
+    private bool _movementLocked;
     
     // Оптимизация: переиспользуемые векторы
     private Vector2 _input;
@@ -37,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
     public float LastDirection => _lastDirection;
     public Vector2 MovementDirection => _input;
     public Vector2 LastMoveDirection { get; private set; } = Vector2.right;
+    
+    public bool MovementLocked => _movementLocked;
+    
+    public void LockMovement() => _movementLocked = true;
+    public void UnlockMovement() => _movementLocked = false;
 
     private void Awake()
     {
@@ -51,6 +57,9 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         if (Time.timeScale == 0f)
+            return;
+        
+        if (_movementLocked)
             return;
 
         if (_isMobile && _joystick != null)

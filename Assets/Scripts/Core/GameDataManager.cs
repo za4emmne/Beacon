@@ -34,7 +34,14 @@ public class GameDataManager : MonoBehaviour
 
     private void Awake()
     {
-        InitDebug.Log($"[INIT][GameDataManager] Awake() - Instance={Instance?.GetInstanceID()}, this={GetInstanceID()}, scene={SceneManager.GetActiveScene().name}");
+        InitDebug.Log($"[INIT][GameDataManager] Awake() - Instance={Instance?.GetInstanceID()}, this={GetInstanceID()}, gameObject={gameObject.name}, scene={SceneManager.GetActiveScene().name}");
+        
+        if (!gameObject.activeInHierarchy)
+        {
+            InitDebug.LogWarning($"[INIT][GameDataManager] Disabled GameObject, skipping!");
+            enabled = false;
+            return;
+        }
         
         if (Instance == null)
         {
@@ -43,9 +50,9 @@ public class GameDataManager : MonoBehaviour
             InitDebug.Log("[INIT][GameDataManager] Set as Instance, DontDestroyOnLoad=true");
             LoadData();
         }
-        else
+        else if (gameObject.name != "GameDataManager")
         {
-            InitDebug.LogWarning("[INIT][GameDataManager] Duplicate! Destroying this");
+            InitDebug.LogWarning($"[INIT][GameDataManager] Found DDOL manager with different name '{gameObject.name}', preserving it");
             Destroy(gameObject);
         }
     }

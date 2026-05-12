@@ -45,6 +45,7 @@ public class LocationCardUI : MonoBehaviour
         UpdateButtonState(isUnlocked, isSelected, canAfford);
     }
 
+
     private void UpdateButtonState(bool isUnlocked, bool isSelected, bool canAfford)
     {
         if (_actionButton == null) return;

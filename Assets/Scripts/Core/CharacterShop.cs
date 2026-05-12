@@ -43,6 +43,12 @@ public class CharacterShop : MonoBehaviour
     public Button addCoinsButton;
     public Text addCoinsTimerText;
 
+    [Header("Daily Reward UI")]
+    public Button dailyRewardButton;
+    public Image dailyRewardImage;
+    public Animator dailyRewardAnimator;
+    public Text dailyRewardTimerText;
+
     private int _currentHeroIndex = 0;
     private const float HERO_SHIFT = 1200f;
     private const float HERO_TWEEN_DURATION = 0.3f;
@@ -76,6 +82,21 @@ public class CharacterShop : MonoBehaviour
                 if (!canGetCoins)
                 {
                     addCoinsTimerText.text = GetCooldownText(YG2.saves.lastCoinsRewardTime, COOLDOWN_SECONDS);
+                }
+            }
+        }
+
+        bool canGetDaily = CanGetDailyReward();
+        if (dailyRewardButton != null)
+        {
+            dailyRewardButton.interactable = canGetDaily;
+
+            if (dailyRewardTimerText != null)
+            {
+                dailyRewardTimerText.gameObject.SetActive(!canGetDaily);
+                if (!canGetDaily)
+                {
+                    dailyRewardTimerText.text = GetCooldownText(YG2.saves.lastDailyRewardTime, DAILY_REWARD_COOLDOWN);
                 }
             }
         }
@@ -259,8 +280,23 @@ public class CharacterShop : MonoBehaviour
             YG2.saves.coins += 200;
             YG2.saves.lastDailyRewardTime = System.DateTimeOffset.Now.ToUnixTimeSeconds();
             YG2.SaveProgress();
-            UpdateShopUI();
+            
+            PlayDailyRewardAnimation();
+            UpdateRewardButtons();
         });
+    }
+
+    private void PlayDailyRewardAnimation()
+    {
+        if (dailyRewardAnimator != null)
+        {
+            dailyRewardAnimator.SetTrigger("Claim");
+        }
+        
+        if (dailyRewardButton != null)
+        {
+            dailyRewardButton.interactable = false;
+        }
     }
 
     public void OnSelectDescriptionHero(string characterKey)

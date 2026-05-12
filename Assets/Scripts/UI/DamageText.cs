@@ -29,9 +29,9 @@ public class DamageText : MonoBehaviour
 
     private void DamageAnimationText()
     {
-        transform.DOMoveY(transform.position.y + 0.5f, 2)
+        transform.DOMoveY(transform.position.y + 0.5f, 3)
             .SetEase(Ease.OutQuad);
-        _damageText.DOFade(0, 2).OnComplete(() =>
+        _damageText.DOFade(0, 3).OnComplete(() =>
         {
             _damageText.DOFade(1, 0).OnComplete(() =>
             {

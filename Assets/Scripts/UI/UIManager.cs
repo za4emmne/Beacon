@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
         _settingButtonManager = _settingButton.GetComponent<ButtonManager>();
         _pauseMenuManager = GetComponent<PauseMenuManager>();
         _pause = _settingButton.GetComponent<Button>();
-        _gameManager = GetComponent<GameManager>();
+        _gameManager = GameManager.Instance;
         
         InitDebug.Log("[INIT][UIManager] Components initialized");
     }
@@ -229,11 +229,14 @@ public class UIManager : MonoBehaviour
             _icons[0].sprite = weapon.Icon;
     }
 
-    private void RestartScene()
+private void RestartScene()
     {
         InitDebug.Log("[RESTART][UIManager] RestartScene() called");
         
         Time.timeScale = 1f;
+        
+        if (GameDataManager.Instance != null)
+            GameDataManager.Instance.ResetRunData();
         
         InitDebug.Log("[RESTART] Loading scene 'Game'");
         SceneManager.LoadScene("Game");

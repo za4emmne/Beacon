@@ -32,8 +32,8 @@ public class LocationShopUI : MonoBehaviour
 
     public void Show()
     {
-        gameObject.SetActive(true);
-        RefreshCards();
+        //gameObject.SetActive(true);
+        //RefreshCards();
     }
 
     public void RefreshCards()

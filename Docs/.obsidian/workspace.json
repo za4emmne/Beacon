@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "The Sich/SICH-Reload.md",
+                "file": "The Sich/Задачи по игре.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SICH-Reload"
+              "title": "Задачи по игре"
             }
           }
         ],
@@ -198,10 +198,10 @@
       "graph:Граф": false
     }
   },
-  "active": "cb674ab49be38b9e",
+  "active": "16b2ee2293077a1f",
   "lastOpenFiles": [
-    "The Sich/DEBUG_LOGS.md",
     "The Sich/SICH-Reload.md",
+    "The Sich/DEBUG_LOGS.md",
     "The Sich/Задачи по игре.md",
     "The Sich/SECH_ROADMAP.md",
     "The Sich/SECH_OVERVIEW.md",

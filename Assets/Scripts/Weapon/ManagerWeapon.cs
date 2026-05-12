@@ -8,7 +8,6 @@ public class ManagerWeapon : MonoBehaviour
     [SerializeField] private List<WeaponData> _allWeapons;
     [SerializeField] private int _maxSlots = 5;
 
-    //[SerializeField] private EnemiesGenerator _enemyGenerators;
     private Transform _playerWeaponPoint;
     private PlayerWeapons _player;
     private PlayerLevelManager _playerProgress;

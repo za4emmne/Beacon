@@ -33,8 +33,9 @@ public class Player : MonoBehaviour
         
         if (singleton != null && singleton != this)
         {
-            InitDebug.LogWarning($"[INIT][Player] Duplicate! destroying old singleton={singleton.GetInstanceID()}");
-            Destroy(singleton.gameObject);
+            InitDebug.LogWarning($"[INIT][Player] Duplicate! destroying this={GetInstanceID()}, keep singleton={singleton.GetInstanceID()}");
+            Destroy(gameObject);
+            return;
         }
         
         _movenment = GetComponent<PlayerMovement>();

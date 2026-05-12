@@ -65,9 +65,11 @@ public class UIMenuManager : MonoBehaviour
     [SerializeField] private Sprite _heroesIcon;
     [SerializeField] private Sprite _achiveIcon;
 
-    [Header("Ежедневные награды")]
+[Header("Ежедневные награды")]
     [SerializeField] private Button _dailyRewardButton;
     [SerializeField] private Text _dailyRewardTimerText;
+    [SerializeField] private Image _dailyRewardImage;
+    [SerializeField] private Animator _dailyRewardAnimator;
 
     [Header("Мобильные панели магазина")]
     [SerializeField] private GameObject _mobileHeroesPanel;
@@ -352,11 +354,21 @@ public class UIMenuManager : MonoBehaviour
         ShowMainShopPanel();
     }
 
-    private void OnDailyRewardButtonClick()
+private void OnDailyRewardButtonClick()
     {
         if (_shop != null)
         {
             _shop.OnDailyRewardButtonClick();
+            
+            if (_dailyRewardAnimator != null)
+            {
+                _dailyRewardAnimator.SetTrigger("Claim");
+            }
+            
+            if (_dailyRewardButton != null)
+            {
+                _dailyRewardButton.interactable = false;
+            }
         }
     }
 

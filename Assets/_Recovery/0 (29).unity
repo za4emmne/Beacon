@@ -8754,6 +8754,8 @@ MonoBehaviour:
   _achiveIcon: {fileID: 0}
   _dailyRewardButton: {fileID: 1402128615}
   _dailyRewardTimerText: {fileID: 1323317431}
+  _dailyRewardImage: {fileID: 0}
+  _dailyRewardAnimator: {fileID: 0}
   _mobileHeroesPanel: {fileID: 784594118}
   _mobileAchivePanel: {fileID: 1626559273}
 --- !u!82 &1030939298
@@ -8914,6 +8916,10 @@ MonoBehaviour:
   coinsText: {fileID: 164789279}
   addCoinsButton: {fileID: 1094408136}
   addCoinsTimerText: {fileID: 539360463}
+  dailyRewardButton: {fileID: 0}
+  dailyRewardImage: {fileID: 0}
+  dailyRewardAnimator: {fileID: 0}
+  dailyRewardTimerText: {fileID: 0}
 --- !u!1 &1057980475
 GameObject:
   m_ObjectHideFlags: 0

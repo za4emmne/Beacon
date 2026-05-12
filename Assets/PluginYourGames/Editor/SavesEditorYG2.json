@@ -7,10 +7,10 @@
         false,
         false
     ],
-    "idSave": 936,
+    "idSave": 940,
     "bestScore": 52,
     "bestLevel": 3,
-    "coins": 1900,
+    "coins": 2700,
     "bestTime": 45.06666564941406,
     "totalKill": 23,
     "totalTime": 47.27783203125,
@@ -25,6 +25,6 @@
         "Base"
     ],
     "selectedLocation": "Base",
-    "lastDailyRewardTime": 1778416897.0,
+    "lastDailyRewardTime": 1778567073.0,
     "lastCoinsRewardTime": 1775058939.0
 }

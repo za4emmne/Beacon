@@ -98,8 +98,29 @@ public class TilemapChunkManager : MonoBehaviour
 
         InitializeChunkPool();
         PrewarmDecorationPools();
+        
+        GenerateInitialChunks();
 
-        InitDebug.Log("[INIT][TilemapChunkManager] Init() complete - pools ready");
+        InitDebug.Log("[INIT][TilemapChunkManager] Init() complete - initial chunks generated");
+    }
+    
+    private void GenerateInitialChunks()
+    {
+        Vector2Int playerChunk = WorldToChunk(_player.position);
+        _lastPlayerChunk = playerChunk;
+        
+        InitDebug.Log($"[INIT][TilemapChunkManager] Generating initial chunks around player chunk {playerChunk}");
+        
+        for (int x = -chunksVisible; x <= chunksVisible; x++)
+        {
+            for (int y = -chunksVisible; y <= chunksVisible; y++)
+            {
+                Vector2Int coord = new Vector2Int(playerChunk.x + x, playerChunk.y + y);
+                CreateChunk(coord);
+            }
+        }
+        
+        InitDebug.Log($"[INIT][TilemapChunkManager] Initial chunks generated around player");
     }
 
     private void InitializeChunkPool()
