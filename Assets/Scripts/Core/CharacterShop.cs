@@ -6,28 +6,96 @@ using YG;
 
 public class CharacterShop : MonoBehaviour
 {
+
     [System.Serializable]
     public class CharacterItemUI
     {
         public string key;
         public CharacterData characterData;
 
-        [Header("UI")]
-        public Image iconImage;
-        public Text characterNameText;
-        public Image startedWeaponImage;
+
+        [Header("Card Base")]
         public CardFlipper cardFlipper;
+        public CanvasGroup frontCanvasGroup;
+        public CanvasGroup backCanvasGroup;
 
+        [Header("Front Side - Images")]
+        public Image iconImage;
+        public Image startedWeaponImage;
+
+        [Header("Front Side - Text")]
+        public Text characterNameText;
         public Text priceText;
-        public Button buyButton;
         public Text buyText;
-
-        public Button selectButton;
         public Text selectText;
 
+        [Header("Front Side - Buttons")]
+        public Button buyButton;
+        public Button selectButton;
         public Button descriptionButton;
 
+        [Header("Front Side - Other")]
         public GameObject selectedMarker;
+
+        [Header("Back Side")]
+        public Text descriptionText;
+        public Image backWeaponIcon;
+        public Text backWeaponNameText;
+        public Button backCloseButton;
+
+        [Header("Animation Settings")]
+        public float fadeDuration = 0.5f;
+        public float flipDuration = 0.4f;
+
+        public void ShowFrontSide()
+        {
+            if (frontCanvasGroup != null)
+                frontCanvasGroup.alpha = 1f;
+            if (backCanvasGroup != null)
+                backCanvasGroup.alpha = 0f;
+        }
+
+        public void HideFrontSide(System.Action onComplete = null)
+        {
+            Debug.Log("hide front");
+            Debug.Log(frontCanvasGroup);
+            if (frontCanvasGroup != null)
+            {
+                Debug.Log("hide front");
+                frontCanvasGroup.DOFade(0f, fadeDuration).OnComplete(() => onComplete?.Invoke());
+            }
+            else
+            {
+                onComplete?.Invoke();
+            }
+        }
+
+        public void ShowBackSide(System.Action onComplete = null)
+        {
+            if (cardFlipper != null)
+                cardFlipper.Flip();
+
+            if (backCanvasGroup != null)
+            {
+                Debug.Log("show back");
+                backCanvasGroup.DOFade(1f, fadeDuration).SetDelay(flipDuration).OnComplete(() => onComplete?.Invoke());
+            }
+            else
+            {
+                onComplete?.Invoke();
+            }
+        }
+
+        public void CloseDescription(System.Action onComplete = null)
+        {
+            if (backCanvasGroup != null)
+                backCanvasGroup.DOFade(0f, fadeDuration);
+
+            if (cardFlipper != null)
+                cardFlipper.Flip();
+
+            frontCanvasGroup?.DOFade(1f, fadeDuration).SetDelay(flipDuration).OnComplete(() => onComplete?.Invoke());
+        }
     }
 
     [Header("Hero Scroll / Slider")]
@@ -55,7 +123,6 @@ public class CharacterShop : MonoBehaviour
     private const float COOLDOWN_SECONDS = 300f;
     private const float DAILY_REWARD_COOLDOWN = 300f;
 
-    
     private void Start()
     {
         InitButtons();
@@ -151,29 +218,45 @@ public class CharacterShop : MonoBehaviour
         {
             var localKey = item.key;
 
-            item.buyButton.onClick.RemoveAllListeners();
-            item.buyButton.onClick.AddListener(() => BuyCharacter(localKey));
+            if (item.buyButton != null)
+            {
+                item.buyButton.onClick.RemoveAllListeners();
+                item.buyButton.onClick.AddListener(() => BuyCharacter(localKey));
+            }
 
-            item.selectButton.onClick.RemoveAllListeners();
-            item.selectButton.onClick.AddListener(() => SelectCharacter(localKey));
+            if (item.selectButton != null)
+            {
+                item.selectButton.onClick.RemoveAllListeners();
+                item.selectButton.onClick.AddListener(() => SelectCharacter(localKey));
+            }
             
-            item.descriptionButton.onClick.RemoveAllListeners();
-            item.descriptionButton.onClick.AddListener(() => OnSelectDescriptionHero(localKey));
+            if (item.descriptionButton != null)
+            {
+                item.descriptionButton.onClick.RemoveAllListeners();
+                item.descriptionButton.onClick.AddListener(() => OnSelectDescriptionHero(localKey));
+            }
+            
+            if (item.backCloseButton != null)
+            {
+                item.backCloseButton.onClick.RemoveAllListeners();
+                item.backCloseButton.onClick.AddListener(() => CloseDescription(localKey));
+            }
         }
     }
 
-    private void UpdateShopUI()
+private void UpdateShopUI()
     {
-        // ��������� ����� �������
-        coinsText.text = LocalizationManager.Instance.GetTranslation("balace_text")
-            .Replace("{countCoins}", YG2.saves.coins.ToString());
+        if (coinsText != null)
+        {
+            coinsText.text = LocalizationManager.Instance.GetTranslation("balace_text")
+                .Replace("{countCoins}", YG2.saves.coins.ToString());
+        }
 
         foreach (var item in characters)
         {
             bool unlocked = YG2.saves.unlockedCharacters.Contains(item.key);
             bool selected = item.key == YG2.saves.selectedCharacter;
 
-            // ��������� ������� �� CharacterData
             if (item.characterData != null)
             {
                 if (item.iconImage != null)
@@ -184,10 +267,18 @@ public class CharacterShop : MonoBehaviour
 
                 if (item.startedWeaponImage != null && item.characterData.startedWeapon != null)
                     item.startedWeaponImage.sprite = item.characterData.startedWeapon.Icon;
+
+                if (item.backWeaponIcon != null && item.characterData.startedWeapon != null)
+                    item.backWeaponIcon.sprite = item.characterData.startedWeapon.Icon;
+
+                if (item.backWeaponNameText != null && item.characterData.startedWeapon != null)
+                    item.backWeaponNameText.text = item.characterData.startedWeapon.Name;
+
+                if (item.descriptionText != null && item.characterData.description != null)
+                    item.descriptionText.text = item.characterData.description;
             }
 
-            // ���� � ����������� ������
-            if (item.priceText != null)
+            if (item.priceText != null && item.characterData != null)
             {
                 item.priceText.text = LocalizationManager.Instance.GetTranslation("price_text")
                     .Replace("{price}", item.characterData.price.ToString());
@@ -204,13 +295,10 @@ public class CharacterShop : MonoBehaviour
                     item.selectText.text = LocalizationManager.Instance.GetTranslation("select_button");
             }
 
-            // ������ �����������
-            int price = item.characterData != null ? item.characterData.price : 0;
-
             if (item.buyButton != null)
             {
                 item.buyButton.gameObject.SetActive(!unlocked);
-                item.buyButton.interactable = !unlocked && YG2.saves.coins >= price;
+                item.buyButton.interactable = !unlocked && YG2.saves.coins >= (item.characterData?.price ?? 0);
             }
 
             if (item.selectButton != null)
@@ -222,10 +310,7 @@ public class CharacterShop : MonoBehaviour
             if (item.selectedMarker != null)
                 item.selectedMarker.SetActive(selected);
 
-            if (item.descriptionButton != null)
-            {
-                
-            }
+            item.ShowFrontSide();
         }
     }
 
@@ -257,6 +342,7 @@ public class CharacterShop : MonoBehaviour
             UpdateShopUI();
         }
     }
+
 
     public void OnAddCoinsButtonClick()
     {
@@ -301,7 +387,19 @@ public class CharacterShop : MonoBehaviour
 
     public void OnSelectDescriptionHero(string characterKey)
     {
-        
+        Debug.Log("Select");
+        var item = characters.Find(x => x.key == characterKey);
+        if (item == null) return;
+
+        item.HideFrontSide(() => item.ShowBackSide());
+    }
+
+    public void CloseDescription(string characterKey)
+    {
+        var item = characters.Find(x => x.key == characterKey);
+        if (item == null) return;
+
+        item.CloseDescription();
     }
 
     // ������������ ������ � ��������� DOTween

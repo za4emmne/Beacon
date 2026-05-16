@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using YG;
 using System;
-using Cinemachine;
+using Unity.Cinemachine;
 using System.Collections;
 
 public class GameManager : MonoBehaviour
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private CameraShake _camera;
     [SerializeField] private FloatingJoystick _joystick;
-    [SerializeField] private CinemachineVirtualCamera _сinemachineVirtualCamera;
+    [SerializeField] private CinemachineCamera _сinemachineVirtualCamera;
     [SerializeField] private Follower _follower;
     [SerializeField] private SmoothHealthBar _smoothHealthBar;
 
@@ -27,11 +27,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemiesGenerator _enemyManager;
     [SerializeField] private WaveSystem _waveSystem;
 
-    [Header("Скрпипты игры")]
+[Header("Скрпипты игры")]
     [SerializeField] private StarsSpawner _starGenerator;
     [SerializeField] private PillsGenerator _pillsGenerator;
     [SerializeField] private ProgressBar _progressBar;
     [SerializeField] private AudioClip _levelUpAudio;
+
+    [Header("Loading Screen")]
+    [SerializeField] private LoadingScreenController _loadingScreen;
+    [SerializeField] private bool _useLoadingScreen = true;
 
     private AudioSource _audioSource;
     private GameDataManager _gameDataManager;
@@ -96,9 +100,16 @@ private void Awake()
         _isAddPrise = false;
     }
 
-    private void Start()
+private void Start()
     {
         InitDebug.Log($"[INIT][GameManager] Start() - initialized={_initialized}");
+        
+        if (_useLoadingScreen && _loadingScreen != null)
+        {
+            _loadingScreen.Show();
+            _loadingScreen.SetProgress(0f, "Инициализация...");
+        }
+        
         _initRoutine = StartCoroutine(InitializeRoutine());
     }
 
@@ -113,7 +124,7 @@ private void Awake()
             Instance = null;
     }
 
-    private IEnumerator InitializeRoutine()
+private IEnumerator InitializeRoutine()
     {
         InitDebug.Log("[INIT][GameManager] InitializeRoutine started");
         
@@ -123,13 +134,25 @@ private void Awake()
             yield return null;
         }
         
+        if (_useLoadingScreen && _loadingScreen != null)
+            _loadingScreen.SetProgress(0.1f, "Создание игрока...");
+        
         InitDebug.Log("[INIT][GameManager] GameDataManager ready, calling CreatePlayer");
         CreatePlayer();
         
         yield return new WaitUntil(() => Player.singleton != null);
         
+        if (_useLoadingScreen && _loadingScreen != null)
+            _loadingScreen.SetProgress(0.4f, "Настройка игрока...");
+        
         yield return StartCoroutine(InitializeGame());
         _initialized = true;
+        
+        if (_useLoadingScreen && _loadingScreen != null)
+        {
+            _loadingScreen.SetProgress(1f, "Готово!");
+            _loadingScreen.Hide(0.5f);
+        }
     }
 
     private void OnEnable()
@@ -154,6 +177,10 @@ private void Awake()
 private IEnumerator InitializeGame()
     {
         InitDebug.Log("[INIT][GameManager] InitializeGame started");
+        
+        if (_useLoadingScreen && _loadingScreen != null)
+            _loadingScreen.SetStatus("Подготовка...");
+        
         yield return null;
 
         _gameDataManager = GameDataManager.Instance;
@@ -184,6 +211,11 @@ private IEnumerator InitializeGame()
 
         InitDebug.Log($"[INIT][GameManager] Setting up Player - singleton={Player.singleton.GetInstanceID()}");
         
+
+
+        if (_useLoadingScreen && _loadingScreen != null)
+            _loadingScreen.SetProgress(0.5f, "Настройка камеры...");
+        
         _progress = Player.singleton.GetComponent<PlayerLevelManager>();
         yield return null;
 
@@ -193,6 +225,9 @@ private IEnumerator InitializeGame()
 
         _сinemachineVirtualCamera.Follow = Player.singleton.transform;
         yield return null;
+        
+        if (_useLoadingScreen && _loadingScreen != null)
+            _loadingScreen.SetProgress(0.6f, "Запуск волн...");
 
         InitDebug.Log("[INIT][GameManager] Initializing WaveSystem and EnemiesGenerator");
         _waveSystem.Initialized(Player.singleton.transform);
@@ -202,6 +237,9 @@ private IEnumerator InitializeGame()
         _waveSystem.StartWave();
         yield return null;
 
+        if (_useLoadingScreen && _loadingScreen != null)
+            _loadingScreen.SetProgress(0.7f, "Инициализация UI...");
+
         _progressBar.Init();
         _uiManager.Init(_progress);
         _weaponWeapon.Init();
@@ -209,7 +247,9 @@ private IEnumerator InitializeGame()
 
         _pillsGenerator.Init(Player.singleton.HillEffect, _playerHealth);
         
-        // Блокируем управление перед генерацией локации
+        if (_useLoadingScreen && _loadingScreen != null)
+            _loadingScreen.SetProgress(0.8f, "Генерация локации...");
+        
         var playerMovement = Player.singleton.GetComponent<PlayerMovement>();
         if (playerMovement != null)
         {
@@ -221,12 +261,14 @@ private IEnumerator InitializeGame()
         TilemapChunkManager.Instance.SetLocation(currentLocation);
         TilemapChunkManager.Instance.Init();
         
-        // Разблокируем управление после генерации
         if (playerMovement != null)
         {
             InitDebug.Log("[INIT][GameManager] Unlocking player movement");
             playerMovement.UnlockMovement();
         }
+        
+        if (_useLoadingScreen && _loadingScreen != null)
+            _loadingScreen.SetProgress(0.9f, "Завершение...");
         
         yield return null;
 

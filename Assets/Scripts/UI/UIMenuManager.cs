@@ -5,7 +5,6 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using YG;
 using YG.LanguageLegacy;
-using static Cinemachine.DocumentationSortingAttribute;
 
 public class UIMenuManager : MonoBehaviour
 {

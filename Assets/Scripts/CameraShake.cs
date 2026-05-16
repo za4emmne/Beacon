@@ -1,47 +1,60 @@
-using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
+using System.Collections;
 
 public class CameraShake : MonoBehaviour
 {
-    [SerializeField] float _shakeFrequency;
-    [SerializeField] float _shakeAmplitude;
-    [SerializeField] float _shakeTime;
+    [SerializeField] private float _shakeFrequency = 1f;
+    [SerializeField] private float _shakeAmplitude = 1f;
+    [SerializeField] private float _shakeTime = 0.2f;
 
-    private CinemachineVirtualCamera _camera;
-    private CinemachineBasicMultiChannelPerlin _cinemachineBasicMultiChannelPerlin;
-
+    private CinemachineCamera _camera;
+    private CinemachineBasicMultiChannelPerlin _noise;
     private Coroutine _coroutine;
 
     private void Awake()
     {
-        _camera = GetComponent<CinemachineVirtualCamera>();
-        _cinemachineBasicMultiChannelPerlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _camera = GetComponent<CinemachineCamera>();
+
+        // В Cinemachine 3 GetCinemachineComponent принимает Stage, а не generic-параметр
+        if (_camera != null)
+        {
+            _noise = _camera.GetCinemachineComponent(CinemachineCore.Stage.Noise)
+                     as CinemachineBasicMultiChannelPerlin;
+        }
+
+        if (_noise == null)
+            Debug.LogError("[CameraShake] Noise component (CinemachineBasicMultiChannelPerlin) not found");
     }
 
     private void Start()
     {
-        _cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0;
-        _cinemachineBasicMultiChannelPerlin.m_FrequencyGain = 0;
+        if (_noise == null) return;
+        _noise.AmplitudeGain = 0f;
+        _noise.FrequencyGain = 0f;
     }
 
     public void Shake()
     {
-        Debug.Log("shakeCamera");
+        if (_noise == null) return;
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
         _coroutine = StartCoroutine(ShakeCamera());
     }
 
     private IEnumerator ShakeCamera()
     {
-        WaitForSeconds wait = new WaitForSeconds(_shakeTime);
+        var wait = new WaitForSeconds(_shakeTime);
 
-        _cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = _shakeAmplitude;
-        _cinemachineBasicMultiChannelPerlin.m_FrequencyGain = _shakeFrequency;
+        _noise.AmplitudeGain = _shakeAmplitude;
+        _noise.FrequencyGain = _shakeFrequency;
+
         yield return wait;
-        _cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0;
-        _cinemachineBasicMultiChannelPerlin.m_FrequencyGain = 0;
 
-        StopCoroutine(_coroutine);
+        _noise.AmplitudeGain = 0f;
+        _noise.FrequencyGain = 0f;
+        _coroutine = null;
     }
 }

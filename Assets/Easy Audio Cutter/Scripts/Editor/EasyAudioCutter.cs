@@ -2,24 +2,40 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using System.Reflection;
 
 namespace EasyAudioCutter
 {
     public class EasyAudioCutter : EditorWindow
     {
         private enum Tab { Trim, Merge, AdjustVolume }
+
+        [SerializeField]
         private Tab currentTab = Tab.Trim;
 
+        [SerializeField]
         private AudioClip sourceClip;
+        [SerializeField]
         private float trimStart = 0f;
+        [SerializeField]
         private float trimEnd = 1f;
+        [SerializeField]
         private float fadeInDuration = 0f;
+        [SerializeField]
         private float fadeOutDuration = 0f;
+        [SerializeField]
         private AnimationCurve fadeInCurve = AnimationCurve.Linear(0, 0, 1, 1);
+        [SerializeField]
         private AnimationCurve fadeOutCurve = AnimationCurve.Linear(0, 1, 1, 0);
+        [SerializeField]
+        private bool reverseAudio = false;
 
+        [SerializeField]
         private List<AudioClip> mergeClips = new List<AudioClip>();
-        private List<AudioClip> volumeClips = new List<AudioClip>();
+
+        [SerializeField]
+        private AudioClip volumeClip;
 
         private AudioSource previewAudioSource;
         private AudioClip previewClip;
@@ -28,16 +44,59 @@ namespace EasyAudioCutter
         private const int waveformWidth = 400;
         private const float minWaveformHeight = 2f;
 
+        [SerializeField]
         private bool loopPreview = false;
         private double previewStartTime = -1;
 
+        [SerializeField]
         private float volumeIncrease = 0f;
 
-        [MenuItem("Window/Easy Audio Cutter")]
+        [SerializeField]
+        private float previewVolume = 1f;
+
+        private const string PREF_PREVIEW_VOLUME = "EasyAudioCutter_PreviewVolume";
+
+        [MenuItem("Tools/Easy Audio Cutter")]
         public static void ShowWindow()
         {
             var window = GetWindow<EasyAudioCutter>("Easy Audio Cutter");
-            window.minSize = new Vector2(400, 300);
+            window.minSize = new Vector2(400, 400);
+            window.Show();
+        }
+
+        [MenuItem("Assets/Easy Audio Cutter", false, 20)]
+        public static void EditSelectedAudioClip()
+        {
+            AudioClip selectedClip = Selection.activeObject as AudioClip;
+            if (selectedClip != null)
+            {
+                OpenWithClip(selectedClip);
+            }
+        }
+
+        [MenuItem("Assets/Easy Audio Cutter", true)]
+        public static bool ValidateEditSelectedAudioClip()
+        {
+            return Selection.activeObject is AudioClip;
+        }
+
+        [MenuItem("CONTEXT/AudioClip/Easy Audio Cutter")]
+        public static void EditContextAudioClip(MenuCommand command)
+        {
+            AudioClip clip = command.context as AudioClip;
+            if (clip != null)
+            {
+                OpenWithClip(clip);
+            }
+        }
+
+        public static void OpenWithClip(AudioClip clip)
+        {
+            var window = GetWindow<EasyAudioCutter>("Easy Audio Cutter");
+            window.minSize = new Vector2(400, 400);
+            window.Initialize(clip);
+            window.Show();
+            window.Focus();
         }
 
         public void Initialize(AudioClip clip)
@@ -47,14 +106,20 @@ namespace EasyAudioCutter
             trimEnd = sourceClip != null ? sourceClip.length : 1f;
             fadeInDuration = 0f;
             fadeOutDuration = 0f;
-            fadeInCurve = AnimationCurve.Linear(0, 0, 1, 1);
-            fadeOutCurve = AnimationCurve.Linear(0, 1, 1, 0);
+            reverseAudio = false;
             mergeClips.Clear();
-            volumeClips.Clear();
+            volumeClip = null;
+
+            if (currentTab == Tab.Merge && mergeClips.Count == 0) mergeClips.Add(clip);
+            if (currentTab == Tab.AdjustVolume) volumeClip = clip;
+
+            previewVolume = EditorPrefs.GetFloat(PREF_PREVIEW_VOLUME, 1f);
+
             if (previewAudioSource != null)
             {
                 previewAudioSource.Stop();
                 DestroyPreviewClip();
+                previewAudioSource.volume = previewVolume;
             }
             UpdateWaveform();
             Repaint();
@@ -62,11 +127,16 @@ namespace EasyAudioCutter
 
         private void OnEnable()
         {
+            previewVolume = EditorPrefs.GetFloat(PREF_PREVIEW_VOLUME, 1f);
+
             GameObject go = new GameObject("AudioPreviewPlayer");
             go.hideFlags = HideFlags.HideAndDontSave;
             previewAudioSource = go.AddComponent<AudioSource>();
             previewAudioSource.playOnAwake = false;
-            previewAudioSource.loop = false; // Varsayılan olarak loop kapalı
+            previewAudioSource.loop = false;
+            previewAudioSource.volume = previewVolume;
+
+            Undo.undoRedoPerformed += OnUndoRedo;
         }
 
         private void OnDisable()
@@ -74,29 +144,75 @@ namespace EasyAudioCutter
             if (previewAudioSource != null)
                 DestroyImmediate(previewAudioSource.gameObject);
             DestroyPreviewClip();
+
+            Undo.undoRedoPerformed -= OnUndoRedo;
+        }
+
+        private void OnUndoRedo()
+        {
+            if (currentTab == Tab.Trim)
+            {
+                UpdateWaveform();
+            }
+            Repaint();
         }
 
         private void OnGUI()
         {
-            if (previewAudioSource != null && previewAudioSource.isPlaying)
+            EasyAudioCutterTheme.EnsureStyles();
+
+            if (previewAudioSource != null)
             {
-                Repaint();
+                if (Mathf.Abs(previewAudioSource.volume - previewVolume) > 0.01f)
+                {
+                    previewAudioSource.volume = previewVolume;
+                }
+
+                if (previewAudioSource.isPlaying)
+                {
+                    Repaint();
+                }
             }
+
+            Color bgColor = EditorGUIUtility.isProSkin ? new Color(0.07f, 0.1f, 0.2f) : new Color(0.8f, 0.8f, 0.8f);
+            EditorGUI.DrawRect(new Rect(0, 0, position.width, position.height), bgColor);
 
             EditorGUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space();
 
-            EditorGUI.DrawRect(new Rect(0, 0, position.width, position.height), new Color(0.07f, 0.1f, 0.2f));
-
             if (GUILayout.Button("Help", EasyAudioCutterTheme.ButtonStyle, GUILayout.Width(100)))
             {
                 DrawHelpDialog();
             }
-            EditorGUILayout.Space(50);
+            EditorGUILayout.Space(10);
 
-            currentTab = (Tab)GUILayout.Toolbar((int)currentTab, new string[] { "Trim", "Merge", "Adjust Volume" });
+            EditorGUI.BeginChangeCheck();
+            Tab newTab = (Tab)GUILayout.Toolbar((int)currentTab, new string[] { "Trim", "Merge", "Adjust Volume" });
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(this, "Change Tab");
+                currentTab = newTab;
+            }
+
+            EditorGUILayout.Space(5);
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Preview Volume", EasyAudioCutterTheme.SliderLabelStyle, GUILayout.Width(100));
+            EditorGUI.BeginChangeCheck();
+            float newVol = EditorGUILayout.Slider(previewVolume, 0f, 1f);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(this, "Change Preview Volume");
+                previewVolume = newVol;
+                EditorPrefs.SetFloat(PREF_PREVIEW_VOLUME, previewVolume);
+                if (previewAudioSource != null) previewAudioSource.volume = previewVolume;
+            }
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.Space();
+            EasyAudioCutterTheme.DrawSeparator();
             EditorGUILayout.Space();
 
             switch (currentTab)
@@ -112,33 +228,32 @@ namespace EasyAudioCutter
             string message = "Easy Audio Cutter - Help\n\n" +
                             "**Trim Tab**\n" +
                             "• Allows trimming a specific section with fade in/out effects.\n" +
-                            "• Offers preview and save options to test and export your edits.\n" +
-                            "• Supports adjustable start and end times for precise trimming of audio clips.\n" +
-                            "• Fade in/out durations can be customized to create smooth transitions.\n" +
-                            "• Waveform visualization updates in real-time as you adjust trim or fade settings.\n" +
-                            "• Tip: Use the curve editor to fine-tune fade effects for creative control.\n\n" +
+                            "• Toggle 'Reverse Audio' to play the section backwards.\n" +
+                            "• Click anywhere on the waveform to seek/jump to that time.\n" +
+                            "• Supports adjustable start/end times and custom fade curves.\n" +
+                            "• Real-time waveform visualization with a playhead tracker.\n" +
+                            "• Tip: Use the curve editor for creative fade transitions.\n\n" +
+
                             "**Merge Tab**\n" +
                             "• Combines multiple audio files into a single clip.\n" +
-                            "• All audio files must have the same format (e.g., same sample rate and channels) to ensure compatibility.\n" +
-                            "• Provides preview functionality for merged audio before saving.\n" +
-                            "• Add or remove clips dynamically using the '+' and 'X' buttons.\n" +
-                            "• Tip: Verify audio formats beforehand to avoid errors during merging.\n\n" +
-                            "**Adjust Volume Tab**\n" +
-                            "• Increases or decreases the volume of selected audio files.\n" +
-                            "• Use -1 to 1 range: negative values decrease volume, positive values increase it, and 0 leaves it unchanged.\n" +
-                            "• Allows real-time preview of volume adjustments to hear changes instantly.\n" +
-                            "• Saves modified clips with a '_Adjusted' suffix to preserve original files.\n" +
-                            "• Tip: Avoid setting values close to -1 or 1 to prevent audio clipping or excessive reduction.\n" +
-                            "• Supports multiple clips for batch volume adjustment.\n\n" +
-                            "**General Information**\n" +
-                            "• Saves all processed audio in WAV format for broad compatibility.\n" +
-                            "• Curve fields in the Trim tab determine the shape and smoothness of fade transitions.\n" +
-                            "• Compatible with Unity's audio system for seamless integration into your projects.\n" +
-                            "• Developed and updated as of July 05, 2025, at 02:21 PM +03.\n" +
-                            "• Requires an AudioClip to be assigned before performing any operations.\n" +
-                            "• Note: Preview audio is temporary and cleared when the window is closed.\n" +
-                            "• For best results, use high-quality audio files and test previews before saving.\n";
+                            "• Use '↑' and '↓' buttons to reorder clips in the list.\n" +
+                            "• All audio files must have the same format (sample rate/channels).\n" +
+                            "• Provides preview functionality for the merged sequence.\n" +
+                            "• Tip: Verify formats beforehand to avoid merge errors.\n\n" +
 
+                            "**Adjust Volume Tab**\n" +
+                            "• Adjusts the volume of a single selected audio clip.\n" +
+                            "• Use -1 to 1 range: negative decreases, positive increases volume.\n" +
+                            "• Real-time preview of volume changes before saving.\n" +
+                            "• Saves modified clip with '_Adjusted' suffix.\n" +
+                            "• Tip: Avoid values close to -1 or 1 to prevent clipping.\n\n" +
+
+                            "**General Information**\n" +
+                            "• Shortcuts: Right-click any Audio Asset or use the '✂' button in the Inspector.\n" +
+                            "• Supports Undo/Redo (Ctrl+Z) for all slider and toggle actions.\n" +
+                            "• Global 'Preview Volume' slider allows adjusting playback level.\n" +
+                            "• Saves all processed audio in WAV format.\n" +
+                            "• Developed and updated as of July 05, 2025.\n";
             EditorUtility.DisplayDialog("Easy Audio Cutter - Help", message, "OK");
         }
 
@@ -147,18 +262,12 @@ namespace EasyAudioCutter
             EditorGUILayout.LabelField("Trim AudioClip", EasyAudioCutterTheme.HeaderStyle);
             EditorGUILayout.Space();
 
-            AudioClip oldSource = sourceClip;
-            sourceClip = (AudioClip)EditorGUILayout.ObjectField("Source Clip", sourceClip, typeof(AudioClip), false);
-
-            if (sourceClip != oldSource)
+            EditorGUI.BeginChangeCheck();
+            AudioClip newSource = (AudioClip)EditorGUILayout.ObjectField("Source Clip", sourceClip, typeof(AudioClip), false);
+            if (EditorGUI.EndChangeCheck())
             {
-                trimStart = 0f;
-                trimEnd = sourceClip != null ? sourceClip.length : 1f;
-                fadeInDuration = 0f;
-                fadeOutDuration = 0f;
-                fadeInCurve = AnimationCurve.Linear(0, 0, 1, 1);
-                fadeOutCurve = AnimationCurve.Linear(0, 1, 1, 0);
-                UpdateWaveform();
+                Undo.RecordObject(this, "Change Source Clip");
+                Initialize(newSource);
             }
 
             if (sourceClip == null)
@@ -167,57 +276,61 @@ namespace EasyAudioCutter
                 return;
             }
 
-            EditorGUILayout.LabelField($"Length: {sourceClip.length:F2} seconds");
+            EditorGUILayout.LabelField($"Length: {sourceClip.length:F2} seconds", EasyAudioCutterTheme.LabelStyle);
             EditorGUILayout.Space();
 
             float oldTrimStart = trimStart;
             float oldTrimEnd = trimEnd;
             float oldFadeIn = fadeInDuration;
             float oldFadeOut = fadeOutDuration;
-            AnimationCurve oldFadeInCurve = new AnimationCurve(fadeInCurve.keys);
-            AnimationCurve oldFadeOutCurve = new AnimationCurve(fadeOutCurve.keys);
+            bool oldReverse = reverseAudio;
 
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Start Time", EasyAudioCutterTheme.SliderLabelStyle);
-            trimStart = EditorGUILayout.Slider(trimStart, 0f, sourceClip.length);
-            EditorGUILayout.EndHorizontal();
+            EditorGUI.BeginChangeCheck();
+            float newTrimStart = EditorGUILayout.Slider("Start Time", trimStart, 0f, sourceClip.length);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(this, "Change Trim Start");
+                trimStart = newTrimStart;
+            }
 
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("End Time", EasyAudioCutterTheme.SliderLabelStyle);
-            trimEnd = EditorGUILayout.Slider(trimEnd, 0f, sourceClip.length);
-            EditorGUILayout.EndHorizontal();
+            EditorGUI.BeginChangeCheck();
+            float newTrimEnd = EditorGUILayout.Slider("End Time", trimEnd, 0f, sourceClip.length);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(this, "Change Trim End");
+                trimEnd = newTrimEnd;
+            }
             trimEnd = Mathf.Max(trimStart, trimEnd);
 
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Fade In Duration", EasyAudioCutterTheme.SliderLabelStyle);
-            fadeInDuration = EditorGUILayout.Slider(fadeInDuration, 0f, trimEnd - trimStart);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("Fade Out Duration", EasyAudioCutterTheme.SliderLabelStyle);
-            fadeOutDuration = EditorGUILayout.Slider(fadeOutDuration, 0f, trimEnd - trimStart);
-            EditorGUILayout.EndHorizontal();
-
-            AnimationCurve newFadeInCurve = EditorGUILayout.CurveField("Fade In Curve", fadeInCurve, Color.cyan, new Rect(0, 0, 1, 1), GUILayout.Height(20));
-            AnimationCurve newFadeOutCurve = EditorGUILayout.CurveField("Fade Out Curve", fadeOutCurve, Color.magenta, new Rect(0, 0, 1, 1), GUILayout.Height(20));
-
-            if (!AreCurvesEqual(fadeInCurve, newFadeInCurve))
+            EditorGUI.BeginChangeCheck();
+            float newFadeIn = EditorGUILayout.Slider("Fade In Duration", fadeInDuration, 0f, trimEnd - trimStart);
+            if (EditorGUI.EndChangeCheck())
             {
-                fadeInCurve = newFadeInCurve;
-                UpdateWaveform();
+                Undo.RecordObject(this, "Change Fade In");
+                fadeInDuration = newFadeIn;
             }
-            if (!AreCurvesEqual(fadeOutCurve, newFadeOutCurve))
+
+            EditorGUI.BeginChangeCheck();
+            float newFadeOut = EditorGUILayout.Slider("Fade Out Duration", fadeOutDuration, 0f, trimEnd - trimStart);
+            if (EditorGUI.EndChangeCheck())
             {
-                fadeOutCurve = newFadeOutCurve;
-                UpdateWaveform();
+                Undo.RecordObject(this, "Change Fade Out");
+                fadeOutDuration = newFadeOut;
+            }
+
+            EditorGUI.BeginChangeCheck();
+            bool newReverse = EditorGUILayout.Toggle("Reverse Audio", reverseAudio);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(this, "Toggle Reverse");
+                reverseAudio = newReverse;
             }
 
             if (!Mathf.Approximately(oldTrimStart, trimStart) ||
                 !Mathf.Approximately(oldTrimEnd, trimEnd) ||
                 !Mathf.Approximately(oldFadeIn, fadeInDuration) ||
                 !Mathf.Approximately(oldFadeOut, fadeOutDuration) ||
-                !AreCurvesEqual(oldFadeInCurve, fadeInCurve) ||
-                !AreCurvesEqual(oldFadeOutCurve, fadeOutCurve))
+                oldReverse != reverseAudio)
             {
                 UpdateWaveform();
             }
@@ -229,9 +342,32 @@ namespace EasyAudioCutter
             waveformRect.width -= 20;
             DrawWaveform(waveformRect);
 
+            if (Event.current.type == EventType.MouseDown && waveformRect.Contains(Event.current.mousePosition))
+            {
+                if (previewAudioSource != null && previewClip != null)
+                {
+                    float clickPercent = (Event.current.mousePosition.x - waveformRect.x) / waveformRect.width;
+                    clickPercent = Mathf.Clamp01(clickPercent);
+
+                    if (!previewAudioSource.isPlaying)
+                    {
+                        CreatePreviewClipAndPlay();
+                    }
+
+                    previewAudioSource.time = clickPercent * previewClip.length;
+                    Repaint();
+                }
+            }
+
             EditorGUILayout.Space();
 
-            loopPreview = EditorGUILayout.Toggle("Loop Preview", loopPreview);
+            EditorGUI.BeginChangeCheck();
+            bool newLoop = EditorGUILayout.Toggle("Loop Preview", loopPreview);
+            if (EditorGUI.EndChangeCheck())
+            {
+                Undo.RecordObject(this, "Toggle Loop");
+                loopPreview = newLoop;
+            }
 
             if (GUILayout.Button(previewAudioSource.isPlaying ? "Stop Preview" : "Play Preview", EasyAudioCutterTheme.ButtonStyle))
             {
@@ -251,17 +387,6 @@ namespace EasyAudioCutter
             {
                 ProcessAndSaveTrimmedClip();
             }
-
-            if (previewAudioSource.isPlaying && previewClip != null)
-            {
-                float progress = previewAudioSource.time / previewClip.length;
-                progress = Mathf.Clamp01(progress);
-
-                EditorGUILayout.Space(5);
-                Rect barRect = GUILayoutUtility.GetRect(100, 18);
-                EditorGUI.ProgressBar(barRect, progress, "Preview Progress");
-                EditorGUILayout.Space(5);
-            }
         }
 
         private void DrawMergeTab()
@@ -272,9 +397,39 @@ namespace EasyAudioCutter
             for (int i = 0; i < mergeClips.Count; i++)
             {
                 EditorGUILayout.BeginHorizontal();
-                mergeClips[i] = (AudioClip)EditorGUILayout.ObjectField(mergeClips[i], typeof(AudioClip), false);
+
+                if (GUILayout.Button("↑", GUILayout.Width(20)))
+                {
+                    if (i > 0)
+                    {
+                        Undo.RecordObject(this, "Move Clip Up");
+                        var temp = mergeClips[i];
+                        mergeClips[i] = mergeClips[i - 1];
+                        mergeClips[i - 1] = temp;
+                    }
+                }
+                if (GUILayout.Button("↓", GUILayout.Width(20)))
+                {
+                    if (i < mergeClips.Count - 1)
+                    {
+                        Undo.RecordObject(this, "Move Clip Down");
+                        var temp = mergeClips[i];
+                        mergeClips[i] = mergeClips[i + 1];
+                        mergeClips[i + 1] = temp;
+                    }
+                }
+
+                EditorGUI.BeginChangeCheck();
+                AudioClip newClip = (AudioClip)EditorGUILayout.ObjectField(mergeClips[i], typeof(AudioClip), false);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(this, "Change Merge Clip");
+                    mergeClips[i] = newClip;
+                }
+
                 if (GUILayout.Button("X", EasyAudioCutterTheme.ButtonStyle, GUILayout.Width(20)))
                 {
+                    Undo.RecordObject(this, "Remove Merge Clip");
                     mergeClips.RemoveAt(i);
                     i--;
                 }
@@ -283,6 +438,7 @@ namespace EasyAudioCutter
 
             if (GUILayout.Button("+ Add AudioClip", EasyAudioCutterTheme.ButtonStyle))
             {
+                Undo.RecordObject(this, "Add Merge Clip");
                 mergeClips.Add(null);
             }
 
@@ -321,48 +477,46 @@ namespace EasyAudioCutter
             EditorGUILayout.LabelField("Adjust Volume", EasyAudioCutterTheme.HeaderStyle);
             EditorGUILayout.Space();
 
-            for (int i = 0; i < volumeClips.Count; i++)
+            EditorGUI.BeginChangeCheck();
+            AudioClip newVolumeClip = (AudioClip)EditorGUILayout.ObjectField("Audio Clip", volumeClip, typeof(AudioClip), false);
+            if (EditorGUI.EndChangeCheck())
             {
-                EditorGUILayout.BeginHorizontal();
-                volumeClips[i] = (AudioClip)EditorGUILayout.ObjectField("Audio Clip " + (i + 1), volumeClips[i], typeof(AudioClip), false);
-                if (GUILayout.Button("X", EasyAudioCutterTheme.ButtonStyle, GUILayout.Width(20)))
-                {
-                    volumeClips.RemoveAt(i);
-                    i--;
-                }
-                EditorGUILayout.EndHorizontal();
-            }
-
-            if (GUILayout.Button("+ Add AudioClip", EasyAudioCutterTheme.ButtonStyle))
-            {
-                volumeClips.Add(null);
+                Undo.RecordObject(this, "Change Volume Clip");
+                volumeClip = newVolumeClip;
             }
 
             EditorGUILayout.Space();
 
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("Volume Adjustment", EasyAudioCutterTheme.SliderLabelStyle);
-            volumeIncrease = EditorGUILayout.Slider(volumeIncrease, -1f, 1f);
+            float newVolume = EditorGUILayout.Slider(volumeIncrease, -1f, 1f);
             EditorGUILayout.EndHorizontal();
-            EditorGUILayout.LabelField("Note: -1 to 1 range: negative decreases, positive increases, 0 no change.", EditorStyles.helpBox);
-
-            if (volumeClips.Count > 0)
+            if (EditorGUI.EndChangeCheck())
             {
-                if (GUILayout.Button("Apply Volume Adjustment", EasyAudioCutterTheme.ButtonStyle))
+                Undo.RecordObject(this, "Change Volume Amount");
+                volumeIncrease = newVolume;
+            }
+
+            EditorGUILayout.LabelField("Note: -1 to 1 range.", EditorStyles.helpBox);
+
+            if (volumeClip != null)
+            {
+                if (GUILayout.Button("Apply Volume Adjustment (Preview)", EasyAudioCutterTheme.ButtonStyle))
                 {
                     ApplyVolumeIncrease();
                 }
 
                 EditorGUILayout.Space();
 
-                if (GUILayout.Button("Process and Save Adjusted Clips", EasyAudioCutterTheme.ButtonStyle))
+                if (GUILayout.Button("Process and Save Adjusted Clip", EasyAudioCutterTheme.ButtonStyle))
                 {
                     ProcessAndSaveAdjustedClips();
                 }
             }
             else
             {
-                EditorGUILayout.HelpBox("Add at least one AudioClip to adjust volume.", MessageType.Info);
+                EditorGUILayout.HelpBox("Add an AudioClip to adjust volume.", MessageType.Info);
             }
         }
 
@@ -394,11 +548,17 @@ namespace EasyAudioCutter
             float[] trimmedData = new float[sampleLength];
             System.Array.Copy(allData, startSample, trimmedData, 0, sampleLength);
 
+            if (reverseAudio)
+            {
+                System.Array.Reverse(trimmedData);
+            }
+
             ApplyFades(trimmedData, freq, channels);
 
             previewClip = AudioClip.Create("PreviewTrim", sampleLength / channels, channels, freq, false);
             previewClip.SetData(trimmedData, 0);
             previewAudioSource.clip = previewClip;
+            previewAudioSource.volume = previewVolume;
             previewAudioSource.loop = loopPreview;
             previewAudioSource.Play();
         }
@@ -419,9 +579,14 @@ namespace EasyAudioCutter
             float[] trimmedData = new float[sampleLength];
             System.Array.Copy(srcData, startSample, trimmedData, 0, sampleLength);
 
+            if (reverseAudio)
+            {
+                System.Array.Reverse(trimmedData);
+            }
+
             ApplyFades(trimmedData, freq, channels);
 
-            SaveWav(trimmedData, freq, channels, "Trimmed_" + sourceClip.name);
+            SaveWav(trimmedData, freq, channels, "Trimmed_" + sourceClip.name + (reverseAudio ? "_Reverse" : ""));
         }
 
         private void ApplyFades(float[] data, int freq, int channels)
@@ -467,10 +632,11 @@ namespace EasyAudioCutter
             float[] mergedData = mergedSamples.ToArray();
             int samples = mergedData.Length / channels;
 
-            DestroyPreviewClip(); // Önceki clip'i temizle
+            DestroyPreviewClip();
             previewClip = AudioClip.Create("PreviewMerged", samples, channels, freq, false);
             previewClip.SetData(mergedData, 0);
             previewAudioSource.clip = previewClip;
+            previewAudioSource.volume = previewVolume;
             previewAudioSource.loop = loopPreview;
             previewAudioSource.Play();
         }
@@ -508,52 +674,45 @@ namespace EasyAudioCutter
                 DestroyPreviewClip();
             }
 
-            foreach (var clip in volumeClips)
+            if (volumeClip != null)
             {
-                if (clip != null)
+                float[] data = new float[volumeClip.samples * volumeClip.channels];
+                volumeClip.GetData(data, 0);
+
+                for (int i = 0; i < data.Length; i++)
                 {
-                    float[] data = new float[clip.samples * clip.channels];
-                    clip.GetData(data, 0);
-
-                    for (int i = 0; i < data.Length; i++)
-                    {
-                        data[i] += data[i] * volumeIncrease;
-                        if (data[i] > 1f) data[i] = 1f;
-                        if (data[i] < -1f) data[i] = -1f;
-                    }
-
-                    int samples = data.Length / clip.channels;
-                    AudioClip tempClip = AudioClip.Create(clip.name + "_Temp", samples, clip.channels, clip.frequency, false);
-                    tempClip.SetData(data, 0);
-                    previewAudioSource.clip = tempClip;
-                    previewAudioSource.loop = false; // Loop'u kapat
-                    previewAudioSource.Play();
-                    // Sesin bir kez çalmasını beklemek için kısa bir gecikme bırak (isteğe bağlı)
-                    // EditorApplication.delayCall += () => { if (previewAudioSource.isPlaying) previewAudioSource.Stop(); };
+                    data[i] += data[i] * volumeIncrease;
+                    if (data[i] > 1f) data[i] = 1f;
+                    if (data[i] < -1f) data[i] = -1f;
                 }
+
+                int samples = data.Length / volumeClip.channels;
+                AudioClip tempClip = AudioClip.Create(volumeClip.name + "_Temp", samples, volumeClip.channels, volumeClip.frequency, false);
+                tempClip.SetData(data, 0);
+                previewAudioSource.clip = tempClip;
+                previewAudioSource.volume = previewVolume;
+                previewAudioSource.loop = false;
+                previewAudioSource.Play();
             }
         }
 
         private void ProcessAndSaveAdjustedClips()
         {
-            foreach (var clip in volumeClips)
+            if (volumeClip != null)
             {
-                if (clip != null)
+                float[] data = new float[volumeClip.samples * volumeClip.channels];
+                volumeClip.GetData(data, 0);
+
+                for (int i = 0; i < data.Length; i++)
                 {
-                    float[] data = new float[clip.samples * clip.channels];
-                    clip.GetData(data, 0);
-
-                    for (int i = 0; i < data.Length; i++)
-                    {
-                        data[i] += data[i] * volumeIncrease;
-                        if (data[i] > 1f) data[i] = 1f;
-                        if (data[i] < -1f) data[i] = -1f;
-                    }
-
-                    SaveWav(data, clip.frequency, clip.channels, clip.name + "_Adjusted");
+                    data[i] += data[i] * volumeIncrease;
+                    if (data[i] > 1f) data[i] = 1f;
+                    if (data[i] < -1f) data[i] = -1f;
                 }
+
+                SaveWav(data, volumeClip.frequency, volumeClip.channels, volumeClip.name + "_Adjusted");
+                EditorUtility.DisplayDialog("Done", "Adjusted clip saved!", "OK");
             }
-            EditorUtility.DisplayDialog("Done", "Adjusted clips saved!", "OK");
         }
 
         private void SaveWav(float[] data, int frequency, int channels, string defaultName)
@@ -566,7 +725,7 @@ namespace EasyAudioCutter
 
             if (!string.IsNullOrEmpty(path))
             {
-                byte[] bytes = WavUtility.FromAudioClip(clip, out _, true);
+                byte[] bytes = WavUtility.FromAudioClip(clip);
                 File.WriteAllBytes(path, bytes);
                 AssetDatabase.ImportAsset(path);
                 EditorUtility.DisplayDialog("Done", "Audio saved!", "OK");
@@ -593,6 +752,11 @@ namespace EasyAudioCutter
             float[] trimmedData = new float[lengthSamples];
             System.Array.Copy(allData, startSample, trimmedData, 0, lengthSamples);
 
+            if (reverseAudio)
+            {
+                System.Array.Reverse(trimmedData);
+            }
+
             ApplyFades(trimmedData, freq, channels);
 
             int samplesPerPixel = Mathf.Max(1, trimmedData.Length / waveformWidth);
@@ -617,7 +781,8 @@ namespace EasyAudioCutter
         {
             if (waveformSamples == null || waveformSamples.Length == 0) return;
 
-            EditorGUI.DrawRect(rect, new Color(0.05f, 0.08f, 0.15f));
+            Color waveBgColor = EditorGUIUtility.isProSkin ? new Color(0.05f, 0.08f, 0.15f) : new Color(0.9f, 0.9f, 0.9f);
+            EditorGUI.DrawRect(rect, waveBgColor);
             float midY = rect.y + rect.height / 2f;
 
             Handles.BeginGUI();
@@ -639,77 +804,164 @@ namespace EasyAudioCutter
             float startX = rect.x + xOffset;
             float endX = rect.x + xOffset + waveformSamples.Length;
 
-            Handles.color = Color.white;
+            Handles.color = EditorGUIUtility.isProSkin ? Color.white : Color.black;
             Handles.DrawLine(new Vector3(startX, rect.y), new Vector3(startX, rect.y + rect.height));
             Handles.DrawLine(new Vector3(endX, rect.y), new Vector3(endX, rect.y + rect.height));
 
+            if (previewAudioSource != null && previewAudioSource.isPlaying && previewClip != null)
+            {
+                float progress = previewAudioSource.time / previewClip.length;
+                float playheadX = rect.x + (progress * rect.width);
+
+                Handles.color = Color.red;
+                Handles.DrawLine(new Vector3(playheadX, rect.y), new Vector3(playheadX, rect.y + rect.height));
+            }
+
             Handles.EndGUI();
         }
+    }
 
-        private bool AreCurvesEqual(AnimationCurve curve1, AnimationCurve curve2)
+    [CustomEditor(typeof(AudioClip))]
+    public class AudioClipInspectorOverride : Editor
+    {
+        private Editor _defaultEditor;
+
+        private void OnEnable()
         {
-            if (curve1.length != curve2.length) return false;
-            for (int i = 0; i < curve1.length; i++)
+            var type = typeof(Editor).Assembly.GetType("UnityEditor.AudioClipInspector");
+            if (type != null)
+                _defaultEditor = CreateEditor(target, type);
+        }
+
+        private void OnDisable()
+        {
+            if (_defaultEditor != null) DestroyImmediate(_defaultEditor);
+        }
+
+        public override void OnInspectorGUI()
+        {
+            if (_defaultEditor != null)
             {
-                if (curve1.keys[i].time != curve2.keys[i].time ||
-                    curve1.keys[i].value != curve2.keys[i].value ||
-                    curve1.keys[i].inTangent != curve2.keys[i].inTangent ||
-                    curve1.keys[i].outTangent != curve2.keys[i].outTangent)
-                {
-                    return false;
-                }
+                _defaultEditor.OnInspectorGUI();
             }
-            return true;
+            else
+            {
+                base.OnInspectorGUI();
+            }
+        }
+
+        public override bool HasPreviewGUI()
+        {
+            return _defaultEditor != null && _defaultEditor.HasPreviewGUI();
+        }
+
+        public override void OnPreviewGUI(Rect r, GUIStyle background)
+        {
+            if (_defaultEditor != null) _defaultEditor.OnPreviewGUI(r, background);
+        }
+
+        public override void OnInteractivePreviewGUI(Rect r, GUIStyle background)
+        {
+            if (_defaultEditor != null) _defaultEditor.OnInteractivePreviewGUI(r, background);
+        }
+
+        public override void OnPreviewSettings()
+        {
+            if (_defaultEditor != null)
+            {
+                _defaultEditor.OnPreviewSettings();
+            }
+
+            if (GUILayout.Button(new GUIContent("✂", "Open in Easy Audio Cutter"), EditorStyles.toolbarButton, GUILayout.Width(30)))
+            {
+                EasyAudioCutter.OpenWithClip((AudioClip)target);
+            }
         }
     }
 
     public static class EasyAudioCutterTheme
     {
         public static GUIStyle HeaderStyle { get; private set; }
-        public static GUIStyle SectionStyle { get; private set; }
         public static GUIStyle ButtonStyle { get; private set; }
         public static GUIStyle SliderLabelStyle { get; private set; }
-        public static GUIStyle SliderStyle { get; private set; } // Slider için yeni stil
+        public static GUIStyle LabelStyle { get; private set; }
 
-        static EasyAudioCutterTheme()
+        private static bool isInitialized = false;
+        private static bool wasProSkin = false;
+
+        public static void EnsureStyles()
         {
-            SetupStyles();
+            if (!isInitialized || wasProSkin != EditorGUIUtility.isProSkin)
+            {
+                SetupStyles();
+            }
+        }
+
+        public static void DrawSeparator()
+        {
+            var rect = GUILayoutUtility.GetRect(1f, 1f);
+            EditorGUI.DrawRect(rect, new Color(0.5f, 0.5f, 0.5f, 0.5f));
         }
 
         private static void SetupStyles()
         {
+            wasProSkin = EditorGUIUtility.isProSkin;
+            bool isDark = wasProSkin;
+
             HeaderStyle = new GUIStyle(EditorStyles.boldLabel);
-            HeaderStyle.normal.textColor = new Color(0.4f, 0.8f, 1f);
+            HeaderStyle.normal.textColor = isDark ? new Color(0.4f, 0.8f, 1f) : new Color(0.1f, 0.3f, 0.5f);
             HeaderStyle.fontSize = 14;
 
-            SectionStyle = new GUIStyle(GUI.skin.box);
-            SectionStyle.normal.background = MakeTex(1, 1, new Color(0.1f, 0.15f, 0.25f));
-            SectionStyle.padding = new RectOffset(10, 10, 10, 10);
-
             ButtonStyle = new GUIStyle(GUI.skin.button);
-            ButtonStyle.normal.textColor = Color.white;
-            ButtonStyle.normal.background = MakeTex(1, 1, new Color(0.05f, 0.3f, 0.6f));
-            ButtonStyle.hover.background = MakeTex(1, 1, new Color(0.07f, 0.4f, 0.8f));
+            ButtonStyle.normal.textColor = isDark ? Color.white : Color.black;
             ButtonStyle.fontSize = 12;
             ButtonStyle.padding = new RectOffset(6, 6, 4, 4);
 
             SliderLabelStyle = new GUIStyle(EditorStyles.label);
-            SliderLabelStyle.normal.textColor = Color.cyan;
+            SliderLabelStyle.normal.textColor = isDark ? Color.cyan : new Color(0.0f, 0.4f, 0.7f);
 
-            SliderStyle = new GUIStyle(); // Slider için temel stil
-            SliderStyle.normal.background = MakeTex(1, 1, new Color(0.15f, 0.2f, 0.35f));
-            SliderStyle.hover.background = MakeTex(1, 1, new Color(0.2f, 0.25f, 0.4f));
-            SliderStyle.padding = new RectOffset(4, 4, 2, 2);
+            LabelStyle = new GUIStyle(EditorStyles.label);
+            LabelStyle.normal.textColor = isDark ? Color.white : Color.black;
+
+            isInitialized = true;
         }
+    }
 
-        private static Texture2D MakeTex(int width, int height, Color col)
+    public static class WavUtility
+    {
+        public static byte[] FromAudioClip(AudioClip clip)
         {
-            Color[] pix = new Color[width * height];
-            for (int i = 0; i < pix.Length; i++) pix[i] = col;
-            Texture2D result = new Texture2D(width, height);
-            result.SetPixels(pix);
-            result.Apply();
-            return result;
+            using (var memoryStream = new MemoryStream())
+            {
+                using (var writer = new BinaryWriter(memoryStream))
+                {
+                    var hz = clip.frequency;
+                    var channels = clip.channels;
+                    var samples = clip.samples;
+                    writer.Write(Encoding.ASCII.GetBytes("RIFF"));
+                    writer.Write(36 + samples * channels * 2);
+                    writer.Write(Encoding.ASCII.GetBytes("WAVE"));
+                    writer.Write(Encoding.ASCII.GetBytes("fmt "));
+                    writer.Write(16);
+                    writer.Write((ushort)1);
+                    writer.Write((ushort)channels);
+                    writer.Write(hz);
+                    writer.Write(hz * channels * 2);
+                    writer.Write((ushort)(channels * 2));
+                    writer.Write((ushort)16);
+                    writer.Write(Encoding.ASCII.GetBytes("data"));
+                    writer.Write(samples * channels * 2);
+
+                    float[] data = new float[samples * channels];
+                    clip.GetData(data, 0);
+
+                    foreach (var sample in data)
+                    {
+                        writer.Write((short)(sample * 32767f));
+                    }
+                }
+                return memoryStream.ToArray();
+            }
         }
     }
 }

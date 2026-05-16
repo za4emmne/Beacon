@@ -7,7 +7,7 @@
         false,
         false
     ],
-    "idSave": 940,
+    "idSave": 944,
     "bestScore": 52,
     "bestLevel": 3,
     "coins": 2700,
@@ -19,7 +19,7 @@
         "Druid",
         "Vladimir"
     ],
-    "selectedCharacter": "Yaropolk",
+    "selectedCharacter": "Druid",
     "unlockedLocations": [
         "forest",
         "Base"
